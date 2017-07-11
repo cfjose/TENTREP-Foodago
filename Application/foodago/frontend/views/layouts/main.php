@@ -93,25 +93,7 @@ AppAsset::register($this);
 							<li class="data"><a href="#">Terms of Use</a></li>
 						</ul>
 					</div>
-					<div class="col-md-3 contact-section-grid wow fadeInLeft" data-wow-delay="0.4s">
-						<h4>Site Links</h4>
-						<ul>
-							<li><i class="point"></i></li>
-							<li class="data"><a href="#">About Us</a></li>
-						</ul>
-						<ul>
-							<li><i class="point"></i></li>
-							<li class="data"><a href="#">Contact Us</a></li>
-						</ul>
-						<ul>
-							<li><i class="point"></i></li>
-							<li class="data"><a href="#">Privacy Policy</a></li>
-						</ul>
-						<ul>
-							<li><i class="point"></i></li>
-							<li class="data"><a href="#">Terms of Use</a></li>
-						</ul>
-					</div>
+
 					<div class="col-md-3 contact-section-grid wow fadeInRight" data-wow-delay="0.4s">
 						<h4>Follow Us On...</h4>
 						<ul>

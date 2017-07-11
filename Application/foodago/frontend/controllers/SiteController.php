@@ -141,7 +141,7 @@ class SiteController extends Controller
         return $this->render('about');
     }
 
-        /**
+    /**
      * Displays track order page.
      *
      * @return mixed
@@ -150,7 +150,17 @@ class SiteController extends Controller
     {
         return $this->render('track');
     }
-    
+
+    /**
+     * Displays restaurant page.
+     *
+     * @return mixed
+     */
+    public function actionRestaurant()
+    {
+        return $this->render('restaurant');
+    }
+
 
     /**
      * Signs user up.

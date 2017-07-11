@@ -16,6 +16,7 @@ class AppAsset extends AssetBundle
 		'css/animate.css',
 		'css/bootstrap.css',
 		'css/style.css',
+		'css/bootsnipp.css',
     ];
     public $js = [
 		'js/classie.js',

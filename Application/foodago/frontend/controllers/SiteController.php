@@ -141,6 +141,17 @@ class SiteController extends Controller
         return $this->render('about');
     }
 
+        /**
+     * Displays track order page.
+     *
+     * @return mixed
+     */
+    public function actionTrack()
+    {
+        return $this->render('track');
+    }
+    
+
     /**
      * Signs user up.
      *
@@ -211,3 +222,4 @@ class SiteController extends Controller
         ]);
     }
 }
+

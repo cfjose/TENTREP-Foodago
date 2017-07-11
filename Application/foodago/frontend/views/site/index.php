@@ -104,7 +104,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 				<div class="ordering-section-head text-center wow bounceInRight" data-wow-delay="0.4s">
 					<h3>Ordering food was never so easy</h3>
 					<div class="dotted-line">
-						<h4>Just 5 steps to follow </h4>
+						<h4>Just 4 steps to follow </h4>
 					</div>
 				</div>
 				<div class="ordering-section-grids">
@@ -120,7 +120,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 						<div class="ordering-section-grid-process wow fadeInRight" data-wow-delay="0.4s"">
 							<i class="two"></i><br>
 							<i class="two-icon"></i>
-							<p>Browse & Order  <span>Your Favourite Food</span></p>
+							<p>Browse & Order  <span>Your Food</span></p>
 							<label></label>
 						</div>
 					</div>

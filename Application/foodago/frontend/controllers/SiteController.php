@@ -161,6 +161,16 @@ class SiteController extends Controller
         return $this->render('restaurant');
     }
 
+    /**
+     * Displays order summary page.
+     *
+     * @return mixed
+     */
+    public function actionOrder()
+    {
+        return $this->render('order');
+    }
+
 
     /**
      * Signs user up.

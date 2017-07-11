@@ -15,6 +15,9 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 <!DOCTYPE html>
 <html>
 <head>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 <link href="css/bootstrap.css" rel='stylesheet' type='text/css' />
 <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
 <script src="js/jquery.min.js"></script>
@@ -46,56 +49,65 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 </head>
 <body>
     <!-- header-section-starts -->
-	<div class="header">
-		<div class="banner wow fadeInUp" data-wow-delay="0.4s" id="Home">
-		    <div class="container">
-				<div class="banner-info">
-					<div class="banner-info-head text-center wow fadeInLeft" data-wow-delay="0.5s">
-						<h1>Network of over 5000 Restaurants</h1>
-						<div class="line">
-							<h2> To Order Online</h2>
-						</div>
-					</div>
-					<div class="form-list wow fadeInRight" data-wow-delay="0.5s">
-						<form>
-						  <ul class="navmain">
-							<li><span>Location Name</span>
-							 <input type="text" class="text" value="Secunderabad" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Secunderabad';}">
-							</li>
-							<li><span>Restaurant Name</span>
-							 <input type="text" class="text" value="Swagath Grand" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Swagath Grand';}">
-							</li>
-							<li><span>Cuisine Name</span>
-							 <input type="text" class="text" value="Chicken Biriyani" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Chicken Biriyani';}">
-						    </li>
-						  </ul>
-						</form>
-						</div>
-					<!-- start search-->
-		 <div class="main-search">
-	        <form action="search.html">
-	           <input type="text" value="Search" onFocus="this.value = '';" onBlur="if (this.value == '') {this.value = 'Search';}" class="text"/>
-	            <input type="submit" value=""/>
-	        </form>
-	        <div class="close"><img src="images/cross.png" /></div>
-	    </div>
-	    <div class="srch"><button></button></div>
-		<script type="text/javascript">
-	         $('.main-search').hide();
-	        $('button').click(function (){
-	            $('.main-search').show();
-	            $('.main-search text').focus();
-	        }
-	        );
-	        $('.close').click(function(){
-	            $('.main-search').hide();
-	        });
-	    </script>
-					
-				</div>
-			</div>
-		</div>
-	</div>
+
+<!-- start search-->
+<div class="container">
+  <div id="myCarousel" class="carousel slide" data-ride="carousel">
+    <!-- Indicators -->
+    <ol class="carousel-indicators">
+      <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
+      <li data-target="#myCarousel" data-slide-to="1"></li>
+      <li data-target="#myCarousel" data-slide-to="2"></li>
+      <li data-target="#myCarousel" data-slide-to="3"></li>
+    </ol>
+
+    <!-- Wrapper for slides -->
+    <div class="carousel-inner">
+      <div class="item active">
+        <img src="images/banner.jpg" alt="Image One" style="width:100%;">
+        <div class="carousel-caption">
+        <h3>Image One</h3>
+        <p>Put some text here!</p>
+      </div>
+      </div>
+
+      <div class="item">
+        <img src="images/banner.jpg" alt="Image Two" style="width:100%;">
+        <div class="carousel-caption">
+        <h3>Image Two</h3>
+        <p>Put some text here!</p>
+      </div>
+      </div>
+    
+      <div class="item">
+        <img src="images/banner.jpg" alt="Image Three" style="width:100%;">
+        <div class="carousel-caption">
+        <h3>Image Three</h3>
+        <p>Put some text here!</p>
+      </div>
+      </div>
+
+        <div class="item">
+        <img src="images/banner.jpg" alt="Image Four" style="width:100%;">
+        <div class="carousel-caption">
+        <h3>Image Four</h3>
+        <p>Put some text here!</p>
+      </div>
+      </div>
+    </div>
+
+    <!-- Left and right controls -->
+    <a class="left carousel-control" href="#myCarousel" data-slide="prev">
+      <span class="glyphicon glyphicon-chevron-left"></span>
+      <span class="sr-only">Previous</span>
+    </a>
+    <a class="right carousel-control" href="#myCarousel" data-slide="next">
+      <span class="glyphicon glyphicon-chevron-right"></span>
+      <span class="sr-only">Next</span>
+    </a>
+  </div>
+</div>
+
 	<!-- header-section-ends -->
 	<!-- content-section-starts -->
 	<div class="content">

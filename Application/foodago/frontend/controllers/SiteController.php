@@ -162,13 +162,13 @@ class SiteController extends Controller
     }
 
     /**
-     * Displays order summary page.
+     * Displays order/tray summary page.
      *
      * @return mixed
      */
-    public function actionOrder()
+    public function actionTray()
     {
-        return $this->render('order');
+        return $this->render('tray');
     }
 
 

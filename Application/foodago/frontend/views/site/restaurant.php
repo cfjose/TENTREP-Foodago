@@ -50,8 +50,6 @@ $this->params['breadcrumbs'][] = $this->title;
 <body>
     <!-- header-section-starts -->
 	<div class="header">
-		<div class="container">
-			</div>
 			
 		<div class="banner wow fadeInUp" data-wow-delay="0.4s" id="Home">
 		    <div class="container">
@@ -64,11 +62,10 @@ $this->params['breadcrumbs'][] = $this->title;
 					</div>
 					<div class="form-list wow fadeInRight" data-wow-delay="0.5s">
 						<form>
-						  <ul class="navmain">
-							<li><span>Search</span>
+						  
+							<span>Search</span>
 							 <input type="text" class="text" value="Search Query..." onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Secunderabad';}">
-							</li>
-							</ul>
+
 						</form>
 						</div>
 					<!-- start search-->
@@ -99,10 +96,33 @@ $this->params['breadcrumbs'][] = $this->title;
 	<!-- header-section-ends -->
 
 	<!-- List of food starts here -->
-
-<div class="container" style="margin-top:50px;">
 	<div class="row">
-        <div class="col-xs-12 col-sm-6 col-md-3">
+	<div class="col-sm-3" >
+      <div class="well">
+      <h3 align="center">Filter</h3>
+        <form class="form-horizontal">
+          <div class="form-group">
+            <label for="location1" class="control-label">Location</label>
+            <select class="form-control" name="" id="location1">
+              <option value="">Any</option>
+              <option value="">1</option>
+              <option value="">2</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label for="type1" class="control-label">Type</label>
+            <select class="form-control" name="" id="type1">
+              <option value="">Any</option>
+              <option value="">1</option>
+              <option value="">2</option>
+            </select>
+          </div>
+          <p class="text-center"><a href="#" class="btn btn-danger glyphicon glyphicon-search" role="button"></a></p>
+        </form>
+      </div>
+    </div>
+
+        <div class=".col-sm-8 ">
             <div class="col-item">
                 <div class="photo">
                     <img src="http://placehold.it/350x260" class="img-responsive" alt="a" />
@@ -129,8 +149,6 @@ $this->params['breadcrumbs'][] = $this->title;
                     </div>
                 </div>
             </div>
-        </div>
-	</div>
 </div>
-
+</div>
 </body>

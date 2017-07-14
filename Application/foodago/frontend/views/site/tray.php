@@ -14,6 +14,16 @@ $this->params['breadcrumbs'][] = $this->title;
 <html>
 <head>
 <link href="css/bootssnipp.css" rel='stylesheet' type='text/css' />
+<style>
+.droptarget {
+    float: left; 
+    width: 100px; 
+    height: 35px;
+    margin: 15px;
+    padding: 10px;
+    border: 1px solid #aaaaaa;
+}
+</style>
 </head>
 <body>
 <div class="container">
@@ -27,48 +37,33 @@ $this->params['breadcrumbs'][] = $this->title;
                         <div class="panel-heading text-center"><h4>Current Tray</h4></div>
                         <div class="panel-body">
                            <table class="table borderless">
-                            <thead>
-                                <tr>
-                                    <td><strong>Your Tray: # item</strong></td>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <!-- foreach ($order->lineItems as $line) or some such thing here -->
-                                <tr>
-                                    <td class="col-md-3">
-                                        <div class="media">
-                                             <a class="thumbnail pull-left" href="#"> <img class="media-object" src="http://lorempixel.com/460/250/" style="width: 72px; height: 72px;"> </a>
-                                             <div class="media-body">
-                                                 <h5 class="media-heading"> Product Name</h5>
-                                                 <h5 class="media-heading"> Product Code</h5>
-                                             </div>
-                                        </div>
-                                    </td>
-                                    <td class="text-center">$10.99</td>
-                                    <td class="text-center">1</td>
-                                    <td class="text-right">$32.99</td>
-                                    <td class="text-right"><button type="button" class="btn btn-danger">Remove</button></td>
-                                </tr>
-                                <tr>
-                                    <td class="col-md-3">
-                                        <div class="media">
-                                             <a class="thumbnail pull-left" href="#"> <img class="media-object" src="http://lorempixel.com/460/250/" style="width: 72px; height: 72px;"> </a>
-                                             <div class="media-body">
-                                                 <h5 class="media-heading"> Product Name</h5>
-                                                 <h5 class="media-heading"> Product Code</h5>
-                                             </div>
-                                        </div>
-                                    </td>
-                                    <td class="text-center">$10.99</td>
-                                    <td class="text-center">1</td>
-                                    <td class="text-right"> $32.99</td>
-                                    <td class="text-right"><button type="button" class="btn btn-danger">Remove</button></td>
-                                </tr>
-                            </tbody>
+
+<div class="droptarget" ondrop="drop(event)" ondragover="allowDrop(event)">
+  <p ondragstart="dragStart(event)" draggable="true" id="dragtarget"> ITEM NAME</p>
+</div>
+
+<div class="droptarget" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
+
+
+<p id="demo"></p>
+
+<script>
+function dragStart(event) {
+    event.dataTransfer.setData("Text", event.target.id);
+    document.getElementById("demo").innerHTML = "Started to drag the ITEM NAME";
+}
+
+function allowDrop(event) {
+    event.preventDefault();
+}
+
+function drop(event) {
+    event.preventDefault();
+    var data = event.dataTransfer.getData("Text");
+    event.target.appendChild(document.getElementById(data));
+    document.getElementById("demo").innerHTML = "The ITEM NAME appointed to UserOne";
+}
+</script>
                         </table> 
                         </div>
                     </div>

@@ -30,44 +30,63 @@ $this->params['breadcrumbs'][] = $this->title;
 <div class="row">
 	 <br>
             <div class="col-md-12">
-
-                            <div class="col-md-8">
-                    <!--SHIPPING METHOD-->
+                <div class="col-md-8">
+                    <!--TRAY-->
                     <div class="panel panel-default">
-                        <div class="panel-heading text-center"><h4>Current Tray</h4></div>
-                        <div class="panel-body">
-                           <table class="table borderless">
+                    <div class="panel-heading text-center"><h4>Current Tray</h4></div>
+                    <div class="panel-body">
+                    <table class="table borderless">
 
-<div class="droptarget" ondrop="drop(event)" ondragover="allowDrop(event)">
-  <p ondragstart="dragStart(event)" draggable="true" id="dragtarget"> ITEM NAME</p>
-</div>
-
-<div class="droptarget" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
-
-
-<p id="demo"></p>
-
-<script>
-function dragStart(event) {
-    event.dataTransfer.setData("Text", event.target.id);
-    document.getElementById("demo").innerHTML = "Started to drag the ITEM NAME";
-}
-
-function allowDrop(event) {
-    event.preventDefault();
-}
-
-function drop(event) {
-    event.preventDefault();
-    var data = event.dataTransfer.getData("Text");
-    event.target.appendChild(document.getElementById(data));
-    document.getElementById("demo").innerHTML = "The ITEM NAME appointed to UserOne";
-}
-</script>
-                        </table> 
-                        </div>
+                    <div class="col-md-4">
+                    <div class="panel panel-default">
+                    <div class="panel-heading text-center"><h4>UserOne</h4></div>
+                    <div class="panel-body" ondrop="drop(event)" ondragover="allowDrop(event)">
+                          <p ondragstart="dragStart(event)" draggable="true" id="dragtarget"> ITEM NAME</p>
                     </div>
-                    <!--SHIPPING METHOD END-->
+                    </div>
+                    </div>
+
+                    <div class="col-md-4">
+                    <div class="panel panel-default">
+                    <div class="panel-heading text-center"><h4>UserTwo</h4></div>
+                    <div class="panel-body" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
+                    </div>
+                    </div>
+
+                    <div class="col-md-4">
+                    <div class="panel-body" align="center">
+                    <button type="button" class="btn btn-primary btn-lg">Add User</button>
+                    </div>
+                    </div>
+                    
+
+                    <p id="demo"></p>
+
+                        <script>
+                        function dragStart(event) {
+                            event.dataTransfer.setData("Text", event.target.id);
+                            document.getElementById("demo").innerHTML = "Started to drag the ITEM NAME";
+                        }
+
+                        function allowDrop(event) {
+                            event.preventDefault();
+                        }
+
+                        function drop(event) {
+                            event.preventDefault();
+                            var data = event.dataTransfer.getData("Text");
+                            event.target.appendChild(document.getElementById(data));
+                            document.getElementById("demo").innerHTML = "The ITEM NAME appointed to UserOne";
+                        }
+                        </script>
+                    </table> 
+                    </div>
+                    </div>
+
+                    
+                    <!--TRAY END-->
+
+
                 </div>
                 <div class="col-md-4">
                     <!--REVIEW ORDER-->
@@ -81,14 +100,12 @@ function drop(event) {
                                     <div class="pull-right"><span>$</span><span>200.00</span></div>
                                 </div>
                                 <div class="col-md-12">
-                                    <strong>Tax</strong>
+                                    <strong>Delivery Fee</strong>
                                     <div class="pull-right"><span>$</span><span>200.00</span></div>
                                 </div>
-                                <div class="col-md-12">
-                                    <small>Shipping</small>
-                                    <div class="pull-right"><span>-</span></div>
-                                    <hr>
-                                </div>
+
+                                <hr align="left" width="50%">
+
                                 <div class="col-md-12">
                                     <strong>Order Total</strong>
                                     <div class="pull-right"><span>$</span><span>150.00</span></div>

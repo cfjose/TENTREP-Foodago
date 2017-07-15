@@ -24,7 +24,7 @@
 		}
 
 		.bg-main{
-			filter: brightness(20%);
+			filter: brightness(40%);
 			width: 100%;
 			height: 710px;
 		}
@@ -34,6 +34,7 @@
             left:13%;
             font-family:"Cambria";
             color: #DEB675;
+            font-weight: bold;
         }
 
         h1{ top: 16%; }
@@ -41,7 +42,7 @@
 
         .feedback-form{
             position: absolute;
-            top: 34%;
+            top: 33%;
             left: 13%;
         }
 
@@ -68,10 +69,16 @@
         	resize: none; 
         }
 
-        button{ right: 100%; }
-        label{ color: #DEB675; font-family: "Cambria"; }
-        .required{ color: red; font-size: 18px;}
+        label{ 
+        	color: #DEB675;
+        	font-family: "Cambria";         }
 
+        .required{ 
+        	color: red; 
+        	font-size: 18px;
+        }
+
+        button{ right: 100%; }
         input[type='text']:focus,
         input[type='email']:focus,
         textarea:focus{ box-shadow: 0 0 15px orange; }

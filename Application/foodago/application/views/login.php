@@ -30,7 +30,8 @@
 		.bg-main{
 			width: 100%;
 			height: 710px;
-			filter: brightness(25%);
+			filter: brightness(30%);
+			opacity: 0.9;
 			position: absolute;
 		}
 
@@ -90,6 +91,26 @@
 		p{
 			text-align: center;
 		}
+
+		.message{
+			margin: 0 auto;
+			margin-top:3%;
+			padding: 5%;
+			text-align: center;
+			border: 2px solid #FFFF00;
+			border-radius: 5px;
+			background-color: #FFFF99;
+		}
+
+		.error_msg{
+			margin: 0 auto;
+			margin-top:3%;
+			padding: 5%;
+			text-align: center;
+			border: 2px solid #FF0000;
+			border-radius: 5px;
+			background-color: #F08080;
+		}
 	</style>
 </head>
 <body>
@@ -117,31 +138,31 @@
 					echo form_open('/login/userLogin');
 				?>
 				<label for="username">Username</label><br/>
-				<input type="text" id="username" placeholder="username"/><br/><br/>
+				<input type="text" id="username" name="username" placeholder="username"/><br/><br/>
 
 				<label for="password">Password</label><br/>
-				<input type="password" id="password" placeholder="********"/><br/><br/>
+				<input type="password" id="password" name="password" placeholder="********"/><br/><br/>
 
 				<input type="submit" value="Login" class="btn btn-warning"/><br/><br/>
 
 				<p>Don't have an account?</p><br/>
-				<center><a href="<?php echo base_url(); ?>index.php/login/signup"/>Signup </a>Now!</center>
+				<center><a href="<?php echo base_url(); ?>index.php/login/newUser"/>Signup </a>Now!</center>
 				<?php echo form_close(); ?>
 				<?php
 					if(isset($logout_message)){
-						echo "<div class='message'>";
+						echo '<div class="message">';
 						echo $logout_message;
-						echo "</div>";
+						echo '</div>';
 					}
 
 					if (isset($message_display)) {
-						echo "<div class='message'>";
-						echo $message_display;
-						echo "</div>";
+						echo '<div class="message">';
+						echo $message;
+						echo '</div>';
 					}
 
-					echo "<div class='error_msg'>";
 					if (isset($error_message)) {
+						echo "<div class='error_msg'>";
 						echo $error_message;
 					}
 						echo validation_errors();

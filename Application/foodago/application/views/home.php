@@ -53,7 +53,7 @@
 		}
 
 		.carousel-caption{
-			top: 300px;
+			top: 375px;
 		}
 	</style>
 </head>

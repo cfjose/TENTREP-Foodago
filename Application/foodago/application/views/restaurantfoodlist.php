@@ -39,20 +39,18 @@
 	      		<li><a href="<?php echo base_url();?>index.php/home">Home</a></li>
 	      		<li><a href="<?php echo base_url(); ?>index.php/About_Us">About Us</a></li>
 	      		<li><a href="<?php echo base_url(); ?>index.php/Contact_Us">Contact Us</a></li>
-	      		<li class="active"><a href="#">Track my Order</a></li>
-	      		<li><a href="<?php echo base_url(); ?>index.php/login">Login</a></li>
-	      		<li><a href="<?php echo base_url(); ?>index.php/signup">Sign Up</a></li>
+	      		<li><a href="<?php echo base_url(); ?>index.php/TrackOrder">Track my Order</a></li>
+                <li><a href="#"><img src="<?php echo base_url('images/user.png'); ?>" height="30" width="30"/></a></li>
 	    	</ul>
 	  	</div>
 	</nav>
 
 
-<br><br>
+<br><br><br><br><br>
 
 <div class="container">
 
         <div class="row">
-
             <div class="col-md-2">  
 <!-- Collapsible Navigation -->
                 <div data-role="main" class="ui-content">
@@ -136,7 +134,7 @@
 <!-- Food Listing -->
                     <div class="col-md-4">
                         <div class="thumbnail">
-                            <img src="http://placehold.it/320x150" alt="">
+                            <img src="<?php echo base_url('images/food1.png'); ?>" />
                             <div class="caption">
                                 <h5 class="pull-right">Php 187.00</h5>
                                 <h5><a href="#">Quarter Pounder with Cheese</a> 
@@ -159,7 +157,7 @@
 
                     <div class="col-md-4">
                         <div class="thumbnail">
-                            <img src="http://placehold.it/320x150" alt="">
+                            <img src="<?php echo base_url('images/food2.png'); ?>" />
                             <div class="caption">
                                 <h5 class="pull-right">Php 157.00</h5>
                                 <h5><a href="#">Double Cheeseburger</a>
@@ -182,7 +180,7 @@
 
                     <div class="col-md-4">
                         <div class="thumbnail">
-                            <img src="http://placehold.it/320x150" alt="">
+                            <img src="<?php echo base_url('images/food3.png'); ?>" />
                             <div class="caption">
                                 <h5 class="pull-right">Php 155.00</h5>
                                 <h5><a href="#">McChicken Sandwich</a>
@@ -205,7 +203,7 @@
 
                      <div class="col-md-4">
                         <div class="thumbnail">
-                            <img src="http://placehold.it/320x150" alt="">
+                            <img src="<?php echo base_url('images/food4.png'); ?>" />
                             <div class="caption">
                                 <h5 class="pull-right">Php 130.00</h5>
                                 <h5><a href="#">Cheeseburger Deluxe</a>
@@ -229,7 +227,7 @@
                     <div class="col-md-4">
 <!--Order Review -->
                         <div class="thumbnail">
-                            <img src="http://placehold.it/320x150" alt="">
+                            <img src="<?php echo base_url('images/food5.png'); ?>" />
                             <div class="caption">
                                 <h5 class="pull-right">Php 164.00</h5>
                                 <h5><a href="#">2-pc. Chicken McDo with Rice</a>
@@ -252,7 +250,7 @@
 
                     <div class="col-md-4">
                         <div class="thumbnail">
-                            <img src="http://placehold.it/320x150" alt="">
+                            <img src="<?php echo base_url('images/food6.png'); ?>" />
                             <div class="caption">
                                 <h5 class="pull-right">Php 98.00</h5>
                                 <h5><a href="#">1-pc. Chicken McDo with Rice</a>
@@ -282,19 +280,19 @@
                         </div>
                         <div class="panel-body">
                                 <div class="col-md-12">
-                                    <strong>Subtotal (# item)</strong>
-                                    <div class="pull-right"><span>Php </span><span>200.00</span></div>
+                                    <strong>Subtotal (2 item(s))</strong>
+                                    <div class="pull-right"><span>Php </span><span>351.00</span></div>
                                 </div>
                                 <div class="col-md-12">
                                     <strong>Delivery Fee</strong>
-                                    <div class="pull-right"><span>Php </span><span>200.00</span></div>
+                                    <div class="pull-right"><span>Php </span><span>40.00</span></div>
                                 </div>
 
                                 <hr align="left" width="50%">
 
                                 <div class="col-md-12">
                                     <strong>Order Total</strong>
-                                    <div class="pull-right"><span>Php </span><span>150.00</span></div>
+                                    <div class="pull-right"><span>Php </span><span>391.00</span></div>
                                     <hr>
                                 </div>
                                 

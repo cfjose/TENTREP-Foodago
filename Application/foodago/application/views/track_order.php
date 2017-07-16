@@ -36,8 +36,7 @@
 	      		<li><a href="<?php echo base_url(); ?>index.php/About_Us">About Us</a></li>
 	      		<li><a href="<?php echo base_url(); ?>index.php/Contact_Us">Contact Us</a></li>
 	      		<li class="active"><a href="#">Track my Order</a></li>
-	      		<li><a href="<?php echo base_url(); ?>index.php/login">Login</a></li>
-	      		<li><a href="<?php echo base_url(); ?>index.php/signup">Sign Up</a></li>
+	      		<li><a href="#"><img src="<?php echo base_url('images/user.png'); ?>" height="30" width="30"/></a></li>
 	    	</ul>
 	  	</div>
 	</nav>

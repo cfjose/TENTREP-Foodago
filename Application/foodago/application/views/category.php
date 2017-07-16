@@ -1,10 +1,8 @@
-<?php
-
-?>
 <html>
 <head>
 	<title>Foodago</title>
 
+	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 
 	<!-- Latest compiled and minified CSS -->
@@ -96,11 +94,13 @@
 		?>
 	</div>
 	<div class="recent-nav">
+	<?
 		$_SESSION['recent_searches'] = $_GET['name'];
+	?>
 		<h4>Recent Searches</h4>
 		<?php
 			for($i = 0; $i < count($_SESSION['recent_searches']); $i++){
-				
+				echo $_SESSION['recent_searches'];
 			}	
 		?>
 	</div>

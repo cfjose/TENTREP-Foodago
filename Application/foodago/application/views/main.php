@@ -1,18 +1,20 @@
-<?php
-
-?>
 <html>
 <head>
 	<title>Foodago</title>
 
+	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 
 	<!-- Latest compiled and minified CSS -->
-	<link rel="stylesheet" href="<?php echo base_url(); ?>/css/bootstrap.min.css">
-	<link rel="stylesheet" href="<?php echo base_url(); ?>/css/animate.css">
-	<link rel="stylesheet" href="<?php echo base_url(); ?>/css/boostrap.css">
-	<link rel="stylesheet" href="<?php echo base_url(); ?>/css/style.css">
-	<link rel="stylesheet" href="<?php echo base_url(); ?>/css/site.css">
+	<link rel="stylesheet" href="<?php echo base_url(); ?>css/bootstrap.min.css">
+	<link rel="stylesheet" href="<?php echo base_url(); ?>css/animate.css">
+	<link rel="stylesheet" href="<?php echo base_url(); ?>css/boostrap.css">
+	<link rel="stylesheet" href="<?php echo base_url(); ?>css/style.css">
+	<link rel="stylesheet" href="<?php echo base_url(); ?>css/site.css">
+
+    <link rel="stylesheet" href="https://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.css">
+    <script src="https://code.jquery.com/jquery-1.11.3.min.js"></script>
+    <script src="https://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.js"></script>
 
 	<!-- jQuery library -->
 	<script src="<?php echo base_url(); ?>/js/jquery.min.js"></script>
@@ -41,6 +43,7 @@
 		h1, h2{
 			color: #DEB675;
 			font-family: "Cambria";
+			font-weight: bold;
 		}
 
 		#q{
@@ -54,11 +57,15 @@
 		.category-nav{
 			border: 1px solid black;
 			border-radius: 5px;
-			width: 20%;
+			width: 26%;
 			margin-top: 5%;
-			margin-left: 3%;
+			margin-left: 1%;
 			margin-bottom: 5%;
 			padding: 15px;
+		}
+
+		.col-md-2{
+			width: 100%;
 		}
 	</style>
 </head>
@@ -82,29 +89,36 @@
 			</div>
 	  	</div>
 	</div>
-	<div class="category-nav">
-		<h4> Categories </h4><br/>
-		<?php
-			$this->db->select('*');
-			$this->db->from('category');
+	<div class="col-md-2">
+		<div data-role="main" class="ui-content">
+			<div class="category-nav">
+				<h4> Categories </h4><br/>
+				<?php
+					$query = $this->category->getCategoryNames();
 
-			$query = $this->db->get();
+					foreach ($query->result() as $row){
+						$name = $row->name;
 
-			foreach ($query->result() as $row){
-				echo "<a href='" . base_url() . "index.php/category?name=". lcfirst($row->name) ."'>" . $row->name . "</a><br/>";
-			}
-		?>
-	</div>
-	<div class="recent-nav">
-		<h4>Recent Searches</h4>
-		<?php
+	                	echo "<div data-role='collapsible'>";
+						echo "<h5>" . $name . "</h5>";
+						echo "<ul data-role='listview'>";
 
-		?>
-	</div>
-	<div class="food-item-list">
-		<?php 
+						$categoryId = $this->category->getCategoryId($name);
+						$query = $this->restaurant->getResId($categoryId);
 
-		?>
+						foreach($query->result() as $row){
+							$result = $this->restaurant->getRestaurantName($row->restaurant_id);
+							$row = $result->row()->name;
+
+							echo "<li><a href='#'>" . $row . "</a></li>";
+						}
+
+						echo "</ul>";
+						echo "</div>";
+					}
+				?>
+			</div>
+		</div>
 	</div>
 </body>
 </html>

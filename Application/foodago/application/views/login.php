@@ -3,6 +3,7 @@
 <head>
 	<title>Foodago</title>
 
+	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 
 	<!-- Latest compiled and minified CSS -->
@@ -15,6 +16,19 @@
 	<link rel="stylesheet" type="text/css" href="<?php echo base_url(); ?>css/style.css">
 	<link href='http://fonts.googleapis.com/css?family=Source+Sans+Pro|Open+Sans+Condensed:300|Raleway' rel='stylesheet' type='text/css'>
 
+	<script>
+		var cd = setInterval(function(){
+			var distance = countDownDate - now;
+
+			var seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+			if(distance < 3 && distance == 0){
+				if(document.getElementById('msg').style.display == "block"){
+					document.getElementById('msg').style.display = "none";
+				}
+			}
+		}, 1000);
+	</script>
 
 	<!-- jQuery library -->
 	<script src="<?php echo base_url(); ?>/js/jquery.min.js"></script>
@@ -150,23 +164,23 @@
 				<?php echo form_close(); ?>
 				<?php
 					if(isset($logout_message)){
-						echo '<div class="message">';
+						echo '<div class="message" id="msg">';
 						echo $logout_message;
 						echo '</div>';
 					}
 
 					if (isset($message_display)) {
-						echo '<div class="message">';
+						echo '<div class="message" id="msg">';
 						echo $message;
 						echo '</div>';
 					}
 
 					if (isset($error_message)) {
-						echo "<div class='error_msg'>";
+						echo '<div class="error_msg" id="msg">';
 						echo $error_message;
 					}
 						echo validation_errors();
-						echo "</div>";
+						echo '</div>';
 				?>
 			</div>
 		</div>

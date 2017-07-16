@@ -94,9 +94,9 @@
 				<div class="imgcircle">
                 	<img src="<?php echo base_url('images/delivery.png'); ?>" />
 				</div>
-				<p>Order Delivered</p>
+				<p>Delivered</p>
 			</div>
-			<div class="clear"></div>
+			
 		</div>
 	</div>
 </div>

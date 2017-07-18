@@ -188,25 +188,56 @@
 			   			<div class="container">
 				  			<ul id="flexiselDemo3">
 								<li>
-									<div class="offer-image">	
-										<img src="<?php echo base_url(); ?>assets/images/restaurent-1.jpg" class="img-responsive" alt="" />
-									</div>
+                                    <div class="ch-item">
+                                        <div class="ch-info">
+                                            <div class="ch-info-front ch-img-1"></div>
+                                            <div class="ch-info-back">
+                                                <h3><a href="">SUBWAY</a></h3>
+                                            </div>
+                                        </div>
+                                    </div>
 								</li>
 								<li>
-									<div class="offer-image">	
-										<img src="<?php echo base_url(); ?>assets/images/restaurent-2.jpg" class="img-responsive" alt="" />
-									</div>
+                                    <div class="ch-item">
+                                        <div class="ch-info">
+                                            <div class="ch-info-front ch-img-2"></div>
+                                            <div class="ch-info-back">
+                                                <h3><a href="">BARISTA</a></h3>
+                                            </div>
+                                        </div>
+                                    </div>
+
 								</li>
 								<li>
-									<div class="offer-image">	
-										<img src="<?php echo base_url(); ?>assets/images/restaurent-3.jpg" class="img-responsive" alt="" />
-									</div>
+                                    <div class="ch-item">
+                                        <div class="ch-info">
+                                            <div class="ch-info-front ch-img-3"></div>
+                                            <div class="ch-info-back">
+                                                <h3><a href="">PIZZA</a></h3>
+                                            </div>
+                                        </div>
+                                    </div>
 								</li>
 								<li>
-									<div class="offer-image">	
-										<img src="<?php echo base_url(); ?>assets/images/restaurent-4.jpg" class="img-responsive" alt="" />
-									</div>
+                                    <div class="ch-item">
+                                        <div class="ch-info">
+                                            <div class="ch-info-front ch-img-4"></div>
+                                            <div class="ch-info-back">
+                                                <h3><a href="">DOMINO PIZZA</a></h3>
+                                            </div>
+                                        </div>
+                                    </div>
 							    </li>
+                                <li>
+                                    <div class="ch-item">
+                                        <div class="ch-info">
+                                            <div class="ch-info-front ch-img-5"></div>
+                                            <div class="ch-info-back">
+                                                <h3><a href="">KFC</a></h3>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </li>
 				 			</ul>
 			<!--Add logo of restaurants-->
 						</div>

@@ -92,7 +92,7 @@
 			</div>
 			<div class="delivery">
 				<div class="imgcircle">
-                	<img src="<?php echo base_url('images/delivery.png'); ?>" />
+                	<img src="<?php echo base_url('images/done.png'); ?>" />
 				</div>
 				<p>Delivered</p>
 			</div>

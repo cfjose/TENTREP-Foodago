@@ -785,14 +785,9 @@ ul.qty li p {
   color: #555;
 }
 .delivery {
-  margin-top: 3em;
+  margin-top: 0em;
 }
-.delivery p {
-  color: #A6A6A6;
-  font-size: 1em;
-  font-weight: 400;
-  float: left;
-}
+
 .delivery span {
   color: #A6A6A6;
   font-size: 1em;
@@ -1234,7 +1229,8 @@ h3.recent{
 	padding-top:2em;
 }
 #flexiselDemo1, #flexiselDemo3 {
-	display: none;
+	display: inline-flex;
+	list-style: none;
 }
 .nbs-flexisel-container {
 	position: relative;
@@ -3824,7 +3820,7 @@ a.morebtn{
 		font-size: 1.2em;
 	}
 	.form-list ul li {
-		display: block; 
+		display: block;
 		width: 88%;
 	}
 	.form-list span {
@@ -4109,20 +4105,127 @@ a.morebtn{
 	.logo {
 		width: 50%;
 	}
-.logo img {
-  width: 100%;
+    .logo img {
+      width: 100%;
+    }
 }
-a.morebtn {
-  padding: 0.15em 1em;
-  font-size: 1.2em;
+.ch-item {
+	width: 170px;
+	height: 170px;
+	border-radius: 50%;
+	position: relative;
+	cursor: hand;
+	-webkit-perspective: 900px;
+	-moz-perspective: 900px;
+	-o-perspective: 900px;
+    -ms-perspective: 900px;
+	perspective: 900px;
+	margin-left:50px;
+	margin-top:25px;
 }
-.pr-right {
-  float: left;
-  width: 30%;
-  margin: 0.6em 0;
+.ch-info{
+	position: absolute;
+	width: 100%;
+	height: 100%;
+	-webkit-transform-style: preserve-3d;
+	-moz-transform-style: preserve-3d;
+	-o-transform-style: preserve-3d;
+	-ms-transform-style: preserve-3d;
+	transform-style: preserve-3d;
 }
-.pr-left {
-  float: left;
-  width: 69%;
+.ch-info > div {
+	display: block;
+	position: absolute;
+	width: 100%;
+	height: 100%;
+	border-radius: 50%;
+	background-position: center center;
+	-webkit-transition: all 0.4s linear;
+	-moz-transition: all 0.4s linear;
+	-o-transition: all 0.4s linear;
+	-ms-transition: all 0.4s linear;
+	transition: all 0.4s linear;
+	-webkit-transform-origin: 50% 0%;
+	-moz-transform-origin: 50% 0%;
+	-o-transform-origin: 50% 0%;
+	-ms-transform-origin: 50% 0%;
+	transform-origin: 50% 0%;
 }
+.ch-info .ch-info-front {
+	box-shadow: inset 0 0 0 10px rgba(0,0,0,0.3);
+}
+.ch-info .ch-info-back {
+	-webkit-transform: translate3d(0,0,-220px) rotate3d(1,0,0,90deg);
+	-moz-transform: translate3d(0,0,-220px) rotate3d(1,0,0,90deg);
+	-o-transform: translate3d(0,0,-220px) rotate3d(1,0,0,90deg);
+	-ms-transform: translate3d(0,0,-220px) rotate3d(1,0,0,90deg);
+	transform: translate3d(0,0,-220px) rotate3d(1,0,0,90deg);
+	background: lightcoral;
+	opacity: 0;
+}
+.ch-img-1 {
+	background-image: url('../assets/images/main/logos/subway.png');
+}
+.ch-img-2 {
+	background-image: url(../assets/images/main/logos/barrio_fiesta.png);
+}
+.ch-img-3 {
+	background-image: url(../assets/images/main/logos/pizza_hut.png);
+}
+.ch-img-4 {
+	background-image: url(../assets/images/main/logos/dominos_pizza.png);
+}
+.ch-img-5 {
+	background-image: url(../assets/images/main/logos/kfc.png);
+}
+.ch-info h3 {
+	color: #fff;
+	text-transform: uppercase;
+	letter-spacing: 2px;
+	font-size: 20px;
+	margin: 0 39px;
+	padding: 25px 0 0 0;
+	height: 110px;
+	font-family: 'Circle of love', Arial, sans-serif;
+	text-shadow: 0 0 1px #fff, 0 1px 2px rgba(0,0,0,0.3);
+}
+.ch-info p {
+	color: #fff;
+	padding: 10px 5px;
+	font-style: italic;
+	margin: 0 30px;
+	font-size: 12px;
+	border-top: 1px solid rgba(255,255,255,0.5);
+}
+.ch-info p a {
+	display: block;
+	color: #fff;
+	color: rgba(255,255,255,0.7);
+	font-style: normal;
+	font-weight: 700;
+	text-transform: uppercase;
+	font-size: 9px;
+	letter-spacing: 1px;
+	padding-top: 4px;
+	font-family: 'Open Sans', Arial, sans-serif;
+}
+.ch-info p a:hover {
+	color: #fff222;
+	color: rgba(255,242,34, 0.8);
+}
+.ch-item:hover .ch-info-front {
+	-webkit-transform: translate3d(0,280px,0) rotate3d(1,0,0,-90deg);
+	-moz-transform: translate3d(0,280px,0) rotate3d(1,0,0,-90deg);
+	-o-transform: translate3d(0,280px,0) rotate3d(1,0,0,-90deg);
+	-ms-transform: translate3d(0,280px,0) rotate3d(1,0,0,-90deg);
+	transform: translate3d(0,280px,0) rotate3d(1,0,0,-90deg);
+	opacity: 0;
+}
+.ch-item:hover .ch-info-back {
+	-webkit-transform: rotate3d(1,0,0,0deg);
+	-moz-transform: rotate3d(1,0,0,0deg);
+    -o-transform: rotate3d(1,0,0,0deg);
+	-ms-transform: rotate3d(1,0,0,0deg);
+	transform: rotate3d(1,0,0,0deg);
+	opacity: 1;
 }

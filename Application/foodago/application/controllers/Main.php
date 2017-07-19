@@ -8,6 +8,10 @@
 			$this->load->model('category');
 
 			$this->load->model('restaurant');
+
+			$this->load->model('FoodItem');
+
+			$this->load->model('SubCategory');
 		}
 
 		public function index(){

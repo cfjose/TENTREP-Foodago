@@ -20,5 +20,23 @@
 			$query = $this->db->get();
 			return $query;
 		}
+
+		public function getResIdFromRes($data){
+			$this->db->select('id');
+			$this->db->from('restaurant');
+			$this->db->where("name ='" . $data . "'");
+
+			$query = $this->db->get();
+			return $query;
+		}
+
+		public function getRestaurantSubCategory($data){
+			$this->db->select('sub_category_id');
+			$this->db->from('restaurant_has_sub_category');
+			$this->db->where("restaurant_id ='" . $data . "'");
+
+			$query = $this->db->get();
+			return $query;
+		}
 	}
 ?>

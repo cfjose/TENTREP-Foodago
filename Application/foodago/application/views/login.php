@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
+	<link rel="icon" href="<?php echo base_url(); ?>assets/images/global/favicon.ico">
 	<title>Foodago</title>
 
 	<meta charset="utf-8">
@@ -131,7 +132,7 @@
 	<nav class="navbar-inverse navbar-fixed-top">
 		<div class="container-fluid">
 			<div class="navbar-header">
-				<a class="navbar-brand" href="#"><img src="<?php echo base_url(); ?>/assets/images/home/logoName.png" alt=""></a>
+				<a class="navbar-brand" href="#"><img src="<?php echo base_url(); ?>/assets/images/global/logos/logoName.png" alt=""></a>
 	    	</div>
 	    	<ul class="nav navbar-nav navbar-right">
 	      		<li><a href="<?php echo base_url();?>index.php/home">Home</a></li>
@@ -144,7 +145,7 @@
 	  	</div>
 	</nav>
 	<div class="main">
-		<img src="<?php echo base_url(); ?>assets/images/home/login.jpg" alt="" class="bg-main">
+		<img src="<?php echo base_url(); ?>assets/images/home/login_signup/login.jpg" alt="" class="bg-main">
 		<div class="sub">
 			<div class="login">
 				<h2>Login to your Account</h2><hr/>

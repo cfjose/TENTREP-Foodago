@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
+	<link rel="icon" href="<?php echo base_url(); ?>assets/images/global/favicon.ico">
 	<title>Foodago</title>
 
 	<meta charset="utf-8">
@@ -123,7 +124,7 @@
 	<nav class="navbar-inverse navbar-fixed-top">
 		<div class="container-fluid">
 			<div class="navbar-header">
-				<a class="navbar-brand" href="#"><img src="<?php echo base_url(); ?>/assets/images/home/logoName.png" alt=""></a>
+				<a class="navbar-brand" href="#"><img src="<?php echo base_url(); ?>/assets/images/global/logos/logoName.png" alt=""></a>
 	    	</div>
 	    	<ul class="nav navbar-nav navbar-right">
 	      		<li><a href="<?php echo base_url();?>index.php/home">Home</a></li>
@@ -136,7 +137,7 @@
 	  	</div>
 	</nav>
 	<div class="main">
-		<img src="<?php echo base_url(); ?>assets/images/home/login.jpg" alt="" class="bg-main">
+		<img src="<?php echo base_url(); ?>assets/images/home/login_signup/login.jpg" alt="" class="bg-main">
 		<div class="sub">
 			<div class="signup">
 				<h2>Create an Account</h2><hr/>
@@ -183,6 +184,20 @@
 				<input type="submit" value="Sign Up" class="btn btn-warning"/><br/><br/>
 
 				<p>Already have an Account? <a href="<?php echo base_url(); ?>/index.php/login/userLogin">Login</a></p><br/>
+				<?php
+					if (isset($message_display)) {
+						echo '<div class="message" id="msg">';
+						echo $message;
+						echo '</div>';
+					}
+
+					if (isset($error_message)) {
+						echo '<div class="error_msg" id="msg">';
+						echo $error_message;
+					}
+						echo validation_errors();
+						echo '</div>';
+				?>
 				<?php echo form_close(); ?>
 			</div>
 		</div>

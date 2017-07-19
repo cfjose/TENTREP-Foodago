@@ -1,5 +1,6 @@
 <html>
 <head>
+	<link rel="icon" href="<?php echo base_url(); ?>assets/images/global/favicon.ico">
 	<title>Foodago</title>
 
 	<meta charset="utf-8">
@@ -42,7 +43,7 @@
 
 		h1, h2{
 			color: #DEB675;
-			font-family: "Cambria";
+			font-family: "";
 			font-weight: bold;
 		}
 
@@ -54,18 +55,46 @@
 			font-size: 15px;
 		}
 
+		.sidebar{
+			width: 100%;
+		}
+
 		.category-nav{
-			border: 1px solid black;
-			border-radius: 5px;
-			width: 26%;
-			margin-top: 5%;
-			margin-left: 1%;
-			margin-bottom: 5%;
-			padding: 15px;
+			float: left;
+			width: 20%;
 		}
 
 		.col-md-2{
 			width: 100%;
+			top: 50;
+			left: 3%;
+		}
+
+		.food-item-list{
+			float: right;
+			width: 75%;
+			left: 25%;
+			top: 35%;
+			min-height:100px;
+		}
+
+		.subcategory-pane{
+			height: 300px;
+		}
+
+		.sub-category-names{
+			text-indent: 5%;
+			line-height: 30px;
+		}
+
+		.no-avail{
+			text-align: center;
+			vertical-align: middle;
+			margin-top: 10%;
+		}
+
+		.col-md-4{
+			left:10%;
 		}
 	</style>
 </head>
@@ -73,7 +102,7 @@
 	<nav class="navbar-inverse navbar-fixed-top">
 		<div class="container-fluid">
 			<div class="navbar-header">
-				<a class="navbar-brand" href="#"><img src="<?php echo base_url(); ?>/assets/images/home/logoName.png" alt=""></a>
+				<a class="navbar-brand" href="#"><img src="<?php echo base_url(); ?>/assets/images/global/logos/logoName.png" alt=""></a>
 	    	</div>
 	  	</div>
 	</nav>
@@ -89,8 +118,8 @@
 			</div>
 	  	</div>
 	</div>
-	<div class="col-md-2">
-		<div data-role="main" class="ui-content">
+	<div class="sidebar">
+		<div class="col-md-2">
 			<div class="category-nav">
 				<h4> Categories </h4><br/>
 				<?php
@@ -99,25 +128,43 @@
 					foreach ($query->result() as $row){
 						$name = $row->name;
 
-	                	echo "<div data-role='collapsible'>";
-						echo "<h5>" . $name . "</h5>";
-						echo "<ul data-role='listview'>";
-
 						$categoryId = $this->category->getCategoryId($name);
+
+						// GET NUMBER OF RESTAURANT PER CATEGORY, IF 0, DO NOT PRINT CATEGORY
 						$query = $this->restaurant->getResId($categoryId);
+						$totalResCount = $query->num_rows();
 
-						foreach($query->result() as $row){
-							$result = $this->restaurant->getRestaurantName($row->restaurant_id);
-							$row = $result->row()->name;
+						if($totalResCount == 0){
+							// DO NOT PRINT CATEGORY
+						}else{
+							echo "<div data-role='collapsible'>";
+							echo "<h5>" . $name . "</h5>";
+							echo "<ul data-role='listview'>";
 
-							echo "<li><a href='#'>" . $row . "</a></li>";
+							$query = $this->restaurant->getResId($categoryId);
+
+							foreach($query->result() as $row){
+								$result = $this->restaurant->getRestaurantName($row->restaurant_id);
+								$row = $result->row()->name;
+
+								echo "<li><a href='" . base_url() . "index.php/main?restaurant_name=". $row ."'>" . $row . "</a></li>";
+							}
+
+							echo "</ul>";
+							echo "</div>";
 						}
-
-						echo "</ul>";
-						echo "</div>";
-					}
+	                }
 				?>
 			</div>
+		</div>
+		<div class="food-item-list">
+			<?php
+				if(isset($_GET['restaurant_name'])){
+					$this->load->view('food_item_list',$_GET['restaurant_name']);
+				}else{
+					// CREATE ANOTHER LAYOUT WITH MESSAGE 'SELECT A CATEGORY TO START' AND LOAD INTO DIV
+				}
+			?>
 		</div>
 	</div>
 </body>

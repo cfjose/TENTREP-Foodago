@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
+	<link rel="icon" href="<?php echo base_url(); ?>assets/images/global/favicon.ico">
 	<title>Foodago</title>
 
 	<meta charset="utf-8">
@@ -25,7 +26,7 @@
 		}
 
 		.bg-main{
-			filter: brightness(40%);
+			filter: brightness(30%);
 			width: 100%;
 			height: 710px;
 		}
@@ -89,15 +90,15 @@
 	<nav class="navbar-inverse navbar-fixed-top">
 		<div class="container-fluid">
 			<div class="navbar-header">
-				<a class="navbar-brand" href="#"><img src="<?php echo base_url(); ?>/assets/images/home/logoName.png" alt=""></a>
+				<a class="navbar-brand" href="#"><img src="<?php echo base_url(); ?>/assets/images/global/logos/logoName.png" alt=""></a>
 	    	</div>
 	    	<ul class="nav navbar-nav navbar-right">
 	      		<li><a href="<?php echo base_url();?>index.php/home">Home</a></li>
 	      		<li><a href="<?php echo base_url(); ?>index.php/About_Us">About Us</a></li>
 	      		<li class="active"><a href="#">Contact Us</a></li>
 	      		<li><a href="<?php echo base_url(); ?>index.php/TrackOrder">Track my Order</a></li>
-	      		<li><a href="<?php echo base_url(); ?>index.php/login">Login</a></li>
-	      		<li><a href="<?php echo base_url(); ?>index.php/signup">Sign Up</a></li>
+	      		<li><a href="<?php echo base_url(); ?>index.php/login/userLogin">Login</a></li>
+	      		<li><a href="<?php echo base_url(); ?>index.php/login/newUser">Sign Up</a></li>
 	    	</ul>
 	  	</div>
 	</nav>
@@ -106,7 +107,7 @@
   		<!-- Wrapper for slides -->
 		<div class="carousel-inner">
 			<div class="item active">
-				<img src="<?php echo base_url(); ?>assets/images/home/image-4.jpg" class="bg-main">
+				<img src="<?php echo base_url(); ?>assets/images/home/contact_us/image-4.jpg" class="bg-main">
 				<h1>Let's Talk</h1>
 	            <h3>We would love to hear it from you, send us your feedback</h3>
 

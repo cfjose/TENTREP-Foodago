@@ -127,7 +127,7 @@
 				<a class="navbar-brand" href="#"><img src="<?php echo base_url(); ?>/assets/images/global/logos/logoName.png" alt=""></a>
 	    	</div>
 	    	<ul class="nav navbar-nav navbar-right">
-	      		<li><a href="<?php echo base_url();?>index.php/home">Home</a></li>
+	      		<li><a href="<?php echo base_url();?>index.php">Home</a></li>
 	      		<li><a href="<?php echo base_url(); ?>index.php/About_Us">About Us</a></li>
 	      		<li><a href="<?php echo base_url(); ?>index.php/Contact_Us">Contact Us</a></li>
 	      		<li><a href="<?php echo base_url(); ?>index.php/TrackOrder">Track my Order</a></li>

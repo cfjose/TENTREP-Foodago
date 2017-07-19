@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
+	<link rel="icon" href="<?php echo base_url(); ?>assets/images/global/favicon.ico">
 	<title>Foodago</title>
 
 	<meta charset="utf-8">
@@ -62,15 +63,15 @@
 	<nav class="navbar-inverse navbar-fixed-top">
 		<div class="container-fluid">
 			<div class="navbar-header">
-				<a class="navbar-brand" href="#"><img src="<?php echo base_url(); ?>/assets/images/home/logoName.png" alt=""></a>
+				<a class="navbar-brand" href="#"><img src="<?php echo base_url(); ?>/assets/images/global/logos/logoName.png" alt=""></a>
 	    	</div>
 	    	<ul class="nav navbar-nav navbar-right">
 	      		<li class="active"><a href="#">Home</a></li>
 	      		<li><a href="<?php echo base_url(); ?>index.php/About_Us">About Us</a></li>
 	      		<li><a href="<?php echo base_url(); ?>index.php/Contact_Us">Contact Us</a></li>
 	      		<li><a href="<?php echo base_url(); ?>index.php/TrackOrder">Track my Order</a></li>
-	      		<li><a href="<?php echo base_url(); ?>index.php/login">Login</a></li>
-	      		<li><a href="<?php echo base_url(); ?>index.php/signup">Sign Up</a></li>
+	      		<li><a href="<?php echo base_url(); ?>index.php/login/userLogin">Login</a></li>
+	      		<li><a href="<?php echo base_url(); ?>index.php/login/newUser">Sign Up</a></li>
 	    	</ul>
 	  	</div>
 	</nav>
@@ -86,7 +87,7 @@
   		<!-- Wrapper for slides -->
 		<div class="carousel-inner">
 			<div class="item active">
-			  <img src="<?php echo base_url(); ?>assets/images/home/image-1.jpg" alt="">
+			  <img src="<?php echo base_url(); ?>assets/images/home/index/image-1.jpg" alt="">
 			  <div class="carousel-caption">
 			  	<h2>Welcome to Foodago!</h2>
 			  	<h4>Your favorite food, delivered fast to your doorsteps</h4>
@@ -94,7 +95,7 @@
 			</div>
 
 			<div class="item">
-			  <img src="<?php echo base_url(); ?>assets/images/home/image-2.jpg" alt="" width="100%">
+			  <img src="<?php echo base_url(); ?>assets/images/home/index/image-2.jpg" alt="" width="100%">
 			  <div class="carousel-caption">
 			  	<h2>Satisfaction in every bite</h2>
 			  	<h4>Don't let yourself be disappointed with restaurants' food and services<br/>
@@ -103,7 +104,7 @@
 			</div>
 
 			<div class="item">
-			  <img src="<?php echo base_url(); ?>assets/images/home/image-3.jpeg" alt="">
+			  <img src="<?php echo base_url(); ?>assets/images/home/index/image-3.jpeg" alt="">
 			</div>
 		</div>
 
@@ -190,16 +191,6 @@
 								<li>
                                     <div class="ch-item">
                                         <div class="ch-info">
-                                            <div class="ch-info-front ch-img-1"></div>
-                                            <div class="ch-info-back">
-                                                <h3><a href="">SUBWAY</a></h3>
-                                            </div>
-                                        </div>
-                                    </div>
-								</li>
-								<li>
-                                    <div class="ch-item">
-                                        <div class="ch-info">
                                             <div class="ch-info-front ch-img-2"></div>
                                             <div class="ch-info-back">
                                                 <h3><a href="">BARISTA</a></h3>
@@ -252,35 +243,35 @@
 			</div>
 				<div class="top-cuisine-grids">
 					<div class="top-cuisine-grid wow bounceIn" data-wow-delay="0.4s">
-					    <a href=""><img src="<?php echo base_url(); ?>assets/images/cuisine1.jpg" class="img-responsive" alt="" /> </a>
+					    <a href=""><img src="<?php echo base_url(); ?>assets/images/home/index/samples/cuisine1.jpg" class="img-responsive" alt="" /> </a>
 						<label>Cuisine Name</label>
 				    </div>
 					<div class="top-cuisine-grid wow bounceIn" data-wow-delay="0.4s">
-					    <a href=""><img src="<?php echo base_url(); ?>assets/images/cuisine2.jpg" class="img-responsive" alt="" /> </a>
+					    <a href=""><img src="<?php echo base_url(); ?>assets/images/home/index/samples/cuisine2.jpg" class="img-responsive" alt="" /> </a>
 						<label>Cuisine Name</label>
 				    </div>
 					<div class="top-cuisine-grid wow bounceIn" data-wow-delay="0.4s">
-					    <a href=""><img src="<?php echo base_url(); ?>assets/images/cuisine3.jpg" class="img-responsive" alt="" /> </a>
+					    <a href=""><img src="<?php echo base_url(); ?>assets/images/home/index/samples/cuisine3.jpg" class="img-responsive" alt="" /> </a>
 						<label>Cuisine Name</label>
 				    </div>
 					<div class="top-cuisine-grid nth-grid wow bounceIn" data-wow-delay="0.4s">
-					    <a href=""><img src="<?php echo base_url(); ?>assets/images/cuisine4.jpg" class="img-responsive" alt="" /> </a>
+					    <a href=""><img src="<?php echo base_url(); ?>assets/images/home/index/samples/cuisine4.jpg" class="img-responsive" alt="" /> </a>
 						<label>Cuisine Name</label>
 				    </div>
 					<div class="top-cuisine-grid nth-grid1 wow bounceIn" data-wow-delay="0.4s">
-					    <a href=""><img src="<?php echo base_url(); ?>assets/images/cuisine5.jpg" class="img-responsive" alt="" /> </a>
+					    <a href=""><img src="<?php echo base_url(); ?>assets/images/home/index/samples/cuisine5.jpg" class="img-responsive" alt="" /> </a>
 						<label>Cuisine Name</label>
 				    </div>
 					<div class="top-cuisine-grid nth-grid1 wow bounceIn" data-wow-delay="0.4s">
-					    <a href=""><img src="<?php echo base_url(); ?>assets/images/cuisine6.jpg" class="img-responsive" alt="" /> </a>
+					    <a href=""><img src="<?php echo base_url(); ?>assets/images/home/index/samples/cuisine6.jpg" class="img-responsive" alt="" /> </a>
 						<label>Cuisine Name</label>
 				    </div>
 					<div class="top-cuisine-grid nth-grid1 wow bounceIn" data-wow-delay="0.4s">
-					    <a href=""><img src="<?php echo base_url(); ?>assets/images/cuisine7.jpg" class="img-responsive" alt="" /> </a>
+					    <a href=""><img src="<?php echo base_url(); ?>assets/images/home/index/samples/cuisine7.jpg" class="img-responsive" alt="" /> </a>
 						<label>Cuisine Name</label>
 				    </div>
 					<div class="top-cuisine-grid nth-grid nth-grid1 wow bounceIn" data-wow-delay="0.4s">
-					    <a href=""><img src="<?php echo base_url(); ?>assets/images/cuisine8.jpg" class="img-responsive" alt="" /> </a>
+					    <a href=""><img src="<?php echo base_url(); ?>assets/images/home/index/samples/cuisine8.jpg" class="img-responsive" alt="" /> </a>
 						<label>Cuisine Name</label>
 				    </div>
 					<div class="clearfix"></div>

@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
+	<link rel="icon" href="<?php echo base_url(); ?>assets/images/global/favicon.ico">
 	<title>Foodago</title>
 
 	<meta charset="utf-8">
@@ -23,20 +24,22 @@
 	<meta name="keywords" content="Track my order" />
 	<script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); } </script>
 	<link href='//fonts.googleapis.com/css?family=Open+Sans:400,300,300italic,400italic,600,600italic,700,700italic,800,800italic' rel='stylesheet' type='text/css'>
+	
 	<link rel="stylesheet" href="<?php echo base_url(); ?>/css/styleTrack.css">
 </head>
 <body>
 	<nav class="navbar-inverse navbar-fixed-top">
 		<div class="container-fluid">
 			<div class="navbar-header">
-				<a class="navbar-brand" href="#"><img src="<?php echo base_url(); ?>/assets/images/home/logoName.png" alt=""></a>
+				<a class="navbar-brand" href="#"><img src="<?php echo base_url(); ?>/assets/images/global/logos/logoName.png" alt=""></a>
 	    	</div>
 	    	<ul class="nav navbar-nav navbar-right">
-	      		<li><a href="<?php echo base_url();?>index.php/home">Home</a></li>
+	      		<li><a href="<?php echo base_url();?>index.php">Home</a></li>
 	      		<li><a href="<?php echo base_url(); ?>index.php/About_Us">About Us</a></li>
 	      		<li><a href="<?php echo base_url(); ?>index.php/Contact_Us">Contact Us</a></li>
 	      		<li class="active"><a href="#">Track my Order</a></li>
-	      		<li><a href="#"><img src="<?php echo base_url('images/user.png'); ?>" height="30" width="30"/></a></li>
+	      		<li><a href="<?php echo base_url(); ?>index.php/login/userLogin">Log In</a></li>
+	      		<li><a href="<?php echo base_url(); ?>index.php/login/newUser">Sign Up</a></li>
 	    	</ul>
 	  	</div>
 	</nav>
@@ -64,35 +67,35 @@
         <div class="shipment">
 			<div class="confirm">
                 <div class="imgcircle">
-                    <img src="<?php echo base_url('images/process.png'); ?>" />
+                    <img src="<?php echo base_url('assets/images/home/order_tracking/icons/process.png'); ?>" />
             	</div>
 				<span class="line"></span>
 				<p>Processing Order</p>
 			</div>
 			<div class="process">
            	 	<div class="imgcircle">
-                	<img src="<?php echo base_url('images/confirm.png'); ?>" />
+                	<img src="<?php echo base_url('assets/images/home/order_tracking/icons/confirm.png'); ?>" />
             	</div>
 				<span class="line"></span>
 				<p>Confirmed Order</p>
 			</div>
 			<div class="quality">
 				<div class="imgcircle">
-                	<img src="<?php echo base_url('images/quality.png'); ?>" />
+                	<img src="<?php echo base_url('assets/images/home/order_tracking/icons/quality.png'); ?>" />
             	</div>
 				<span class="line"></span>
 				<p>Packing Order</p>
 			</div>
 			<div class="dispatch">
 				<div class="imgcircle">
-                	<img src="<?php echo base_url('images/dispatch.png'); ?>" />
+                	<img src="<?php echo base_url('assets/images/home/order_tracking/icons/dispatch.png'); ?>" />
             	</div>
 				<span class="line"></span>
 				<p>On The Way</p>
 			</div>
 			<div class="delivery">
 				<div class="imgcircle">
-                	<img src="<?php echo base_url('images/done.png'); ?>" />
+                	<img src="<?php echo base_url('assets/images/home/order_tracking/icons/delivery.png'); ?>" />
 				</div>
 				<p>Delivered</p>
 			</div>

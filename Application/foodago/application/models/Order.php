@@ -2,7 +2,7 @@
 	defined('BASEPATH') OR exit('No direct script access allowed');
 
 	class Order extends CI_Model{
-		public function getOrderStatus(){
+		public function getOrderStatus($data){
 			$this->db->select('delivery_status_id');
 			$this->db->from('order');
 			$this->db->where("tracking_number ='" . $data . "'");

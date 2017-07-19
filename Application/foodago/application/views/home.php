@@ -189,6 +189,16 @@
 			   			<div class="container">
 				  			<ul id="flexiselDemo3">
 								<li>
+									<div class="ch-item">
+										<div class="ch-info">
+											<div class="ch-info-front ch-img-1"></div>
+											<div class="ch-info-back">
+												<h3><a href="">SUBWAY</a></h3>
+											</div>
+										</div>
+									</div>
+								</li>
+								<li>
                                     <div class="ch-item">
                                         <div class="ch-info">
                                             <div class="ch-info-front ch-img-2"></div>

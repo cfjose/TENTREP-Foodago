@@ -73,7 +73,8 @@
 
         label{ 
         	color: #DEB675;
-        	font-family: "Cambria";         }
+        	font-family: "Cambria";         
+        }
 
         .required{ 
         	color: red; 

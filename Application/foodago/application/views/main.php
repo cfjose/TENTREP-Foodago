@@ -1,3 +1,11 @@
+<?php
+	if(isset($this->session->userdata['logged_in'])){
+		// DO NOTHING, CONTINUE WITH MAIN PAGE
+	}else{
+		// NO ACCESS ALLOWED, REDIRECT TO LOGIN PAGE
+		redirect(base_url() . 'index.php/login/userLogin');
+	}
+?>
 <html>
 <head>
 	<link rel="icon" href="<?php echo base_url(); ?>assets/images/global/favicon.ico">

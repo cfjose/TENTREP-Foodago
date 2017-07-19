@@ -31,25 +31,32 @@
 				$this->load->view('signup');
 			}else{
 				$raw_password = $this->input->post('password');
-				$salt = mcrypt_create_iv(22, MCRYPT_DEV_URANDOM);
-				$password_hash = password_hash($raw_password, PASSWORD_BCRYPT, array('cost' => 11, 'salt' => $salt));
+				$password_hash = password_hash($raw_password,PASSWORD_BCRYPT);
+
+				$this->db->select('id');
+				$this->db->from('user_type');
+				$this->db->where('name ="Customer"');
+
+				$query = $this->db->get();
+				$resultId = $query->row()->id;
 
 				$data = array(
-						firstname => $this->input->post('first_name'),
-						midname => $this->input->post('middle_name'),
-						lastname => $this->input->post('last_name'),
-						birthdate => $this->input->post('bday'),
-						gender => $this->input->post('gender'),
-						address => $this->input->post('home_address'),
-						email_address => $this->input->post('email'),
-						user_name => $this->input->post('username'),
-						password => $password_hash,
-						salt => $salt);
+						'first_name' => $this->input->post('first_name'),
+						'middle_name' => $this->input->post('middle_name'),
+						'last_name' => $this->input->post('last_name'),
+						'birthdate' => $this->input->post('bday'),
+						'gender' => $this->input->post('gender'),
+						'home_address' => $this->input->post('home_address'),
+						'email' => $this->input->post('email'),
+						'username' => $this->input->post('username'),
+						'password' => $password_hash,
+						'user_type_id' => $resultId);
 
 				$result = $this->user->newUserInsert($data);
 
 				if($result == TRUE){
 					$data['message_display'] = "Registration Successful";
+					redirect(base_url() . 'index.php/login/userLogin');
 				}else{
 					$data['message_display'] = "Username already in use";
 					$this->load->view('signup', $data);
@@ -81,11 +88,11 @@
 						$session_data = array('first_name' => $result[0]->first_name,
 												'last_name' => $result[0]->last_name,
 												'username' => $result[0]->username,
-												'email' => $result[0]->email);
+												'email' => $result[0]->email,
+												'logged_in' => TRUE);
 
-						$this->session->set_userdata('logged_in', $session_data);
-						$this->load->view('main');
-					}
+						$this->session->set_userdata($session_data);
+						redirect(base_url() . 'index.php/main');					}
 				}else{
 					$data = array('error_message' => 'Invalid Username or Password');
 					$this->load->view('login', $data);

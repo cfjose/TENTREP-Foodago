@@ -14,7 +14,8 @@
 
 			$query = $this->SubCategory->getSubCategoryName($sub_category_id);
 			$result = $query->row()->name;
-
+			echo "<br><br>";
+			echo "<br><br>";
 			echo "<div class='subcategory-pane'>";
 
 			echo "<h4 class='sub-category-names'>" . $result . "</h4><br/>";
@@ -28,7 +29,7 @@
 				echo "<h3 class='no-avail'>No Products Available</h3>";
 			}else{
 				foreach($query->result() as $row){
-					echo "<div class='col-md-4'>";
+					echo "<div class='col-lg-6'>";
 	                    echo "<div class='thumbnail'>";
 	                        echo "<img src='http://placehold.it/320x150' alt=''>";
 	                        	echo "<div class='caption'>";

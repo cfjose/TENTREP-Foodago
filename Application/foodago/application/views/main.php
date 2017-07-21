@@ -78,7 +78,7 @@
 
 
 		.food-item-list{
-			width: 75%;
+			width: 100%;
 			left: 25%;
 			top: 35%;
 			min-height:100px;
@@ -117,6 +117,9 @@
 			<li><a href="#">Profile</a></li>
 			<li><a href="#">Orders</a></li>
 			<li><a href="#">Cancellations</a></li>
+			<li class="divider"></li>
+			<li><a href="#">Logout</a></li>
+
 			</ul>
   			</div>
 	    	</ul>

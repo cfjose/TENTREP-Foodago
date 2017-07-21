@@ -104,7 +104,7 @@
 			$sess_array = array('username' => '');
 
 			$this->session->unset_userdata('logged_in', $sess_array);
-			$this->load->view('login');
+			redirect(base_url() . 'index.php/login/userLogin');
 		}
 
 		/*public function getFormValues(){

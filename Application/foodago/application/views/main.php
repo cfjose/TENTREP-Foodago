@@ -21,9 +21,9 @@
 	<link rel="stylesheet" href="<?php echo base_url(); ?>css/style.css">
 	<link rel="stylesheet" href="<?php echo base_url(); ?>css/site.css">
 
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+  	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 
     <link rel="stylesheet" href="https://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.css">
     <script src="https://code.jquery.com/jquery-1.11.3.min.js"></script>
@@ -78,7 +78,7 @@
 
 
 		.food-item-list{
-			width: 75%;
+			width: 150%;
 			left: 25%;
 			top: 35%;
 			min-height:100px;
@@ -112,11 +112,10 @@
 			<img src="<?php echo base_url('assets/images/main/icons/user.png'); ?>" height="45" width="45" data-toggle="dropdown" />
 			<span class="caret"></span>
 			<ul class="dropdown-menu">
-			<p align="center">John Doe</p>
+			<p align="center">You are currently logged in as <?php echo $this->session->userdata('first_name') . " " . $this->session->userdata('last_name'); ?></p>
 			<li class="divider"></li>
-			<li><a href="#">Profile</a></li>
-			<li><a href="#">Orders</a></li>
-			<li><a href="#">Cancellations</a></li>
+			<li><a href="#">My Profile</a></li>
+			<li><a href="<?php echo base_url(); ?>index.php/login/logout">Log Out</a></li>
 			</ul>
   			</div>
 	    	</ul>

@@ -106,7 +106,7 @@
 			<div class="item">
 			  <img src="<?php echo base_url(); ?>assets/images/home/index/image-3.jpeg" alt="">
 			  <div class="carousel-caption">
-			  	<h2>One Website. One Detail.</h2>
+			  	<h2>Track your order in a click</h2>
 			  	<h4>Tired of calling different restaurants to know the status of your order?<br/>
 			  		Not with Foodago! Just enter your tracking number and we'll get you a single detail on<br/>
 			  		your order status.</h4>

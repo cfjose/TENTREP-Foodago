@@ -21,6 +21,10 @@
 	<link rel="stylesheet" href="<?php echo base_url(); ?>css/style.css">
 	<link rel="stylesheet" href="<?php echo base_url(); ?>css/site.css">
 
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
     <link rel="stylesheet" href="https://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.css">
     <script src="https://code.jquery.com/jquery-1.11.3.min.js"></script>
     <script src="https://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.js"></script>
@@ -68,22 +72,17 @@
 		}
 
 		.category-nav{
-			float: left;
-			width: 20%;
+			width: 30%;
+			margin:10px;
 		}
 
-		.col-md-2{
-			width: 100%;
-			top: 50;
-			left: 3%;
-		}
 
 		.food-item-list{
-			float: right;
 			width: 75%;
 			left: 25%;
 			top: 35%;
 			min-height:100px;
+			margin-left:-380px;
 		}
 
 		.subcategory-pane{
@@ -100,10 +99,6 @@
 			vertical-align: middle;
 			margin-top: 10%;
 		}
-
-		.col-md-4{
-			left:10%;
-		}
 	</style>
 </head>
 <body>
@@ -112,6 +107,19 @@
 			<div class="navbar-header">
 				<a class="navbar-brand" href="#"><img src="<?php echo base_url(); ?>/assets/images/global/logos/logoName.png" alt=""></a>
 	    	</div>
+	    	<ul class="nav navbar-nav navbar-right">
+	    	<div class="dropdown">
+			<img src="<?php echo base_url('assets/images/main/icons/user.png'); ?>" height="45" width="45" data-toggle="dropdown" />
+			<span class="caret"></span>
+			<ul class="dropdown-menu">
+			<p align="center">John Doe</p>
+			<li class="divider"></li>
+			<li><a href="#">Profile</a></li>
+			<li><a href="#">Orders</a></li>
+			<li><a href="#">Cancellations</a></li>
+			</ul>
+  			</div>
+	    	</ul>
 	  	</div>
 	</nav>
 	<div class="carousel-inner">
@@ -126,8 +134,7 @@
 			</div>
 	  	</div>
 	</div>
-	<div class="sidebar">
-		<div class="col-md-2">
+		<div class="col-lg-6">
 			<div class="category-nav">
 				<h4> Categories </h4><br/>
 				<?php
@@ -165,15 +172,16 @@
 				?>
 			</div>
 		</div>
-		<div class="food-item-list">
-			<?php
-				if(isset($_GET['restaurant_name'])){
-					$this->load->view('food_item_list',$_GET['restaurant_name']);
-				}else{
-					// CREATE ANOTHER LAYOUT WITH MESSAGE 'SELECT A CATEGORY TO START' AND LOAD INTO DIV
-				}
-			?>
+		<div class="col-lg-6">
+			<div class="food-item-list">
+				<?php
+					if(isset($_GET['restaurant_name'])){
+						$this->load->view('food_item_list',$_GET['restaurant_name']);
+					}else{
+						// CREATE ANOTHER LAYOUT WITH MESSAGE 'SELECT A CATEGORY TO START' AND LOAD INTO DIV
+					}
+				?>
+			</div>
 		</div>
-	</div>
 </body>
 </html>

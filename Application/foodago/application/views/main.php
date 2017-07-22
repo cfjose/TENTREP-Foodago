@@ -114,10 +114,6 @@
 			margin: 5px;
 			color: black;
 		}
-		.panel-default{
-			border-color: black;
-			color: black;
-		}
 		a{
 			text-decoration: none;
 		}
@@ -244,5 +240,38 @@
 				?>
 			</div>
 		</div>
+                <div class="col-lg-3">
+                    <!--REVIEW ORDER-->
+                    <div class="panel panel-default">
+                        <div class="panel-heading text-center">
+                            <h4>Review Order</h4>
+                        </div>
+                        <div class="panel-body">
+                                <div class="col-md-12">
+                                    <strong>Subtotal (# item)</strong>
+                                    <div class="pull-right"><span>$</span><span>200.00</span></div>
+                                </div>
+                                <div class="col-md-12">
+                                    <strong>Tax</strong>
+                                    <div class="pull-right"><span>$</span><span>200.00</span></div>
+                                </div>
+                                <div class="col-md-12">
+                                    <small>Shipping</small>
+                                    <div class="pull-right"><span>-</span></div>
+                                    <hr>
+                                </div>
+                                <div class="col-md-12">
+                                    <strong>Order Total</strong>
+                                    <div class="pull-right"><span>$</span><span>150.00</span></div>
+                                    <hr>
+                                </div>
+                                
+                                <button type="button" class="btn btn-primary btn-lg btn-block">Checkout</button>
+                                
+                        </div>
+                        
+                    </div>
+                    <!--REVIEW ORDER END-->
+                </div>
 </body>
 </html>

@@ -12,6 +12,8 @@
 			$this->load->model('FoodItem');
 
 			$this->load->model('SubCategory');
+
+            $this->load->model('feedback');
 		}
 
 		public function index(){

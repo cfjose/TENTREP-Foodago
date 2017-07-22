@@ -141,20 +141,22 @@
 				<form method="get" action="<?php base_url(); ?>index.php/search">
 					<h1 id="greetings"></h1>
 					<script type="text/javascript">
-						var currDate = new Date();
-						var currTime = currDate.getHours();
+						window.onload = function(){
+							var currDate = new Date();
+							var currTime = currDate.getHours();
 
-						var greet;
+							var greet;
 
-						if(currTime < 12){
-							greet = 'Good Morning';
-						}else if(currTime >= 12 && currTime <= 17){
-							greet = 'Good Afternoon';
-						}else if(currTime >=17 && currTime <= 24){
-							greet = 'Good Evening';
+							if(currTime < 12){
+								greet = 'Good Morning';
+							}else if(currTime >= 12 && currTime <= 17){
+								greet = 'Good Afternoon';
+							}else if(currTime >=17 && currTime <= 24){
+								greet = 'Good Evening';
+							}
+
+							document.getElementById("greetings").innerHTML = greet + ", " + <?php echo json_encode($this->session->userdata('first_name')) ?>;
 						}
-
-						document.getElementById("greetings").innerHTML = greet + ", " + <?php echo json_encode($this->session->userdata('first_name')) ?>;
 					</script>
 					<h2>Are you Hungry?</h2>
 					<h2>Search for your favorite restaurants / fast food chains online</h2><br/>
@@ -205,8 +207,10 @@
 				<?php
 					if(isset($_GET['restaurant_name'])){
 						$this->session->userdata['recent_searches'][] = $_GET['restaurant_name'];
-						for($i = 0; $i < count($this->session->userdata['recent_searches']); $i++){
-							echo "<li><a href='" . base_url() . "index.php/main?restaurant_name=". $this->session->userdata['recent_searches'][$i] ."'>" . $this->session->userdata['recent_searches'][$i] . "</a></li>";
+						$recent_searches = array_unique($this->session->userdata['recent_searches']);
+
+						for($i = 0; $i < count($recent_searches); $i++){
+							echo "<li><a href='" . base_url() . "index.php/main?restaurant_name=". $recent_searches[$i] ."'>" . $recent_searches[$i] . "</a></li>";
 						}				
 					}
 				?>

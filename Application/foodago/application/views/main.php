@@ -110,6 +110,17 @@
 			margin: 3px;
 			right: 25%;
 		}
+		.hr0{
+			margin: 5px;
+			color: black;
+		}
+		.panel-default{
+			border-color: black;
+			color: black;
+		}
+		a{
+			text-decoration: none;
+		}
 	</style>
 </head>
 <body>
@@ -166,8 +177,8 @@
 	  	</div>
 	</div>
 		<div class="col-lg-6">
-			<div class="category-nav">
-				<h4> Categories </h4><br/>
+			<div class="category-nav"> <br>
+				<h3> Categories </h3>
 				<?php
 					$query = $this->category->getCategoryNames();
 
@@ -202,22 +213,28 @@
 	                }
 				?>
 			</div>
-			<div class="recent-searches-nav">
-				<h4>Recent Searches</h4><br/>
+			<div class="recent-searches-nav"> <br>
+			<div class="col-lg-4">
+				<h3>Recent Searches</h3>
+				<div class="panle panel-default">
+				<div class="panel-heading">
 				<?php
 					if(isset($_GET['restaurant_name'])){
 						$this->session->userdata['recent_searches'][] = $_GET['restaurant_name'];
-						$recent_searches = array_unique($this->session->userdata['recent_searches']);
+						for($i = 0; $i < count($this->session->userdata['recent_searches']); $i++){
+							echo "<a href='" . base_url() . "index.php/main?restaurant_name=". $this->session->userdata['recent_searches'][$i] ."'>" . $this->session->userdata['recent_searches'][$i] . "</a>";
+							echo "<hr class='hr0'/>";
 
-						for($i = 0; $i < count($recent_searches); $i++){
-							echo "<li><a href='" . base_url() . "index.php/main?restaurant_name=". $recent_searches[$i] ."'>" . $recent_searches[$i] . "</a></li>";
 						}				
 					}
 				?>
+				</div>
+				</div>
+				</div>
 			</div>
 		</div>
 		<div class="col-lg-6">
-			<div class="food-item-list">
+			<div class="food-item-list"> <br>
 				<?php
 					if(isset($_GET['restaurant_name'])){
 						$this->load->view('food_item_list',$_GET['restaurant_name']);

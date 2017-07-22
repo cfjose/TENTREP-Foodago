@@ -216,19 +216,20 @@
 			<div class="recent-searches-nav"> <br>
 			<div class="col-lg-4">
 				<h3>Recent Searches</h3>
-				<div class="panle panel-default">
-				<div class="panel-heading">
-				<?php
-					if(isset($_GET['restaurant_name'])){
-						$this->session->userdata['recent_searches'][] = $_GET['restaurant_name'];
-						for($i = 0; $i < count($this->session->userdata['recent_searches']); $i++){
-							echo "<a href='" . base_url() . "index.php/main?restaurant_name=". $this->session->userdata['recent_searches'][$i] ."'>" . $this->session->userdata['recent_searches'][$i] . "</a>";
-							echo "<hr class='hr0'/>";
+				<div class="panel panel-default">
+					<div class="panel-heading">
+						<?php
+							if(isset($_GET['restaurant_name'])){
+								$this->session->userdata['recent_searches'][] = $_GET['restaurant_name'];
+								$recent_searches = array_unique($this->session->userdata['recent_searches']);
+								for($i = 0; $i < count($recent_searches); $i++){
+									echo "<a href='" . base_url() . "index.php/main?restaurant_name=". $recent_searches[$i] ."'>" . $recent_searches[$i] . "</a>";
+									echo "<hr class='hr0'/>";
 
-						}				
-					}
-				?>
-				</div>
+								}				
+							}
+						?>
+					</div>
 				</div>
 				</div>
 			</div>

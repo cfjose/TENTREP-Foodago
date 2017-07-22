@@ -118,6 +118,7 @@
 			border-color: black;
 			color: black;
 		}
+		
 		a{
 			text-decoration: none;
 		}
@@ -225,7 +226,6 @@
 								for($i = 0; $i < count($recent_searches); $i++){
 									echo "<a href='" . base_url() . "index.php/main?restaurant_name=". $recent_searches[$i] ."'>" . $recent_searches[$i] . "</a>";
 									echo "<hr class='hr0'/>";
-
 								}				
 							}
 						?>

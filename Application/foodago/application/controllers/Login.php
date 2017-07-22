@@ -96,11 +96,19 @@
 						$result = $this->user->validateUser($username);
 
 						if($result != FALSE){
+							$this->db->select('name');
+							$this->db->from('user_type');
+							$this->db->where("id ='" . $result[0]->user_type_id . "'");
+
+							$query = $this->db->get();
+
 							$session_data = array('first_name' => $result[0]->first_name,
 													'last_name' => $result[0]->last_name,
 													'username' => $result[0]->username,
 													'email' => $result[0]->email,
-													'logged_in' => TRUE);
+													'recent_searches' => array(),
+													'logged_in' => TRUE,
+													'user_type' => $query->row()->name);
 
 							$this->session->set_userdata($session_data);
 							redirect(base_url() . 'index.php/main');					
@@ -114,7 +122,8 @@
 		}
 
 		public function logout(){
-			$sess_array = array('username' => '');
+			$sess_array = array('username' => '',
+								'recent_searches' => array());
 
 			$this->session->unset_userdata('logged_in', $sess_array);
 			redirect(base_url() . 'index.php/login');

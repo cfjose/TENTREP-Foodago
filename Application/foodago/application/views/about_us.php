@@ -1,3 +1,11 @@
+<?php
+	if(isset($this->session->userdata['logged_in'])){
+		// ACTIVE SESSION DETECTED, REDIRECT TO MAIN PAGE
+		redirect(base_url() . 'index.php/main');
+	}else{
+		// CONTINUE WITH PAGE
+	}
+?>
 <!DOCTYPE html>
 <html>
 <head>

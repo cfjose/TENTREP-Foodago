@@ -55,8 +55,11 @@
 
 		h1, h2{
 			color: #DEB675;
-			font-family: "";
-			font-weight: bold;
+			font-family: "Arial";
+		}
+
+		h5{
+			color: black;
 		}
 
 		#q{
@@ -75,7 +78,6 @@
 			width: 30%;
 			margin:10px;
 		}
-
 
 		.food-item-list{
 			width: 100%;
@@ -99,6 +101,15 @@
 			vertical-align: middle;
 			margin-top: 10%;
 		}
+
+		.caret{
+			color: orange;
+		}
+
+		.dropdown{
+			margin: 3px;
+			right: 25%;
+		}
 	</style>
 </head>
 <body>
@@ -108,20 +119,18 @@
 				<a class="navbar-brand" href="#"><img src="<?php echo base_url(); ?>/assets/images/global/logos/logoName.png" alt=""></a>
 	    	</div>
 	    	<ul class="nav navbar-nav navbar-right">
-	    	<div class="dropdown">
-			<img src="<?php echo base_url('assets/images/main/icons/user.png'); ?>" height="45" width="45" data-toggle="dropdown" />
-			<span class="caret"></span>
-			<ul class="dropdown-menu">
-			<p align="center">John Doe</p>
-			<li class="divider"></li>
-			<li><a href="#">Profile</a></li>
-			<li><a href="#">Orders</a></li>
-			<li><a href="#">Cancellations</a></li>
-			<li class="divider"></li>
-			<li><a href="#">Logout</a></li>
-
-			</ul>
-  			</div>
+		    	<div class="dropdown">
+		    		<!--<label class="username"><?php echo $this->session->userdata('username'); ?></label>-->
+		    		<img src="<?php echo base_url('assets/images/main/icons/user.png'); ?>" height="45" width="45" data-toggle="dropdown"/>
+					<span class="caret"></span>
+					<ul class="dropdown-menu">
+						<p align="center">You are currently logged in as <b><?php echo $this->session->userdata('first_name') . " " . $this->session->userdata('last_name'); ?></b></p>
+						<li class="divider"></li>
+						<li><a href="<?php echo base_url(); ?>index.php/profile">My Profile</a></li>
+						<li><a href="<?php echo base_url(); ?>index.php/profile/accountSettings">Account Settings</a></li>
+						<li><a href="<?php echo base_url(); ?>index.php/login/logout">Logout</a></li>
+					</ul>
+	  			</div>
 	    	</ul>
 	  	</div>
 	</nav>
@@ -130,8 +139,25 @@
 			<img src="<?php echo base_url(); ?>assets/images/main/main-bg.jpg" alt="" class="header">
 			<div class="search">
 				<form method="get" action="<?php base_url(); ?>index.php/search">
-					<h1>Are you Hungry?</h1><br/>
-					<h2>Search for your favorite restaurants / fast food chains online</h2><br/><br/>
+					<h1 id="greetings"></h1>
+					<script type="text/javascript">
+						var currDate = new Date();
+						var currTime = currDate.getHours();
+
+						var greet;
+
+						if(currTime < 12){
+							greet = 'Good Morning';
+						}else if(currTime >= 12 && currTime <= 17){
+							greet = 'Good Afternoon';
+						}else if(currTime >=17 && currTime <= 24){
+							greet = 'Good Evening';
+						}
+
+						document.getElementById("greetings").innerHTML = greet + ", " + <?php echo json_encode($this->session->userdata('first_name')) ?>;
+					</script>
+					<h2>Are you Hungry?</h2>
+					<h2>Search for your favorite restaurants / fast food chains online</h2><br/>
 					<input type="text" id="q" placeholder="Search for Restaurants and Fast food Chains"/>
 				</form>
 			</div>

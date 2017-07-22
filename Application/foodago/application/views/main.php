@@ -200,6 +200,17 @@
 	                }
 				?>
 			</div>
+			<div class="recent-searches-nav">
+				<h4>Recent Searches</h4><br/>
+				<?php
+					if(isset($_GET['restaurant_name'])){
+						$this->session->userdata['recent_searches'][] = $_GET['restaurant_name'];
+						for($i = 0; $i < count($this->session->userdata['recent_searches']); $i++){
+							echo "<li><a href='" . base_url() . "index.php/main?restaurant_name=". $this->session->userdata['recent_searches'][$i] ."'>" . $this->session->userdata['recent_searches'][$i] . "</a></li>";
+						}				
+					}
+				?>
+			</div>
 		</div>
 		<div class="col-lg-6">
 			<div class="food-item-list">

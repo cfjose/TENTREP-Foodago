@@ -136,7 +136,7 @@
 	<div class="ordering-section" id="Order">
 		<div class="container">
 			<div class="ordering-section-head text-center wow bounceInRight" data-wow-delay="0.4s">
-				<h3>Ordering food was never so easy</h3>
+				<h3>Ordering food has never been this easy</h3>
 				<div class="dotted-line">
 					<h4>Just 4 steps to follow </h4>
 				</div>
@@ -262,9 +262,9 @@
 		<div class="container">
 			<div class="col-md-2"></div>
 			<div class="col-md-8 top-cuisines">
-			<div class="special-offers-section-head text-center dotted-line">
+			<div class="special-offers-section-head text-center">
 				<h4>Top Cuisines</h4>
-			</div>
+				<br>
 				<div class="top-cuisine-grids">
 					<div class="top-cuisine-grid wow bounceIn" data-wow-delay="0.4s">
 					    <a href=""><img src="<?php echo base_url(); ?>assets/images/home/index/samples/cuisine1.jpg" class="img-responsive" alt="" /> </a>

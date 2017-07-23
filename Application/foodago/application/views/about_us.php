@@ -58,14 +58,53 @@
 	</nav>
 
 	<div class="background"><br><br>
-	  <div class="transbox">
-	  	<h1>The Team</h1>
-	    <p>This is some text that is placed in the transparent box.</p>
-	    <h1>The Application</h1>
-	    <p>This is some text that is placed in the transparent box.</p>
-	    <h1>Timeline</h1>
+		<div class="transbox">
 
-	  </div>
+	  	<h1>Timeline</h1>
+	  	<section id="Steps" class="steps-section">
+
+		    <h2 class="steps-header">
+		      Responsive Semantic Timeline
+		    </h2>
+
+		    <div class="steps-timeline">
+
+		      <div class="steps-one">
+		        <img class="steps-img" src="http://placehold.it/50/3498DB/FFFFFF" alt="" />
+		        <h3 class="steps-name">
+		          Semantic
+		        </h3>
+		        <p class="steps-description">
+		          The timeline is created using negative margins and a top border.
+		        </p>
+		      </div>
+
+		      <div class="steps-two">
+		        <img class="steps-img" src="http://placehold.it/50/3498DB/FFFFFF" alt="" />
+		        <h3 class="steps-name">
+		          Relative
+		        </h3>
+		        <p class="steps-description">
+		           All elements are positioned realtive to the parent. No absolute positioning.
+		        </p>
+		      </div>
+
+		      <div class="steps-three">
+		        <img class="steps-img" src="http://placehold.it/50/3498DB/FFFFFF" alt="" />
+		        <h3 class="steps-name">
+		          Contained
+		        </h3>
+		        <p class="steps-description">
+		           The timeline does not extend past the first and last elements.
+		        </p>
+		      </div>
+
+		    </div><!-- /.steps-timeline -->
+
+		  </section>
+
+
+			  		
 	</div>
 
 	<style type="text/css">
@@ -95,7 +134,127 @@
 		h1{
 			margin: 40px;
 		}
+
+		/*TIMELINE--------------------------------------------------*/
+		$outline-width:0;
+		$break-point: 500px;
+		$gray-base:     #999999;
+		$brand-primary: #3498DB; //Zen Blue
+
+		@import url(https://fonts.googleapis.com/css?family=Lato:400,700,400italic,700italic);
+
+		.section-header {
+		  color: $brand-primary;
+		  font-weight: 400;
+		  font-size: 1.4em;
+		}
+
+
+		.steps-header {
+		  @extend .section-header;
+		  margin-bottom: 20px;  
+		  text-align: center;
+		}
+		.steps-timeline {
+		  outline: 1px dashed rgba(red, $outline-width);
+		  
+		  @media screen and (max-width: $break-point) {
+		    border-left: 2px solid $brand-primary;
+		    margin-left: 25px;
+		  }
+		  
+		  @media screen and (min-width: $break-point) {
+		    border-top: 2px solid $brand-primary;
+		    padding-top: 20px;
+		    margin-top: 40px;
+		    margin-left: 16.65%;
+		    margin-right: 16.65%;
+		  }
+		  
+		  &:after {
+		    content: "";
+		    display: table;
+		    clear: both;
+		  }
+		}
+		.steps-one,
+		.steps-two,
+		.steps-three {
+		  outline: 1px dashed rgba(green, $outline-width);
+		  
+		  @media screen and (max-width: $break-point) {
+		    margin-left: -25px;
+		  }
+		  
+		  @media screen and (min-width: $break-point) {
+		    float: left;
+		    width: 33%;  
+		    margin-top: -50px;
+		  }
+		}
+		.steps-one,
+		.steps-two {
+		  @media screen and (max-width: $break-point) {
+		    padding-bottom: 40px;
+		  }
+		}
+		.steps-one {
+		  @media screen and (min-width: $break-point) {
+		    margin-left: -16.65%;
+		    margin-right: 16.65%;
+		  }
+		}
+		.steps-two {
+		  
+		}
+		.steps-three {
+		  @media screen and (max-width: $break-point) {
+		    margin-bottom: -100%;
+		  }
+		  @media screen and (min-width: $break-point) {
+		    margin-left: 16.65%;
+		    margin-right: -16.65%;
+		  }
+		}
+
+		.steps-img {
+		  display: block;
+		  margin: auto;
+		  width: 50px;
+		  height: 50px;
+		  border-radius: 50%; 
+		  
+		  @media screen and (max-width: $break-point) {
+		    float: left;
+		    margin-right: 20px;
+		  }
+		}
+
+		.steps-name,
+		.steps-description {
+		  margin: 0;
+		}
+		.steps-name {
+		  @extend .section-header;
+		  
+		  @media screen and (min-width: $break-point) {
+		    text-align: center;
+		  }
+		}
+		.steps-description {
+		  overflow: hidden;
+		  
+		  @media screen and (min-width: $break-point) {
+		    text-align: center;
+		  }
+		}
+
+
 	</style>
+
+	<script type="text/javascript">
+		
+	</script>
 
 	
 </body>

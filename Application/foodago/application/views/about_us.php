@@ -57,14 +57,38 @@
 	  	</div>
 	</nav>
 
-	<div id="myCarousel" class="carousel slide" data-ride="carousel">
-  		<!-- Wrapper for slides -->
-		<div class="carousel-inner">
-			<div class="item active">
-			  <img src="<?php echo base_url(); ?>assets/images/home/about_us/image-5.jpg" alt="" class="bg-main">
-			</div>
-		</div>
+	<div class="background"><br><br>
+	  <div class="transbox">
+	    <p>This is some text that is placed in the transparent box.</p>
+	  </div>
 	</div>
+
+	<style type="text/css">
+		div.background {
+		  background: url(../assets/images/home/about_us/image-5.jpg) repeat;
+		  border: 2px solid black;
+		  height: 100%;
+		  width: 100%;
+		}
+
+		div.transbox {
+		  margin: 30px;
+		  background-color: #fdfdfd;
+		  border: 1px solid black;
+		  opacity: 0.6;
+		  filter: alpha(opacity=60); /* For IE8 and earlier */
+		  height: 80%;
+		  border-radius: 8%;
+		}
+
+		div.transbox p {
+		  margin: 5%;
+		  font-weight: bold;
+		  color: #000000;
+		}
+	</style>
+
+	
 </body>
 </html>
 

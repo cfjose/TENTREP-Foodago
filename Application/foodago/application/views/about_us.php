@@ -59,7 +59,12 @@
 
 	<div class="background"><br><br>
 	  <div class="transbox">
+	  	<h1>The Team</h1>
 	    <p>This is some text that is placed in the transparent box.</p>
+	    <h1>The Application</h1>
+	    <p>This is some text that is placed in the transparent box.</p>
+	    <h1>Timeline</h1>
+
 	  </div>
 	</div>
 
@@ -78,13 +83,17 @@
 		  opacity: 0.6;
 		  filter: alpha(opacity=60); /* For IE8 and earlier */
 		  height: 80%;
-		  border-radius: 8%;
+		  border-radius: 4%;
 		}
 
 		div.transbox p {
 		  margin: 5%;
 		  font-weight: bold;
 		  color: #000000;
+		}
+
+		h1{
+			margin: 40px;
 		}
 	</style>
 

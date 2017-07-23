@@ -114,14 +114,12 @@
 			margin: 5px;
 			color: black;
 		}
-<<<<<<< HEAD
+
 		.panel-default{
 			border-color: black;
 			color: black;
 		}
 		
-=======
->>>>>>> b6bf2845410930ac02fd2a103acfe3f968ff2944
 		a{
 			text-decoration: none;
 		}

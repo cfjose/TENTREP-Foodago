@@ -16,17 +16,17 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 
 	<!-- Latest compiled and minified CSS -->
-	<link rel="stylesheet" href="<?php echo base_url(); ?>/css/bootstrap.min.css">
-	<link rel="stylesheet" href="<?php echo base_url(); ?>/css/animate.css">
-	<link rel="stylesheet" href="<?php echo base_url(); ?>/css/boostrap.css">
-	<link rel="stylesheet" href="<?php echo base_url(); ?>/css/style.css">
-	<link rel="stylesheet" href="<?php echo base_url(); ?>/css/site.css">
+	<link rel="stylesheet" href="<?php echo base_url(); ?>css/bootstrap.min.css">
+	<link rel="stylesheet" href="<?php echo base_url(); ?>css/animate.css">
+	<link rel="stylesheet" href="<?php echo base_url(); ?>css/boostrap.css">
+	<link rel="stylesheet" href="<?php echo base_url(); ?>css/style.css">
+	<link rel="stylesheet" href="<?php echo base_url(); ?>css/site.css">
 
 	<!-- jQuery library -->
-	<script src="<?php echo base_url(); ?>/js/jquery.min.js"></script>
+	<script src="<?php echo base_url(); ?>js/jquery.min.js"></script>
 
 	<!-- Latest compiled JavaScript -->
-	<script src="<?php echo base_url(); ?>/js/bootstrap.min.js"></script>
+	<script src="<?php echo base_url(); ?>js/bootstrap.min.js"></script>
 
 	<style>
 		.carousel-inner{
@@ -40,7 +40,7 @@
 		}
 	</style>
 </head>
-<body>
+<body class="safe">
 	<nav class="navbar-inverse navbar-fixed-top">
 		<div class="container-fluid">
 			<div class="navbar-header">
@@ -58,30 +58,39 @@
 	</nav>
 
 	<div class="background"><br><br>
-	  <div class="transbox">
-	  	<h1>The Team</h1>
-	    <p>This is some text that is placed in the transparent box.</p>
-	    <h1>The Application</h1>
-	    <p>This is some text that is placed in the transparent box.</p>
-	    <h1>Timeline</h1>
+		<div class="transbox">
 
-	  </div>
+		  	<h1>Timeline</h1><br>
+		  	<h4>SAMPLE</h4>
+		  	<br><br>z
+		  	<h1>About Foodago</h1><br>
+		  	<h4>
+		  		Foodago is a web application that can make ordering of your different favorite food easier. With Foodago, you can order different food to different fast food chains or restaurants and track where your orders are easily.
+		  		Hassle-free! Just stay at your home and order! You can also share your orders to your friends. No need to memorize and to compute or even write their orders to a paper when they order too many food!<br>
+		  		<i>With Foodago, your favorite food, delivered fast to your doorsteps.</i>
+		  	</h4>
+		  	<center><img src="<?php echo base_url(); ?>assets/images/global/logos/logoBig.png" alt="" style="width: 250px; height: 250px;"></center>
+		</div>
 	</div>
 
 	<style type="text/css">
+
 		div.background {
 		  background: url(../assets/images/home/about_us/image-5.jpg) repeat;
 		  border: 2px solid black;
 		  height: 100%;
 		  width: 100%;
 		}
+		.safe{
+			overflow-y: hidden;
+		}
 
 		div.transbox {
 		  margin: 30px;
-		  background-color: #fdfdfd;
+		  background-color: white;
 		  border: 1px solid black;
-		  opacity: 0.6;
-		  filter: alpha(opacity=60); /* For IE8 and earlier */
+		  opacity: 0.9;
+		  filter: alpha(opacity=90); /* For IE8 and earlier */
 		  height: 80%;
 		  border-radius: 4%;
 		}
@@ -93,11 +102,21 @@
 		}
 
 		h1{
-			margin: 40px;
+			margin-top: 20px;
+			margin-left: 20px;
+			margin-bottom: 0px;
 		}
-	</style>
 
-	
+		h4{
+			margin-left: 45px;
+			margin-right: 20px;
+			margin-bottom: 0px;
+		}
+
+
+		
+
+	</style>	
 </body>
 </html>
 

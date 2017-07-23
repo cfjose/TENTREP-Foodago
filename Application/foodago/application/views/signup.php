@@ -40,7 +40,7 @@
 
 		.bg-main{
 			width: 100%;
-			height: 710px;
+			height: 760px;
 			filter: brightness(30%);
 			opacity: 0.9;
 			position: absolute;

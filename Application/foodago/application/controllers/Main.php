@@ -1,5 +1,5 @@
 <?php
-	defined('BASEPATH') OR exi('No direct script access allowed');
+	defined('BASEPATH') OR exit('No direct script access allowed');
 
 	class Main extends CI_Controller{
 		public function __construct(){
@@ -17,7 +17,11 @@
 		}
 
 		public function index(){
-			$this->load->view('main');
+			if($this->session->userdata['user_type'] == 'System Administrator' || $this->session->userdata['user_type'] == 'Aggregator' || $this->session->userdata['user_type'] == 'Restaurant Owner'){
+				// LOAD AdminLTE DASHBOARD
+			}else{
+				$this->load->view('main');
+			}
 		}
 	}
 ?>

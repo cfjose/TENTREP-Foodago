@@ -114,9 +114,73 @@
 			margin: 5px;
 			color: black;
 		}
+<<<<<<< HEAD
+		.panel-default{
+			border-color: black;
+			color: black;
+		}
+		
+=======
+>>>>>>> b6bf2845410930ac02fd2a103acfe3f968ff2944
 		a{
 			text-decoration: none;
 		}
+		.count-input {
+		  position: relative;
+		  width: 70%;
+		  max-width: 165px;
+		  margin: 10px 0;
+		}
+		.count-input input {
+		  width: 70%;
+		  height: 10px;
+		  border-radius: 2px;
+		  background: none;
+		  text-align: center;
+		}
+		.count-input input:focus {
+		  outline: none;
+
+		}
+		.count-input .incr-btn {
+		  display: block;
+		  position: absolute;
+		  width: 30px;
+		  height: 10px;
+		  font-size: 16px;
+		  font-weight: 300;
+		  text-align: center;
+		  line-height: 30px;
+		  top: 50%;
+		  right: 0;
+		  margin-top: -15px;
+		  text-decoration:none;
+		  border-radius: 15px;
+		}
+		.count-input .incr-btn:first-child {
+		  right: auto;
+		  left: 0;
+		  top: 46%;
+		}
+		.count-input.count-input-sm {
+		  max-width: 125px;
+		}
+		.count-input.count-input-sm input {
+		  height: 36px;
+		}
+		.count-input.count-input-lg {
+		  max-width: 200px;
+		}
+		.count-input.count-input-lg input {
+		  height: 70px;
+		  border-radius: 3px;
+		}
+		.btn-white{
+			background-color: transparent;
+			padding: 0px;
+			margin-top: 20px;
+		}
+
 	</style>
 </head>
 <body>
@@ -221,7 +285,6 @@
 								for($i = 0; $i < count($recent_searches); $i++){
 									echo "<a href='" . base_url() . "index.php/main?restaurant_name=". $recent_searches[$i] ."'>" . $recent_searches[$i] . "</a>";
 									echo "<hr class='hr0'/>";
-
 								}				
 							}
 						?>
@@ -241,38 +304,61 @@
 				?>
 			</div>
 		</div>
-                <div class="col-lg-3">
-                    <!--REVIEW ORDER-->
+                <div class="col-sm-4"">
+                    <!--FOOD TRAY-->
                     <div class="panel panel-default">
-                        <div class="panel-heading text-center">
-                            <h4>Review Order</h4>
-                        </div>
+                        <div class="panel-heading text-center"><h5>Current Tray</h5></div>
                         <div class="panel-body">
-                                <div class="col-md-12">
-                                    <strong>Subtotal (# item)</strong>
-                                    <div class="pull-right"><span>$</span><span>200.00</span></div>
-                                </div>
-                                <div class="col-md-12">
-                                    <strong>Tax</strong>
-                                    <div class="pull-right"><span>$</span><span>200.00</span></div>
-                                </div>
-                                <div class="col-md-12">
-                                    <small>Shipping</small>
-                                    <div class="pull-right"><span>-</span></div>
-                                    <hr>
-                                </div>
-                                <div class="col-md-12">
-                                    <strong>Order Total</strong>
-                                    <div class="pull-right"><span>$</span><span>150.00</span></div>
-                                    <hr>
-                                </div>
-                                
-                                <button type="button" class="btn btn-primary btn-lg btn-block">Checkout</button>
-                                
+                           <table class="table borderless">
+                            <thead style="margin: 0px">
+                                <tr>
+                                    <td><h6><strong>Your Tray: # item</strong></h6></td>
+                                    <td></td>
+                                    <td></td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <!-- foreach ($order->lineItems as $line) or some such thing here -->
+                                <tr>
+                                    <td class="col-sm-2">
+
+                                    <h6 align="center" style="margin-top: 20px"> Product Name</h6>
+
+                                    </td>
+                                    <td align="center" class="col-sm-2">
+										<div class="count-input space-bottom">
+										<a class="incr-btn" data-action="decrease" href="#">–</a>
+										<input class="quantity" type="text" name="quantity" value="1"/>
+										<a class="incr-btn" data-action="increase" href="#">&plus;</a>
+										</div>
+                                    </td>
+                                    <td align="center" class="col-sm-1"><button class="btn-white" style="width: 40px"><i class="glyphicon glyphicon-remove"></i></button></td>
+                                </tr>
+                            </tbody>
+                        </table> 
                         </div>
-                        
                     </div>
-                    <!--REVIEW ORDER END-->
+                    <!--FOOD TRAY METHOD END-->
+                    <script type="text/javascript">
+						$(".incr-btn").on("click", function (e) {
+						var $button = $(this);
+						var oldValue = $button.parent().find('.quantity').val();
+						$button.parent().find('.incr-btn[data-action="decrease"]').removeClass('inactive');
+						if ($button.data('action') == "increase") {
+						var newVal = parseFloat(oldValue) + 1;
+						} else {
+						// Don't allow decrementing below 1
+						if (oldValue > 1) {
+						var newVal = parseFloat(oldValue) - 1;
+						} else {
+						newVal = 1;
+						$button.addClass('inactive');
+						}
+						}
+						$button.parent().find('.quantity').val(newVal);
+						e.preventDefault();
+						});
+                    </script>
                 </div>
 </body>
 </html>

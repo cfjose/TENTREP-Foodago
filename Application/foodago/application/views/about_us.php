@@ -60,51 +60,45 @@
 	<div class="background"><br><br>
 		<div class="transbox">
 
-	  	<h1>Timeline</h1>
-	  	<section id="Steps" class="steps-section">
+		  	<h1>Timeline</h1>
+		  	<section id="Steps" class="steps-section">
+			    <h2 class="steps-header">
+			      Responsive Semantic Timeline
+			    </h2>
 
-		    <h2 class="steps-header">
-		      Responsive Semantic Timeline
-		    </h2>
+			    <div class="steps-timeline">
+			    	<div class="steps-one">
+			        	<img class="steps-img" src="http://placehold.it/50/3498DB/FFFFFF" alt="" />
+				        <h3 class="steps-name">
+				        	Semantic
+				        </h3>
+				        <p class="steps-description">
+				          The timeline is created using negative margins and a top border.
+				        </p>
+			      	</div>
 
-		    <div class="steps-timeline">
+			      	<div class="steps-two">
+			        	<img class="steps-img" src="http://placehold.it/50/3498DB/FFFFFF" alt="" />
+			        	<h3 class="steps-name">
+			          		Relative
+			        	</h3>
+				        <p class="steps-description">
+				           All elements are positioned realtive to the parent. No absolute positioning.
+				        </p>
+			      	</div>
 
-		      <div class="steps-one">
-		        <img class="steps-img" src="http://placehold.it/50/3498DB/FFFFFF" alt="" />
-		        <h3 class="steps-name">
-		          Semantic
-		        </h3>
-		        <p class="steps-description">
-		          The timeline is created using negative margins and a top border.
-		        </p>
-		      </div>
-
-		      <div class="steps-two">
-		        <img class="steps-img" src="http://placehold.it/50/3498DB/FFFFFF" alt="" />
-		        <h3 class="steps-name">
-		          Relative
-		        </h3>
-		        <p class="steps-description">
-		           All elements are positioned realtive to the parent. No absolute positioning.
-		        </p>
-		      </div>
-
-		      <div class="steps-three">
-		        <img class="steps-img" src="http://placehold.it/50/3498DB/FFFFFF" alt="" />
-		        <h3 class="steps-name">
-		          Contained
-		        </h3>
-		        <p class="steps-description">
-		           The timeline does not extend past the first and last elements.
-		        </p>
-		      </div>
-
-		    </div><!-- /.steps-timeline -->
-
-		  </section>
-
-
-			  		
+			      	<div class="steps-three">
+				        <img class="steps-img" src="http://placehold.it/50/3498DB/FFFFFF" alt="" />
+				        <h3 class="steps-name">
+				          Contained
+				        </h3>
+				        <p class="steps-description">
+				           The timeline does not extend past the first and last elements.
+				        </p>
+			      	</div>
+			    </div><!-- /.steps-timeline -->
+			  </section>
+		</div>
 	</div>
 
 	<style type="text/css">
@@ -138,6 +132,17 @@
 		/*TIMELINE--------------------------------------------------*/
 		$outline-width:0;
 		$break-point: 500px;
+
+		html {
+		  box-sizing: border-box;
+		}
+		*, *:before, *:after {
+		  box-sizing: inherit;
+		}
+		body {
+		  font-family: lato;
+		}
+
 		$gray-base:     #999999;
 		$brand-primary: #3498DB; //Zen Blue
 
@@ -156,26 +161,26 @@
 		  text-align: center;
 		}
 		.steps-timeline {
-		  outline: 1px dashed rgba(red, $outline-width);
+			outline: 1px dashed rgba(red, $outline-width);
+
+		  	@media screen and (max-width: $break-point) {
+		    	border-left: 2px solid $brand-primary;
+		    	margin-left: 25px;
+		    }
 		  
-		  @media screen and (max-width: $break-point) {
-		    border-left: 2px solid $brand-primary;
-		    margin-left: 25px;
-		  }
+			@media screen and (min-width: $break-point) {
+				order-top: 2px solid $brand-primary;
+			    padding-top: 20px;
+			    margin-top: 40px;
+			    margin-left: 16.65%;
+			    margin-right: 16.65%;
+			}
 		  
-		  @media screen and (min-width: $break-point) {
-		    border-top: 2px solid $brand-primary;
-		    padding-top: 20px;
-		    margin-top: 40px;
-		    margin-left: 16.65%;
-		    margin-right: 16.65%;
-		  }
-		  
-		  &:after {
-		    content: "";
-		    display: table;
-		    clear: both;
-		  }
+			&:after {
+				content: "";
+			    display: table;
+			    clear: both;
+			}
 		}
 		.steps-one,
 		.steps-two,

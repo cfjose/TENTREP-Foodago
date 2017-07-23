@@ -110,6 +110,13 @@
 			margin: 3px;
 			right: 25%;
 		}
+		.hr0{
+			margin: 5px;
+			color: black;
+		}
+		a{
+			text-decoration: none;
+		}
 	</style>
 </head>
 <body>
@@ -166,8 +173,8 @@
 	  	</div>
 	</div>
 		<div class="col-lg-6">
-			<div class="category-nav">
-				<h4> Categories </h4><br/>
+			<div class="category-nav"> <br>
+				<h3> Categories </h3>
 				<?php
 					$query = $this->category->getCategoryNames();
 
@@ -202,22 +209,29 @@
 	                }
 				?>
 			</div>
-			<div class="recent-searches-nav">
-				<h4>Recent Searches</h4><br/>
-				<?php
-					if(isset($_GET['restaurant_name'])){
-						$this->session->userdata['recent_searches'][] = $_GET['restaurant_name'];
-						$recent_searches = array_unique($this->session->userdata['recent_searches']);
+			<div class="recent-searches-nav"> <br>
+			<div class="col-lg-4">
+				<h3>Recent Searches</h3>
+				<div class="panel panel-default">
+					<div class="panel-heading">
+						<?php
+							if(isset($_GET['restaurant_name'])){
+								$this->session->userdata['recent_searches'][] = $_GET['restaurant_name'];
+								$recent_searches = array_unique($this->session->userdata['recent_searches']);
+								for($i = 0; $i < count($recent_searches); $i++){
+									echo "<a href='" . base_url() . "index.php/main?restaurant_name=". $recent_searches[$i] ."'>" . $recent_searches[$i] . "</a>";
+									echo "<hr class='hr0'/>";
 
-						for($i = 0; $i < count($recent_searches); $i++){
-							echo "<li><a href='" . base_url() . "index.php/main?restaurant_name=". $recent_searches[$i] ."'>" . $recent_searches[$i] . "</a></li>";
-						}				
-					}
-				?>
+								}				
+							}
+						?>
+					</div>
+				</div>
+				</div>
 			</div>
 		</div>
 		<div class="col-lg-6">
-			<div class="food-item-list">
+			<div class="food-item-list"> <br>
 				<?php
 					if(isset($_GET['restaurant_name'])){
 						$this->load->view('food_item_list',$_GET['restaurant_name']);
@@ -227,5 +241,38 @@
 				?>
 			</div>
 		</div>
+                <div class="col-lg-3">
+                    <!--REVIEW ORDER-->
+                    <div class="panel panel-default">
+                        <div class="panel-heading text-center">
+                            <h4>Review Order</h4>
+                        </div>
+                        <div class="panel-body">
+                                <div class="col-md-12">
+                                    <strong>Subtotal (# item)</strong>
+                                    <div class="pull-right"><span>$</span><span>200.00</span></div>
+                                </div>
+                                <div class="col-md-12">
+                                    <strong>Tax</strong>
+                                    <div class="pull-right"><span>$</span><span>200.00</span></div>
+                                </div>
+                                <div class="col-md-12">
+                                    <small>Shipping</small>
+                                    <div class="pull-right"><span>-</span></div>
+                                    <hr>
+                                </div>
+                                <div class="col-md-12">
+                                    <strong>Order Total</strong>
+                                    <div class="pull-right"><span>$</span><span>150.00</span></div>
+                                    <hr>
+                                </div>
+                                
+                                <button type="button" class="btn btn-primary btn-lg btn-block">Checkout</button>
+                                
+                        </div>
+                        
+                    </div>
+                    <!--REVIEW ORDER END-->
+                </div>
 </body>
 </html>

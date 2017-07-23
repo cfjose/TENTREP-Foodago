@@ -39,7 +39,8 @@
 	                            	echo "<a class='btn btn-primary' target='_blank' style='width:100%' href='#'>Add to tray</a>";
 	                        	echo "</div>";
 	                        echo "<div class='ratings'>";
-	                            echo "<p class='pull-right'>13 reviews</p>";
+                                $query = $this->feedback->getFoodItemFeedbackCount($row->id);
+	                            echo "<p class='pull-right'>" . $query->num_rows() . " Reviews</p>";
 	                            echo "<p>";
 	                                echo "<span class='glyphicon glyphicon-star'></span>";
 	                                echo "<span class='glyphicon glyphicon-star'></span>";

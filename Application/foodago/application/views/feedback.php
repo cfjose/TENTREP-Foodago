@@ -25,8 +25,11 @@
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 
     <link rel="stylesheet" href="https://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.css">
+    <link rel="stylesheet" href="http://netdna.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css">
+    <link href="http://www.cssscript.com/wp-includes/css/sticky.css" rel="stylesheet" type="text/css">
     <script src="https://code.jquery.com/jquery-1.11.3.min.js"></script>
     <script src="https://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.js"></script>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
 
 	<!-- jQuery library -->
 	<script src="<?php echo base_url(); ?>/js/jquery.min.js"></script>
@@ -238,36 +241,34 @@
 	<div class="container-fluid review">
 		<div>
 			<h2>Rating and Reviews for Yum Burger</h2>
-			<button class="myButton" data-toggle="collapse" data-target="#demo">Write your review</button>
-		</div>
-		<div>
-			<!-- <div class="stars">
-			  <form action="">
-			    <input class="star star-5" id="star-5" type="radio" name="star"/>
-			    <label class="star star-5" for="star-5"></label>
-			    <input class="star star-4" id="star-4" type="radio" name="star"/>
-			    <label class="star star-4" for="star-4"></label>
-			    <input class="star star-3" id="star-3" type="radio" name="star"/>
-			    <label class="star star-3" for="star-3"></label>
-			    <input class="star star-2" id="star-2" type="radio" name="star"/>
-			    <label class="star star-2" for="star-2"></label>
-			    <input class="star star-1" id="star-1" type="radio" name="star"/>
-			    <label class="star star-1" for="star-1"></label>
-			  </form>
-			</div> -->
+			<div style="width: 500px">
+			<button class="myButton" data-toggle="collapse" data-target="#demo">Write your review</button></div>
 		</div>
 		<div id="demo" class="collapse"> 
 			<h3>Please share your experience about this item</h3><hr/>
 			<?php
 				echo form_open('/feedback/createReview');
 			?>
-			<div class="left">
+			<div class="col-md-5">
 
 				<label for="remark">Remark</label><br/>
 				<input type="text" id="remark" name="remark" placeholder="..."/><br/><br/>
 
-				<label for="rating">Rating</label><br/>
-				<input type="text" id="rating" name="rating" placeholder="..."/><br/><br/>
+				<div class="stars">
+				    <form action="">
+				      <input class="star star-5" id="star-5-2" type="radio" name="star"/>
+				      <label class="star star-5" for="star-5-2"></label>
+				      <input class="star star-4" id="star-4-2" type="radio" name="star"/>
+				      <label class="star star-4" for="star-4-2"></label>
+				      <input class="star star-3" id="star-3-2" type="radio" name="star"/>
+				      <label class="star star-3" for="star-3-2"></label>
+				      <input class="star star-2" id="star-2-2" type="radio" name="star"/>
+				      <label class="star star-2" for="star-2-2"></label>
+				      <input class="star star-1" id="star-1-2" type="radio" name="star"/>
+				      <label class="star star-1" for="star-1-2"></label>
+				    </form>
+				</div>
+				<input type="submit" value="Submit Reviews" class="btn btn-warning"/><br/><br/>
 			</div>
 				
 		</div>
@@ -284,7 +285,7 @@
 				<li class="ratingBarList">4 star<span class="ratingBarCell"><span class="ratingBarLine"></span></span>0</li>
 				<li class="ratingBarList">3 star<span class="ratingBarCell"><span class="ratingBarLine"></span></span>0</li>
 				<li class="ratingBarList">2 star<span class="ratingBarCell"><span class="ratingBarLine"></span></span>0</li>
-				<li class="ratingBarList">1 star<span class="ratingBarCell"><span class="ratingBarLine"></span></span>	0</li>
+				<li class="ratingBarList">1 star<span class="ratingBarCell"><span class="ratingBarLine"></span></span>0</li>
 			</ul>
 		</div>
 	</div>
@@ -366,12 +367,17 @@
 			top:1px;
 		}
 
-		/*div.stars {
-		  width: 270px;
+		@import url(http://fonts.googleapis.com/css?family=Roboto:500,100,300,700,400);
+
+
+		div.stars {
+		  width: 300px;
 		  display: inline-block;
 		}
 
-		input.star { display: none; }
+		input.star { 
+			display: none; 
+		}
 
 		label.star {
 		  float: right;
@@ -399,8 +405,19 @@
 		label.star:before {
 		  content: '\f006';
 		  font-family: FontAwesome;
-		}*/
+		}
 	</style>
+
+	<script>
+	  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+	  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+	  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+	  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+	  ga('create', 'UA-46156385-1', 'cssscript.com');
+	  ga('send', 'pageview');
+
+	</script>
 
 </body>
 

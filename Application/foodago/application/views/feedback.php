@@ -1,8 +1,10 @@
+<?php
 
+?>
 <!DOCTYPE html>
 <html>
 <head>
-	<<link rel="icon" href="<?php echo base_url(); ?>assets/images/global/favicon.ico">
+	a<<link rel="icon" href="<?php echo base_url(); ?>assets/images/global/favicon.ico">
 	<title>Foodago</title>
 
 	<meta charset="utf-8">
@@ -15,9 +17,12 @@
 	<link rel="stylesheet" href="<?php echo base_url(); ?>css/style.css">
 	<link rel="stylesheet" href="<?php echo base_url(); ?>css/site.css">
 
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+	<link rel="stylesheet" href="//netdna.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css">
+	<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+
+	  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+	  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+	  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 
     <link rel="stylesheet" href="https://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.css">
     <script src="https://code.jquery.com/jquery-1.11.3.min.js"></script>
@@ -229,6 +234,169 @@
 			</div>
 	  	</div>
 	</div>
+	<hr></hr>
+	<div class="row review">
+		<div class="col-md-6">
+			<h2>Rating and Reviews for Yum Burger</h2>
+			<a href="#" class="myButton">Write your review</a>
+		</div>
+		<div class="col-md-6">
+			<!-- <div class="stars">
+			  <form action="">
+			    <input class="star star-5" id="star-5" type="radio" name="star"/>
+			    <label class="star star-5" for="star-5"></label>
+			    <input class="star star-4" id="star-4" type="radio" name="star"/>
+			    <label class="star star-4" for="star-4"></label>
+			    <input class="star star-3" id="star-3" type="radio" name="star"/>
+			    <label class="star star-3" for="star-3"></label>
+			    <input class="star star-2" id="star-2" type="radio" name="star"/>
+			    <label class="star star-2" for="star-2"></label>
+			    <input class="star star-1" id="star-1" type="radio" name="star"/>
+			    <label class="star star-1" for="star-1"></label>
+			  </form>
+			</div> -->
+		</div>
+	</div>
+	
+	<div class="row review">
+		<div class="col-md-3">
+			<h2><b>5</b> out of 5</h2>
+			<h3>2 rating</h3>
+		</div>
+		<div class="col-md-9">
+			<ul style="list-style: none">
+				<!-- <li>5 star<div class="w3-blue" style="height: 15px; width: 20%;"></div>2</li>
+				<li>4 star<div class="w3-grey" style="height: 15px; width: 20%;"></div>0</li>
+				<li>3 star<div class="w3-grey" style="height: 15px; width: 20%;"></div>0</li>
+				<li>2 star<div class="w3-grey" style="height: 15px; width: 20%;"></div>0</li>
+				<li>1 star<div class="w3-grey" style="height: 15px; width: 20%;"></div>0</li> -->
+				<li class="ratingBarList">5 star<span class="ratingBarCell"><span class="ratingBarLine2"></span></span>2</li>
+				<li class="ratingBarList">4 star<span class="ratingBarCell"><span class="ratingBarLine"></span></span>0</li>
+				<li class="ratingBarList">3 star<span class="ratingBarCell"><span class="ratingBarLine"></span></span>0</li>
+				<li class="ratingBarList">2 star<span class="ratingBarCell"><span class="ratingBarLine"></span></span>0</li>
+				<li class="ratingBarList">1 star<span class="ratingBarCell"><span class="ratingBarLine"></span></span>	0</li>
+			</ul>
+		</div>
+	</div>
+
+	<style type="text/css">
+		.review{
+			margin: 50px;
+		}
+
+		.ratingBarList{
+			display: table-row;
+		    border-spacing: 3px;
+		    white-space: nowrap;
+		}
+
+		.ratingBarCell{
+			display: table-cell;
+		    vertical-align: middle;
+		    height: 15px;
+		    line-height: 15px;
+		    width: 150px;
+		}
+
+		.ratingBarLine{
+			display: inline-block;
+		    min-width: 5px;
+		    height: 12px;
+		    background-color: #f1f1f1;
+		    width: 100%;
+		}
+
+		.ratingBarLine2{
+			display: inline-block;
+		    min-width: 5px;
+		    height: 12px;
+		    background-color: #faca51;
+		    width: 100%;
+		}
+
+
+		.div{
+			display: inline-block;
+			float: left;
+			clear: left;
+		}
+		.myButton {
+			-moz-box-shadow: 0px 1px 0px 0px #fff6af;
+			-webkit-box-shadow: 0px 1px 0px 0px #fff6af;
+			box-shadow: 0px 1px 0px 0px #fff6af;
+			background:-webkit-gradient(linear, left top, left bottom, color-stop(0.05, #ffec64), color-stop(1, #ffab23));
+			background:-moz-linear-gradient(top, #ffec64 5%, #ffab23 100%);
+			background:-webkit-linear-gradient(top, #ffec64 5%, #ffab23 100%);
+			background:-o-linear-gradient(top, #ffec64 5%, #ffab23 100%);
+			background:-ms-linear-gradient(top, #ffec64 5%, #ffab23 100%);
+			background:linear-gradient(to bottom, #ffec64 5%, #ffab23 100%);
+			filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#ffec64', endColorstr='#ffab23',GradientType=0);
+			background-color:#ffec64;
+			-moz-border-radius:6px;
+			-webkit-border-radius:6px;
+			border-radius:6px;
+			border:1px solid #ffaa22;
+			display:inline-block;
+			cursor:pointer;
+			color:#333333;
+			font-family:Arial;
+			font-size:15px;
+			font-weight:bold;
+			padding:6px 24px;
+			text-decoration:none;
+			text-shadow:0px 1px 0px #ffee66;
+		}
+		.myButton:hover {
+			background:-webkit-gradient(linear, left top, left bottom, color-stop(0.05, #ffab23), color-stop(1, #ffec64));
+			background:-moz-linear-gradient(top, #ffab23 5%, #ffec64 100%);
+			background:-webkit-linear-gradient(top, #ffab23 5%, #ffec64 100%);
+			background:-o-linear-gradient(top, #ffab23 5%, #ffec64 100%);
+			background:-ms-linear-gradient(top, #ffab23 5%, #ffec64 100%);
+			background:linear-gradient(to bottom, #ffab23 5%, #ffec64 100%);
+			filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#ffab23', endColorstr='#ffec64',GradientType=0);
+			background-color:#ffab23;
+		}
+		.myButton:active {
+			position:relative;
+			top:1px;
+		}
+
+		/*div.stars {
+		  width: 270px;
+		  display: inline-block;
+		}
+
+		input.star { display: none; }
+
+		label.star {
+		  float: right;
+		  padding: 10px;
+		  font-size: 36px;
+		  color: #444;
+		  transition: all .2s;
+		}
+
+		input.star:checked ~ label.star:before {
+		  content: '\f005';
+		  color: #FD4;
+		  transition: all .25s;
+		}
+
+		input.star-5:checked ~ label.star:before {
+		  color: #FE7;
+		  text-shadow: 0 0 20px #952;
+		}
+
+		input.star-1:checked ~ label.star:before { color: #F62; }
+
+		label.star:hover { transform: rotate(-15deg) scale(1.3); }
+
+		label.star:before {
+		  content: '\f006';
+		  font-family: FontAwesome;
+		}*/
+	</style>
+
 </body>
 
 </html>

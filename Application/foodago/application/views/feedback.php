@@ -19,10 +19,10 @@
 
 	<link rel="stylesheet" href="//netdna.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css">
 	<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
-
-	  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-	  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-	  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+	
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 
     <link rel="stylesheet" href="https://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.css">
     <script src="https://code.jquery.com/jquery-1.11.3.min.js"></script>
@@ -235,12 +235,12 @@
 	  	</div>
 	</div>
 	<hr></hr>
-	<div class="row review">
-		<div class="col-md-6">
+	<div class="container-fluid review">
+		<div>
 			<h2>Rating and Reviews for Yum Burger</h2>
-			<a href="#" class="myButton">Write your review</a>
+			<button class="myButton" data-toggle="collapse" data-target="#demo">Write your review</button>
 		</div>
-		<div class="col-md-6">
+		<div>
 			<!-- <div class="stars">
 			  <form action="">
 			    <input class="star star-5" id="star-5" type="radio" name="star"/>
@@ -256,6 +256,21 @@
 			  </form>
 			</div> -->
 		</div>
+		<div id="demo" class="collapse"> 
+			<h3>Please share your experience about this item</h3><hr/>
+			<?php
+				echo form_open('/feedback/createReview');
+			?>
+			<div class="left">
+
+				<label for="remark">Remark</label><br/>
+				<input type="text" id="remark" name="remark" placeholder="..."/><br/><br/>
+
+				<label for="rating">Rating</label><br/>
+				<input type="text" id="rating" name="rating" placeholder="..."/><br/><br/>
+			</div>
+				
+		</div>
 	</div>
 	
 	<div class="row review">
@@ -264,12 +279,7 @@
 			<h3>2 rating</h3>
 		</div>
 		<div class="col-md-9">
-			<ul style="list-style: none">
-				<!-- <li>5 star<div class="w3-blue" style="height: 15px; width: 20%;"></div>2</li>
-				<li>4 star<div class="w3-grey" style="height: 15px; width: 20%;"></div>0</li>
-				<li>3 star<div class="w3-grey" style="height: 15px; width: 20%;"></div>0</li>
-				<li>2 star<div class="w3-grey" style="height: 15px; width: 20%;"></div>0</li>
-				<li>1 star<div class="w3-grey" style="height: 15px; width: 20%;"></div>0</li> -->
+			<ul style="list-style: none"><br>
 				<li class="ratingBarList">5 star<span class="ratingBarCell"><span class="ratingBarLine2"></span></span>2</li>
 				<li class="ratingBarList">4 star<span class="ratingBarCell"><span class="ratingBarLine"></span></span>0</li>
 				<li class="ratingBarList">3 star<span class="ratingBarCell"><span class="ratingBarLine"></span></span>0</li>
@@ -314,12 +324,6 @@
 		    width: 100%;
 		}
 
-
-		.div{
-			display: inline-block;
-			float: left;
-			clear: left;
-		}
 		.myButton {
 			-moz-box-shadow: 0px 1px 0px 0px #fff6af;
 			-webkit-box-shadow: 0px 1px 0px 0px #fff6af;
@@ -345,6 +349,7 @@
 			padding:6px 24px;
 			text-decoration:none;
 			text-shadow:0px 1px 0px #ffee66;
+			width: 50px;
 		}
 		.myButton:hover {
 			background:-webkit-gradient(linear, left top, left bottom, color-stop(0.05, #ffab23), color-stop(1, #ffec64));

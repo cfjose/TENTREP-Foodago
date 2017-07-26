@@ -277,6 +277,7 @@
 	</div>
 	<div class="row review">
 		<div class="col-md-3">
+			<p class="aveProdRat">Average Product Rating</p>
 			<h2><b>5</b> out of 5</h2>
 			<h3>2 ratings 2 reviews</h3>
 		</div>
@@ -309,9 +310,7 @@
 			<li style="margin-bottom: 15px;">
 				<div class="reviewDetails">
 					<span class="ratingOption">
-						<ul class="ratOption">
-							<li style="padding-top: 2px; margin-right: 0;"></li>
-						</ul>
+						
 					</span>
 					<span class="revTitle">Create product and service</span>
 					<span style="text-align: right;">1 day ago</span>
@@ -328,6 +327,13 @@
 	</div>
 
 	<style type="text/css">
+		.aveProdRat{
+			font-size: 20px;
+		    background: 0 0;
+		    padding: 0;
+		    margin-bottom: 4px;
+		    color: #202020;	
+		}
 		.ratOption{
 			line-height: 17px;
 		    padding: 0;

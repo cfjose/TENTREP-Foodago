@@ -238,46 +238,47 @@
 	  	</div>
 	</div>
 	<hr></hr>
-	<div class="container-fluid review">
-		<div>
-			<h2>Rating and Reviews for Yum Burger</h2>
-			<div style="width: 500px">
-			<button class="myButton" data-toggle="collapse" data-target="#demo">Write your review</button></div>
-		</div>
-		<div id="demo" class="collapse"> 
-			<h3>Please share your experience about this item</h3><hr/>
-			<?php
-				echo form_open('/feedback/createReview');
-			?>
-			<div class="col-md-5">
-
-				<label for="remark">Remark</label><br/>
-				<input type="text" id="remark" name="remark" placeholder="..."/><br/><br/>
-
-				<div class="stars">
-				    <form action="">
-				      <input class="star star-5" id="star-5-2" type="radio" name="star"/>
-				      <label class="star star-5" for="star-5-2"></label>
-				      <input class="star star-4" id="star-4-2" type="radio" name="star"/>
-				      <label class="star star-4" for="star-4-2"></label>
-				      <input class="star star-3" id="star-3-2" type="radio" name="star"/>
-				      <label class="star star-3" for="star-3-2"></label>
-				      <input class="star star-2" id="star-2-2" type="radio" name="star"/>
-				      <label class="star star-2" for="star-2-2"></label>
-				      <input class="star star-1" id="star-1-2" type="radio" name="star"/>
-				      <label class="star star-1" for="star-1-2"></label>
-				    </form>
-				</div>
-				<input type="submit" value="Submit Reviews" class="btn btn-warning"/><br/><br/>
+	<div>
+		<div class="container-fluid review">
+			<div>
+				<h2>Rating and Reviews for Yum Burger</h2>
+				<div style="width: 500px">
+				<button class="myButton" data-toggle="collapse" data-target="#demo">Write your review</button></div>
 			</div>
-				
+			<div id="demo" class="collapse"> 
+				<h3>Please share your experience about this item</h3><hr/>
+				<?php
+					echo form_open('/feedback/createReview');
+				?>
+				<div class="col-md-5">
+
+					<label for="remark">Remark</label><br/>
+					<input type="text" id="remark" name="remark" placeholder="..."/><br/><br/>
+
+					<div class="stars">
+					    <form action="">
+					      <input class="star star-5" id="star-5-2" type="radio" name="star"/>
+					      <label class="star star-5" for="star-5-2"></label>
+					      <input class="star star-4" id="star-4-2" type="radio" name="star"/>
+					      <label class="star star-4" for="star-4-2"></label>
+					      <input class="star star-3" id="star-3-2" type="radio" name="star"/>
+					      <label class="star star-3" for="star-3-2"></label>
+					      <input class="star star-2" id="star-2-2" type="radio" name="star"/>
+					      <label class="star star-2" for="star-2-2"></label>
+					      <input class="star star-1" id="star-1-2" type="radio" name="star"/>
+					      <label class="star star-1" for="star-1-2"></label>
+					    </form>
+					</div>
+					<input type="submit" value="Submit Reviews" class="btn btn-warning"/><br/><br/>
+				</div>
+					
+			</div>
 		</div>
 	</div>
-	
 	<div class="row review">
 		<div class="col-md-3">
 			<h2><b>5</b> out of 5</h2>
-			<h3>2 rating</h3>
+			<h3>2 ratings 2 reviews</h3>
 		</div>
 		<div class="col-md-9">
 			<ul style="list-style: none"><br>
@@ -290,7 +291,115 @@
 		</div>
 	</div>
 
+	<div class="reviewsSection">
+
+		<div class="reviewTitle">
+			<h4 class="reviewTitleHead">Product Reviews</h4>
+
+			<div class="reviewFilter" style="display: inline-block; margin: 20px;">
+				<span class="select_theme_review">Filter by:</span>
+			</div>
+
+			<div class="reviewSort" style="display: inline-block; margin: 20px;">
+				<span class="select_theme_review">Sort by:</span>
+			</div>
+		</div>
+
+		<ul class="reviewLists">
+			<li style="margin-bottom: 15px;">
+				<div class="reviewDetails">
+					<span class="ratingOption">
+						<ul class="ratOption">
+							<li style="padding-top: 2px; margin-right: 0;"></li>
+						</ul>
+					</span>
+					<span class="revTitle">Create product and service</span>
+					<span style="text-align: right;">1 day ago</span>
+				</div>
+				<div class="reviewAuthor">
+					By Chamber Jose
+				</div>
+				<div class="reviewDetailDesc">
+					Hello! This is amaaaaaaaaaazing!!!!
+				</div>
+			</li>
+		</ul>
+
+	</div>
+
 	<style type="text/css">
+		.ratOption{
+			line-height: 17px;
+		    padding: 0;
+		    background-color: transparent;
+		    display: inline-block;
+		    vertical-align: top;
+		}
+		.ratingOption{
+			display: table-cell;
+		    vertical-align: top;
+		    width: 75px;
+		}
+
+		.revTitle{
+			display: table-cell;
+		    padding-left: 3px;
+		    width: 75%;
+		}
+
+		.reviewDetailDesc{
+		    color: #202020;
+		    margin: 8px 0 12px;
+		    overflow: hidden;
+		    word-wrap: break-word;
+		    line-height: 1.31;
+		    font-size: 13px;
+		}
+		.reviewAuthor{
+			font-size: 12px;
+		    font-weight: 300;
+		    line-height: 14px;
+		    color: gray;
+		}
+		.reviewDetails{
+			line-height: 17px;
+		    margin-bottom: 7px;
+		    display: table;
+		    width: 100%;
+		}
+		.reviewList{
+			padding: 0 0 0 15px;
+		}
+
+		.reviewTitleHead{
+		    float: left;
+		    padding: 12px 15px;
+		    color: #202020;
+		    font-size: 14px;
+		}
+		.select_theme_review{
+			border: none;
+		    background: 0 0;
+		    font-size: 13px;
+		    line-height: 20px;
+		    color: #202020;
+		    padding: 12px 15px 10px;
+		    cursor: pointer;
+		}
+		.reviewsSection{
+			margin: 20px;
+			padding: 20px;
+			position: relative;
+			width: 50%;
+		}
+
+		.reviewTitle{
+			margin: 25px 0 15px;
+			background: #f1f1f1;
+			text-align: right;
+			height: 60px;
+		}
+
 		.review{
 			margin: 50px;
 		}
@@ -418,6 +527,7 @@
 	  ga('send', 'pageview');
 
 	</script>
+
 
 </body>
 

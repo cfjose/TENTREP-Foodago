@@ -16,6 +16,7 @@
 	<link rel="stylesheet" href="<?php echo base_url(); ?>css/boostrap.css">
 	<link rel="stylesheet" href="<?php echo base_url(); ?>css/style.css">
 	<link rel="stylesheet" href="<?php echo base_url(); ?>css/site.css">
+	<link rel="stylesheet" href="<?php echo base_url(); ?>css/review.css">
 
 	<link rel="stylesheet" href="//netdna.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css">
 	<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
@@ -237,7 +238,15 @@
 			</div>
 	  	</div>
 	</div>
-	<hr></hr>
+	
+
+	<div class="recommendation" style="margin-bottom: 10px;">
+		<div class="recTitle" style="margin: 5px 0 17px;">Popular Restaurant for Burgers</div>
+		<div class="recList"></div>
+		
+	</div>
+	
+	<hr style="border-top: 2px solid #8c8b8b; width: 50%; margin-left: 60px;" >
 	<div>
 		<div class="container-fluid review">
 			<div>
@@ -274,44 +283,39 @@
 					
 			</div>
 		</div>
-	</div>
-	<div class="row review">
-		<div class="col-md-3">
-			<p class="aveProdRat">Average Product Rating</p>
-			<h2><b>5</b> out of 5</h2>
-			<h3>2 ratings 2 reviews</h3>
-		</div>
-		<div class="col-md-9">
-			<ul style="list-style: none"><br>
-				<li class="ratingBarList">5 star<span class="ratingBarCell"><span class="ratingBarLine2"></span></span>2</li>
-				<li class="ratingBarList">4 star<span class="ratingBarCell"><span class="ratingBarLine"></span></span>0</li>
-				<li class="ratingBarList">3 star<span class="ratingBarCell"><span class="ratingBarLine"></span></span>0</li>
-				<li class="ratingBarList">2 star<span class="ratingBarCell"><span class="ratingBarLine"></span></span>0</li>
-				<li class="ratingBarList">1 star<span class="ratingBarCell"><span class="ratingBarLine"></span></span>0</li>
-			</ul>
+		
+		<div class="row review">
+			<div class="col-md-4">
+				<p class="aveProdRat">Average Product Rating</p>
+				<h2><b>5</b> out of 5</h2>
+				<h3>2 ratings 2 reviews</h3>
+			</div>
+			<div class="col-md-8">
+				<ul style="list-style: none"><br>
+					<li class="ratingBarList">5 star<span class="ratingBarCell"><span class="ratingBarLine2"></span></span>2</li>
+					<li class="ratingBarList">4 star<span class="ratingBarCell"><span class="ratingBarLine"></span></span>0</li>
+					<li class="ratingBarList">3 star<span class="ratingBarCell"><span class="ratingBarLine"></span></span>0</li>
+					<li class="ratingBarList">2 star<span class="ratingBarCell"><span class="ratingBarLine"></span></span>0</li>
+					<li class="ratingBarList">1 star<span class="ratingBarCell"><span class="ratingBarLine"></span></span>0</li>
+				</ul>
+			</div>
 		</div>
 	</div>
 
 	<div class="reviewsSection">
-
 		<div class="reviewTitle">
 			<h4 class="reviewTitleHead">Product Reviews</h4>
-
 			<div class="reviewFilter" style="display: inline-block; margin: 20px;">
 				<span class="select_theme_review">Filter by:</span>
 			</div>
-
 			<div class="reviewSort" style="display: inline-block; margin: 20px;">
 				<span class="select_theme_review">Sort by:</span>
 			</div>
 		</div>
-
-		<ul class="reviewLists">
+		<ul class="reviewLists" style="list-style: none;">
 			<li style="margin-bottom: 15px;">
 				<div class="reviewDetails">
-					<span class="ratingOption">
-						
-					</span>
+					<span class="ratingOption"></span>
 					<span class="revTitle">Create product and service</span>
 					<span style="text-align: right;">1 day ago</span>
 				</div>
@@ -327,117 +331,10 @@
 	</div>
 
 	<style type="text/css">
-		.aveProdRat{
-			font-size: 20px;
-		    background: 0 0;
-		    padding: 0;
-		    margin-bottom: 4px;
-		    color: #202020;	
-		}
-		.ratOption{
-			line-height: 17px;
-		    padding: 0;
-		    background-color: transparent;
-		    display: inline-block;
-		    vertical-align: top;
-		}
-		.ratingOption{
-			display: table-cell;
-		    vertical-align: top;
-		    width: 75px;
-		}
-
-		.revTitle{
-			display: table-cell;
-		    padding-left: 3px;
-		    width: 75%;
-		}
-
-		.reviewDetailDesc{
-		    color: #202020;
-		    margin: 8px 0 12px;
-		    overflow: hidden;
-		    word-wrap: break-word;
-		    line-height: 1.31;
-		    font-size: 13px;
-		}
-		.reviewAuthor{
-			font-size: 12px;
-		    font-weight: 300;
-		    line-height: 14px;
-		    color: gray;
-		}
-		.reviewDetails{
-			line-height: 17px;
-		    margin-bottom: 7px;
-		    display: table;
-		    width: 100%;
-		}
-		.reviewList{
-			padding: 0 0 0 15px;
-		}
-
-		.reviewTitleHead{
-		    float: left;
-		    padding: 12px 15px;
-		    color: #202020;
-		    font-size: 14px;
-		}
-		.select_theme_review{
-			border: none;
-		    background: 0 0;
-		    font-size: 13px;
-		    line-height: 20px;
-		    color: #202020;
-		    padding: 12px 15px 10px;
-		    cursor: pointer;
-		}
-		.reviewsSection{
-			margin: 20px;
-			padding: 20px;
-			position: relative;
-			width: 50%;
-		}
-
-		.reviewTitle{
-			margin: 25px 0 15px;
-			background: #f1f1f1;
-			text-align: right;
-			height: 60px;
-		}
+		
 
 		.review{
 			margin: 50px;
-		}
-
-		.ratingBarList{
-			display: table-row;
-		    border-spacing: 3px;
-		    white-space: nowrap;
-		}
-
-		.ratingBarCell{
-			display: table-cell;
-		    vertical-align: middle;
-		    height: 15px;
-		    line-height: 15px;
-		    width: 150px;
-		}
-
-		.ratingBarLine{
-			display: inline-block;
-		    min-width: 5px;
-		    height: 12px;
-		    background-color: #f1f1f1;
-		    width: 100%;
-		}
-
-		.ratingBarLine2{
-			display: inline-block;
-		    min-width: 5px;
-		    height: 12px;
-		    background-color: #faca51;
-		    width: 100%;
 		}
 
 		.myButton {

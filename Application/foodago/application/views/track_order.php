@@ -38,7 +38,57 @@
 	<script type="text/javascript" src="<?php echo base_url(); ?>js/easing.js"></script>
 	<script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); }
 	</script>
-	
+
+	<style>
+		input[type=text], select {
+			width: 50%;
+			padding: 11px 15px;
+			margin: 8px 0;
+			display: inline-block;
+			border: 1px solid #ccc;
+			border-radius: 4px;
+			box-sizing: border-box;
+		}
+
+		input[type=submit] {
+			width: 15%;
+			background-color: #98d091;
+			color: white;
+			padding: 14px 20px;
+			margin: 8px 0;
+			border: none;
+			border-radius: 3px;
+			cursor: pointer;
+			margin-left: 78%;
+		}
+
+		input[type=submit]:hover {
+			background-color: #45a049;
+		}
+
+		.input {
+			border-radius: 2px;
+			background-color: #F6F6F6;
+			padding: 5px;
+			width: 60%;
+			margin-left: 20%;
+		}
+
+		.input-field1 {
+			margin-left: 35px;
+			display: inline-block;
+		}
+
+		.input-field2 {
+			margin-right: 35px;
+			display: inline-block;
+		}
+
+		.button {
+			margin-top: -8%;
+		}
+	</style>
+
 </head>
 <body>
 	<nav class="navbar-inverse navbar-fixed-top">
@@ -57,8 +107,25 @@
 	  	</div>
 	</nav>
 
+<br><br><br>
 
-<br><br>
+<div class="field">
+	<form action="/action_page.php">
+		<div class="input">
+			<div class="input-field1">
+				<label for="fname">Tracking Number</label>
+				<input type="text" id="fname" name="firstname">
+			</div>
+			<div class="input-field2">
+				<label for="fname">Email Address</label>
+				<input type="text" id="fname" name="firstname">
+			</div>
+			<div class="button">
+				<input type="submit" value="Submit">
+			</div>
+		</div>
+	</form>
+</div>
 
 <div class="content">
 	<div class="content1">

@@ -48,6 +48,7 @@
 			border: 1px solid #ccc;
 			border-radius: 4px;
 			box-sizing: border-box;
+
 		}
 
 		input[type=submit] {
@@ -110,18 +111,18 @@
 <br><br><br>
 
 <div class="field">
-	<form action="/action_page.php">
+	<form action="#">
 		<div class="input">
 			<div class="input-field1">
-				<label for="fname">Tracking Number</label>
-				<input type="text" id="fname" name="firstname">
+				<label for="tnum">Tracking Number</label>
+				<input type="text" id="tnum" name="tracknum">
 			</div>
 			<div class="input-field2">
-				<label for="fname">Email Address</label>
-				<input type="text" id="fname" name="firstname">
+				<label for="email">Email Address</label>
+				<input type="text" id="email" name="emailadd">
 			</div>
 			<div class="button">
-				<input type="submit" value="Submit">
+				<input type="submit" value="Search">
 			</div>
 		</div>
 	</form>

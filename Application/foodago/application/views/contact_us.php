@@ -6,32 +6,38 @@
 		// CONTINUE WITH PAGE
 	}
 ?>
+
 <!DOCTYPE html>
 <html>
 <head>
-	<link rel="icon" href="<?php echo base_url(); ?>assets/images/global/favicon.ico">
-	<title>Foodago</title>
 
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 
-	<!-- Latest compiled and minified CSS -->
-	<link rel="stylesheet" href="<?php echo base_url(); ?>/css/bootstrap.min.css">
-	<link rel="stylesheet" href="<?php echo base_url(); ?>/css/animate.css">
-	<link rel="stylesheet" href="<?php echo base_url(); ?>/css/boostrap.css">
-	<link rel="stylesheet" href="<?php echo base_url(); ?>/css/style.css">
+	<link rel="icon" href="<?php echo base_url(); ?>assets/images/global/favicon.ico">
+	<title>Foodago</title>
+
+	<!-- CSS -->
+	<link rel="stylesheet" href="<?php echo base_url(); ?>css/bootstrap.min.css">
+	<link rel="stylesheet" href="<?php echo base_url(); ?>css/bootstrap.css"  type='text/css' />
+	<link rel="stylesheet" href="<?php echo base_url(); ?>css/style.css"  type="text/css" media="all" />
+	<link rel="stylesheet" href="<?php echo base_url(); ?>css/animate.css" type='text/css' />
+	<link href='http://fonts.googleapis.com/css?family=Lobster+Two:400,400italic,700,700italic' rel='stylesheet' type='text/css'>
+	<link href='http://fonts.googleapis.com/css?family=Source+Sans+Pro:200,300,400,600,700,900,200itali
+	c,300italic,400italic,600italic,700italic,900italic' rel='stylesheet' type='text/css'>
 	<link rel="stylesheet" href="<?php echo base_url(); ?>/css/site.css">
 
 	<!-- jQuery library -->
-	<script src="<?php echo base_url(); ?>/js/jquery.min.js"></script>
-
-	<!-- Latest compiled JavaScript -->
-	<script src="<?php echo base_url(); ?>/js/bootstrap.min.js"></script>
+	<script src="<?php echo base_url() ?>js/bootstrap.min.js"></script>
+	<script src="<?php echo base_url(); ?>js/jquery.min.js"></script>
+	<script src="<?php echo base_url(); ?>js/wow.min.js"></script>
+	<script src="<?php echo base_url(); ?>js/simpleCart.min.js"> </script>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+	<script type="text/javascript" src="<?php echo base_url(); ?>js/move-top.js"></script>
+	<script type="text/javascript" src="<?php echo base_url(); ?>js/easing.js"></script>
 
 	<style>
-		body{
-			overflow-y: hidden;
-		}
+		body{ overflow-y: hidden; }
 
 		.bg-main{
 			filter: brightness(30%);

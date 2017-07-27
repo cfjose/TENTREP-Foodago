@@ -1,0 +1,125 @@
+.recommendation{
+	margin-top: 50px;
+	margin-left: 70px;
+}
+.recTitle{
+	padding: 0;
+    font-size: 30px;
+    line-height: 1.1em;
+    font-weight: 700;
+    border: none;
+    text-transform: none;
+}
+
+.recList{
+	height: 360px;
+}
+
+.aveProdRat{
+	font-size: 20px;
+    background: 0 0;
+    padding: 0;
+    margin-bottom: 4px;
+    color: #202020;	
+}
+.ratOption{
+	line-height: 17px;
+    padding: 0;
+    background-color: transparent;
+    display: inline-block;
+    vertical-align: top;
+}
+.ratingOption{
+	display: table-cell;
+    vertical-align: top;
+    width: 75px;
+}
+
+.revTitle{
+	display: table-cell;
+    padding-left: 3px;
+    width: 75%;
+}
+
+.reviewDetailDesc{
+    color: #202020;
+    margin: 8px 0 12px;
+    overflow: hidden;
+    word-wrap: break-word;
+    line-height: 1.31;
+    font-size: 13px;
+}
+.reviewAuthor{
+	font-size: 12px;
+    font-weight: 300;
+    line-height: 14px;
+    color: gray;
+}
+.reviewDetails{
+	line-height: 17px;
+    margin-bottom: 7px;
+    display: table;
+    width: 100%;
+}
+.reviewList{
+	padding: 0 0 0 15px;
+}
+
+.reviewTitleHead{
+    float: left;
+    padding: 12px 15px;
+    color: #202020;
+    font-size: 20px;
+}
+.select_theme_review{
+	border: none;
+    background: 0 0;
+    font-size: 20px;
+    line-height: 20px;
+    color: #202020;
+    padding: 12px 15px 10px;
+    cursor: pointer;
+}
+.reviewsSection{
+	margin-left: 50px;
+	padding: 20px;
+	position: relative;
+	width: 50%;
+}
+
+.reviewTitle{
+	margin: 25px 0 15px;
+	background: #f1f1f1;
+	text-align: right;
+	height: 60px;
+}
+
+.ratingBarList{
+	display: table-row;
+    border-spacing: 3px;
+    white-space: nowrap;
+}
+
+.ratingBarCell{
+	display: table-cell;
+    vertical-align: middle;
+    height: 15px;
+    line-height: 15px;
+    width: 150px;
+}
+
+.ratingBarLine{
+	display: inline-block;
+    min-width: 5px;
+    height: 10px;
+    background-color: #f1f1f1;
+    width: 100%;
+}
+
+.ratingBarLine2{
+	display: inline-block;
+    min-width: 5px;
+    height: 10px;
+    background-color: #faca51;
+    width: 100%;
+}

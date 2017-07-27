@@ -31,7 +31,12 @@
 				foreach($query->result() as $row){
 					echo "<div class='col-lg-6'>";
 	                    echo "<div class='thumbnail'>";
-	                        echo "<img src='http://placehold.it/320x150' alt=''>";
+	                    	$file_name = strtolower(preg_replace('/[^A-Za-z0-9\-.]/', '', $row->name));
+	                    	if(file_exists(FCPATH . '/assets/images/main/food/' . $file_name . '.jpg')){
+	                    		echo "<img src='".base_url()."/assets/images/main/food/".$file_name.".jpg' alt='' width='320px' height='200px'>";
+	                    	}else{
+								echo "<img src='http://placehold.it/320x150' alt=''>";
+	                    	}
 	                        	echo "<div class='caption'>";
 	                            	echo "<h5 class='pull-right'>&#x20B1 " . $row->price . "</h5>";
 	                            	echo "<h5><a href='#'>" . $row->name . "</a></h5>";

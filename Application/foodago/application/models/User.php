@@ -59,5 +59,9 @@
 				return false;
 			}
 		}
+
+		public function updateUserInfo($data){
+			// UPDATE USER QUERIES
+		}
 	}
 ?>

@@ -23,7 +23,6 @@
 			}else{
 				// CONTINUE WITH PAGE
 				$this->form_validation->set_rules('first_name', 'First Name', 'required|xss_clean');
-				$this->form_validation->set_rules('middle_name', 'Middle Name', 'xss_clean');	
 				$this->form_validation->set_rules('last_name', 'Last Name', 'required|xss_clean');
 				$this->form_validation->set_rules('bday', 'Birthdate', 'trim|required|xss_clean');
 				$this->form_validation->set_rules('gender', 'Gender', 'trim|required|xss_clean');
@@ -47,7 +46,6 @@
 
 					$data = array(
 							'first_name' => $this->input->post('first_name'),
-							'middle_name' => $this->input->post('middle_name'),
 							'last_name' => $this->input->post('last_name'),
 							'birthdate' => $this->input->post('bday'),
 							'gender' => $this->input->post('gender'),
@@ -106,7 +104,10 @@
 													'last_name' => $result[0]->last_name,
 													'username' => $result[0]->username,
 													'email' => $result[0]->email,
+													'id' => $result[0]->user_id,
+													'created_at' => date_parse($result[0]->created_at),
 													'recent_searches' => array(),
+													'food_tray' => array('Sample', 'Test', 'Qwerty'),
 													'logged_in' => TRUE,
 													'user_type' => $query->row()->name);
 
@@ -123,10 +124,11 @@
 
 		public function logout(){
 			$sess_array = array('username' => '',
-								'recent_searches' => array());
+								'recent_searches' => array(),
+								'food_tray' => array());
 
 			$this->session->unset_userdata('logged_in', $sess_array);
-			redirect(base_url() . 'index.php/login');
+			redirect(base_url() . 'index.php/login/userLogin');
 		}
 	}
 ?>

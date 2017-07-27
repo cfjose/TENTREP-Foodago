@@ -10,6 +10,8 @@
 			$this->load->model('order');
 
 			$this->load->model('feedback');
+
+			$this->load->model('penalty');
 		}
 
 		public function index(){

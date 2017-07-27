@@ -10,5 +10,14 @@
 			$query = $this->db->get();
 			return $query;
 		}
+
+		public function getUserOrders($data){
+			$this->db->select('*');
+			$this->db->from('order');
+			$this->db->where("user_id ='" . $data . "'");
+
+			$query = $this->db->get();
+			return $query;
+		}
 	}
 ?>

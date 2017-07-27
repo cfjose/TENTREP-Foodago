@@ -21,20 +21,9 @@
 	<link rel="stylesheet" href="<?php echo base_url(); ?>css/style.css">
 	<link rel="stylesheet" href="<?php echo base_url(); ?>css/site.css">
 
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 
-    <link rel="stylesheet" href="https://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.css">
-    <script src="https://code.jquery.com/jquery-1.11.3.min.js"></script>
-    <script src="https://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.js"></script>
-
-	<!-- jQuery library -->
-	<script src="<?php echo base_url(); ?>/js/jquery.min.js"></script>
-
-	<!-- Latest compiled JavaScript -->
-	<script src="<?php echo base_url(); ?>/js/bootstrap.min.js"></script>
-
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 	<style>
 		.carousel-inner{
 			height: 600px;
@@ -85,6 +74,7 @@
 			top: 35%;
 			min-height:100px;
 			margin-left:-380px;
+			float: left;
 		}
 
 		.subcategory-pane{
@@ -110,6 +100,7 @@
 			margin: 3px;
 			right: 25%;
 		}
+		
 		.hr0{
 			margin: 5px;
 			color: black;
@@ -120,15 +111,18 @@
 			color: black;
 		}
 		
-		a{
+		a, .panel-default a{
 			text-decoration: none;
+			color: black;
 		}
+
 		.count-input {
 		  position: relative;
 		  width: 70%;
 		  max-width: 165px;
 		  margin: 10px 0;
 		}
+
 		.count-input input {
 		  width: 70%;
 		  height: 10px;
@@ -136,10 +130,12 @@
 		  background: none;
 		  text-align: center;
 		}
+
 		.count-input input:focus {
 		  outline: none;
 
 		}
+
 		.count-input .incr-btn {
 		  display: block;
 		  position: absolute;
@@ -155,30 +151,64 @@
 		  text-decoration:none;
 		  border-radius: 15px;
 		}
+
 		.count-input .incr-btn:first-child {
 		  right: auto;
 		  left: 0;
 		  top: 46%;
 		}
+
 		.count-input.count-input-sm {
 		  max-width: 125px;
 		}
+
 		.count-input.count-input-sm input {
 		  height: 36px;
 		}
+
 		.count-input.count-input-lg {
 		  max-width: 200px;
 		}
+
 		.count-input.count-input-lg input {
 		  height: 70px;
 		  border-radius: 3px;
 		}
+
 		.btn-white{
 			background-color: transparent;
 			padding: 0px;
 			margin-top: 20px;
 		}
 
+		.panel-default, .food-tray{
+			border: 1px solid #ccc;
+		}
+
+		.food-tray{
+			right: 3%;
+			top: -50px;
+			float: right;
+		}
+
+		.ft-header{
+			margin-top: 3%;
+			text-align: center;
+		}
+
+		.no-avail-list{
+			line-height: 200px;
+			text-align: center;
+			color: #ccc;
+		}
+
+		.btn-warning{
+			margin-left: 18%;
+		}
+
+		input[type='number']{
+			width: 70%;
+		}
 	</style>
 </head>
 <body>
@@ -195,8 +225,8 @@
 					<ul class="dropdown-menu">
 						<p align="center">You are currently logged in as <b><?php echo $this->session->userdata('first_name') . " " . $this->session->userdata('last_name'); ?></b></p>
 						<li class="divider"></li>
-						<li><a href="<?php echo base_url(); ?>index.php/profile">My Profile</a></li>
-						<li><a href="<?php echo base_url(); ?>index.php/profile/accountSettings">Account Settings</a></li>
+						<li><a href="<?php echo base_url(); ?>index.php/profile?page_view=profile">My Profile</a></li>
+						<li><a href="<?php echo base_url(); ?>index.php/profile?page_view=acct_settings">Account Settings</a></li>
 						<li><a href="<?php echo base_url(); ?>index.php/login/logout">Logout</a></li>
 					</ul>
 	  			</div>
@@ -226,50 +256,57 @@
 
 							document.getElementById("greetings").innerHTML = greet + ", " + <?php echo json_encode($this->session->userdata('first_name')) ?>;
 						}
-					</script>
-					<h2>Are you Hungry?</h2>
+					</script><br/>
+					<h2>Are you Hungry?</h2><br/>
 					<h2>Search for your favorite restaurants / fast food chains online</h2><br/>
 					<input type="text" id="q" placeholder="Search for Restaurants and Fast food Chains"/>
 				</form>
 			</div>
 	  	</div>
 	</div>
-		<div class="col-lg-6">
+		<div class="col-md-6">
 			<div class="category-nav"> <br>
-				<h3> Categories </h3>
-				<?php
-					$query = $this->category->getCategoryNames();
+				<h3> Categories </h3><br/>
+				<div class="panel-group">
+					<?php
+						$query = $this->category->getCategoryNames();
 
-					foreach ($query->result() as $row){
-						$name = $row->name;
+						foreach ($query->result() as $row){
+							$name = $row->name;
 
-						$categoryId = $this->category->getCategoryId($name);
+							$categoryId = $this->category->getCategoryId($name);
 
-						// GET NUMBER OF RESTAURANT PER CATEGORY, IF 0, DO NOT PRINT CATEGORY
-						$query = $this->restaurant->getResId($categoryId);
-						$totalResCount = $query->num_rows();
-
-						if($totalResCount == 0){
-							// DO NOT PRINT CATEGORY
-						}else{
-							echo "<div data-role='collapsible'>";
-							echo "<h5>" . $name . "</h5>";
-							echo "<ul data-role='listview'>";
-
+							// GET NUMBER OF RESTAURANT PER CATEGORY, IF 0, DO NOT PRINT CATEGORY
 							$query = $this->restaurant->getResId($categoryId);
+							$totalResCount = $query->num_rows();
 
-							foreach($query->result() as $row){
-								$result = $this->restaurant->getRestaurantName($row->restaurant_id);
-								$row = $result->row()->name;
+							if($totalResCount == 0){
+								// DO NOT PRINT CATEGORY
+							}else{
+								$trimmed_str_name = str_replace(' ', '', $name);
+								echo "<div class='panel panel-default'>";
+									echo "<a data-toggle='collapse' href='#".$trimmed_str_name."'><div class='panel-heading'>";
+									echo "<h4 class='panel-title'>" . $name . "</h4></div></a>";
 
-								echo "<li><a href='" . base_url() . "index.php/main?restaurant_name=". $row ."'>" . $row . "</a></li>";
+							      	echo "<div id='".$trimmed_str_name."' class='panel-collapse collapse'>";
+							      		echo "<ul class='list-group'>";
+
+											$query = $this->restaurant->getResId($categoryId);
+
+											foreach($query->result() as $row){
+												$result = $this->restaurant->getRestaurantName($row->restaurant_id);
+												$row = $result->row()->name;
+
+												echo "<li class='list-group-item'><a href='" . base_url() . "index.php/main?restaurant_name=". $row ."'>" . $row . "</a></li>";
+											}
+
+										echo "</ul>";
+									echo "</div>";
+								echo "</div>";
 							}
-
-							echo "</ul>";
-							echo "</div>";
-						}
-	                }
-				?>
+		                }
+					?>
+				</div>
 			</div>
 			<div class="recent-searches-nav"> <br>
 			<div class="col-lg-4">
@@ -302,61 +339,57 @@
 				?>
 			</div>
 		</div>
-                <div class="col-sm-4"">
-                    <!--FOOD TRAY-->
-                    <div class="panel panel-default">
-                        <div class="panel-heading text-center"><h5>Current Tray</h5></div>
-                        <div class="panel-body">
-                           <table class="table borderless">
-                            <thead style="margin: 0px">
-                                <tr>
-                                    <td><h6><strong>Your Tray: # item</strong></h6></td>
-                                    <td></td>
-                                    <td></td>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <!-- foreach ($order->lineItems as $line) or some such thing here -->
-                                <tr>
-                                    <td class="col-sm-2">
+        <div class="col-md-3 food-tray">
+            <!--FOOD TRAY-->
+            <div class="panel-heading">
+            	<h5 class="ft-header">Food Tray</h5>
+            	<hr class="grid-divider"/>
+            </div>
+            <div class="panel-body">
+            	<?php
+            		$count_fi = count($this->session->userdata('food_tray'));
 
-                                    <h6 align="center" style="margin-top: 20px"> Product Name</h6>
+            		echo "<p>Your Items (" . $count_fi . ")</p>";
 
-                                    </td>
-                                    <td align="center" class="col-sm-2">
-										<div class="count-input space-bottom">
-										<a class="incr-btn" data-action="decrease" href="#">–</a>
-										<input class="quantity" type="text" name="quantity" value="1"/>
-										<a class="incr-btn" data-action="increase" href="#">&plus;</a>
-										</div>
-                                    </td>
-                                    <td align="center" class="col-sm-1"><button class="btn-white" style="width: 40px"><i class="glyphicon glyphicon-remove"></i></button></td>
-                                </tr>
-                            </tbody>
-                        </table> 
-                        </div>
-                    </div>
-                    <!--FOOD TRAY METHOD END-->
-                    <script type="text/javascript">
-						$(".incr-btn").on("click", function (e) {
-						var $button = $(this);
-						var oldValue = $button.parent().find('.quantity').val();
-						$button.parent().find('.incr-btn[data-action="decrease"]').removeClass('inactive');
-						if ($button.data('action') == "increase") {
-						var newVal = parseFloat(oldValue) + 1;
-						} else {
-						// Don't allow decrementing below 1
-						if (oldValue > 1) {
-						var newVal = parseFloat(oldValue) - 1;
-						} else {
-						newVal = 1;
-						$button.addClass('inactive');
-						}
-						}
-						$button.parent().find('.quantity').val(newVal);
-						e.preventDefault();
-						});
-                    </script>
-                </div>
+            		if($count_fi == 0){
+            			echo "<p class='no-avail-list'>NO ITEMS ADDED IN FOOD TRAY</p>";
+            		}else{
+            			echo "<table class='table borderless'>";
+
+            			for($i = 0; $i < $count_fi; $i++){
+            				echo "<tr>";
+            				echo "<td>" . $this->session->userdata['food_tray'][$i] . "</td>";
+            				echo "<td>P 200.00</td>";
+            				echo "<td><form method='post'><input type='number' name='qty' min='1' max='100' value='1'/></form></td>";
+            				echo "</tr>";
+            			}
+
+            			echo "</table>";
+            			echo "<a href='' class='btn btn-warning'>Proceed to Checkout</a>";
+            		}
+            	?>
+            </div>
+            <!--FOOD TRAY METHOD END-->
+            <script type="text/javascript">
+				$(".incr-btn").on("click", function (e) {
+				var $button = $(this);
+				var oldValue = $button.parent().find('.quantity').val();
+				$button.parent().find('.incr-btn[data-action="decrease"]').removeClass('inactive');
+				if ($button.data('action') == "increase") {
+				var newVal = parseFloat(oldValue) + 1;
+				} else {
+				// Don't allow decrementing below 1
+				if (oldValue > 1) {
+				var newVal = parseFloat(oldValue) - 1;
+				} else {
+				newVal = 1;
+				$button.addClass('inactive');
+				}
+				}
+				$button.parent().find('.quantity').val(newVal);
+				e.preventDefault();
+				});
+            </script>
+        </div>
 </body>
 </html>

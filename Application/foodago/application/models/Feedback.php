@@ -10,5 +10,14 @@
             $query = $this->db->get();
             return $query;
         }
+
+        public function getUserFeedbacks($data){
+            $this->db->select('*');
+            $this->db->from('feedback_has_user');
+            $this->db->where("user_id ='" . $data . "'");
+
+            $query = $this->db->get();
+            return $query;
+        }
 	}
 ?>

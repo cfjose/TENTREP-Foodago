@@ -111,7 +111,7 @@
 <br><br><br>
 
 <div class="field">
-	<form action="#">
+	<form action="<?php echo base_url(); ?>index.php/TrackOrder" method="POST">
 		<div class="input">
 			<div class="input-field1">
 				<label for="tnum">Tracking Number</label>
@@ -128,22 +128,25 @@
 	</form>
 </div>
 
-<div class="content">
-	<div class="content1">
-		<h2>Order Tracking: Order No</h2>
-	</div>
-	<div class="content2">
-		<div class="content2-header1">
-			<p>Shipped Via : <span>Ipsum Dolor</span></p>
-		</div>
-		<div class="content2-header1">
-			<p>Status : <span>Checking Quality</span></p>
-		</div>
-		<div class="content2-header1">
-			<p>Expected Date : <span>7-NOV-2015</span></p>
-		</div>
-		<div class="clear"></div>
-	</div>
+<?php
+
+echo "<div class='content'>";
+	echo "<div class='content1'>";
+		echo "<h2>Order Tracking: Order No</h2>";
+	echo "</div>";
+	echo "<div class='content2'>";
+		echo "<div class='content2-header1'>";
+			echo "<p>Shipped Via : <span>Ipsum Dolor</span></p>";
+		echo "</div>";
+		echo "<div class='content2-header1'>";
+			echo "<p>Status : <span>Checking Quality</span></p>";
+		echo "</div>";
+		echo "<div class='content2-header1'>";
+			echo "<p>Expected Date : <span>7-NOV-2015</span></p>";
+		echo "</div>";
+		echo "<div class='clear'>"; echo "</div>";
+	echo "</div>";
+?>
 	<div class="content3">
         <div class="shipment">
 			<div class="confirm">

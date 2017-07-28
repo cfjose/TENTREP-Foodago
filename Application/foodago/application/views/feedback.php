@@ -17,6 +17,10 @@
 	<link rel="stylesheet" href="<?php echo base_url(); ?>css/style.css">
 	<link rel="stylesheet" href="<?php echo base_url(); ?>css/site.css">
 	<link rel="stylesheet" href="<?php echo base_url(); ?>css/review.css">
+	<link rel="stylesheet" href="<?php echo base_url(); ?>css/w3.css">
+
+
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/5.0.0/normalize.min.css">
 
 	<link rel="stylesheet" href="//netdna.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css">
 	<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
@@ -34,6 +38,8 @@
 
 	<!-- jQuery library -->
 	<script src="<?php echo base_url(); ?>/js/jquery.min.js"></script>
+
+	<script src="<?php echo base_url(); ?>/js/recommendation.js"></script>
 
 	<!-- Latest compiled JavaScript -->
 	<script src="<?php echo base_url(); ?>/js/bootstrap.min.js"></script>
@@ -242,8 +248,15 @@
 
 	<div class="recommendation" style="margin-bottom: 10px;">
 		<div class="recTitle" style="margin: 5px 0 17px;">Popular Restaurant for Burgers</div>
-		<div class="recList"></div>
-		
+			<div class="w3-content w3-display-container">
+			
+				<img class="mySlides" src="https://pbs.twimg.com/profile_images/694921357864386563/p0nF8Bj8.jpg" style="width:90%; height: 200px; ">
+			 	<img class="mySlides" src="https://upload.wikimedia.org/wikipedia/commons/thumb/a/a9/Mcdonalds-90s-logo.svg/220px-Mcdonalds-90s-logo.svg.png" style="width:90%; height: 200px; ">
+			 	
+
+			 	<button class="recBtn" style="color: grey;" onclick="plusDivs(-1)">❮ Prev</button>
+    			<button class="recBtn" style="color: grey;" onclick="plusDivs(1)">Next ❯</button>
+			</div>
 	</div>
 	
 	<hr style="border-top: 2px solid #8c8b8b; width: 50%; margin-left: 60px;" >
@@ -312,6 +325,7 @@
 				<span class="select_theme_review">Sort by:</span>
 			</div>
 		</div>
+
 		<ul class="reviewLists" style="list-style: none;">
 			<li style="margin-bottom: 15px;">
 				<div class="reviewDetails">
@@ -327,12 +341,46 @@
 				</div>
 			</li>
 		</ul>
+        <hr>
 
+        <ul class="reviewLists" style="list-style: none;">
+            <li style="margin-bottom: 15px;">
+                <div class="reviewDetails">
+                    <span class="ratingOption"></span>
+                    <span class="revTitle">Five Stars</span>
+                    <span style="text-align: right;">2 days ago</span>
+                </div>
+                <div class="reviewAuthor">
+                    By Renzo Tadeo
+                </div>
+                <div class="reviewDetailDesc">
+                    Hello! This is amaaaaaaaaaazing!!!!
+                </div>
+            </li>
+        </ul>
+        <hr>
+
+        <ul class="reviewLists" style="list-style: none;">
+            <li style="margin-bottom: 15px;">
+                <div class="reviewDetails">
+                    <span class="ratingOption"></span>
+                    <span class="revTitle">Four Stars</span>
+                    <span style="text-align: right;">1 hour ago</span>
+                </div>
+                <div class="reviewAuthor">
+                    By Danya Balcena
+                </div>
+                <div class="reviewDetailDesc">
+                    Hello! This is amaaaaaaaaaazing!!!!
+                </div>
+            </li>
+        </ul>
+        <hr>
 	</div>
 
-	<style type="text/css">
-		
+	
 
+	<style type="text/css">
 		.review{
 			margin: 50px;
 		}
@@ -418,6 +466,26 @@
 		  content: '\f006';
 		  font-family: FontAwesome;
 		}
+
+		.recBtn{
+			-webkit-touch-callout:none;
+			-webkit-user-select:none;
+			-khtml-user-select:none;
+			-moz-user-select:none;
+			-ms-user-select:none;
+			user-select:none
+		}   
+		.recBtn{
+			border:none;
+			display:inline-block;
+			outline:0;padding:8px 16px;
+			vertical-align:middle;overflow:hidden;
+			text-decoration:none;color:inherit;
+			background-color:inherit;
+			text-align:center;
+			cursor:pointer;
+			white-space:nowrap
+		}
 	</style>
 
 	<script>
@@ -429,6 +497,24 @@
 	  ga('create', 'UA-46156385-1', 'cssscript.com');
 	  ga('send', 'pageview');
 
+	  /*For slider*/
+	  var slideIndex = 1;
+		showDivs(slideIndex);
+
+		function plusDivs(n) {
+		  showDivs(slideIndex += n);
+		}
+
+		function showDivs(n) {
+		  var i;
+		  var x = document.getElementsByClassName("mySlides");
+		  if (n > x.length) {slideIndex = 1}    
+		  if (n < 1) {slideIndex = x.length}
+		  for (i = 0; i < x.length; i++) {
+		     x[i].style.display = "none";  
+		  }
+		  x[slideIndex-1].style.display = "block";  
+		}
 	</script>
 
 

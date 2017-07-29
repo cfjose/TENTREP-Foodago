@@ -202,8 +202,12 @@
 			color: #ccc;
 		}
 
+		.btn-success{
+			float: left;
+		}
+
 		.btn-warning{
-			margin-left: 18%;
+			float: right;
 		}
 
 		input[type='number']{
@@ -365,9 +369,29 @@
             			}
 
             			echo "</table>";
+            			echo "<a href='' class='btn btn-success' data-toggle='modal' data-target='#myModal' >Add Friend</a>";
             			echo "<a href='' class='btn btn-warning'>Proceed to Checkout</a>";
             		}
             	?>
+
+			<!-- Modal -->
+			<div class="modal fade" id="myModal" role="dialog">
+				<div class="modal-dialog">
+					<!-- Modal content-->
+					<div class="modal-content">
+					<div class="modal-header">
+					<button type="button" class="close" data-dismiss="modal">&times;</button>
+					<h4 class="modal-title">Sharing Code</h4>
+					</div>
+					<div class="modal-body">
+					<p align="center">ABC123</p>
+					</div>
+					<div class="modal-footer">
+					<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+					</div>
+					</div>
+				</div>
+			</div>
             </div>
             <!--FOOD TRAY METHOD END-->
             <script type="text/javascript">

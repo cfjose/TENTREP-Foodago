@@ -268,7 +268,7 @@
 			</div>
 	  	</div>
 	</div>
-		<div class="col-md-6">
+		<div class="col-md-5">
 			<div class="category-nav"> <br>
 				<h3> Categories </h3><br/>
 				<div class="panel-group">
@@ -289,7 +289,7 @@
 							}else{
 								$trimmed_str_name = str_replace(' ', '', $name);
 								echo "<div class='panel panel-default'>";
-									echo "<a data-toggle='collapse' href='#".$trimmed_str_name."'><div class='panel-heading'>";
+									echo "<a data-toggle='collapse' href='#".$trimmed_str_name."'><div class='panel-heading' style='background-color:#ff6f00; color:white'>";
 									echo "<h4 class='panel-title'>" . $name . "</h4></div></a>";
 
 							      	echo "<div id='".$trimmed_str_name."' class='panel-collapse collapse'>";
@@ -301,7 +301,7 @@
 												$result = $this->restaurant->getRestaurantName($row->restaurant_id);
 												$row = $result->row()->name;
 
-												echo "<li class='list-group-item'><a href='" . base_url() . "index.php/main?restaurant_name=". $row ."'>" . $row . "</a></li>";
+												echo "<li class='list-group-item' style='background-color: #fff9c4;'><a href='" . base_url() . "index.php/main?restaurant_name=". $row ."'>" . $row . "</a></li>";
 											}
 
 										echo "</ul>";
@@ -332,7 +332,7 @@
 				</div>
 			</div>
 		</div>
-		<div class="col-lg-6">
+		<div class="col-lg-4" style="margin-left: 0%">
 			<div class="food-item-list"> <br>
 				<?php
 					if(isset($_GET['restaurant_name'])){
@@ -343,11 +343,11 @@
 				?>
 			</div>
 		</div>
-        <div class="col-md-3 food-tray">
+
+        <div class="col-md-3 food-tray" style="margin-top: 7%">
             <!--FOOD TRAY-->
             <div class="panel-heading">
-            	<h5 class="ft-header">Food Tray</h5>
-            	<hr class="grid-divider"/>
+            	<h3 class="ft-header">Food Tray</h3>
             </div>
             <div class="panel-body">
             	<?php

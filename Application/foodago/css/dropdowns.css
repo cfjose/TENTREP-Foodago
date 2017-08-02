@@ -12,13 +12,14 @@ a { text-decoration: none; }
   display: block;
   width: 100%;
   text-align: center;
-  background: #03A9F4;
+  background: transparent;
   color: #fff;
   padding: 1px;
   cursor: pointer;
   transition: all 0.35s ease;
   overflow: hidden;
   margin-top: 5px;
+  margin-right: 5em;
 }
 
 .btns:after {
@@ -51,7 +52,7 @@ a { text-decoration: none; }
 
 .dropdowns {
   position: relative;
-  margin: 0 auto;
+  margin-right: 5px;
   width: 15em;
 }
 
@@ -95,7 +96,7 @@ a { text-decoration: none; }
   background: rgba(255, 255, 255, 0.95);
   box-shadow: 0 0 2px 1px rgba(0, 0, 0, 0.1);
   border-radius: .2em;
-  width: 14.3em;
+  width: 19em;
 }
 
 .dropdowns > .outer-list > ul li {

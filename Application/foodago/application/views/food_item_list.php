@@ -14,9 +14,9 @@
 
 			$query = $this->SubCategory->getSubCategoryName($sub_category_id);
 			$result = $query->row()->name;
-			echo "<br><br>";
-			echo "<br><br>";
-			echo "<div class='subcategory-pane'>";
+			echo "<br><br>
+			 	  <br><br>
+			 	  <div class='subcategory-pane'>";
 
 			echo "<h4 class='sub-category-names'>" . $result . "</h4><br/>";
 
@@ -29,8 +29,8 @@
 				echo "<h3 class='no-avail'>No Products Available</h3>";
 			}else{
 				foreach($query->result() as $row){
-					echo "<div class='col-lg-6'>";
-	                    echo "<div class='thumbnail'>";
+					echo "<div class='col-lg-6'>
+	                    	<div class='thumbnail'>";
 	                    	$file_name = strtolower(preg_replace('/[^A-Za-z0-9\-.]/', '', $row->name));
 	                    	if(file_exists(FCPATH . '/assets/images/main/food/' . $file_name . '.jpg')){
 	                    		echo "<img src='".base_url()."/assets/images/main/food/".$file_name.".jpg' alt='' width='320px' height='200px'>";
@@ -41,21 +41,21 @@
 	                            	echo "<h5 class='pull-right'>&#x20B1 " . $row->price . "</h5>";
 	                            	echo "<h5><a href='#'>" . $row->name . "</a></h5>";
 	                            	echo "<h5>Calorie Count :  " . ($row->calorie_count == NULL ? "Not Available" : $row->calorie_count) . "</h5>";
-	                            	echo "<a class='btn btn-primary' target='_blank' style='width:100%' href='#'>Add to tray</a>";
-	                        	echo "</div>";
+	                            	echo "<a class='btn btn-primary' target='_blank' style='width:100%' href='#'>Add to tray</a>
+	                            	</div>";
 	                        echo "<div class='ratings'>";
                                 $query = $this->feedback->getFoodItemFeedbackCount($row->id);
 	                            echo "<p class='pull-right'>" . $query->num_rows() . " Reviews</p>";
-	                            echo "<p>";
-	                                echo "<span class='glyphicon glyphicon-star'></span>";
-	                                echo "<span class='glyphicon glyphicon-star'></span>";
-	                                echo "<span class='glyphicon glyphicon-star'></span>";
-	                                echo "<span class='glyphicon glyphicon-star'></span>";
-	                                echo "<span class='glyphicon glyphicon-star'></span>";
-	                            echo "</p>";
-	                        echo "</div>";
-	                    echo "</div>";
-	                echo "</div>";
+	                            echo "<p>
+	                            		<span class='glyphicon glyphicon-star'></span>
+	                                	<span class='glyphicon glyphicon-star'></span>
+	                                	<span class='glyphicon glyphicon-star'></span>
+	                                	<span class='glyphicon glyphicon-star'></span>
+	                                	<span class='glyphicon glyphicon-star'></span>
+	                            	  </p>
+	                        	  </div>
+	                    	  </div>
+	                	  </div>";
 				}
 			}
 			echo "</div>";

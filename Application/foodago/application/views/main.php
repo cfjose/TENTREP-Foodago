@@ -285,7 +285,7 @@
 				    		<input type="text" id="username" name="username" placeholder="e.g. 123456789" class="inputTrack"/>
 				    		<span class="trackButton">
 				    			<button class="trackButton2">
-				    				<i class="glyphicon glyphicon-chevron-right"></i>
+				    				<span class="glyphicon glyphicon-chevron-right"></span>
 				    			</button>
 				    		</span>
 				    	</div>

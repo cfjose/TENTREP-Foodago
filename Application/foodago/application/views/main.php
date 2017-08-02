@@ -20,8 +20,11 @@
 	<link rel="stylesheet" href="<?php echo base_url(); ?>css/boostrap.css">
 	<link rel="stylesheet" href="<?php echo base_url(); ?>css/style.css">
 	<link rel="stylesheet" href="<?php echo base_url(); ?>css/site.css">
+	<link rel="stylesheet" href="<?php echo base_url(); ?>css/dropdowns.css">
 
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 	<style>
@@ -214,6 +217,54 @@
 			width: 70%;
 		}
 	</style>
+
+	<style type="text/css">
+		.trackTitle{
+			margin-bottom: 15px;
+		    color: #254a5f;
+		    font-size: 16px;
+		    line-height: 18px;
+		}
+		.trackLabel{
+			display: block;
+    		color: #646464;
+		}
+		.trackInput{
+			display: table;
+		    overflow: hidden;
+		    border-radius: 2px;
+		}
+		.inputTrack{
+			display: table-cell;
+    		height: 38px;
+    		box-sizing: border-box;
+		    padding: 10px;
+		    width: 100%;
+		    height: 36px;
+		    border: none;
+		    border-radius: 3px;
+		    background: #f0f0f0;
+		    box-shadow: inset 0 3px 0 0 #dfdfdf;
+		    color: #000;
+		}
+		.trackButton{
+			position: relative;
+		    width: 1%;
+		    font-size: 0;
+		    vertical-align: middle;
+		    padding: 0;
+		    white-space: nowrap;
+		    line-height: normal;
+		    display: table-cell;
+		    background: #f36f36;
+		}
+		.trackButton2{
+			border: none;
+		    background: none;
+		    width: 28px;
+		    height: 38px;
+		}
+	</style>
 </head>
 <body>
 	<nav class="navbar-inverse navbar-fixed-top">
@@ -222,6 +273,26 @@
 				<a class="navbar-brand" href="#"><img src="<?php echo base_url(); ?>/assets/images/global/logos/logoName.png" alt=""></a>
 	    	</div>
 	    	<ul class="nav navbar-nav navbar-right">
+		    	<div class="dropdowns"> <a href="#" class="btns"> Track Order </a>
+				  <div class="outer-list top">
+				  <ul>
+				    <div class="trackTitle">
+				    	Track My Order
+				    </div>
+				    <div style="margin-bottom: 10px;">
+				    	<label for="username" class="trackLabel">Your order number:</label>
+				    	<div class="trackInput">
+				    		<input type="text" id="username" name="username" placeholder="e.g. 123456789" class="inputTrack"/>
+				    		<span class="trackButton">
+				    			<button class="trackButton2">
+				    				<i class="glyphicon glyphicon-chevron-right"></i>
+				    			</button>
+				    		</span>
+				    	</div>
+				    </div>
+				    </ul>
+				  </div>
+				</div>
 		    	<div class="dropdown">
 		    		<!--<label class="username"><?php echo $this->session->userdata('username'); ?></label>-->
 		    		<img src="<?php echo base_url('assets/images/main/icons/user.png'); ?>" height="45" width="45" data-toggle="dropdown"/>
@@ -414,6 +485,63 @@
 				e.preventDefault();
 				});
             </script>
+
+            <script>
+			'use strict';
+
+			(function() {
+
+			  var _btns = document.querySelectorAll('.btns'),
+
+			    _eachBtn = function(callback) {
+			      Array.prototype.forEach.call(_btns, function(elem) {
+			        callback.call(this, elem);
+			      });
+			    },
+			    _initListener = function(e) {
+			      e.preventDefault();
+			      e.stopPropagation();
+			      _eachBtn(function(btns) {
+			        btns.classList.remove('dropdowns-open')
+			      });
+			      this.classList.toggle('dropdowns-open');
+			    },
+			    _hideAll = function() {
+			      _eachBtn(function(btns) {
+			        btns.classList.remove('dropdowns-open');
+			      });
+			    };
+
+			  _eachBtn(function(btns) {
+			    btns.addEventListener('touchend', function(e) {
+			      _initListener.call(this, e);
+			    });
+
+			    btns.addEventListener('click', function(e) {
+			      _initListener.call(this, e);
+			    });
+			  });
+
+			  document.addEventListener('touchend', function() {
+			    _hideAll();
+			  });
+			  
+			  document.addEventListener('click', function() {
+			    _hideAll();
+			  });
+
+			})();
+			</script>
+			<script>
+			  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+			  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+			  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+			  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+			  ga('create', 'UA-46156385-1', 'cssscript.com');
+			  ga('send', 'pageview');
+
+			</script>
         </div>
 </body>
 </html>

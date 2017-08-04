@@ -19,5 +19,16 @@
 			$query = $this->db->get();
 			return $query;
 		}
+
+		public function changeStatus($data){
+            $status = 'TRUE';
+            $this->db->select('is_shared');
+            $this->db->set('is_shared', $status);
+            $this->db->where("tracking_number = '".$data. "'");
+            $this->db->update('order');
+
+            $query = $this->db->get();
+            return $query;
+        }
 	}
 ?>

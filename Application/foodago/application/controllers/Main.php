@@ -14,6 +14,8 @@
 			$this->load->model('SubCategory');
 
             $this->load->model('feedback');
+
+            $this->load->model('order');
 		}
 
 		public function index(){

@@ -130,6 +130,8 @@
 
 <?php
 
+
+
 echo "<div class='content'>";
 	echo "<div class='content1'>";
 		echo "<h2>Order Tracking: Order No</h2>";

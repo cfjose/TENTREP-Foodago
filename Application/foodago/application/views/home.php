@@ -74,7 +74,7 @@
 	      		<li class="active"><a href="#">Home</a></li>
 	      		<li><a href="<?php echo base_url(); ?>index.php/About_Us">About Us</a></li>
 	      		<li><a href="<?php echo base_url(); ?>index.php/Contact_Us">Contact Us</a></li>
-	      		<li><a href="<?php echo base_url(); ?>index.php/TrackOrder">Track my Order</a></li>
+	      		<li><a href="<?php echo base_url(); ?>index.php/TrackOrder">Track My Order</a></li>
 	      		<li><a href="<?php echo base_url(); ?>index.php/login/userLogin">Login</a></li>
 	      		<li><a href="<?php echo base_url(); ?>index.php/login/newUser">Sign Up</a></li>
 	    	</ul>

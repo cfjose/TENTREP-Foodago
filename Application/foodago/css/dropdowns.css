@@ -1,0 +1,110 @@
+a { text-decoration: none; }
+
+.sep {
+  width: 40%;
+  height: 1px;
+  margin: 2.5em auto;
+  background: rgba(0, 0, 0, 0.2);
+}
+
+.btns {
+  position: relative;
+  display: block;
+  width: 100%;
+  text-align: center;
+  background: transparent;
+  color: #fff;
+  padding: 1px;
+  cursor: pointer;
+  transition: all 0.35s ease;
+  overflow: hidden;
+  margin-top: 5px;
+  margin-right: 5em;
+}
+
+.btns:after {
+  content: '';
+  position: absolute;
+  bottom: -50%;
+  right: -50%;
+  z-index: 1;
+  overflow: hidden;
+  width: 0;
+  height: 0;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.35);
+  transition: all 0.35s ease;
+}
+
+.btns:active:after,
+.btns.dropdowns-open:after {
+  width: 200%;
+  height: 200%;
+}
+
+.btns:hover { box-shadow: inset 0 0 40px rgba(0, 0, 0, 0.1); }
+
+.btns.dropdowns-open + .outer-list {
+  transform: scale(1);
+  opacity: 1;
+  visibility: visible;
+}
+
+.dropdowns {
+  position: relative;
+  margin-right: 5px;
+  width: 15em;
+}
+
+.dropdowns > .outer-list {
+  position: absolute;
+  z-index: 1;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transform: scale(0);
+  opacity: 0;
+  visibility: hidden;
+  transition: all 0.35s ease;
+}
+
+.dropdowns > .outer-list.top {
+  align-items: flex-start;
+  transform-origin: 50% 0;
+}
+
+.dropdowns > .outer-list.left { justify-content: flex-start; }
+
+.dropdowns > .outer-list.bottom {
+  align-items: flex-end;
+  transform-origin: 50% 100%;
+}
+
+.dropdowns > .outer-list.right { justify-content: flex-end; }
+
+.dropdowns > .outer-list > ul {
+  list-style: none;
+  padding: 0.6em;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  background: rgba(255, 255, 255, 0.95);
+  box-shadow: 0 0 2px 1px rgba(0, 0, 0, 0.1);
+  border-radius: .2em;
+  width: 19em;
+}
+
+.dropdowns > .outer-list > ul li {
+  padding: .25em 3em;
+  margin: .25em;
+  width: 100%;
+  cursor: pointer;
+  transition: background 0.35s ease;
+}
+
+.dropdowns > .outer-list > ul li:hover { background: rgba(0, 0, 0, 0.07); }

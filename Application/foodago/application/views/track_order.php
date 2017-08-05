@@ -241,7 +241,7 @@
 				echo "<div class='clear'>"; echo "</div>";
 			echo "</div>";
 		?> 
-
+<!-- Status timeline -->
 		<ul class="progressbar">
 		<li class="active">Processing Order</li>
 		<li>Confirmed Order</li>

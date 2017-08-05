@@ -63,5 +63,28 @@
 		public function updateUserInfo($data){
 			// UPDATE USER QUERIES
 		}
+
+		public function getCustomerNum(){
+			$this->db->select('id');
+			$this->db->from('user_type');
+			$this->db->where("name ='Customer'");
+
+			$query = $this->db->get();
+
+			$this->db->select('*');
+			$this->db->from('user');
+			$this->db->where("user_type_id ='" . $query->row('id') . "'");
+
+			$query = $this->db->get();
+			return $query;
+		} 
+
+		public function getAllUser(){
+			$this->db->select('*');
+			$this->db->from('user');
+
+			$query = $this->db->get();
+			return $query;
+		}
 	}
 ?>

@@ -11,6 +11,12 @@
 
 			$this->load->model('FoodItem');
 
+			$this->load->model('FoodItemHasFeedback');
+
+			$this->load->model('RestaurantHasCategory');
+
+			$this->load->model('RestaurantHasSubCategory');
+
 			$this->load->model('SubCategory');
 
             $this->load->model('feedback');

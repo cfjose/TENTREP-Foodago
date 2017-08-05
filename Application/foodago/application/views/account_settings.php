@@ -35,7 +35,7 @@
 	<script src="<?php echo base_url(); ?>/js/bootstrap.min.js"></script>
 	<style>
 		.grid{
-			box-shadow: 2px 2px 2px 2px rgba(0,0,0,0.5);
+			box-shadow: 2px 2px 8px 8px rgba(0,0,0,0.2);
 			padding: 2%;
 			margin-top: 2%;
 		}

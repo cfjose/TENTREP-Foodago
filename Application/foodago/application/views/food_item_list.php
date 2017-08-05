@@ -3,11 +3,11 @@
 		$restaurant_name = $_GET['restaurant_name'];
 		echo "<h3>" . $restaurant_name . "</h3><br/>";
 
-		$query = $this->restaurant->getResIdFromRes($restaurant_name);
+		$query = $this->restaurant->getRestaurantIdFromRestaurant($restaurant_name);
 
 		$resultResId = $query->row()->id;
 
-		$query = $this->restaurant->getRestaurantSubCategory($resultResId);
+		$query = $this->RestaurantHasSubCategory->getRestaurantSubCategory($resultResId);
 
 		foreach($query->result() as $row){
 			$sub_category_id = $row->sub_category_id;
@@ -41,10 +41,10 @@
 	                            	echo "<h5 class='pull-right'>&#x20B1 " . $row->price . "</h5>";
 	                            	echo "<h5><a href='#'>" . $row->name . "</a></h5>";
 	                            	echo "<h5>Calorie Count :  " . ($row->calorie_count == NULL ? "Not Available" : $row->calorie_count) . "</h5>";
-	                            	echo "<a class='btn btn-primary' target='_blank' style='width:100%' href='#'>Add to tray</a>";
+	                            	echo "<a class='btn btn-primary' target='_blank' style='width:100%' href=''>Add to tray</a>";
 	                        	echo "</div>";
 	                        echo "<div class='ratings'>";
-                                $query = $this->feedback->getFoodItemFeedbackCount($row->id);
+                                $query = $this->FoodItemHasFeedback->getAllFoodItemFeedback($row->id);
 	                            echo "<p class='pull-right'>" . $query->num_rows() . " Reviews</p>";
 	                            echo "<p>";
 	                                echo "<span class='glyphicon glyphicon-star'></span>";

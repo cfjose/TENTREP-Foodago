@@ -179,7 +179,7 @@
 		<p class="grid-title">Recent Feedbacks</p><br/>
 		<hr class="grid-divider"/>
 		<?php
-			$query = $this->feedback->getUserFeedbacks($this->session->userdata['id']);
+			$query = $this->FeedbackHasUser->getUserFeedback($this->session->userdata['id']);
 
 			$numOrders = $query->num_rows();
 

@@ -440,8 +440,10 @@
             			}
 
             			echo "</table>";
-            			echo "<a href='' class='btn btn-success' data-toggle='modal' data-target='#myModal'
-                            onclick='" . $this->order->changeStatus()." ' >Add Friend</a>";
+            			echo "<a href='' class='btn btn-success' data-toggle='modal' data-target='#myModal'>
+            				Add Friend</a>";
+                        /*echo "<a href='' class='btn btn-success' data-toggle='modal' data-target='#myModal'
+                         	onclick='" . $this->order->changeStatus()." ' >Add Friend</a>";*/
 
             			echo "<a href='' class='btn btn-warning'>Proceed to Checkout</a>";
             		}

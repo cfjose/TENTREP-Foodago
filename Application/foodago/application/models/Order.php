@@ -19,7 +19,7 @@
 			return $query;
 		}
 
-		public function changeStatus($data){
+		/*public function changeStatus($data){
             $status = 'TRUE';
             $this->db->select('is_shared');
             $this->db->set('is_shared', $status);
@@ -28,6 +28,6 @@
 
             $query = $this->db->get();
             return $query;
-        }
+        }*/
 	}
 ?>

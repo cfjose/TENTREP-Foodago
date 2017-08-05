@@ -1,7 +1,7 @@
 <?php
     defined('BASEPATH') OR exit('No direct script access allowed');
 
-    class Add_Contact_Num extends CI_Controller{
+    class Contact_Num_Controller extends CI_Controller{
     	public function __construct(){
     		parent::__construct();
 

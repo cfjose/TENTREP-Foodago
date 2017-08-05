@@ -1,7 +1,7 @@
 <?php
     defined('BASEPATH') OR exit('No direct script access allowed');
 
-    class Add_Sub_Category extends CI_Controller{
+    class Sub_Category_Controller extends CI_Controller{
     	public function __construct(){
     		parent::__construct();
 

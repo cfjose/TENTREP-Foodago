@@ -1,7 +1,7 @@
 <?php
     defined('BASEPATH') OR exit('No direct script access allowed');
 
-    class Add_Delivery_Status extends CI_Controller{
+    class Delivery_Status_Controller extends CI_Controller{
     	public function __construct(){
     		parent::__construct();
 

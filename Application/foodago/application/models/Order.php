@@ -3,13 +3,12 @@
 
 	class Order extends CI_Model{
 		public function getOrderStatus($data){
-			$this->db->select('delivery_status_id');
+			$this->db->select('*');
 			$this->db->from('order');
-			$this->db->where("tracking_number ='" . $data . "'");
+			$this->db->where("tracking_number ='" . $data['tracking_number'] . "'");
 
 			$query = $this->db->get();
-			return $query;
-		}
+			return $query;		}
 
 		public function getUserOrders($data){
 			$this->db->select('*');

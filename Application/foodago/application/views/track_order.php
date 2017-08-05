@@ -64,7 +64,7 @@
 		}
 
 		input[type=submit]:hover {
-			background-color: #45a049;
+			background-color: #7cb342;
 		}
 
 		.input {
@@ -87,6 +87,10 @@
 
 		.button {
 			margin-top: -8%;
+			font-size: 16px;
+		}
+		#myDIV{
+    		display:hidden;
 		}
 	</style>
 
@@ -108,47 +112,53 @@
 	  	</div>
 	</nav>
 
-<br><br><br>
 
 <div class="field">
-	<form action="<?php echo base_url(); ?>index.php/TrackOrder" method="POST">
-		<div class="input">
-			<div class="input-field1">
-				<label for="tnum">Tracking Number</label>
-				<input type="text" id="tnum" name="tracknum">
-			</div>
-			<div class="input-field2">
-				<label for="email">Email Address</label>
-				<input type="text" id="email" name="emailadd">
+
+<!-- <form action="search.php" method="get"> 
+	      <input  type="text" name="tracknum" autocomplete="off"> 
+	      <input  type="submit" value="Search"> 
+	    </form>  -->
+ 	<?php
+ 		echo form_open('/TrackOrder/getOrderDeliveryStatus')
+ 		// <form method="post" action="">
+ 	?>
+		<div class="input" style="margin-top: 6%">
+			<div class="input-field">
+				<label for="tracking_number" style="margin-left: 5%; margin-right: 2%; font-size: 20px;">Tracking Number</label>
+				<input type="text" id="tracking_number" name="tracking_number" required>
 			</div>
 			<div class="button">
-				<input type="submit" value="Search">
+				<input type="submit" value="Search" >
 			</div>
 		</div>
-	</form>
+	<?php echo form_close(); // </form> ?> 
 </div>
 
-<?php
-
-
-
+<div id="myDIV">
+ <?php
 echo "<div class='content'>";
-	echo "<div class='content1'>";
-		echo "<h2>Order Tracking: Order No</h2>";
+	echo "<div class='content1'  style='background-color: #7cb342'>";
+		if(isset($_SESSION['tracking_number'])){
+			echo "<h2>Order Tracking Number: </h2>";
+			echo "<p style='font-weight: bolder; font-size: 40px'>" . $_SESSION['tracking_number'] . "</p>";
+		}
 	echo "</div>";
-	echo "<div class='content2'>";
-		echo "<div class='content2-header1'>";
-			echo "<p>Shipped Via : <span>Ipsum Dolor</span></p>";
+	echo "<div class='content2' style='background-color: #aed581'>";
+		echo "<div class='content2-header1' style='height: 10%; width:50%'>";
+			if(isset($_SESSION['delivery_status'])){
+				echo "<h3>Status : <span>" . $_SESSION['delivery_status'] . "</span></h3>";
+			}
 		echo "</div>";
-		echo "<div class='content2-header1'>";
-			echo "<p>Status : <span>Checking Quality</span></p>";
-		echo "</div>";
-		echo "<div class='content2-header1'>";
-			echo "<p>Expected Date : <span>7-NOV-2015</span></p>";
+		echo "<div class='content2-header1' style='height: 10%; width:50%'>";
+			if(isset($_SESSION['timestamp'])){
+				echo "<h3>Status : <span>" . $_SESSION['timestamp'] . "</span></h3>";
+			}
 		echo "</div>";
 		echo "<div class='clear'>"; echo "</div>";
 	echo "</div>";
-?>
+?> 
+
 	<div class="content3">
         <div class="shipment">
 			<div class="confirm">
@@ -188,7 +198,20 @@ echo "<div class='content'>";
 			
 		</div>
 	</div>
+	</div>
 </div>
+
+<script type="text/javascript">
+
+	if(document.getElementById("tracking_number").val != ""){
+document.getElementById("myDIV").style.display="block";
+}else{
+	document.getElementById("myDIV").style.display="none";
+}
+
+
+
+</script>
 
 
 </body>

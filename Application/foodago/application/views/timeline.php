@@ -91,7 +91,7 @@
 		<div class="events-wrapper">
 			<div class="events">
 				<ol>
-					<li><a href="#0" data-date="16/01/2014" class="selected" style=" font-size: 18px;">About Foodago</a></li>
+					<li><a href="#0" data-date="16/01/2014" class="selected" style=" font-size: 18px;">16 Jan</a></li>
 					<li><a href="#0" data-date="28/02/2014" style=" font-size: 18px;">28 Feb</a></li>
 					<li><a href="#0" data-date="20/04/2014" style=" font-size: 18px;">20 Mar</a></li>
 					<li><a href="#0" data-date="20/05/2014" style=" font-size: 18px;">20 May</a></li>
@@ -117,7 +117,7 @@
 	<div class="events-content">
 		<ol>
 			<li class="selected" data-date="16/01/2014">
-				<h3>Foodago</h3>
+				<h3>Put Title Here</h3>
 				<em></em>
 				<p>	
 					Foodago is a web application that can make ordering of your different favorite food easier. With Foodago, you can order different food to different fast food chains or restaurants and track where your orders are easily.

@@ -41,7 +41,7 @@
 	                            	echo "<h5 class='pull-right'>&#x20B1 " . $row->price . "</h5>";
 	                            	echo "<h5><a href='#'>" . $row->name . "</a></h5>";
 	                            	echo "<h5>Calorie Count :  " . ($row->calorie_count == NULL ? "Not Available" : $row->calorie_count) . "</h5>";
-	                            	echo "<a class='btn btn-primary' target='_blank' style='width:100%' href='#'>Add to tray</a>
+	                            	echo "<a class='btn btn-primary' target='_blank' style='width:100%' href='#' name='add_cart'>Add to tray</a>
 	                            	</div>";
 	                        echo "<div class='ratings'>";
                                 $query = $this->feedback->getFoodItemFeedbackCount($row->id);
@@ -61,4 +61,33 @@
 			echo "</div>";
 		}
 	}
+	echo "
+			<script>
+				$(document).ready(function(){
+					$('.add_cart'),click(function(){
+						var id = $(this).data('foodItemId');
+						var name = $(this).data('foodItemName');
+						var price = $(this).data('foodItemPrice');
+						var quantity = $('#' + food_item_id).val();
+						if(quantity != '' && quantity > 0)
+						{
+							$.ajax({
+								url:".base_url()."AddToCart/add,
+								method:'POST',
+								data:{id:id, name:name, price:price, quantity:quantity},
+								success:function(data){
+									alert('Products are added into the cart');
+									$('.food-tray').html(data);
+									$('#' + id).val('');
+								}
+							})
+						}
+						else
+						{
+							alert('Please enter a quantity');
+						}
+					});
+				})
+			</script>
+		";
 ?>

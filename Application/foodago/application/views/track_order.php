@@ -242,13 +242,53 @@
 			echo "</div>";
 		?> 
 <!-- Status timeline -->
-		<ul class="progressbar">
+<!-- 		<ul class="progressbar">
 		<li class="active">Processing Order</li>
 		<li>Confirmed Order</li>
 		<li>Packing Order</li>	
 		<li>On The Way</li>	
 		<li>Delivered</li>		
-		</ul>
+		</ul> -->
+
+
+		<?php 
+
+			$status = $_SESSION['delivery_status'];
+			if ($status == 'Processing Order') {
+				echo "<ul class='progressbar'>";
+				echo "<li class='active'>Processing Order</li>";
+				echo "<li>Confirmed Order</li>";
+				echo "<li>On The Way</li>";
+				echo "<li>Delivered</li>";
+				echo "</ul>";
+
+			}elseif ($status == 'Confirmed Order') {
+				echo "<ul class='progressbar'>";
+				echo "<li>Processing Order</li>";
+				echo "<li class='active'>Confirmed Order</li>";
+				echo "<li>On The Way</li>";
+				echo "<li>Delivered</li>";
+				echo "</ul>";
+			}
+
+		?>
+
+<!-- 		<script type="text/javascript">
+			window.onload = function(){
+
+				var status = getOrderDeliveryStatus();
+				if(status == 'Processing Order'){
+
+				}else if(status == 'Confirmed Order'){
+
+				}else if(status == 'Packing Order'){
+
+				}else if(status == 'On The Way'){
+
+				}else if(status == 'Delivered'){
+				}
+			}
+		</script> -->
 
 		</div>
 </div>

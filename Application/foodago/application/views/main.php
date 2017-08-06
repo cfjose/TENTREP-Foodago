@@ -463,9 +463,21 @@
 					<button type="button" class="close" data-dismiss="modal">&times;</button>
 					<h4 class="modal-title">Sharing Code</h4>
 					</div>
-					<div class="modal-body">
-					<p align="center">ABC123</p>
-					</div>
+					<?php
+					function generateRandomString($length = 12){
+						$characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
+						$characterLength = strlen($characters);
+						$randomString = '';
+
+						for($i = 0; $i < $length; $i++){
+							$randomString .= $characters[rand(0, $characterLength - 1)];
+						}
+						return $randomString;
+					}
+					echo "<div class='modal-body'>";
+					echo "<p align='center'>". generateRandomString() ."</p>";
+					echo "</div>";
+					?>
 					<div class="modal-footer">
 					<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
 					</div>

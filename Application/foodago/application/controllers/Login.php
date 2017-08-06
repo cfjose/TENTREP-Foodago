@@ -22,7 +22,7 @@
 
 		public function newUser(){
 			if(isset($this->session->userdata['logged_in']) && 
-				$this->session->userdata['user_type'] == "System Administrator"){
+				$this->session->userdata['user_type'] == "System Admin"){
 				// CONTINUE WITH PAGE
 				$this->form_validation->set_rules('first_name', 'First Name', 'required|xss_clean');
 				$this->form_validation->set_rules('last_name', 'Last Name', 'required|xss_clean');

@@ -69,7 +69,9 @@
 	      <div class="inner">
 	        <h3>
 	          <?php
-	            $query = $this->restaurant->getAllRestaurants();
+	          	$data = 'Pending Approval';
+	          	$query = $this->RestaurantStatus->getRestaurantStatusId($data);
+	            $query = $this->restaurant->getRestaurantByStatus($query->row('id'));
 	            echo $query->num_rows();
 	          ?>
 	        </h3>
@@ -89,7 +91,9 @@
 	      <div class="inner">
 	        <h3>
 	          <?php
-	            $query = $this->restaurant->getAllRestaurants();
+	          	$data = 'Active';
+	          	$query = $this->RestaurantStatus->getRestaurantStatusId($data);
+	            $query = $this->restaurant->getRestaurantByStatus($query->row('id'));
 	            echo $query->num_rows();
 	          ?>
 	        </h3>

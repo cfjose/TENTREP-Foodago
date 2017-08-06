@@ -69,7 +69,7 @@
 				<input type="text" name="first_name" class="form-control"/>	
 
 				<label for="birthdate">Birthdate </label>
-				<input type="date" name="birthdate" class="form-control"/>
+				<input type="date" name="bday" class="form-control"/>
 
 				<label for="gender">Gender </label>
 				<select name="gender" class="form-control">
@@ -89,7 +89,14 @@
 				<label for="password">Password </label>
 				<input type="password" name="password" class="form-control"/>
 
-				<input type="hidden" name="created_at" class="form-control" value=""/>
+				<?php
+					$tz = 'Asia/Manila';
+					$timestamp = time();
+					$dt = new DateTime("now", new DateTimeZone($tz));
+					$dt->setTimeStamp($timestamp);
+				?>
+
+				<input type="hidden" name="created_at" class="form-control" value="<?php echo $dt->format('H:i:s'); ?>"/>
 				
 				<label for="user_type_id">User Type </label>
 				<select name="user_type_id" class="form-control" id="utype" onchange="checkUtype()">

@@ -10,6 +10,15 @@
 			return $query;
 		}
 
+		public function getRestaurantStatusId($data){
+			$this->db->select('id');
+			$this->db->from('restaurant_status');
+			$this->db->where("name ='" . $data . "'");
+
+			$query = $this->db->get();
+			return $query;
+		}
+
 		public function insert($data){
 			$this->db->select('*');
 			$this->db->from('restaurant_status');

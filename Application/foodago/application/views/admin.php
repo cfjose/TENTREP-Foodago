@@ -59,7 +59,7 @@
       <!-- Logo -->
       <a href="<?php echo base_url(); ?>index.php/admin" class="logo">
         <!-- mini logo for sidebar mini 50x50 pixels -->
-        <span class="logo-mini"><b>A</b>LT</span>
+        <span class="logo-mini"><b>F</b>DG</span>
         <!-- logo for regular state and mobile devices -->
         <span class="logo-lg">Foodago</span>
       </a>
@@ -176,12 +176,7 @@
                       echo "</a>";
                     echo "</li>";
                   }
-
-                  // for($i = 1; $i < count($module_trimmed); $i++){
-                  // }
-                }
-
-                
+                }                
               ?>
             </ul>
           </li>

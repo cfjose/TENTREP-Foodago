@@ -182,131 +182,101 @@
 	</style>
 
 </head>
-<body>
-	<nav class="navbar-inverse navbar-fixed-top">
-		<div class="container-fluid">
-			<div class="navbar-header">
-				<a class="navbar-brand" href="#"><img src="<?php echo base_url(); ?>/assets/images/global/logos/logoName.png" alt=""></a>
-	    	</div>
-	    	<ul class="nav navbar-nav navbar-right">
-	      		<li><a href="<?php echo base_url();?>index.php">Home</a></li>
-	      		<li><a href="<?php echo base_url(); ?>index.php/About_Us">About Us</a></li>
-	      		<li><a href="<?php echo base_url(); ?>index.php/Contact_Us">Contact Us</a></li>
-	      		<li class="active"><a href="#">Track my Order</a></li>
-	      		<li><a href="<?php echo base_url(); ?>index.php/login/userLogin">Log In</a></li>
-	      		<li><a href="<?php echo base_url(); ?>index.php/login/newUser">Sign Up</a></li>
-	    	</ul>
-	  	</div>
-	</nav>
+	<body>
+		<nav class="navbar-inverse navbar-fixed-top">
+			<div class="container-fluid">
+				<div class="navbar-header">
+					<a class="navbar-brand" href="#"><img src="<?php echo base_url(); ?>/assets/images/global/logos/logoName.png" alt=""></a>
+		    	</div>
+		    	<ul class="nav navbar-nav navbar-right">
+		      		<li><a href="<?php echo base_url();?>index.php">Home</a></li>
+		      		<li><a href="<?php echo base_url(); ?>index.php/About_Us">About Us</a></li>
+		      		<li><a href="<?php echo base_url(); ?>index.php/Contact_Us">Contact Us</a></li>
+		      		<li class="active"><a href="#">Track my Order</a></li>
+		      		<li><a href="<?php echo base_url(); ?>index.php/login/userLogin">Log In</a></li>
+		      		<li><a href="<?php echo base_url(); ?>index.php/login/newUser">Sign Up</a></li>
+		    	</ul>
+		  	</div>
+		</nav>
 
 
-	<div class="col-lg-2"></div>
+		<div class="col-lg-2"></div>
 
-	<div class="col-lg-8" style=" margin-top: 5%; height: 60%;">
-		<div class="panel panel-default">
-		<div class="panel-heading">
-	<?php
- 		echo form_open('/TrackOrder/getOrderDeliveryStatus')
- 		// <form method="post" action="">
- 	?>
-			<div>
-				<label for="tracking_number" style="margin-right: 2%; margin-left: 6%; font-size: 20px;">Tracking Number</label>
-				<input type="text" id="tracking_number" name="tracking_number" required style="width: 50%">
-				<input type="submit" value="Search" style="margin-left: 2%; width: 10%">
+		<div class="col-lg-8" style=" margin-top: 5%; height: 60%;">
+			<div class="panel panel-default">
+				<div class="panel-heading">
+					<?php
+				 		echo form_open('/TrackOrder/getOrderDeliveryStatus')
+				 		// <form method="post" action="">
+				 	?>
+					<div>
+						<label for="tracking_number" style="margin-right: 2%; margin-left: 6%; font-size: 20px;">Tracking Number</label>
+						<input type="text" id="tracking_number" name="tracking_number" required style="width: 50%">
+						<input type="submit" value="Search" style="margin-left: 2%; width: 10%">
+					</div>
+
+					<?php echo form_close(); // </form> ?> 
+				</div>
+				<div class="myDIV">
+					<div class="panel-body">
+						<?php
+							echo "<div class='trackDesign' style='width: 100%'>";
+								echo "<div class='content1'  style='background-color: #7cb342'>";
+									if(isset($tracking_number)){
+										echo "<h2>Order Tracking Code</h2>";
+										echo "<p style='font-weight: bolder; font-size: 40px'>" . $tracking_number . "</p>";
+									}
+								echo "</div>";
+								echo "<div class='content2' style='background-color: #aed581'>";
+									echo "<div class='content2-header1' style='height: 10%; width:50%'>";
+										if(isset($delivery_status)){
+											echo "<h3>Status : <span style='font-weight: bolder; font-size:22px'>" . $delivery_status . "</span></h3>";
+										}
+									echo "</div>";
+									echo "<div class='content2-header1' style='height: 10%; width:50%'>";
+										if(isset($date) && isset($time)){
+											echo "<h3>Date : <span style='font-weight: bolder; font-size:22px'>" . $date . " " . $time . "</span></h3>";
+										}else{
+											// echo "<h3>Date : <span style='font-weight: bolder; font-size:22px'>Not Available</span></h3>";
+										}
+									echo "</div>";
+								echo "</div>";
+								echo "<div class='clear'></div>";
+							echo "</div>";
+
+							if(isset($delivery_status)){
+								echo "<ul class='progressbar'>";
+									if ($delivery_status == 'Processing Order') {
+										echo "<li class='active'>Processing Order</li>";
+										echo "<li>Confirmed Order</li>";
+										echo "<li>On The Way</li>";
+										echo "<li>Delivered</li>";
+									}elseif ($delivery_status == 'Confirmed Order') {
+										echo "<li>Processing Order</li>";
+										echo "<li class='active'>Confirmed Order</li>";
+										echo "<li>On The Way</li>";
+										echo "<li>Delivered</li>";
+									}
+								echo "</ul>";
+							}else{
+								// REPLACE PROGRESS BAR WITH ORDER TRACKING INSTRUCTIONS AND PROCEDURES
+								// PUT INSTRUCTIONS HERE
+							}
+
+						?>
+					</div>
+				</div>
 			</div>
-
-	<?php echo form_close(); // </form> ?> 
 		</div>
-<div class="myDIV">
-		<div class="panel-body">
-		<?php
-		echo "<div class='trackDesign' style='width: 100%'>";
-			echo "<div class='content1'  style='background-color: #7cb342'>";
-				if(isset($_SESSION['tracking_number'])){
-					echo "<h2>Order Tracking Number: </h2>";
-					echo "<p style='font-weight: bolder; font-size: 40px'>" . $_SESSION['tracking_number'] . "</p>";
-				}
-			echo "</div>";
-			echo "<div class='content2' style='background-color: #aed581'>";
-				echo "<div class='content2-header1' style='height: 10%; width:50%'>";
-					if(isset($_SESSION['delivery_status'])){
-						echo "<h3>Status : <span style='font-weight: bolder; font-size:22px'>" . $_SESSION['delivery_status'] . "</span></h3>";
-					}
-				echo "</div>";
-				echo "<div class='content2-header1' style='height: 10%; width:50%'>";
-					if(isset($_SESSION['timestamp'])){
-						echo "<h3>Date : <span style='font-weight: bolder; font-size:22px'>" . $_SESSION['timestamp'] . "</span></h3>";
-					}
-				echo "</div>";
-				echo "<div class='clear'>"; echo "</div>";
-			echo "</div>";
-		?> 
-<!-- Status timeline -->
-<!-- 		<ul class="progressbar">
-		<li class="active">Processing Order</li>
-		<li>Confirmed Order</li>
-		<li>Packing Order</li>	
-		<li>On The Way</li>	
-		<li>Delivered</li>		
-		</ul> -->
 
+		<div class="col-lg-2"></div>
 
-		<?php 
-
-			$status = $_SESSION['delivery_status'];
-			if ($status == 'Processing Order') {
-				echo "<ul class='progressbar'>";
-				echo "<li class='active'>Processing Order</li>";
-				echo "<li>Confirmed Order</li>";
-				echo "<li>On The Way</li>";
-				echo "<li>Delivered</li>";
-				echo "</ul>";
-
-			}elseif ($status == 'Confirmed Order') {
-				echo "<ul class='progressbar'>";
-				echo "<li>Processing Order</li>";
-				echo "<li class='active'>Confirmed Order</li>";
-				echo "<li>On The Way</li>";
-				echo "<li>Delivered</li>";
-				echo "</ul>";
+		<script type="text/javascript">
+			if(document.getElementById("tracking_number").value != ""){
+				document.getElementById("myDIV").style.display="block";
+			}else{
+				document.getElementById("myDIV").style.display="none";
 			}
-
-		?>
-
-<!-- 		<script type="text/javascript">
-			window.onload = function(){
-
-				var status = getOrderDeliveryStatus();
-				if(status == 'Processing Order'){
-
-				}else if(status == 'Confirmed Order'){
-
-				}else if(status == 'Packing Order'){
-
-				}else if(status == 'On The Way'){
-
-				}else if(status == 'Delivered'){
-				}
-			}
-		</script> -->
-
-		</div>
-</div>
-		</div>
-
-	<div class="col-lg-2"></div>
-
-
-<script type="text/javascript">
-
-	if(document.getElementById("tracking_number").val != ""){
-document.getElementById("myDIV").style.display="block";
-}else{
-	document.getElementById("myDIV").style.display="none";
-}
-
-</script>
-
-
-</body>
+		</script>
+	</body>
 </html>

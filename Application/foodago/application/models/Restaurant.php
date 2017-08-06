@@ -19,6 +19,15 @@
 			return $query;
 		}
 
+		public function getRestaurantByStatus($data){
+			$this->db->select('*');
+			$this->db->from('restaurant');
+			$this->db->where("restaurant_status_id ='" . $data . "'");
+
+			$query = $this->db->get();
+			return $query;
+		}
+
 		public function getRestaurantName($data){
 			$this->db->select('name');
 			$this->db->from('restaurant');

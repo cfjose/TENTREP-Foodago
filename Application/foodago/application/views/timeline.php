@@ -165,13 +165,6 @@
 		</ol>
 	</div> <!-- .events-content -->
 </section>
-<!-- 		  	<h1 style="margin-top: 5px;">About Foodago</h1><br>
-		  	<h3>
-		  		Foodago is a web application that can make ordering of your different favorite food easier. With Foodago, you can order different food to different fast food chains or restaurants and track where your orders are easily.
-		  		Hassle-free! Just stay at your home and order! You can also share your orders to your friends. No need to memorize and to compute or even write their orders to a paper when they order too many food!<br>
-		  		<i>With Foodago, your favorite food, delivered fast to your doorsteps.</i>
-		  	</h3>
-		  	<center><img src="<?php echo base_url(); ?>assets/images/global/logos/logoBig.png" alt="" style="width: 250px; height: 250px;"></center> -->
 		</div>
 	</div>
 

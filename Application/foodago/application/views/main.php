@@ -221,9 +221,7 @@
 		input[type='number']{
 			width: 70%;
 		}
-	</style>
 
-	<style type="text/css">
 		.trackTitle{
 			margin-bottom: 15px;
 		    color: #254a5f;
@@ -278,25 +276,23 @@
 				<a class="navbar-brand" href="#"><img src="<?php echo base_url(); ?>/assets/images/global/logos/logoName.png" alt=""></a>
 	    	</div>
 	    	<ul class="nav navbar-nav navbar-right">
-		    	<div class="dropdowns"> <a href="#" class="btns"> Track Order </a>
-				  <div class="outer-list top">
-				  <ul>
-				    <div class="trackTitle">
-				    	Track My Order
-				    </div>
-				    <div style="margin-bottom: 10px;">
-				    	<label for="username" class="trackLabel">Your order number:</label>
-				    	<div class="trackInput">
-				    		<input type="text" id="username" name="username" placeholder="e.g. 123456789" class="inputTrack"/>
-				    		<span class="trackButton">
-				    			<button class="trackButton2">
-				    				<span class="glyphicon glyphicon-chevron-right"></span>
-				    			</button>
-				    		</span>
-				    	</div>
-				    </div>
-				    </ul>
-				  </div>
+		    	<div class="dropdown"> <a href="#" class="btn"> Track Order </a>
+					<div class="outer-list top">
+						<ul class="dropdown-menu">
+				    		<div class="trackTitle">Track My Order</div>
+				    		<div style="margin-bottom: 10px;">
+				    			<label for="username" class="trackLabel">Your order number:</label>
+				    			<div class="trackInput">
+				    				<input type="text" id="username" name="username" placeholder="e.g. 123456789" class="inputTrack"/>
+				    				<span class="trackButton">
+				    					<button class="trackButton2">
+				    						<span class="glyphicon glyphicon-chevron-right"></span>
+				    					</button>
+				    				</span>
+				    			</div>
+				    		</div>
+				    	</ul>
+				  	</div>
 				</div>
 		    	<div class="dropdown">
 		    		<!--<label class="username"><?php echo $this->session->userdata('username'); ?></label>-->
@@ -336,9 +332,9 @@
 
 							document.getElementById("greetings").innerHTML = greet + ", " + <?php echo json_encode($this->session->userdata('first_name')) ?>;
 						}
-					</script><br/>
-					<h2>Are you Hungry?</h2><br/>
-					<h2>Search for your favorite restaurants / fast food chains online</h2><br/>
+					</script>
+					<h2>Are you Hungry?</h2>
+					<h2>Search for your favorite restaurants / fast food chains online</h2>
 					<input type="text" id="q" placeholder="Search for Restaurants and Fast food Chains"/>
 				</form>
 			</div>
@@ -346,7 +342,7 @@
 	</div>
 		<div class="col-md-5">
 			<div class="category-nav"> <br>
-				<h3> Categories </h3><br/>
+				<h4> Categories </h4><br/>
 				<div class="panel-group">
 					<?php
 						$query = $this->category->getCategoryNames();

@@ -26,7 +26,6 @@
 	<link href='http://fonts.googleapis.com/css?family=Source+Sans+Pro:200,300,400,600,700,900,200itali
 	c,300italic,400italic,600italic,700italic,900italic' rel='stylesheet' type='text/css'>	
 	<link rel="stylesheet" href="<?php echo base_url(); ?>/css/site.css">
-	<link rel="stylesheet" href="<?php echo base_url(); ?>/css/styleTrack.css">
 
 	<!-- jQuery library -->
 	<script src="<?php echo base_url() ?>js/bootstrap.min.js"></script>
@@ -39,7 +38,7 @@
 	<script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); }
 	</script>
 
-	<style>
+	<style type="text/css">
 		input[type=text], select {
 			width: 50%;
 			padding: 11px 15px;
@@ -92,6 +91,94 @@
 		#myDIV{
     		display:hidden;
 		}
+		.content{
+			width:60%;
+			margin:3% auto 0 auto;
+			height:460px;
+			background-color:#F5F5F5;
+		}
+		.content1 {
+			background-color:#98d091;
+			text-align:center;
+			padding:2em;
+		}
+		.content1 h2 {
+			font-family: 'Open Sans', sans-serif;
+			text-transform:uppercase;
+			margin:0;
+			color:#fff;
+		}
+		.content2 {
+			background-color:#b5e6ae;
+		}
+		.content2-header1 {
+			float:left;
+			width:27%;
+			text-align:center;
+			padding:1.5em;
+			background-color:#c5e1a5;
+		}
+		.content2-header1 p {
+			font-size:16px;
+			font-weight:700;
+			color:#4E7D48;
+			margin:0;
+		}
+		.content2-header1 span {
+			font-size:14px;
+			font-weight:400;
+		}
+		.progressbar{
+			counter-reset: step;
+			margin-top: 10%;
+
+		}
+		.progressbar li{
+			list-style-type: none;
+			float: left;
+			width: 20%;
+			position: relative;
+			text-align: center;
+		}
+		.progressbar li:before {
+			content: counter(step);
+			counter-increment: step;
+			width: 50px;
+			height: 50px;
+			line-height: 50px;
+			border: 1px solid #ddd;
+			display: block;
+			text-align: center;
+			margin: 0 auto 10px auto;
+			border-radius: 50%;
+			background-color: white;
+
+		}
+		.progressbar li:after{
+			content: '';
+			position: absolute;
+			width: 100%
+			height: 1px;
+			background-color: #000;
+			top: 25px;
+			left: -50%;
+			z-index: -1;
+		}
+		.progressbar li:first-child:after{
+			content: none;
+		}
+		.progressbar li.active{
+			color: black;
+		}
+		.progressbar li.active:before{
+			border-color: green;
+
+			background-color: green;
+		}
+		.progressbar li.active: + li:after{
+			background-color: green;
+		}
+
 	</style>
 
 </head>
@@ -113,93 +200,62 @@
 	</nav>
 
 
-<div class="field">
+	<div class="col-lg-2"></div>
 
-<!-- <form action="search.php" method="get"> 
-	      <input  type="text" name="tracknum" autocomplete="off"> 
-	      <input  type="submit" value="Search"> 
-	    </form>  -->
- 	<?php
+	<div class="col-lg-8" style=" margin-top: 5%; height: 60%;">
+		<div class="panel panel-default">
+		<div class="panel-heading">
+	<?php
  		echo form_open('/TrackOrder/getOrderDeliveryStatus')
  		// <form method="post" action="">
  	?>
-		<div class="input" style="margin-top: 6%">
-			<div class="input-field">
-				<label for="tracking_number" style="margin-left: 5%; margin-right: 2%; font-size: 20px;">Tracking Number</label>
-				<input type="text" id="tracking_number" name="tracking_number" required>
+			<div>
+				<label for="tracking_number" style="margin-right: 2%; margin-left: 6%; font-size: 20px;">Tracking Number</label>
+				<input type="text" id="tracking_number" name="tracking_number" required style="width: 50%">
+				<input type="submit" value="Search" style="margin-left: 2%; width: 10%">
 			</div>
-			<div class="button">
-				<input type="submit" value="Search" >
-			</div>
-		</div>
+
 	<?php echo form_close(); // </form> ?> 
-</div>
-
-<div id="myDIV">
- <?php
-echo "<div class='content'>";
-	echo "<div class='content1'  style='background-color: #7cb342'>";
-		if(isset($_SESSION['tracking_number'])){
-			echo "<h2>Order Tracking Number: </h2>";
-			echo "<p style='font-weight: bolder; font-size: 40px'>" . $_SESSION['tracking_number'] . "</p>";
-		}
-	echo "</div>";
-	echo "<div class='content2' style='background-color: #aed581'>";
-		echo "<div class='content2-header1' style='height: 10%; width:50%'>";
-			if(isset($_SESSION['delivery_status'])){
-				echo "<h3>Status : <span>" . $_SESSION['delivery_status'] . "</span></h3>";
-			}
-		echo "</div>";
-		echo "<div class='content2-header1' style='height: 10%; width:50%'>";
-			if(isset($_SESSION['timestamp'])){
-				echo "<h3>Status : <span>" . $_SESSION['timestamp'] . "</span></h3>";
-			}
-		echo "</div>";
-		echo "<div class='clear'>"; echo "</div>";
-	echo "</div>";
-?> 
-
-	<div class="content3">
-        <div class="shipment">
-			<div class="confirm">
-                <div class="imgcircle">
-                    <img src="<?php echo base_url('assets/images/home/order_tracking/icons/process.png'); ?>" />
-            	</div>
-				<span class="line"></span>
-				<p>Processing Order</p>
-			</div>
-			<div class="process">
-           	 	<div class="imgcircle">
-                	<img src="<?php echo base_url('assets/images/home/order_tracking/icons/confirm.png'); ?>" />
-            	</div>
-				<span class="line"></span>
-				<p>Confirmed Order</p>
-			</div>
-			<div class="quality">
-				<div class="imgcircle">
-                	<img src="<?php echo base_url('assets/images/home/order_tracking/icons/quality.png'); ?>" />
-            	</div>
-				<span class="line"></span>
-				<p>Packing Order</p>
-			</div>
-			<div class="dispatch">
-				<div class="imgcircle">
-                	<img src="<?php echo base_url('assets/images/home/order_tracking/icons/dispatch.png'); ?>" />
-            	</div>
-				<span class="line"></span>
-				<p>On The Way</p>
-			</div>
-			<div class="delivery">
-				<div class="imgcircle">
-                	<img src="<?php echo base_url('assets/images/home/order_tracking/icons/delivery.png'); ?>" />
-				</div>
-				<p>Delivered</p>
-			</div>
-			
 		</div>
-	</div>
-	</div>
+<div class="myDIV">
+		<div class="panel-body">
+		<?php
+		echo "<div class='trackDesign' style='width: 100%'>";
+			echo "<div class='content1'  style='background-color: #7cb342'>";
+				if(isset($_SESSION['tracking_number'])){
+					echo "<h2>Order Tracking Number: </h2>";
+					echo "<p style='font-weight: bolder; font-size: 40px'>" . $_SESSION['tracking_number'] . "</p>";
+				}
+			echo "</div>";
+			echo "<div class='content2' style='background-color: #aed581'>";
+				echo "<div class='content2-header1' style='height: 10%; width:50%'>";
+					if(isset($_SESSION['delivery_status'])){
+						echo "<h3>Status : <span style='font-weight: bolder; font-size:22px'>" . $_SESSION['delivery_status'] . "</span></h3>";
+					}
+				echo "</div>";
+				echo "<div class='content2-header1' style='height: 10%; width:50%'>";
+					if(isset($_SESSION['timestamp'])){
+						echo "<h3>Date : <span style='font-weight: bolder; font-size:22px'>" . $_SESSION['timestamp'] . "</span></h3>";
+					}
+				echo "</div>";
+				echo "<div class='clear'>"; echo "</div>";
+			echo "</div>";
+		?> 
+
+		<ul class="progressbar">
+		<li class="active">Processing Order</li>
+		<li>Confirmed Order</li>
+		<li>Packing Order</li>	
+		<li>On The Way</li>	
+		<li>Delivered</li>		
+		</ul>
+
+		</div>
 </div>
+		</div>
+
+	<div class="col-lg-2"></div>
+
 
 <script type="text/javascript">
 
@@ -208,8 +264,6 @@ document.getElementById("myDIV").style.display="block";
 }else{
 	document.getElementById("myDIV").style.display="none";
 }
-
-
 
 </script>
 

@@ -139,6 +139,7 @@
 			width: 20%;
 			position: relative;
 			text-align: center;
+			font-size: 16px;
 		}
 		.progressbar li:before {
 			content: counter(step);
@@ -167,16 +168,48 @@
 		.progressbar li:first-child:after{
 			content: none;
 		}
-		.progressbar li.active{
+		.progressbar li.done{
 			color: black;
 		}
-		.progressbar li.active:before{
-			border-color: green;
-
-			background-color: green;
+		.progressbar li.done:before{
+			border-color: #64dd17;
+			background-color: #b2ff59;
 		}
-		.progressbar li.active: + li:after{
-			background-color: green;
+		.progressbar li.done: + li:after{
+			background-color: #b2ff59;
+		}
+		.progressbar li.ongoing{
+			color: black;
+		}
+		.progressbar li.ongoing:before{
+			border-color: #ff9800;
+			background-color: #ffb74d;
+		}
+		.progressbar li.ongoing: + li:after{
+			background-color: #ffb74d;
+		}
+		.progressbar li.unstarted{
+			color: black;
+		}
+		.progressbar li.unstarted:before{
+			border-color: #e60000;
+			background-color: #ff6666;
+		}
+		.progressbar li.unstarted: + li:after{
+			background-color: #ff6666;
+		}
+		.centered{
+
+			text-align: center;
+			vertical-align: middle;
+			margin-top: 6%;
+		}
+		.centered-body{
+			text-align: center;
+			vertical-align: middle;
+			margin-top: 2%;
+			width: 92%;
+			margin-left: 4%;
 		}
 
 	</style>
@@ -247,23 +280,61 @@
 							if(isset($delivery_status)){
 								echo "<ul class='progressbar'>";
 									if ($delivery_status == 'Processing Order') {
-										echo "<li class='active'>Processing Order</li>";
-										echo "<li>Confirmed Order</li>";
-										echo "<li>On The Way</li>";
-										echo "<li>Delivered</li>";
-									}elseif ($delivery_status == 'Confirmed Order') {
-										echo "<li>Processing Order</li>";
-										echo "<li class='active'>Confirmed Order</li>";
-										echo "<li>On The Way</li>";
-										echo "<li>Delivered</li>";
-									}
-								echo "</ul>";
-							}else{
-								// REPLACE PROGRESS BAR WITH ORDER TRACKING INSTRUCTIONS AND PROCEDURES
-								// PUT INSTRUCTIONS HERE
-							}
+										echo "<li class='ongoing'>Processing Order</li>";
+										echo "<li class='unstarted'>Order Confirmed</li>";
+										echo "<li class='unstarted'>Packaging Order</li>";
+										echo "<li class='unstarted'>On The Way</li>";
+										echo "<li class='unstarted'>Delivered</li>";
+									}elseif ($delivery_status == 'Order Confirmed') {
+										echo "<li class='done'>Processing Order</li>";
+										echo "<li class='ongoing'>Order Confirmed</li>";
+										echo "<li class='unstarted'>Packaging Order</li>";
+										echo "<li class='unstarted'>On The Way</li>";
+										echo "<li class='unstarted'>Delivered</li>";
+									}elseif ($delivery_status == 'Packaging Order') {
+										echo "<li class='done'>Processing Order</li>";
+										echo "<li class='done'>Order Confirmed</li>";
+										echo "<li class='ongoing'>Packaging Order</li>";
+										echo "<li class='unstarted'>On The Way</li>";
+										echo "<li class='unstarted'>Delivered</li>";
+									}elseif ($delivery_status == 'On the Way') {
+										echo "<li class='done'>Processing Order</li>";
+										echo "<li class='done'>Order Confirmed</li>";
+										echo "<li class='done'>Packaging Order</li>";
+										echo "<li class='ongoing'>On The Way</li>";
+										echo "<li class='unstarted'>Delivered</li>";
+										echo "<div style='padding-bottom: 10%;margin-top:12%'> <hr></div>";
+									}elseif ($delivery_status == 'Delivered') {
+										echo "<li class='done'>Processing Order</li>";
+										echo "<li class='done'>Order Confirmed</li>";
+										echo "<li class='done'>Packaging Order</li>";
+										echo "<li class='done'>On The Way</li>";
+										echo "<li class='done'>Delivered</li>";
 
+									}
+							}else{
+								echo "<h2 class='centered'>Welcome to our online order tracking page!</h2>";
+								echo "<h4 class='centered-body'>Please enter your order tracking number to know the status of your order. <br>If you do not know your order tracking number, kindly check your order history in your profile.</h4>";
+								echo "<h3 style='margin-top:2%'>Guidelines:</h3>";
+								echo "<h4 style='margin-top:1%'><li>Order status will give you information such as delivery status, transaction date, food items, order sharing state (if you shared your order transaction with your friends), and list of friend(s). </li></h4>";
+								echo "<h4 style='margin-top:1%'><li>Please have the exact amount ready upon delivery.</li></h4>";
+								echo "<h4 style='margin-top:1%'> <li>Our system will be updated daily to provide you with order status. Please check again tomorrow for further updates and please understand that there maybe further delays in updating the system.</li></h4>";
+							}
+							echo "</ul>";
 						?>
+		
+						<!-- Legend labels -->
+						<div style="padding-top: 2%">
+							<h3>Delivery/Status Legends</h3>
+							<button class="btn" style="background-color:#64dd17; margin-top:1%; border-color:#b3b3b3" disabled type="button"> </button>
+							<button class="btn btn-default" style="color: black; margin-top:1%; font-weight:bolder; border-color:#64dd17" disabled type="button">Done</button>
+							
+							<button class="btn" style="background-color:#ff9800; margin-top:1%; margin-left:2%; border-color:#b3b3b3" disabled type="button"> </button>
+							<button class="btn btn-default" style="color: black; margin-top:1%; font-weight:bolder; border-color:#ff9800" disabled type="button">Ongoing</button>
+							
+							<button class="btn" style="background-color:#ff6666; margin-top:1%; margin-left:2%; border-color:#b3b3b3" disabled type="button"> </button>
+							<button class="btn btn-default" style="color: black; margin-top:1%; font-weight:bolder; border-color:#e60000" disabled type="button">Unstarted</button>
+						</div>
 					</div>
 				</div>
 			</div>

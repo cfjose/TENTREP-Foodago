@@ -11,6 +11,8 @@
 
 			$this->load->model('feedback');
 
+			$this->load->model('FeedbackHasUser');
+
 			$this->load->model('penalty');
 		}
 

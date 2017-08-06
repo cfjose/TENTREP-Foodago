@@ -6,7 +6,6 @@
 		// CONTINUE WITH PAGE
 	}
 ?>
-
 <!DOCTYPE html>
 <html>
 <head>
@@ -186,6 +185,7 @@
 
 					<label for="password">Password</label><br/>
 					<input type="password" id="password" name="password" placeholder="* * * * * * * *"/><br/><br/>
+					<input type="hidden" id="created_at" name="created_at" value="<?php echo date('Y-m-d'); ?>"/>
 
 					<input type="checkbox">&nbsp;By creating an account, you are bound to agree to Foodago's </input>
 					<a href="#openModal">
@@ -262,13 +262,11 @@
 
 				</style>	
 				
-
-
 				<div class="vertical"></div>
 
 				<input type="submit" value="Sign Up" class="btn btn-warning"/><br/><br/>
 
-				<p>Already have an Account? <a href="<?php echo base_url(); ?>/index.php/login/userLogin">Login</a></p><br/>
+				<p>Already have an Account? <a href="<?php echo base_url(); ?>index.php/login/userLogin">Login</a></p><br/>
 				<?php
 					if (isset($message_display)) {
 						echo '<div class="message" id="msg">';

@@ -3,12 +3,13 @@
 
 	class Order extends CI_Model{
 		public function getOrderStatus($data){
-			$this->db->select('*');
+			$this->db->select('delivery_status_id');
 			$this->db->from('order');
-			$this->db->where("tracking_number ='" . $data['tracking_number'] . "'");
+			$this->db->where("tracking_number ='" . $data . "'");
 
 			$query = $this->db->get();
-			return $query;		}
+			return $query;
+		}
 
 		public function getUserOrders($data){
 			$this->db->select('*');
@@ -19,15 +20,37 @@
 			return $query;
 		}
 
-		/*public function changeStatus($data){
-            $status = 'TRUE';
-            $this->db->select('is_shared');
-            $this->db->set('is_shared', $status);
-            $this->db->where("tracking_number = '".$data. "'");
-            $this->db->update('order');
+		public function getNewOrders(){
+			$this->db->select('id');
+			$this->db->from('delivery_status');
+			$this->db->where("name ='Processing Order'");
 
-            $query = $this->db->get();
-            return $query;
-        }*/
+			$query = $this->db->get();
+
+			$this->db->select('*');
+			$this->db->from('order');
+			$this->db->where("delivery_status_id ='" . $query->row('id') . "'");
+
+			$query = $this->db->get();
+			return $query;
+		}
+
+		public function getAllOrders(){
+			$this->db->select('*');
+			$this->db->from('order');
+
+			$query = $this->db->get();
+			return $query;
+		}
+
+		public function insert($data){
+        	$this->db->insert('order', $data);
+
+			if($this->db->affected_rows > 0){
+				return TRUE;
+			}else{
+				return FALSE;
+			}
+        }
 	}
 ?>

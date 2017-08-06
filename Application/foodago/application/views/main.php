@@ -1,6 +1,11 @@
 <?php
 	if(isset($this->session->userdata['logged_in'])){
 		// DO NOTHING, CONTINUE WITH MAIN PAGE
+		if($this->session->userdata['user_type'] == 'Customer'){
+			// CONTINUE
+		}else{
+			redirect(base_url() . 'index.php/admin');
+		}
 	}else{
 		// NO ACCESS ALLOWED, REDIRECT TO LOGIN PAGE
 		redirect(base_url() . 'index.php/login/userLogin');
@@ -352,7 +357,7 @@
 							$categoryId = $this->category->getCategoryId($name);
 
 							// GET NUMBER OF RESTAURANT PER CATEGORY, IF 0, DO NOT PRINT CATEGORY
-							$query = $this->restaurant->getResId($categoryId);
+							$query = $this->RestaurantHasCategory->getRestaurantId($categoryId);
 							$totalResCount = $query->num_rows();
 
 							if($totalResCount == 0){
@@ -366,7 +371,7 @@
 							      	echo "<div id='".$trimmed_str_name."' class='panel-collapse collapse'>";
 							      		echo "<ul class='list-group'>";
 
-											$query = $this->restaurant->getResId($categoryId);
+											$query = $this->RestaurantHasCategory->getRestaurantId($categoryId);
 
 											foreach($query->result() as $row){
 												$result = $this->restaurant->getRestaurantName($row->restaurant_id);

@@ -3,11 +3,11 @@
 		$restaurant_name = $_GET['restaurant_name'];
 		echo "<h3>" . $restaurant_name . "</h3><br/>";
 
-		$query = $this->restaurant->getResIdFromRes($restaurant_name);
+		$query = $this->restaurant->getRestaurantIdFromRestaurant($restaurant_name);
 
 		$resultResId = $query->row()->id;
 
-		$query = $this->restaurant->getRestaurantSubCategory($resultResId);
+		$query = $this->RestaurantHasSubCategory->getRestaurantSubCategory($resultResId);
 
 		foreach($query->result() as $row){
 			$sub_category_id = $row->sub_category_id;
@@ -41,10 +41,15 @@
 	                            	echo "<h5 class='pull-right'>&#x20B1 " . $row->price . "</h5>";
 	                            	echo "<h5><a href='#'>" . $row->name . "</a></h5>";
 	                            	echo "<h5>Calorie Count :  " . ($row->calorie_count == NULL ? "Not Available" : $row->calorie_count) . "</h5>";
-	                            	echo "<a class='btn btn-primary' target='_blank' style='width:100%' href='#'>Add to tray</a>
+<<<<<<< HEAD
+	                            	echo "<a class='btn btn-primary' target='_blank' style='width:100%' href=''>Add to tray</a>";
+	                        	echo "</div>";
+=======
+	                            	echo "<a class='btn btn-primary' target='_blank' style='width:100%' href='#' name='add_cart'>Add to tray</a>
 	                            	</div>";
+>>>>>>> 40adf8657c5cf7e7487943b047594ecb69d85d2d
 	                        echo "<div class='ratings'>";
-                                $query = $this->feedback->getFoodItemFeedbackCount($row->id);
+                                $query = $this->FoodItemHasFeedback->getAllFoodItemFeedback($row->id);
 	                            echo "<p class='pull-right'>" . $query->num_rows() . " Reviews</p>";
 	                            echo "<p>
 	                            		<span class='glyphicon glyphicon-star'></span>
@@ -61,4 +66,33 @@
 			echo "</div>";
 		}
 	}
+	echo "
+			<script>
+				$(document).ready(function(){
+					$('.add_cart'),click(function(){
+						var id = $(this).data('foodItemId');
+						var name = $(this).data('foodItemName');
+						var price = $(this).data('foodItemPrice');
+						var quantity = $('#' + food_item_id).val();
+						if(quantity != '' && quantity > 0)
+						{
+							$.ajax({
+								url:".base_url()."AddToCart/add,
+								method:'POST',
+								data:{id:id, name:name, price:price, quantity:quantity},
+								success:function(data){
+									alert('Products are added into the cart');
+									$('.food-tray').html(data);
+									$('#' + id).val('');
+								}
+							})
+						}
+						else
+						{
+							alert('Please enter a quantity');
+						}
+					});
+				})
+			</script>
+		";
 ?>

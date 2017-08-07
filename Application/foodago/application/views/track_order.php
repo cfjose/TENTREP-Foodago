@@ -318,7 +318,7 @@
 								echo "<h3 style='margin-top:2%'>Guidelines:</h3>";
 								echo "<h4 style='margin-top:1%'><li>Order status will give you information such as delivery status, transaction date, food items, order sharing state (if you shared your order transaction with your friends), and list of friend(s). </li></h4>";
 								echo "<h4 style='margin-top:1%'><li>Please have the exact amount ready upon delivery.</li></h4>";
-								echo "<h4 style='margin-top:1%'> <li>Our system will be updated daily to provide you with order status. Please refresh the page further updates and please understand that there maybe further delays in updating the system.</li></h4>";
+								echo "<h4 style='margin-top:1%'> <li>Our system will be updated daily to provide you with order status. Refresh the page for further updates. Please understand that there maybe further delays in updating the system. </li></h4>";
 							}
 							echo "</ul>";
 						?>

@@ -29,5 +29,13 @@
 				return FALSE;
 			}
 		}
+
+		public function update($data){
+
+		}
+
+		public function delete($data){
+			
+		}
 	}
 ?>

@@ -60,6 +60,24 @@
 			}
 		}
 
+		public function getUserById($data){
+			$this->db->select('*');
+			$this->db->from('user');
+			$this->db->where("id ='" . $data . "'");
+
+			$query = $this->db->get();
+			return $query;
+		}
+
+		public function getUserByUserTypeId($data){
+			$this->db->select('*');
+			$this->db->from('user');
+			$this->db->where("user_type_id ='" . $data . "'");
+
+			$query = $this->db->get();
+			return $query;
+		}
+
 		public function updateUserInfo($data){
 			// UPDATE USER QUERIES
 		}
@@ -85,6 +103,24 @@
 
 			$query = $this->db->get();
 			return $query;
+		}
+
+		public function update($data){
+
+		}
+
+		public function delete($data){
+			$this->db->delete('feedback_has_user', array('user_id' => $data['id']));
+			$this->db->delete('order_has_user', array('user_id' => $data['id']));
+			$this->db->delete('order', array('user_id' => $data['id']));
+			$this->db->delete('user_has_penalty', array('user_id' => $data['id']));
+			$this->db->delete('user', array('id' => $data['id']));
+
+			if($this->db->affected_rows() > 0){
+				return TRUE;
+			}else{
+				return FALSE;
+			}
 		}
 	}
 ?>

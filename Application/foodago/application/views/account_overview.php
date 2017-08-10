@@ -163,7 +163,7 @@
 		<p class="grid-title">Pending Accountabilities</p><br/>		
 		<hr class="grid-divider"/>
 		<?php
-			$query = $this->penalty->getUserPenalties($this->session->userdata['id']);
+			$query = $this->UserHasPenalty->getUserPenalties($this->session->userdata['id']);
 
 			$numOrders = $query->num_rows();
 

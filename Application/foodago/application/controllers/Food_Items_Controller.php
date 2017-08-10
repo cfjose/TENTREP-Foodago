@@ -37,5 +37,23 @@
 				}
 			}
         }
+
+        public function updateFoodItem(){
+        	
+        }
+
+        public function deleteFoodItem(){
+        	$this->form_validation->set_rules('id', 'Food Item', 'trim|required|xss_clean');
+
+        	if($this->form_validation->run() == FALSE){
+        		$this->load->view('delete_food_items');
+        	}else{
+        		$data = array('restaurant_id' => $this->input->post('id'));
+
+        		$result = $this->FoodItem->delete($data);
+
+				redirect(base_url() . 'index.php/admin?page_view=admin_table&tn=food_items&mn=food_items');	
+        	}
+        }
     }
 ?>

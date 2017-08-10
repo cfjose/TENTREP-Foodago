@@ -33,5 +33,13 @@
 				}
 			}
         }
+
+        public function updateUserHasPenalty(){
+        	
+        }
+
+        public function deleteUserHasPenalty(){
+        	
+        }
     }
 ?>

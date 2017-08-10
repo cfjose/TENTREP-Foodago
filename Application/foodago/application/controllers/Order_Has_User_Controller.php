@@ -33,5 +33,13 @@
 				}
 			}
         }
+
+        public function updateOrderHasUser(){
+        	
+        }
+
+        public function deleteOrderHasUser(){
+        	
+        }
     }
 ?>

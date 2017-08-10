@@ -10,6 +10,15 @@
 			return $query;
 		}
 
+		public function getUserTypeById($data){
+			$this->db->select('*');
+			$this->db->from('user_type');
+			$this->db->where("id ='" . $data . "'");
+
+			$query = $this->db->get();
+			return $query;
+		}
+
 		public function insert($data){
 			$this->db->select('*');
 			$this->db->from('user_type');
@@ -28,6 +37,14 @@
 				$message = 'User Type already exists';
 				return FALSE;
 			}
+		}
+
+		public function update($data){
+
+		}
+
+		public function delete($data){
+			$this->db->delete('user_type', array('id' => $data['id']));
 		}
 	}
 ?>

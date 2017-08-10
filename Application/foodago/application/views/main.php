@@ -32,6 +32,22 @@
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+	<script>
+		function generateOrderCode(length, chars){
+				var result = '';
+			    for (var i = length; i > 0; --i) result += chars[Math.floor(Math.random() * chars.length)];
+			    return result;
+		}
+
+		function checkOrderShareState(){
+			if(document.getElementById('order_share_switch').checked == true){
+				var order_sharing_code = generateOrderCode(12, '0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ');
+				document.getElementById('share_code').value = order_sharing_code;
+			}else{
+				document.getElementById('share_code').value = '';
+			}
+		}
+	</script>
 	<style>
 		.carousel-inner{
 			height: 600px;
@@ -86,7 +102,7 @@
 		}
 
 		.subcategory-pane{
-			height: 300px;
+			height: 500px;
 		}
 
 		.sub-category-names{
@@ -97,7 +113,7 @@
 		.no-avail{
 			text-align: center;
 			vertical-align: middle;
-			margin-top: 10%;
+			margin-top: 25%;
 		}
 
 		.caret{
@@ -228,15 +244,18 @@
 		    font-size: 16px;
 		    line-height: 18px;
 		}
+
 		.trackLabel{
 			display: block;
     		color: #646464;
 		}
+
 		.trackInput{
 			display: table;
 		    overflow: hidden;
 		    border-radius: 2px;
 		}
+
 		.inputTrack{
 			display: table-cell;
     		height: 38px;
@@ -250,6 +269,7 @@
 		    box-shadow: inset 0 3px 0 0 #dfdfdf;
 		    color: #000;
 		}
+
 		.trackButton{
 			position: relative;
 		    width: 1%;
@@ -261,11 +281,88 @@
 		    display: table-cell;
 		    background: #f36f36;
 		}
+
 		.trackButton2{
 			border: none;
 		    background: none;
 		    width: 28px;
 		    height: 38px;
+		}
+
+		.navbar-right{
+			display: inline-flex;
+		}
+
+		.btn-default{
+			padding: 13px;
+		}
+
+		.form-control{
+			width: 30%;
+			text-align: center;
+			margin: 0 auto;
+		}
+
+		.switch {
+		  position: relative;
+		  display: inline-block;
+		  width: 50px;
+		  height: 25px;
+		}
+
+		/* Hide default HTML checkbox */
+		.switch input {display:none;}
+
+		/* The slider */
+		.slider {
+		  position: absolute;
+		  cursor: pointer;
+		  top: 0;
+		  left: 0;
+		  right: 0;
+		  bottom: 0;
+		  background-color: #ccc;
+		  -webkit-transition: .4s;
+		  transition: .4s;
+		}
+
+		.slider:before {
+		  position: absolute;
+		  content: "";
+		  height: 20px;
+		  width: 20px;
+		  left: 2px;
+		  bottom: 2px;
+		  background-color: white;
+		  -webkit-transition: .4s;
+		  transition: .4s;
+		}
+
+		input:checked + .slider {
+		  background-color: #2196F3;
+		}
+
+		input:focus + .slider {
+		  box-shadow: 0 0 1px #2196F3;
+		}
+
+		input:checked + .slider:before {
+		  -webkit-transform: translateX(26px);
+		  -ms-transform: translateX(26px);
+		  transform: translateX(26px);
+		}
+
+		/* Rounded sliders */
+		.slider.round {
+		  border-radius: 17px;
+		}
+
+		.slider.round:before {
+		  border-radius: 50%;
+		}
+
+		.modal-header{
+			display: inline-flex;
 		}
 	</style>
 </head>
@@ -276,14 +373,15 @@
 				<a class="navbar-brand" href="#"><img src="<?php echo base_url(); ?>/assets/images/global/logos/logoName.png" alt=""></a>
 	    	</div>
 	    	<ul class="nav navbar-nav navbar-right">
-		    	<div class="dropdown"> <a href="#" class="btn"> Track Order </a>
-					<div class="outer-list top">
-						<ul class="dropdown-menu">
-				    		<div class="trackTitle">Track My Order</div>
+		    	<div class="dropdown">
+		    		<button class="btn" data-toggle="dropdown"> Track Order <span class="caret"></span></button>
+					<ul class="dropdown-menu">
+						<div class="outer-list top">
+				    		<div class="trackTitle">Track your Order</div>
 				    		<div style="margin-bottom: 10px;">
-				    			<label for="username" class="trackLabel">Your order number:</label>
+				    			<label for="username" class="trackLabel">Your 12-Character Order Tracking Code</label>
 				    			<div class="trackInput">
-				    				<input type="text" id="username" name="username" placeholder="e.g. 123456789" class="inputTrack"/>
+				    				<input type="text" id="username" name="username" placeholder="e.g. A1B2C3D4E5F6" class="inputTrack"/>
 				    				<span class="trackButton">
 				    					<button class="trackButton2">
 				    						<span class="glyphicon glyphicon-chevron-right"></span>
@@ -291,8 +389,8 @@
 				    				</span>
 				    			</div>
 				    		</div>
-				    	</ul>
-				  	</div>
+			    		</div>
+			    	</ul>
 				</div>
 		    	<div class="dropdown">
 		    		<!--<label class="username"><?php echo $this->session->userdata('username'); ?></label>-->
@@ -313,7 +411,7 @@
 		<div class="item active">
 			<img src="<?php echo base_url(); ?>assets/images/main/main-bg.jpg" alt="" class="header">
 			<div class="search">
-				<form method="get" action="<?php base_url(); ?>index.php/search">
+				<form method="get" action="<?php base_url(); ?>index.php/search/rfSearch">
 					<h1 id="greetings"></h1>
 					<script type="text/javascript">
 						window.onload = function(){
@@ -336,6 +434,7 @@
 					<h2>Are you Hungry?</h2>
 					<h2>Search for your favorite restaurants / fast food chains online</h2>
 					<input type="text" id="q" placeholder="Search for Restaurants and Fast food Chains"/>
+					<input type="submit" name="submit" value="Search" class="btn btn-default">
 				</form>
 			</div>
 	  	</div>
@@ -391,10 +490,14 @@
 					<div class="panel-heading">
 						<?php
 							if(isset($_GET['restaurant_name'])){
-								$this->session->userdata['recent_searches'][] = $_GET['restaurant_name'];
-								$recent_searches = array_unique($this->session->userdata['recent_searches']);
-								for($i = 0; $i < count($recent_searches); $i++){
-									echo "<a href='" . base_url() . "index.php/main?restaurant_name=". $recent_searches[$i] ."'>" . $recent_searches[$i] . "</a>";
+								if(in_array($_GET['restaurant_name'], $this->session->userdata['recent_searches'])){
+									// DO NOTHING
+								}else{
+									$this->session->userdata['recent_searches'][] = $_GET['restaurant_name'];
+								}
+
+								for($i = 0; $i < count($this->session->userdata['recent_searches']); $i++){
+									echo "<a href='" . base_url() . "index.php/main?restaurant_name=". $this->session->userdata['recent_searches'][$i] ."'>" . $this->session->userdata['recent_searches'][$i] . "</a>";
 									echo "<hr class='hr0'/>";
 								}				
 							}
@@ -415,7 +518,6 @@
 				?>
 			</div>
 		</div>
-
         <div class="col-md-3 food-tray" style="margin-top: 7%">
             <!--FOOD TRAY-->
             <div class="panel-heading">
@@ -443,10 +545,7 @@
             			echo "</table>";
             			echo "<a href='' class='btn btn-success' data-toggle='modal' data-target='#myModal'>
             				Add Friend</a>";
-                        /*echo "<a href='' class='btn btn-success' data-toggle='modal' data-target='#myModal'
-                         	onclick='" . $this->order->changeStatus()." ' >Add Friend</a>";*/
-
-            			echo "<a href='' class='btn btn-warning'>Proceed to Checkout</a>";
+            			echo "<a href='".base_url()."index.php/CheckOut' class='btn btn-warning'>Proceed to Checkout</a>";
             		}
             	?>
 
@@ -455,28 +554,42 @@
 				<div class="modal-dialog">
 					<!-- Modal content-->
 					<div class="modal-content">
-					<div class="modal-header">
-					<button type="button" class="close" data-dismiss="modal">&times;</button>
-					<h4 class="modal-title">Sharing Code</h4>
-					</div>
-					<?php
-					function generateRandomString($length = 12){
-						$characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
-						$characterLength = strlen($characters);
-						$randomString = '';
+						<div class="modal-header">
+							<button type="button" class="close" data-dismiss="modal">&times;</button>
+							<h4 class="modal-title">Order Sharing &nbsp;</h4>
+							<label class="switch">
+								<input type="checkbox" id="order_share_switch" onchange="checkOrderShareState()">
+							  	<span class="slider round"></span>
+							</label>
+						</div>
+						<?php
+							function generateRandomString($length = 12){
+								$characters = '0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ';
+								$characterLength = strlen($characters);
+								$randomString = '';
 
-						for($i = 0; $i < $length; $i++){
-							$randomString .= $characters[rand(0, $characterLength - 1)];
-						}
-						return $randomString;
-					}
-					echo "<div class='modal-body'>";
-					echo "<p align='center'>". generateRandomString() ."</p>";
-					echo "</div>";
-					?>
-					<div class="modal-footer">
-					<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-					</div>
+								for($i = 0; $i < $length; $i++){
+									$randomString .= $characters[rand(0, $characterLength - 1)];
+								}
+								return $randomString;
+							}
+						?>
+						<div class="modal-body">
+							<p>Enable Order Sharing to allow your friends add their own Food Items to your Food Tray for a more convenient food ordering transactions</p>
+
+							<p>Once enabled, Foodago will generate a 12-Character Order Sharing Code that can be shared to your friends and family</p>
+
+							<p>Happy Eating!</p><br/>
+
+							<p>All the best, </p>
+							<p>The Foodago Team</p>
+
+							<p align="center"><b>12-Character Order Sharing Code</b></p>
+							<input type="text" name="order_share_code" id="share_code" class="form-control" readonly="readonly"/><br/>
+						</div>
+						<div class="modal-footer">
+							<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+						</div>
 					</div>
 				</div>
 			</div>

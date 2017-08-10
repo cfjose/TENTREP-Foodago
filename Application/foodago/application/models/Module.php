@@ -38,5 +38,14 @@
 				return FALSE;
 			}
 		}
+
+		public function update($data){
+
+		}
+
+		public function delete($data){
+			$this->db->delete('user_type_has_module', array('module_id' => $data['id']));
+			$this->db->delete('module', array('id' => $data['id']));
+		}
 	}
 ?>

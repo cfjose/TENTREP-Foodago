@@ -29,5 +29,23 @@
 				}
 			}
         }
+
+        public function updatePenalty(){
+        	
+        }
+
+        public function deletePenalty(){
+        	$this->form_validation->set_rules('id', 'Penalty', 'trim|required|xss_clean');
+
+        	if($this->form_validation->run() == FALSE){
+        		$this->load->view('delete_penalty');
+        	}else{
+        		$data = array('id' => $this->input->post('id'));
+
+        		$result = $this->penalty->delete($data);
+
+        		redirect(base_url() . 'index.php/admin?page_view=admin_table&tn=penalty&mn=penalty');
+        	}
+        }
     }
 ?>

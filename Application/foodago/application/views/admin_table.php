@@ -1,7 +1,16 @@
   <?php
     if(isset($this->session->userdata['logged_in'])){
-      if($this->session->userdata['user_type'] == 'Aggregator' || $this->session->userdata['user_type'] == 'System Admin'){
+      if($this->session->userdata['user_type'] == 'Aggregator' || $this->session->userdata['user_type'] == 'System Admin' || $this->session->userdata['user_type'] == 'Restaurant Owner'){
         // CONTINUE WITH PAGE
+        $mn = str_replace('_', ' ', $_GET['mn']);
+        $mn_uc = ucwords($mn);
+
+        if(in_array('Read ' . $mn_uc, $this->session->userdata['user_privileges'])){
+          // CONTINUE
+        }else{
+          $this->session->userdata['current_url'] = $_SERVER['REQUEST_URI'];  
+          redirect(base_url() . 'index.php/PotentialAttempt');
+        }
       }else{
         $this->session->userdata['current_url'] = $_SERVER['REQUEST_URI'];  
         redirect(base_url() . 'index.php/PotentialAttempt');
@@ -11,16 +20,7 @@
       redirect(base_url() . 'index.php/login/userLogin');
     }
   ?>
-  <h1>
-    <?php
-      $mn = str_replace('_', ' ', $_GET['mn']);
-      $mn_uc = ucwords($mn);
-
-      echo $mn_uc;
-
-      // $tn = $this->encryption->decrypt($_GET['tn']);
-    ?>
-  </h1>
+  <h1><?php echo $mn_uc; ?></h1>
   <ol class="breadcrumb">
     <li><a href="<?php echo base_url()."assets/"; ?>#"><i class="fa fa-dashboard"></i> Home</a></li>
     <li class="active">Dashboard</li>
@@ -52,10 +52,8 @@
             <div class="box-body table-responsive no-padding">
               <table class="table table-hover">
                 <?php
-
                   $this->db->select('*');
                   $this->db->from($_GET['tn']);
-
 
                   $get_table_fields = $this->db->list_fields($_GET['tn']);
 
@@ -66,10 +64,10 @@
                       $this->db->order_by($field, 'ASC');
                       $field = str_replace('_id', '', $field);
                     }else{
-                      $field = str_replace('_', ' ', $field);
                       $this->db->order_by('id', 'ASC');
                     }
 
+                    $field = str_replace('_', ' ', $field);
                     $field = ucwords($field);
                     echo "<th>" . $field . "</th>";
                   }
@@ -82,11 +80,19 @@
                       echo "<tr>";
                       echo "<td>";
                         if(in_array('Update ' . $mn_uc, $this->session->userdata['user_privileges'])){
-                          echo "<a href='".base_url()."index.php/admin?page_view=admin_form&ct=edit&dbt=".$_GET['tn']."&ref_mod=".$_GET['mn']."' class='btn btn-warning'><i class='fa fa-pencil'></i></a> ";
+                          if(strpos($_GET['tn'], '_has_')){
+                            // DO NOTHING
+                          }else{
+                            echo "<a href='".base_url()."index.php/admin?page_view=edit_".$_GET['tn']."&ct=edit&dbt=".$_GET['tn']."&ref_mod=".$_GET['mn']."&refid=".$row->id."' class='btn btn-warning'><i class='fa fa-pencil'></i></a> ";
+                          }
                         }
 
                         if(in_array('Delete ' . $mn_uc, $this->session->userdata['user_privileges'])){
-                          echo "<a href='' class='btn btn-danger'><i class='fa fa-trash'></i></a>";
+                          if(strpos($_GET['tn'], '_has_')){
+                            // DO NOTHING
+                          }else{
+                            echo "<a href='".base_url()."index.php/admin?page_view=delete_".$_GET['tn']."&ct=delete&dbt=".$_GET['tn']."&ref_mod=".$_GET['mn']."&refid=".$row->id."' class='btn btn-danger'><i class='fa fa-trash'></i></a>";
+                          }
                         }
                       echo "</td>";
 
@@ -99,6 +105,16 @@
                             $this->db->where("id ='".$row->$field."'");
 
                             $query = $this->db->get();
+
+                            switch($get_table_name){
+                              case 'user':
+                                echo "<td>" . $query->row('username') . "</td>";
+                                break;
+
+                              case 'contact_num':
+                                echo "<td>" . $query->row('contact_num') . "</td>";
+                                break;
+                            }
 
                             echo "<td>" . $query->row('name') . "</td>";
                           }else{

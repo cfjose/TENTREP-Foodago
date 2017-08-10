@@ -10,6 +10,15 @@
 			return $query;
 		}
 
+		public function getRestaurantById($data){
+			$this->db->select('*');
+			$this->db->from('restaurant');
+			$this->db->where("id ='" . $data . "'");
+
+			$query = $this->db->get();
+			return $query;
+		}
+
 		public function getRestaurantIdFromRestaurant($data){
 			$this->db->select('id');
 			$this->db->from('restaurant');
@@ -56,6 +65,14 @@
 				$message = 'Restaurant already exists';
 				return FALSE;
 			}
+		}
+
+		public function update($data){
+
+		}
+
+		public function delete($data){
+			$this->db->delete('restaurant', array('id' => $data['restaurant_id']));	
 		}
 	}
 ?>

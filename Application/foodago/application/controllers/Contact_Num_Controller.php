@@ -29,5 +29,23 @@
 				}
 			}
         }
+
+        public function updateContactNum(){
+        	
+        }
+
+        public function deleteContactNum(){
+        	$this->form_validation->set_rules('id', 'Contact Number', 'trim|required|xss_clean');
+
+        	if($this->form_validation->run() == FALSE){
+        		$this->load->view('delete_contact_num');
+        	}else{
+        		$data = array('id' => $this->input->post('id'));
+
+        		$result = $this->ContactNum->delete($data);
+
+        		redirect(base_url() . 'index.php/admin?page_view=admin_table&tn=contact_num&mn=contact_numbers');
+        	}	
+        }
     }
 ?>

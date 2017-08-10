@@ -19,6 +19,15 @@
 			return $query;
 		}
 
+		public function getCategoryById($data){
+			$this->db->select('*');
+			$this->db->from('category');
+			$this->db->where("id ='" . $data . "'");
+
+			$query = $this->db->get();
+			return $query;
+		}
+
 		public function getCategoryId($data){
 			$this->db->select('id');
 			$this->db->from('category');
@@ -48,6 +57,15 @@
 				$message = 'Category already exists';
 				return FALSE;
 			}
+		}
+
+		public function update($data){
+
+		}
+
+		public function delete($data){
+			$this->db->delete('restaurant_has_category', array('category_id' => $data['id']));
+			$this->db->delete('category', array('id' => $data['id']));
 		}
 	}
 ?>

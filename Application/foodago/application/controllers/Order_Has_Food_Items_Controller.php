@@ -35,5 +35,13 @@
 				}
 			}
         }
+
+        public function updateOrderHasFoodItems(){
+        	
+        }
+
+        public function deleteOrderHasFoodItems(){
+        	
+        }
     }
 ?>

@@ -31,5 +31,13 @@
 				}
 			}
         }
+
+        public function updateUserTypeHasModule(){
+        	
+        }
+
+        public function deleteUserTypeHasModule(){
+        	
+        }
     }
 ?>

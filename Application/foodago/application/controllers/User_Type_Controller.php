@@ -29,5 +29,23 @@
 				}
 			}
         }
+
+        public function updateUserType(){
+        	
+        }
+
+        public function deleteUserType(){
+        	$this->form_validation->set_rules('id', 'User Type', 'trim|required|xss_clean');
+
+        	if($this->form_validation->run() == FALSE){
+        		$this->load->view('delete_user_type');
+        	}else{
+        		$data = array('id' => $this->input->post('id'));
+
+        		$result = $this->UserType->delete($data);
+
+        		redirect(base_url() . 'index.php/admin?page_view=admin_table&tn=user_type&mn=user_types');
+        	}
+        }
     }
 ?>

@@ -29,5 +29,23 @@
 				}
 			}
         }
+
+        public function updateSubCategory(){
+        	
+        }
+
+        public function deleteSubCategory(){
+        	$this->form_validation->set_rules('id', 'Sub Category', 'trim|required|xss_clean');
+
+        	if($this->form_validation->run() == FALSE){
+        		$this->load->view('delete_sub_category');
+        	}else{
+        		$data = array('id' => $this->input->post('id'));
+
+        		$result = $this->SubCategory->delete($data);
+
+				redirect(base_url() . 'index.php/admin?page_view=admin_table&tn=sub_category&mn=subcategories');
+        	}
+        }
     }
 ?>

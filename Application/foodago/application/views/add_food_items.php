@@ -1,7 +1,7 @@
 <?php
 	if(isset($this->session->userdata['logged_in'])){
 		// DO NOTHING, CONTINUE WITH MAIN PAGE
-		if(in_array('Create Contact Numbers', $this->session->userdata['user_privileges'])){
+		if(in_array('Create Food Items', $this->session->userdata['user_privileges'])){
 			// CONTINUE
 		}else{
 			$this->session->userdata['current_url'] = $_SERVER['REQUEST_URI'];  
@@ -20,7 +20,7 @@
 			}
 
 			.header{
-				background-color: #2196f3;
+				background-color: #3c8dbc;
 				color: white;
 				font-weight: bold;
 				padding-top: 1%;

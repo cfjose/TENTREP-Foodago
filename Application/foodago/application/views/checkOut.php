@@ -199,7 +199,7 @@
 		}
 
 		.btn-warning{
-			margin-left: 18%;
+			/*margin-left: 18%;*/
 		}
 
 		input[type='number']{
@@ -316,12 +316,17 @@
 
 	<div class="panel panel-default">
 		<div class="panel-heading">
-		<h3>Tracking Number</h3>
+		<h3>Order Information</h3>
 		</div>
 		<div class="panel-body">
-		<h4>ABCDE123456</h4>
+		<h4>Order Tracking Code: ABCDE123456</h4><br/>
+		<h4>Order Sharing: <label class="label label-success">ON</label></h4><br/>
+		<h4>Order Sharing Code: Q1W2E3R4T5Y6</h4><br/>
+		<h4>Order Delivery Status: <label class="label label-default">Processing Order</label></h4>
 		</div>
 	</div>	
+	<a href="" class="btn btn-success">< Back to Shop</a>
+	<a href="" class="btn btn-warning">Proceed to Checkout</a>
 </div>	
 </body>
 </HTML>

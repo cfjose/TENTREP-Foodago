@@ -31,5 +31,13 @@
 				}
 			}
         }
+
+        public function updateFoodItemHasFeedback(){
+        	
+        }
+
+        public function deleteFoodItemHasFeedback(){
+        	
+        }
     }
 ?>

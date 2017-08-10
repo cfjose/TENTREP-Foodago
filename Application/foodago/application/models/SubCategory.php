@@ -10,6 +10,15 @@
 			return $query;
 		}
 
+		public function getSubCategoryById($data){
+			$this->db->select('*');
+			$this->db->from('sub_category');
+			$this->db->where("id ='" . $data . "'");
+
+			$query = $this->db->get();
+			return $query;
+		}
+
 		public function getSubCategoryName($data){
 			$this->db->select('name');
 			$this->db->from('sub_category');
@@ -37,6 +46,16 @@
 				$message = 'Sub Category already exists';
 				return FALSE;
 			}
+		}
+
+		public function update($data){
+
+		}
+
+		public function delete($data){
+			$this->db->delete('food_items', array('sub_category_id' => $data['id']));
+			$this->db->delete('restaurant_has_sub_category', array('sub_category_id' => $data['id']));
+			$this->db->delete('sub_category', array('id' => $data['id']));
 		}
 	}
 ?>

@@ -1,6 +1,6 @@
 <?php
   if(isset($this->session->userdata['logged_in'])){
-    if($this->session->userdata['user_type'] == 'Aggregator' || $this->session->userdata['user_type'] == 'System Admin'){
+    if($this->session->userdata['user_type'] == 'Aggregator' || $this->session->userdata['user_type'] == 'System Admin' || $this->session->userdata['user_type'] == 'Restaurant Owner'){
       // CONTINUE WITH PAGE
     }else{
       $this->session->userdata['current_url'] = $_SERVER['REQUEST_URI'];  

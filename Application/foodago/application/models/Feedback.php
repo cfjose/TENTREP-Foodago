@@ -10,6 +10,15 @@
             return $query;
         }
 
+        public function getFeedbackById($data){
+        	$this->db->select('*');
+        	$this->db->from('feedback');
+        	$this->db->where("id ='" . $data . "'");
+
+        	$query = $this->db->get();
+        	return $query;
+        }
+
         public function insert($data){
         	$this->db->insert('feedback', $data);
 
@@ -18,6 +27,15 @@
 			}else{
 				return FALSE;
 			}
+        }
+        
+        public function update($data){
+
+        }
+
+        public function delete($data){
+            $this->db->delete('feedback_has_user', array('feedback_id' => $data['id']));
+            $this->db->delete('feedback', array('id' => $data['id']));
         }
 	}
 ?>

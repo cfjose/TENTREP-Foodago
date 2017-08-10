@@ -29,5 +29,23 @@
 				}
 			}
         }
+
+        public function updateRestaurantStatus(){
+        	
+        }
+
+        public function deleteRestaurantStatus(){
+        	$this->form_validation->set_rules('id', 'Restaurant Status', 'trim|required|xss_clean');
+
+        	if($this->form_validation->run() == FALSE){
+        		$this->load->view('delete_restaurant_status');
+        	}else{
+        		$data = array('id' => $this->input->post('id'));
+
+        		$result = $this->RestaurantStatus->delete($data);
+
+				redirect(base_url() . 'index.php/admin?page_view=admin_table&tn=restaurant_status&mn=restaurant_status');
+        	}
+        }
     }
 ?>

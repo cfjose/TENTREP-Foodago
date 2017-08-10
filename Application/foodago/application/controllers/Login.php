@@ -64,7 +64,8 @@
 							'username' => $this->input->post('username'),
 							'password' => $password_hash,
 							'created_at' => $this->input->post('created_at'),
-							'user_type_id' => $resultId);
+							'user_type_id' => $resultId,
+							'restaurant_id' => $this->input->post('restaurant_id'));
 
 					$result = $this->user->newUserInsert($data);
 
@@ -123,9 +124,11 @@
 													'recent_searches' => array(),
 													'food_tray' => array('Sample', 'Test', 'Qwerty'),
 													'logged_in' => TRUE,
+													'user_id' => $result[0]->id,
 													'user_type' => $query->row()->name,
 													'user_type_id' => $result[0]->user_type_id,
-													'user_privileges' => array());
+													'user_privileges' => array(),
+													'restaurant_id' => $result[0]->restaurant_id);
 
 							$getUserPrivileges = $this->UserTypeHasModule->getUserTypeModuleIds($result[0]->user_type_id);
 
@@ -161,6 +164,48 @@
 					}else{
 						$data = array('error_message' => 'Invalid Username or Password');
 						$this->load->view('login', $data);
+					}
+				}
+			}
+		}
+
+		public function deleteUser(){
+			$this->form_validation->set_rules('id', 'User ID', 'trim|required|xss_clean');
+
+			if(isset($this->session->userdata['logged_in'])){
+				if($this->session->userdata['user_type'] == 'System Admin'){
+					$data = array('id' => $this->input->post('id'),
+								  'user_type' => $this->input->post('user_type'),
+								  'restaurant_id' => $this->input->post('restaurant_id'));
+				}else{
+					$data = array('id' => $this->session->userdata['user_id'],
+								  'user_type' => $this->session->userdata['user_type'],
+								  'restaurant_id' => $this->session->userdata['restaurant_id']);
+				}
+
+				if($data['user_type'] == 'Restaurant Owner'){
+					$deleteRestaurantFoodItems = $this->FoodItem->deleteByRestaurant($data);
+
+					$result = $this->restaurant->delete($data);
+				}
+
+				$result = $this->user->deleteUser($data);
+
+				if(isset($this->session->userdata['logged_in'])){
+					if($this->session->userdata['user_type'] == 'Customer'){
+						if($result == TRUE){
+							redirect(base_url() . 'index.php/login/logout');
+						}else{
+
+						}
+					}else{
+						if($result == TRUE){
+							redirect(base_url() . 'index.php/admin?page_view=admin_table&tn=user&mn=user_accounts');
+						}else{
+							$data['message_display'] = "An error has occurred while trying to delete the specified user account. Operation not Performed";
+
+							$this->load->view('delete_user', $data);
+						}
 					}
 				}
 			}

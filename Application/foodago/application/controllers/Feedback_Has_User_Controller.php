@@ -35,5 +35,13 @@
 				}
 			}
         }
+
+        public function updateFeedbackHasUser(){
+        	
+        }
+
+        public function deleteFeedbackHasUser(){
+        	
+        }
     }
 ?>

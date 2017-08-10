@@ -29,5 +29,23 @@
 				}
 			}
         }
+
+        public function updateDeliveryStatus(){
+        	
+        }
+
+        public function deleteDeliveryStatus(){
+        	$this->form_validation->set_rules('id', 'Delivery Status Name', 'trim|required|xss_clean');
+
+        	if($this->form_validation->run() == FALSE){
+        		$this->load->view('delete_delivery_status');
+        	}else{
+                $data = array('id' => $this->input->post('id'));
+                
+        		$result = $this->DeliveryStatus->delete($data);
+
+        		redirect(base_url() . 'index.php/admin?page_view=admin_table&tn=delivery_status&mn=delivery_status');
+        	}
+        }
     }
 ?>

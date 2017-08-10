@@ -31,5 +31,13 @@
 				}
 			}
         }
+
+        public function updateRestaurantHasCategory(){
+        	
+        }
+
+        public function deleteRestaurantHasCategory(){
+        	
+        }
     }
 ?>

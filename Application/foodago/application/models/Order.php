@@ -20,6 +20,24 @@
 			return $query;
 		}
 
+		public function getOrderByDeliveryStatus($data){
+			$this->db->select('*');
+			$this->db->from('order');
+			$this->db->where("delivery_status_id ='" . $data . "'");
+
+			$query = $this->db->get();
+			return $query;
+		}
+
+		public function getOrderById($data){
+			$this->db->select('*');
+			$this->db->from('order');
+			$this->db->where("id ='" . $data . "'");
+
+			$query = $this->db->get();
+			return $query;
+		}
+
 		public function getNewOrders(){
 			$this->db->select('id');
 			$this->db->from('delivery_status');
@@ -52,5 +70,16 @@
 				return FALSE;
 			}
         }
+
+        public function update($data){
+
+		}
+
+		public function delete($data){
+			$this->db->delete('order_has_user', array('order_id' => $data['id']));
+			$this->db->delete('user_has_penalty', array('order_id' => $data['id']));
+			$this->db->delete('order_has_food_items', array('order_id' => $data['id']));
+			$this->db->delete('order', array('id' => $data['id']));
+		}
 	}
 ?>

@@ -31,5 +31,13 @@
 				}
 			}
         }
+
+        public function updateRestaurantHasContactNum(){
+        	
+        }
+
+        public function deleteRestaurantHasContactNum(){
+        	
+        }
     }
 ?>

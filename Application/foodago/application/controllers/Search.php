@@ -13,5 +13,13 @@
 		public function index(){
 			$this->load->view('search');
 		}
+
+		public function rfSearch(){
+			$this->form_validation->set_rules('q', 'Search Keyword', 'required|xss_clean');
+
+			if($this->form_validation->run() == FALSE){
+				$getRestaurantsOnQuery = $this->db->select
+			}
+		}
 	}
 ?>

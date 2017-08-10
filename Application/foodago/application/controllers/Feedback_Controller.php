@@ -31,5 +31,23 @@
 				}
 			}
         }
+
+        public function updateFeedback(){
+        	
+        }
+
+        public function deleteFeedback(){
+        	$this->form_validation->set_rules('id', 'Feedback Reference', 'trim|required|xss_clean');
+
+        	if($this->form_validation->run() == FALSE){
+
+        	}else{
+        		$data = array('id' => $this->input->post('id'));
+
+        		$result = $this->feedback->delete($data);
+
+        		redirect(base_url() . 'index.php/admin?page_view=admin_table&tn=feedback&mn=feedbacks');
+        	}
+        }
     }
 ?>

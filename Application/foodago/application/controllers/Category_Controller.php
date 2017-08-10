@@ -29,5 +29,23 @@
 				}
 			}
         }
+
+        public function updateCategory(){
+        	
+        }
+
+        public function deleteCategory(){
+        	$this->form_validation->set_rules('category_id', 'Category', 'trim|required|xss_clean');
+
+        	if($this->form_validation->run() == FALSE){
+        		$this->load->view('delete_category');
+        	}else{
+        		$data = array('id' => $this->input->post('category_id'));
+
+        		$result = $this->category->delete($data);
+
+                redirect(base_url() . 'index.php/admin?page_view=admin_table&tn=category&mn=categories');
+        	}
+        }
     }
 ?>

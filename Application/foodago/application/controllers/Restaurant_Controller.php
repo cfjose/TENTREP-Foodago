@@ -31,5 +31,30 @@
 				}
 			}
         }
+
+        public function updateRestaurant(){
+
+        }
+
+        public function deleteRestaurant(){
+        	$this->form_validation->set_rules('id', 'Restaurant', 'trim|required|xss_clean');
+
+        	if($this->form_validation->run() == FALSE){
+        		$this->load->view('delete_restaurant');
+        	}else{
+        		$data = array('id' => $this->input->post('id'));
+        		
+        		$deleteRestaurantFoodItems = $this->FoodItem->deleteByRestaurant($data);
+
+        		if($deleteRestaurantFoodItems == TRUE){
+        			$result = $this->restaurant->delete($data);
+
+					redirect(base_url() . 'index.php/admin?page_view=admin_table&tn=restaurant&mn=restaurants');
+        		}else{
+        			$data['message'] = "An error has occurred while trying to delete restaurant. Operation not performed";
+        			$this->load->view('delete_restaurant', $data);
+        		}
+        	}
+        }
     }
 ?>

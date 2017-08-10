@@ -91,17 +91,12 @@
 		<div class="events-wrapper">
 			<div class="events">
 				<ol>
-					<li><a href="#0" data-date="16/01/2014" class="selected" style=" font-size: 18px;">16 Jan</a></li>
-					<li><a href="#0" data-date="28/02/2014" style=" font-size: 18px;">28 Feb</a></li>
-					<li><a href="#0" data-date="20/04/2014" style=" font-size: 18px;">20 Mar</a></li>
-					<li><a href="#0" data-date="20/05/2014" style=" font-size: 18px;">20 May</a></li>
-					<li><a href="#0" data-date="09/07/2014" style=" font-size: 18px;">09 Jul</a></li>
-					<li><a href="#0" data-date="30/08/2014" style=" font-size: 18px;">30 Aug</a></li>
-					<li><a href="#0" data-date="15/09/2014" style=" font-size: 18px;">15 Sep</a></li>
-					<li><a href="#0" data-date="01/11/2014" style=" font-size: 18px;">01 Nov</a></li>
-					<li><a href="#0" data-date="10/12/2014" style=" font-size: 18px;">10 Dec</a></li>
-					<li><a href="#0" data-date="19/01/2015" style=" font-size: 18px;">29 Jan</a></li>
-					<li><a href="#0" data-date="03/03/2015" style=" font-size: 18px;">3 Mar</a></li>
+					<li><a href="#0" data-date="20/06/2017" class="selected" style=" font-size: 18px;">20 Jun</a></li>
+					<li><a href="#0" data-date="23/06/2017" style=" font-size: 18px;">23 Jun</a></li>
+					<li><a href="#0" data-date="27/06/2017" style=" font-size: 18px;">27 Jun</a></li>
+					<li><a href="#0" data-date="30/06/2017" style=" font-size: 18px;">30 Jun</a></li>
+					<li><a href="#0" data-date="03/07/2017" style=" font-size: 18px;">03 Jul</a></li>
+					<li><a href="#0" data-date="04/07/2017" style=" font-size: 18px;">04 Jul</a></li>
 				</ol>
 
 				<span class="filling-line" aria-hidden="true"></span>
@@ -116,9 +111,9 @@
 
 	<div class="events-content">
 		<ol>
-			<li class="selected" data-date="16/01/2014">
-				<h3>Put Title Here</h3>
-				<em></em>
+			<li class="selected" data-date="20/06/2017">
+				<h3>Team was formed</h3>
+				<em> June 20th, 2017</em>
 				<p>	
 					Foodago is a web application that can make ordering of your different favorite food easier. With Foodago, you can order different food to different fast food chains or restaurants and track where your orders are easily.
 					Hassle-free! Just stay at your home and order! You can also share your orders to your friends. No need to memorize and to compute or even write their orders to a paper when they order too many food!<br>
@@ -126,95 +121,50 @@
 				</p>
 			</li>
 
-			<li data-date="28/02/2014">
-				<h3>Event title here</h3>
-				<em>February 28th, 2014</em>
+			<li data-date="23/06/2017">
+				<h3>Getting Ideas</h3>
+				<em>June 23rd, 2017</em>
 				<p>	
-					Lorem ipsum dolor sit amet, consectetur adipisicing elit. Illum praesentium officia, fugit recusandae ipsa, quia velit nulla adipisci? Consequuntur aspernatur at, eaque hic repellendus sit dicta consequatur quae, ut harum ipsam molestias maxime non nisi reiciendis eligendi! Doloremque quia pariatur harum ea amet quibusdam quisquam, quae, temporibus dolores porro doloribus.
+					Brainstorming of ideas for project
 				</p>
 			</li>
 
-			<li data-date="20/04/2014">
-				<h3>Event title here</h3>
-				<em>March 20th, 2014</em>
+			<li data-date="27/06/2017">
+				<h3>Concept</h3>
+				<em>June 27th, 2017</em>
 				<p>	
-					Lorem ipsum dolor sit amet, consectetur adipisicing elit. Illum praesentium officia, fugit recusandae ipsa, quia velit nulla adipisci? Consequuntur aspernatur at, eaque hic repellendus sit dicta consequatur quae, ut harum ipsam molestias maxime non nisi reiciendis eligendi! Doloremque quia pariatur harum ea amet quibusdam quisquam, quae, temporibus dolores porro doloribus.
+					Concept of Foodago was created
 				</p>
 			</li>
 
-			<li data-date="20/05/2014">
-				<h3>Event title here</h3>
-				<em>May 20th, 2014</em>
+			<li data-date="30/06/2017">
+				<h3>Validated Learning</h3>
+				<em>June 30th, 2017</em>
 				<p>	
-					Lorem ipsum dolor sit amet, consectetur adipisicing elit. Illum praesentium officia, fugit recusandae ipsa, quia velit nulla adipisci? Consequuntur aspernatur at, eaque hic repellendus sit dicta consequatur quae, ut harum ipsam molestias maxime non nisi reiciendis eligendi! Doloremque quia pariatur harum ea amet quibusdam quisquam, quae, temporibus dolores porro doloribus.
+					Survey was conducted
 				</p>
 			</li>
 
-			<li data-date="09/07/2014">
-				<h3>Event title here</h3>
-				<em>July 9th, 2014</em>
+			<li data-date="03/07/2017">
+				<h3>Results</h3>
+				<em>July 3rd, 2017</em>
 				<p>	
-					Lorem ipsum dolor sit amet, consectetur adipisicing elit. Illum praesentium officia, fugit recusandae ipsa, quia velit nulla adipisci? Consequuntur aspernatur at, eaque hic repellendus sit dicta consequatur quae, ut harum ipsam molestias maxime non nisi reiciendis eligendi! Doloremque quia pariatur harum ea amet quibusdam quisquam, quae, temporibus dolores porro doloribus.
+					Results of surveys were gathered and analyzed			
 				</p>
 			</li>
 
-			<li data-date="30/08/2014">
-				<h3>Event title here</h3>
-				<em>August 30th, 2014</em>
+			<li data-date="04/07/2017">
+				<h3>Development</h3>
+				<em>July 4th, 2017</em>
 				<p>	
-					Lorem ipsum dolor sit amet, consectetur adipisicing elit. Illum praesentium officia, fugit recusandae ipsa, quia velit nulla adipisci? Consequuntur aspernatur at, eaque hic repellendus sit dicta consequatur quae, ut harum ipsam molestias maxime non nisi reiciendis eligendi! Doloremque quia pariatur harum ea amet quibusdam quisquam, quae, temporibus dolores porro doloribus.
+					System development started
 				</p>
 			</li>
 
-			<li data-date="15/09/2014">
-				<h3>Event title here</h3>
-				<em>September 15th, 2014</em>
-				<p>	
-					Lorem ipsum dolor sit amet, consectetur adipisicing elit. Illum praesentium officia, fugit recusandae ipsa, quia velit nulla adipisci? Consequuntur aspernatur at, eaque hic repellendus sit dicta consequatur quae, ut harum ipsam molestias maxime non nisi reiciendis eligendi! Doloremque quia pariatur harum ea amet quibusdam quisquam, quae, temporibus dolores porro doloribus.
-				</p>
-			</li>
-
-			<li data-date="01/11/2014">
-				<h3>Event title here</h3>
-				<em>November 1st, 2014</em>
-				<p>	
-					Lorem ipsum dolor sit amet, consectetur adipisicing elit. Illum praesentium officia, fugit recusandae ipsa, quia velit nulla adipisci? Consequuntur aspernatur at, eaque hic repellendus sit dicta consequatur quae, ut harum ipsam molestias maxime non nisi reiciendis eligendi! Doloremque quia pariatur harum ea amet quibusdam quisquam, quae, temporibus dolores porro doloribus.
-				</p>
-			</li>
-
-			<li data-date="10/12/2014">
-				<h3>Event title here</h3>
-				<em>December 10th, 2014</em>
-				<p>	
-					Lorem ipsum dolor sit amet, consectetur adipisicing elit. Illum praesentium officia, fugit recusandae ipsa, quia velit nulla adipisci? Consequuntur aspernatur at, eaque hic repellendus sit dicta consequatur quae, ut harum ipsam molestias maxime non nisi reiciendis eligendi! Doloremque quia pariatur harum ea amet quibusdam quisquam, quae, temporibus dolores porro doloribus.
-				</p>
-			</li>
-
-			<li data-date="19/01/2015">
-				<h3>Event title here</h3>
-				<em>January 19th, 2015</em>
-				<p>	
-					Lorem ipsum dolor sit amet, consectetur adipisicing elit. Illum praesentium officia, fugit recusandae ipsa, quia velit nulla adipisci? Consequuntur aspernatur at, eaque hic repellendus sit dicta consequatur quae, ut harum ipsam molestias maxime non nisi reiciendis eligendi! Doloremque quia pariatur harum ea amet quibusdam quisquam, quae, temporibus dolores porro doloribus.
-				</p>
-			</li>
-
-			<li data-date="03/03/2015">
-				<h3>Event title here</h3>
-				<em>March 3rd, 2015</em>
-				<p>	
-					Lorem ipsum dolor sit amet, consectetur adipisicing elit. Illum praesentium officia, fugit recusandae ipsa, quia velit nulla adipisci? Consequuntur aspernatur at, eaque hic repellendus sit dicta consequatur quae, ut harum ipsam molestias maxime non nisi reiciendis eligendi! Doloremque quia pariatur harum ea amet quibusdam quisquam, quae, temporibus dolores porro doloribus.
-				</p>
-			</li>
+			
 		</ol>
 	</div> <!-- .events-content -->
 </section>
-<!-- 		  	<h1 style="margin-top: 5px;">About Foodago</h1><br>
-		  	<h3>
-		  		Foodago is a web application that can make ordering of your different favorite food easier. With Foodago, you can order different food to different fast food chains or restaurants and track where your orders are easily.
-		  		Hassle-free! Just stay at your home and order! You can also share your orders to your friends. No need to memorize and to compute or even write their orders to a paper when they order too many food!<br>
-		  		<i>With Foodago, your favorite food, delivered fast to your doorsteps.</i>
-		  	</h3>
-		  	<center><img src="<?php echo base_url(); ?>assets/images/global/logos/logoBig.png" alt="" style="width: 250px; height: 250px;"></center> -->
 		</div>
 	</div>
 

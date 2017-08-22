@@ -26,6 +26,7 @@
 	<link href='http://fonts.googleapis.com/css?family=Source+Sans+Pro:200,300,400,600,700,900,200itali
 	c,300italic,400italic,600italic,700italic,900italic' rel='stylesheet' type='text/css'>
 	<link rel="stylesheet" href="<?php echo base_url(); ?>css/site.css">
+	<link rel="stylesheet" href="<?php echo base_url(); ?>css/timeline.css">
 
 	<!-- jQuery library -->
 	<script src="<?php echo base_url() ?>js/bootstrap.min.js"></script>
@@ -36,16 +37,34 @@
 	<script type="text/javascript" src="<?php echo base_url(); ?>js/move-top.js"></script>
 	<script type="text/javascript" src="<?php echo base_url(); ?>js/easing.js"></script>
 
-	<style>
-		.carousel-inner{
-			height: 710px;
+	<script type="text/javascript" src="<?php echo base_url(); ?>js/timeline.js"></script>
+
+	<style type="text/css">
+
+		div.background {
+		  background: url(../assets/images/home/about_us/image-5.jpg) repeat;
+		  border: 2px solid black;
+		  height: 100%;
+		  width: 100%;
+		}
+		.safe{
+			overflow-y: hidden;
 		}
 
-		.bg-main{
-			filter: brightness(30%);
-			opacity: 0.9;
-			
+		div.transbox {
+		  margin: 10px;
+		  padding: 20px;
+		  background-color: white;
+		  opacity: 0.9;
+		  filter: alpha(opacity=90); /* For IE8 and earlier */
+		  height: 90%;
 		}
+
+		div.transbox p {
+		  font-weight: bold;
+		  color: #000000;
+		}
+
 	</style>
 </head>
 <body class="safe">
@@ -67,64 +86,88 @@
 
 	<div class="background"><br><br>
 		<div class="transbox">
+<section class="cd-horizontal-timeline">
+	<div class="timeline">
+		<div class="events-wrapper">
+			<div class="events">
+				<ol>
+					<li><a href="#0" data-date="20/06/2017" class="selected" style=" font-size: 18px;">20 Jun</a></li>
+					<li><a href="#0" data-date="23/06/2017" style=" font-size: 18px;">23 Jun</a></li>
+					<li><a href="#0" data-date="27/06/2017" style=" font-size: 18px;">27 Jun</a></li>
+					<li><a href="#0" data-date="30/06/2017" style=" font-size: 18px;">30 Jun</a></li>
+					<li><a href="#0" data-date="03/07/2017" style=" font-size: 18px;">03 Jul</a></li>
+					<li><a href="#0" data-date="04/07/2017" style=" font-size: 18px;">04 Jul</a></li>
+				</ol>
 
-		  	<h1>Timeline</h1><br>
-		  	<h4>SAMPLE</h4>
-		  	<br><br>z
-		  	<h1>About Foodago</h1><br>
-		  	<h4>
-		  		Foodago is a web application that can make ordering of your different favorite food easier. With Foodago, you can order different food to different fast food chains or restaurants and track where your orders are easily.
-		  		Hassle-free! Just stay at your home and order! You can also share your orders to your friends. No need to memorize and to compute or even write their orders to a paper when they order too many food!<br>
-		  		<i>With Foodago, your favorite food, delivered fast to your doorsteps.</i>
-		  	</h4>
-		  	<center><img src="<?php echo base_url(); ?>assets/images/global/logos/logoBig.png" alt="" style="width: 250px; height: 250px;"></center>
+				<span class="filling-line" aria-hidden="true"></span>
+			</div> <!-- .events -->
+		</div> <!-- .events-wrapper -->
+
+		<ul class="cd-timeline-navigation">
+			<li style="list-style-type: none"><a href="#0" class="prev inactive">Prev</a></li>
+			<li style="list-style-type: none"><a href="#0" class="next">Next</a></li>
+		</ul> <!-- .cd-timeline-navigation -->
+	</div> <!-- .timeline -->
+
+	<div class="events-content">
+		<ol>
+			<li class="selected" data-date="20/06/2017">
+				<h3>Team was formed</h3>
+				<em> June 20th, 2017</em>
+				<p>
+					Foodago is a web application that can make ordering of your different favorite food easier. With Foodago, you can order different food to different fast food chains or restaurants and track where your orders are easily.
+					Hassle-free! Just stay at your home and order! You can also share your orders to your friends. No need to memorize and to compute or even write their orders to a paper when they order too many food!<br>
+					<i>With Foodago, your favorite food, delivered fast to your doorsteps.</i>
+				</p>
+			</li>
+
+			<li data-date="23/06/2017">
+				<h3>Getting Ideas</h3>
+				<em>June 23rd, 2017</em>
+				<p>	
+					Brainstorming of ideas for project
+				</p>
+			</li>
+
+			<li data-date="27/06/2017">
+				<h3>Concept</h3>
+				<em>June 27th, 2017</em>
+				<p>	
+					Concept of Foodago was created
+				</p>
+			</li>
+
+			<li data-date="30/06/2017">
+				<h3>Validated Learning</h3>
+				<em>June 30th, 2017</em>
+				<p>	
+					Survey was conducted
+				</p>
+			</li>
+
+			<li data-date="03/07/2017">
+				<h3>Results</h3>
+				<em>July 3rd, 2017</em>
+				<p>	
+					Results of surveys were gathered and analyzed			
+				</p>
+			</li>
+
+			<li data-date="04/07/2017">
+				<h3>Development</h3>
+				<em>July 4th, 2017</em>
+				<p>
+					System development started
+				</p>
+			</li>
+
+			
+		</ol>
+	</div> <!-- .events-content -->
+</section>
 		</div>
 	</div>
 
-	<style type="text/css">
-
-		div.background {
-		  background: url(../assets/images/home/about_us/image-5.jpg) repeat;
-		  border: 2px solid black;
-		  height: 100%;
-		  width: 100%;
-		}
-		.safe{
-			overflow-y: hidden;
-		}
-
-		div.transbox {
-		  margin: 30px;
-		  background-color: white;
-		  border: 1px solid black;
-		  opacity: 0.9;
-		  filter: alpha(opacity=90); /* For IE8 and earlier */
-		  height: 80%;
-		  border-radius: 4%;
-		}
-
-		div.transbox p {
-		  margin: 5%;
-		  font-weight: bold;
-		  color: #000000;
-		}
-
-		h1{
-			margin-top: 20px;
-			margin-left: 20px;
-			margin-bottom: 0px;
-		}
-
-		h4{
-			margin-left: 45px;
-			margin-right: 20px;
-			margin-bottom: 0px;
-		}
-
-
-		
-
-	</style>	
 </body>
 </html>
 

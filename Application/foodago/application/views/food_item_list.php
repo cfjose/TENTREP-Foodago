@@ -5,7 +5,7 @@
 
 		$query = $this->restaurant->getRestaurantIdFromRestaurant($restaurant_name);
 
-		$resultResId = $query->row()->id;
+		$resultResId = $query->row('id');
 
 		$query = $this->RestaurantHasSubCategory->getRestaurantSubCategory($resultResId);
 
@@ -39,9 +39,9 @@
 	                            	echo "<h5 class='pull-right'>&#x20B1 " . $row->price . "</h5>";
 	                            	echo "<h5><a href='#'>" . $row->name . "</a></h5>";
 	                            	echo "<h5>Calorie Count :  " . ($row->calorie_count == NULL ? "Not Available" : $row->calorie_count) . "</h5>";
-	                            	echo "<a class='btn btn-primary' target='_blank' style='width:100%' href=''>Add to tray</a>";
+	                            	echo "<button class='btn btn-primary' style='width:100%' id='ref_item' onclick=addProductToTray(".$row->id.")>Add to Tray</button>";
 	                        	echo "</div>";
-		                        echo "<div class='ratings'>";
+		                        /*echo "<div class='ratings'>";
 	                                $query = $this->FoodItemHasFeedback->getAllFoodItemFeedback($row->id);
 		                            echo "<p class='pull-right'>" . $query->num_rows() . " Reviews</p>";
 		                            echo "<p>";
@@ -51,42 +51,12 @@
 			                            echo "<span class='glyphicon glyphicon-star'></span>";
 			                            echo "<span class='glyphicon glyphicon-star'></span>";
 		                            echo "</p>";
-	                        	echo "</div>";
+	                        	echo "</div>";*/
 	                    	echo "</div>";
 	            	  	echo "</div>";
 					}
 				}
-				
 			echo "</div>";
 		}
 	}
-	/* echo "
-			<script>
-				$(document).ready(function(){
-					$('.add_cart'),click(function(){
-						var id = $(this).data('foodItemId');
-						var name = $(this).data('foodItemName');
-						var price = $(this).data('foodItemPrice');
-						var quantity = $('#' + food_item_id).val();
-						if(quantity != '' && quantity > 0)
-						{
-							$.ajax({
-								url:".base_url()."AddToCart/add,
-								method:'POST',
-								data:{id:id, name:name, price:price, quantity:quantity},
-								success:function(data){
-									alert('Products are added into the cart');
-									$('.food-tray').html(data);
-									$('#' + id).val('');
-								}
-							})
-						}
-						else
-						{
-							alert('Please enter a quantity');
-						}
-					});
-				})
-			</script>
-		";*/
 ?>

@@ -102,7 +102,7 @@
 				<span class="filling-line" aria-hidden="true"></span>
 			</div> <!-- .events -->
 		</div> <!-- .events-wrapper -->
-			
+
 		<ul class="cd-timeline-navigation">
 			<li style="list-style-type: none"><a href="#0" class="prev inactive">Prev</a></li>
 			<li style="list-style-type: none"><a href="#0" class="next">Next</a></li>

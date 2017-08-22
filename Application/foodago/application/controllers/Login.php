@@ -115,6 +115,8 @@
 
 							$query = $this->db->get();
 
+							$order_tracking_code = substr(str_shuffle(str_repeat("0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ", 12)), 0, 12);
+
 							$session_data = array('first_name' => $result[0]->first_name,
 													'last_name' => $result[0]->last_name,
 													'username' => $result[0]->username,
@@ -122,7 +124,20 @@
 													'id' => $result[0]->id,
 													'created_at' => date_parse($result[0]->created_at),
 													'recent_searches' => array(),
-													'food_tray' => array('Sample', 'Test', 'Qwerty'),
+													'food_tray' => array(
+														'item_id' => array(),
+														'item_name' => array(),
+														'item_price' => array(),
+														'item_cal' => array(),
+														'item_resid' => array(),
+														'item_subcat_id' => array(),
+														'item_qty' => array(),
+														'sub_amt' => array(),
+														'order_tracking_code' => $order_tracking_code,
+														'order_sharing_state' => 0,
+														'order_sharing_code' => '',
+														'delivery_fee' => '',
+														'total_amt' => ''),
 													'logged_in' => TRUE,
 													'user_id' => $result[0]->id,
 													'user_type' => $query->row()->name,

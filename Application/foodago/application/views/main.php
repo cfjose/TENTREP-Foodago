@@ -27,25 +27,69 @@
 	<link rel="stylesheet" href="<?php echo base_url(); ?>css/site.css">
 	<link rel="stylesheet" href="<?php echo base_url(); ?>css/dropdowns.css">
 
+	<script type="text/javascript" src="//code.jquery.com/jquery-2.1.0.min.js"></script>
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 	<script>
+		var food_item = [];
+
 		function generateOrderCode(length, chars){
 				var result = '';
 			    for (var i = length; i > 0; --i) result += chars[Math.floor(Math.random() * chars.length)];
-			    return result;
+				return result;
 		}
 
 		function checkOrderShareState(){
 			if(document.getElementById('order_share_switch').checked == true){
 				var order_sharing_code = generateOrderCode(12, '0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ');
 				document.getElementById('share_code').value = order_sharing_code;
+				var share_st = 1;
+				var share_id = order_sharing_code;
 			}else{
 				document.getElementById('share_code').value = '';
+				var share_st = 0;
+				var share_id = '';
 			}
+
+			$.ajax({
+				type: "POST",
+				url: 'Main/changeShareState',
+				data: {
+					share_st: share_st,
+					share_id: share_id
+				},
+
+				success: function(data){
+					console.log("OK");
+				}
+			});
+		}
+
+		function addProductToTray(data){
+			var item_id = data;
+			$.ajax({
+				type: "POST",
+				url: 'Main/add',
+				data: {
+					item_id: item_id
+				},
+
+				success: function(data){	
+					console.log("OK");
+				}
+			});
+
+		}
+
+		function updateItemQty(){
+
+		}
+
+		function removeProductFrTray(){
+
 		}
 	</script>
 	<style>
@@ -221,7 +265,8 @@
 		}
 
 		.no-avail-list{
-			line-height: 200px;
+			padding-top: 50px;
+			padding-bottom: 50px;
 			text-align: center;
 			color: #ccc;
 		}
@@ -364,6 +409,10 @@
 		.modal-header{
 			display: inline-flex;
 		}
+
+		td{
+			font-size: 14px;
+		}
 	</style>
 </head>
 <body>
@@ -439,239 +488,157 @@
 			</div>
 	  	</div>
 	</div>
-		<div class="col-md-5">
-			<div class="category-nav"> <br>
-				<h4> Categories </h4><br/>
-				<div class="panel-group">
-					<?php
-						$query = $this->category->getCategoryNames();
-
-						foreach ($query->result() as $row){
-							$name = $row->name;
-
-							$categoryId = $this->category->getCategoryId($name);
-
-							// GET NUMBER OF RESTAURANT PER CATEGORY, IF 0, DO NOT PRINT CATEGORY
-							$query = $this->RestaurantHasCategory->getRestaurantId($categoryId);
-							$totalResCount = $query->num_rows();
-
-							if($totalResCount == 0){
-								// DO NOT PRINT CATEGORY
-							}else{
-								$trimmed_str_name = str_replace(' ', '', $name);
-								echo "<div class='panel panel-default'>";
-									echo "<a data-toggle='collapse' href='#".$trimmed_str_name."'><div class='panel-heading' style='background-color:#ff6f00; color:white'>";
-									echo "<h4 class='panel-title'>" . $name . "</h4></div></a>";
-
-							      	echo "<div id='".$trimmed_str_name."' class='panel-collapse collapse'>";
-							      		echo "<ul class='list-group'>";
-
-											$query = $this->RestaurantHasCategory->getRestaurantId($categoryId);
-
-											foreach($query->result() as $row){
-												$result = $this->restaurant->getRestaurantName($row->restaurant_id);
-												$row = $result->row()->name;
-
-												echo "<li class='list-group-item' style='background-color: #fff9c4;'><a href='" . base_url() . "index.php/main?restaurant_name=". $row ."'>" . $row . "</a></li>";
-											}
-
-										echo "</ul>";
-									echo "</div>";
-								echo "</div>";
-							}
-		                }
-					?>
-				</div>
-			</div>
-			<div class="recent-searches-nav"> <br>
-			<div class="col-lg-4">
-				<h3>Recent Searches</h3>
-				<div class="panel panel-default">
-					<div class="panel-heading">
-						<?php
-							if(isset($_GET['restaurant_name'])){
-								if(in_array($_GET['restaurant_name'], $this->session->userdata['recent_searches'])){
-									// DO NOTHING
-								}else{
-									$this->session->userdata['recent_searches'][] = $_GET['restaurant_name'];
-								}
-
-								for($i = 0; $i < count($this->session->userdata['recent_searches']); $i++){
-									echo "<a href='" . base_url() . "index.php/main?restaurant_name=". $this->session->userdata['recent_searches'][$i] ."'>" . $this->session->userdata['recent_searches'][$i] . "</a>";
-									echo "<hr class='hr0'/>";
-								}				
-							}
-						?>
-					</div>
-				</div>
-				</div>
-			</div>
-		</div>
-		<div class="col-lg-4" style="margin-left: 0%">
-			<div class="food-item-list"> <br>
+	<div class="col-md-5">
+		<div class="category-nav"> <br>
+			<h4> Categories </h4><br/>
+			<div class="panel-group">
 				<?php
-					if(isset($_GET['restaurant_name'])){
-						$this->load->view('food_item_list',$_GET['restaurant_name']);
-					}else{
-						// CREATE ANOTHER LAYOUT WITH MESSAGE 'SELECT A CATEGORY TO START' AND LOAD INTO DIV
-					}
+					$query = $this->category->getCategoryNames();
+
+					foreach ($query->result() as $row){
+						$name = $row->name;
+
+						$categoryId = $this->category->getCategoryId($name);
+
+						// GET NUMBER OF RESTAURANT PER CATEGORY, IF 0, DO NOT PRINT CATEGORY
+						$query = $this->RestaurantHasCategory->getRestaurantId($categoryId);
+						$totalResCount = $query->num_rows();
+
+						if($totalResCount == 0){
+							// DO NOT PRINT CATEGORY
+						}else{
+							$trimmed_str_name = str_replace(' ', '', $name);
+							echo "<div class='panel panel-default'>";
+								echo "<a data-toggle='collapse' href='#".$trimmed_str_name."'><div class='panel-heading' style='background-color:#ff6f00; color:white'>";
+								echo "<h4 class='panel-title'>" . $name . "</h4></div></a>";
+
+						      	echo "<div id='".$trimmed_str_name."' class='panel-collapse collapse'>";
+						      		echo "<ul class='list-group'>";
+
+										$query = $this->RestaurantHasCategory->getRestaurantId($categoryId);
+
+										foreach($query->result() as $row){
+											$result = $this->restaurant->getRestaurantName($row->restaurant_id);
+											$row = $result->row()->name;
+
+											echo "<li class='list-group-item' style='background-color: #fff9c4;'><a href='" . base_url() . "index.php/main?restaurant_name=". $row ."'>" . $row . "</a></li>";
+										}
+									echo "</ul>";
+								echo "</div>";
+							echo "</div>";
+						}
+	                }
 				?>
 			</div>
 		</div>
-        <div class="col-md-3 food-tray" style="margin-top: 7%">
-            <!--FOOD TRAY-->
-            <div class="panel-heading">
-            	<h3 class="ft-header">Food Tray</h3>
-            </div>
-            <div class="panel-body">
-            	<?php
-            		$count_fi = count($this->session->userdata('food_tray'));
+		<div class="recent-searches-nav"> <br>
+		<div class="col-lg-4">
+			<h3>Recent Searches</h3>
+			<div class="panel panel-default">
+				<div class="panel-heading">
+					<?php
+						if(isset($_GET['restaurant_name'])){
+							if(in_array($_GET['restaurant_name'], $this->session->userdata['recent_searches'])){
+								// DO NOTHING
+							}else{
+								$this->session->userdata['recent_searches'][] = $_GET['restaurant_name'];
+							}
 
-            		echo "<p>Your Items (" . $count_fi . ")</p>";
+							for($i = 0; $i < count($this->session->userdata['recent_searches']); $i++){
+								echo "<a href='" . base_url() . "index.php/main?restaurant_name=". $this->session->userdata['recent_searches'][$i] ."'>" . $this->session->userdata['recent_searches'][$i] . "</a>";
+								echo "<hr class='hr0'/>";
+							}				
+						}
+					?>
+				</div>
+			</div>
+			</div>
+		</div>
+	</div>
+	<div class="col-lg-4" style="margin-left: 0%">
+		<div class="food-item-list"> <br>
+			<?php
+				if(isset($_GET['restaurant_name'])){
+					$this->load->view('food_item_list',$_GET['restaurant_name']);
+				}else{
+					// CREATE ANOTHER LAYOUT WITH MESSAGE 'SELECT A CATEGORY TO START' AND LOAD INTO DIV
+				}
+			?>
+		</div>
+	</div>
+    <div class="col-md-3 food-tray" id="food-items" style="margin-top: 7%">
+        <!--FOOD TRAY-->
+        <div class="panel-heading">
+        	<h3 class="ft-header">Food Tray</h3>
+        </div>
+        <div class="panel-body">
+        	<?php
+        		$count_fi = count($this->session->userdata['food_tray']['item_id']);
 
-            		if($count_fi == 0){
-            			echo "<p class='no-avail-list'>NO ITEMS ADDED IN FOOD TRAY</p>";
-            		}else{
-            			echo "<table class='table borderless'>";
+        		echo "<p>Your Items (" . $count_fi . ")</p>";
 
+        		if($count_fi == 0){
+        			echo "<h4 class='no-avail-list'>NO ITEMS ADDED IN FOOD TRAY</h4>";
+        			$checkout_link = '';
+        		}else{
+        			$checkout_link = base_url() . 'index.php/CheckOut';
+        			echo "<table class='table borderless'>";
             			for($i = 0; $i < $count_fi; $i++){
             				echo "<tr>";
-            				echo "<td>" . $this->session->userdata['food_tray'][$i] . "</td>";
-            				echo "<td>P 200.00</td>";
-            				echo "<td><form method='post'><input type='number' name='qty' min='1' max='100' value='1'/></form></td>";
+            				echo "<td>" . $this->session->userdata['food_tray']['item_name'][$i] . "</td>";
+            				echo "<td>&#8369; " . $this->session->userdata['food_tray']['sub_amt'][$i] . "</td>";
+            				echo "<td><form method='post'><input type='number' name='qty' min='1' max='100' value='".$this->session->userdata['food_tray']['item_qty'][$i]."'/></form></td>";
             				echo "</tr>";
             			}
+        			echo "</table>";
+        		}
 
-            			echo "</table>";
-            			echo "<a href='' class='btn btn-success' data-toggle='modal' data-target='#myModal'>
-            				Add Friend</a>";
-            			echo "<a href='".base_url()."index.php/CheckOut' class='btn btn-warning'>Proceed to Checkout</a>";
-            		}
-            	?>
+        		echo "<a href='' class='btn btn-success' data-toggle='modal' data-target='#myModal'>
+        				Add Friend</a>";
 
-			<!-- Modal -->
-			<div class="modal fade" id="myModal" role="dialog">
-				<div class="modal-dialog">
-					<!-- Modal content-->
-					<div class="modal-content">
-						<div class="modal-header">
-							<button type="button" class="close" data-dismiss="modal">&times;</button>
-							<h4 class="modal-title">Order Sharing &nbsp;</h4>
-							<label class="switch">
-								<input type="checkbox" id="order_share_switch" onchange="checkOrderShareState()">
-							  	<span class="slider round"></span>
-							</label>
-						</div>
-						<?php
-							function generateRandomString($length = 12){
-								$characters = '0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ';
-								$characterLength = strlen($characters);
-								$randomString = '';
+    			echo "<a href='".$checkout_link."' class='btn btn-warning'>Proceed to Checkout</a>";
+        	?>
 
-								for($i = 0; $i < $length; $i++){
-									$randomString .= $characters[rand(0, $characterLength - 1)];
+		<!-- Modal -->
+		<div class="modal fade" id="myModal" role="dialog">
+			<div class="modal-dialog">
+				<!-- Modal content-->
+				<div class="modal-content">
+					<div class="modal-header">
+						<button type="button" class="close" data-dismiss="modal">&times;</button>
+						<h4 class="modal-title">Order Sharing &nbsp;</h4>
+						<label class="switch">
+							<?php
+								if($this->session->userdata['food_tray']['order_sharing_state'] == 0){
+									$check_state = false;
+								}else{
+									$check_state = true;
 								}
-								return $randomString;
-							}
-						?>
-						<div class="modal-body">
-							<p>Enable Order Sharing to allow your friends add their own Food Items to your Food Tray for a more convenient food ordering transactions</p>
+							?>
+							<input type="checkbox" id="order_share_switch" onchange="checkOrderShareState()" <?php echo ($check_state == false ? '' : 'checked') ?>>
+						  	<span class="slider round"></span>
+						</label>
+					</div>
+					<div class="modal-body">
+						<p>Enable Order Sharing to allow your friends add their own Food Items to your Food Tray for a more convenient food ordering transactions</p>
 
-							<p>Once enabled, Foodago will generate a 12-Character Order Sharing Code that can be shared to your friends and family</p>
+						<p>Once enabled, Foodago will generate a 12-Character Order Sharing Code that can be shared to your friends and family</p>
 
-							<p>Happy Eating!</p><br/>
+						<p>Happy Eating!</p><br/>
 
-							<p>All the best, </p>
-							<p>The Foodago Team</p>
+						<p>All the best, </p>
+						<p>The Foodago Team</p>
 
-							<p align="center"><b>12-Character Order Sharing Code</b></p>
-							<input type="text" name="order_share_code" id="share_code" class="form-control" readonly="readonly"/><br/>
-						</div>
-						<div class="modal-footer">
-							<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-						</div>
+						<p align="center"><b>12-Character Order Sharing Code</b></p>
+						<input type="text" name="order_share_code" id="share_code" class="form-control" readonly="readonly" value="<?php echo $this->session->userdata['food_tray']['order_sharing_code']; ?>"/>
+					</div>
+					<div class="modal-footer">
+						<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
 					</div>
 				</div>
 			</div>
-            </div>
-            <!--FOOD TRAY METHOD END-->
-            <script type="text/javascript">
-				$(".incr-btn").on("click", function (e) {
-				var $button = $(this);
-				var oldValue = $button.parent().find('.quantity').val();
-				$button.parent().find('.incr-btn[data-action="decrease"]').removeClass('inactive');
-				if ($button.data('action') == "increase") {
-				var newVal = parseFloat(oldValue) + 1;
-				} else {
-				// Don't allow decrementing below 1
-				if (oldValue > 1) {
-				var newVal = parseFloat(oldValue) - 1;
-				} else {
-				newVal = 1;
-				$button.addClass('inactive');
-				}
-				}
-				$button.parent().find('.quantity').val(newVal);
-				e.preventDefault();
-				});
-            </script>
-
-            <script>
-			'use strict';
-
-			(function() {
-
-			  var _btns = document.querySelectorAll('.btns'),
-
-			    _eachBtn = function(callback) {
-			      Array.prototype.forEach.call(_btns, function(elem) {
-			        callback.call(this, elem);
-			      });
-			    },
-			    _initListener = function(e) {
-			      e.preventDefault();
-			      e.stopPropagation();
-			      _eachBtn(function(btns) {
-			        btns.classList.remove('dropdowns-open')
-			      });
-			      this.classList.toggle('dropdowns-open');
-			    },
-			    _hideAll = function() {
-			      _eachBtn(function(btns) {
-			        btns.classList.remove('dropdowns-open');
-			      });
-			    };
-
-			  _eachBtn(function(btns) {
-			    btns.addEventListener('touchend', function(e) {
-			      _initListener.call(this, e);
-			    });
-
-			    btns.addEventListener('click', function(e) {
-			      _initListener.call(this, e);
-			    });
-			  });
-
-			  document.addEventListener('touchend', function() {
-			    _hideAll();
-			  });
-			  
-			  document.addEventListener('click', function() {
-			    _hideAll();
-			  });
-
-			})();
-			</script>
-			<script>
-			  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-			  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-			  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-			  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
-
-			  ga('create', 'UA-46156385-1', 'cssscript.com');
-			  ga('send', 'pageview');
-
-			</script>
+		</div>
         </div>
+    </div>
 </body>
 </html>

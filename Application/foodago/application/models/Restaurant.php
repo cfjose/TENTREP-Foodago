@@ -28,6 +28,15 @@
 			return $query;
 		}
 
+		public function getRestaurantByStatCategory($data){
+			$this->db->select('*');
+			$this->db->from('restaurant');
+			$this->db->where("restaurant_status_id = '" . $data['restaurant_status'] . "' AND category_id = '" . $data['category'] . "'");
+
+			$query = $this->db->get();
+			return $query;
+		}
+
 		public function getRestaurantByStatus($data){
 			$this->db->select('*');
 			$this->db->from('restaurant');

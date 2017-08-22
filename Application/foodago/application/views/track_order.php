@@ -325,6 +325,7 @@
 		
 						<!-- Legend labels -->
 						<div style="padding-top: 2%">
+							<br/>
 							<h3>Delivery/Status Legends</h3>
 							<button class="btn" style="background-color:#64dd17; margin-top:1%; border-color:#b3b3b3" disabled type="button"> </button>
 							<button class="btn btn-default" style="color: black; margin-top:1%; font-weight:bolder; border-color:#64dd17" disabled type="button">Done</button>

@@ -205,12 +205,13 @@
 		input[type='number']{
 			width: 70%;
 		}
+
+		.opt:visited{
+			color: white;
+		}
 	</style>
-
-
 </head>
 <body>
-
 	<nav class="navbar-inverse navbar-fixed-top">
 		<div class="container-fluid">
 			<div class="navbar-header">
@@ -282,7 +283,7 @@
 <div class="col-lg-4">
 	<div class="panel panel-default">
 		<div class="panel-heading">
-		<h3>Receipt</h3>
+		<h3>Transaction Invoice</h3>
 		</div>
 		<div class="panel-body">
   			<table class="table table-hover">
@@ -319,14 +320,34 @@
 		<h3>Order Information</h3>
 		</div>
 		<div class="panel-body">
-		<h4>Order Tracking Code: ABCDE123456</h4><br/>
-		<h4>Order Sharing: <label class="label label-success">ON</label></h4><br/>
-		<h4>Order Sharing Code: Q1W2E3R4T5Y6</h4><br/>
+		<?php 
+			if($this->session->userdata['food_tray']['order_sharing_state'] == 0){
+				$label_class = "label label-danger";
+				$label_text = "OFF";
+				$share_code = "Not Available";
+			}else{
+				$label_class = "label label-success";
+				$label_text = "ON";
+				$share_code = $this->session->userdata['food_tray']['order_sharing_code'];
+			}
+		?>
+		<h4>Order Tracking Code: <?php echo $this->session->userdata['food_tray']['order_tracking_code']; ?></h4><br/>
+		<h4>Order Sharing: <label class="<?php echo $label_class; ?>"><?php echo $label_text; ?></label></h4><br/>
+		<h4>Order Sharing Code: <?php echo $share_code; ?></h4><br/>
 		<h4>Order Delivery Status: <label class="label label-default">Processing Order</label></h4>
 		</div>
 	</div>	
-	<a href="" class="btn btn-success">< Back to Shop</a>
-	<a href="" class="btn btn-warning">Proceed to Checkout</a>
+	<div class="panel panel-default">
+		<div class="panel-heading">
+		<h3></h3>
+		</div>
+		<div class="panel-body">
+			<center>
+				<a href="" class="btn btn-success opt">< Back to Shop</a>&nbsp;
+				<a href="" class="btn btn-warning opt">Proceed to Checkout ></a>
+			</center>
+		</div>
+	</div>	
 </div>	
 </body>
 </HTML>

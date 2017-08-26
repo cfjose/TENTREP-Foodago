@@ -415,20 +415,20 @@
 			font-size: 14px;
 		}
 
-		 #alert{
-    background:#fff;
-    -webkit-transition: 1s;
-    -moz-transition: 1s;
-	transition: 1s;
-   padding:10px;
-    }
-    .affix#alert{
-    position:fixed;
-    top:0px;
-    background:#fff;
-    color:#000;
-    padding:10px;
-    }
+		#alert{
+	    background:#fff;
+	    -webkit-transition: 1s;
+	    -moz-transition: 1s;
+		transition: 1s;
+	   padding:10px;
+	    }
+	    .affix#alert{
+	    position:fixed;
+	    top:0px;
+	    background:#fff;
+	    color:#000;
+	    padding:10px;
+    	}
 	</style>
 </head>
 <body>
@@ -631,7 +631,8 @@ $('#alert').affix({
 
         </div>
     </div>
-    		<!-- Modal -->
+
+   <!-- Modal -->
 		<div class="modal fade" id="myModal" role="dialog">
 			<div class="modal-dialog">
 				<!-- Modal content-->

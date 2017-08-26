@@ -146,7 +146,8 @@
 		}
 
 		.subcategory-pane{
-			height: 500px;
+			height: 320px;
+			width: 600px;
 		}
 
 		.sub-category-names{

@@ -26,7 +26,7 @@
 					echo "<h3 class='no-avail'>No Products Available</h3>";
 				}else{
 					foreach($query->result() as $row){
-						echo "<div class='col-lg-7'>";
+						echo "<div class='col-lg-6'>";
 		                    echo "<div class='thumbnail'>";
 		                    	$file_name = strtolower(preg_replace('/[^A-Za-z0-9\-.]/', '', $row->name));
 		                    	/*if(file_exists(FCPATH . '/assets/images/main/food/' . $file_name . '.jpg')){

@@ -414,6 +414,21 @@
 		td{
 			font-size: 14px;
 		}
+
+		 #alert{
+    background:#fff;
+    -webkit-transition: 1s;
+    -moz-transition: 1s;
+	transition: 1s;
+   padding:10px;
+    }
+    .affix#alert{
+    position:fixed;
+    top:0px;
+    background:#fff;
+    color:#000;
+    padding:10px;
+    }
 	</style>
 </head>
 <body>
@@ -567,7 +582,20 @@
 			?>
 		</div>
 	</div>
-    <div class="col-md-3 food-tray" id="food-items" style="margin-top: 7%">
+
+	<script type="text/javascript">
+		$( document ).ready(function() {
+$('#alert').affix({
+    offset: {
+      top: 100
+    , bottom: function () {
+        return (this.bottom = $('#footer').outerHeight(true))
+      }
+    }
+  })  
+});
+	</script>
+    <div class="col-md-3 food-tray" id="alert" style="margin-top: 7%">
         <!--FOOD TRAY-->
         <div class="panel-heading">
         	<h3 class="ft-header">Food Tray</h3>
@@ -600,7 +628,10 @@
     			echo "<a href='".$checkout_link."' class='btn btn-warning'>Proceed to Checkout</a>";
         	?>
 
-		<!-- Modal -->
+
+        </div>
+    </div>
+    		<!-- Modal -->
 		<div class="modal fade" id="myModal" role="dialog">
 			<div class="modal-dialog">
 				<!-- Modal content-->
@@ -639,7 +670,5 @@
 				</div>
 			</div>
 		</div>
-        </div>
-    </div>
 </body>
 </html>

@@ -86,7 +86,8 @@
 
 	<div class="background"><br><br>
 		<div class="transbox">
-<section class="cd-horizontal-timeline">
+			<h1 align="center" style="margin-top: 2%">Foodago Timeline</h1>
+<section class="cd-horizontal-timeline" style="margin-top: 2%">
 	<div class="timeline">
 		<div class="events-wrapper">
 			<div class="events">
@@ -97,6 +98,9 @@
 					<li><a href="#0" data-date="30/06/2017" style=" font-size: 18px;">30 Jun</a></li>
 					<li><a href="#0" data-date="03/07/2017" style=" font-size: 18px;">03 Jul</a></li>
 					<li><a href="#0" data-date="04/07/2017" style=" font-size: 18px;">04 Jul</a></li>
+					<li><a href="#0" data-date="11/07/2017" style=" font-size: 18px;">11 Jul</a></li>
+					<li><a href="#0" data-date="17/07/2017" style=" font-size: 18px;">17 Jul</a></li>
+					<li><a href="#0" data-date="25/07/2017" style=" font-size: 18px;">25 Jul</a></li>
 				</ol>
 
 				<span class="filling-line" aria-hidden="true"></span>
@@ -152,12 +156,32 @@
 					Results of surveys were gathered and analyzed			
 				</p>
 			</li>
-
 			<li data-date="04/07/2017">
-				<h3>Development</h3>
+				<h3>Establishing Plan for Development</h3>
 				<em>July 4th, 2017</em>
 				<p>
+					Identified roles of team members for each scrum sprint, and activities every schedule.
+				</p>
+			</li>
+			<li data-date="04/11/2017">
+				<h3>First Sprint</h3>
+				<em>July 11th, 2017</em>
+				<p>
 					System development started
+				</p>
+			</li>
+			<li data-date="04/17/2017">
+				<h3>Second Sprint</h3>
+				<em>July 17th, 2017</em>
+				<p>
+					
+				</p>
+			</li>
+			<li data-date="04/25/2017">
+				<h3>Third Sprint</h3>
+				<em>July 25th, 2017</em>
+				<p>
+					
 				</p>
 			</li>
 

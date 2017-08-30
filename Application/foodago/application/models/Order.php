@@ -73,6 +73,12 @@
 
         public function update($data){
 
+	    $this->db->update('order');
+		$this->db->where("id ='" . $data['refid'] . "'");
+		
+		$query = $this->db->get();
+		return $query;
+
 		}
 
 		public function delete($data){

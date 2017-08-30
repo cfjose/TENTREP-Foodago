@@ -45,6 +45,18 @@
         }
 
         public function updateOrder(){
+
+			$data = array('total_amt' => $this->input->post('total_amt'),
+			  'timestamp' => $this->input->post('timestamp'),
+			  'remarks' => $this->input->post('remarks'),
+			  'tracking_number' => $this->input->post('tracking_number'),
+			  'is_shared' => $this->input->post('is_shared'),
+			  'share_code' => $this->input->post('share_code'),
+			  'user_id' => $this->input->post('user_id'),
+			  'delivery_status_id' => $this->input->post('delivery_status_id'),
+			  'refid' => $this->input->post('refid'));
+				  
+			$query = $this->order->update($data);
         	
         }
 

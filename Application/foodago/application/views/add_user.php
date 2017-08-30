@@ -119,11 +119,12 @@
 						}
 					?>
 				</select>
-			</div>
-			<div class="col-md-12 grid header">
+							<div>
 				<input type='submit' name='submit' value='Submit' class='btn btn-success'>
 				<a href='<?php echo base_url(); ?>index.php/admin?page_view=admin_table&tn=<?php echo $_GET['dbt']; ?>&mn=<?php echo $_GET['ref_mod']; ?>' class='btn btn-warning'>Cancel</a>
 			</div>
+			</div>
+
 			<?php
 				echo form_close();
 			?>

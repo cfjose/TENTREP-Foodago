@@ -585,15 +585,14 @@
 
 	<script type="text/javascript">
 		$( document ).ready(function() {
-$('#alert').affix({
-    offset: {
-      top: 100
-    , bottom: function () {
-        return (this.bottom = $('#footer').outerHeight(true))
-      }
-    }
-  })  
-});
+			$('#alert').affix({
+		    	offset: {
+		      		top: 100, bottom: function () {
+		        		return (this.bottom = $('#footer').outerHeight(true))
+		      		}
+    			}
+		  	});  
+		});
 	</script>
     <div class="col-md-3 food-tray" id="alert" style="margin-top: 7%">
         <!--FOOD TRAY-->

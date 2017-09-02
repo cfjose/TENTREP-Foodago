@@ -87,5 +87,10 @@
 			$this->db->delete('order_has_food_items', array('order_id' => $data['id']));
 			$this->db->delete('order', array('id' => $data['id']));
 		}
+
+		function  fetch_data(){
+			$query = $this->db->get("order");
+			return $query;
+		}
 	}
 ?>

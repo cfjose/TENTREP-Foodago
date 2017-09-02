@@ -81,7 +81,7 @@
 					console.log("OK");
 				}
 			});
-
+			$('.panel-body').load(' .panel-body');
 		}
 
 		function updateItemQty(){

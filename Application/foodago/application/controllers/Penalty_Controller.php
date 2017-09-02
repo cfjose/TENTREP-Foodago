@@ -22,7 +22,8 @@
 			if($this->form_validation->run() == FALSE){
 				$this->load->view('add_penalty');
 			}else{
-				$data = array('amount' => $this->input->post('amount'));
+				$data = array('amount' => $this->input->post('amount'),
+                            ());
 
 				$result = $this->penalty->insert($data);
 

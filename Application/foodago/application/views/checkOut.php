@@ -286,32 +286,54 @@
 		<h3>Transaction Invoice</h3>
 		</div>
 		<div class="panel-body">
+			<?php
+				$item_amt = count($this->session->userdata['food_tray']['item_price']);
+				$total_amt = 0;
+				$count = 0;
+
+				while($count < $item_amt) {
+					$total_amt += ($this->session->userdata['food_tray']['item_price'][$count] * $this->session->userdata['food_tray']['item_qty'][$count]);
+					$count++;
+				}
+
+				if($total_amt > 300) {
+					$percent = $total_amt * .15;
+					$final_total_amt = $total_amt + $percent + 30;
+					$this->session->userdata['food_tray']['delivery_fee'] = 30;
+					$this->session->userdata['food_tray']['service_fee'] = $percent;
+					$this->session->userdata['food_tray']['total_amt'] = $final_total_amt;
+					$ref_link = 'index.php/order/newOrder';
+				} else {
+					$ref_link = '';
+				}
+			?>
   			<table class="table table-hover">
 			    <thead>
 			      <tr>
-			        <th>Name</th>
-			        <th>Total Amount</th>
+					  <th>Name</th>
+					  <th>Total Amount</th>
 			      </tr>
 			    </thead>
 			    <tbody>
 			      <tr>
-			        <td>Chamber Jose</td>
-			        <td>Php 200.00</td>
+			          <td><?php echo $this->session->userdata['first_name'] . " " . $this->session->userdata['last_name'] ?></td>
+			          <td><?php echo  "Php" . " " . $total_amt ?></td>
 			      </tr>
 			      <tr>
-			        <td>Johanna Heramia</td>
-			        <td>Php 150.00</td>
+			          <td><i>Delivery Fee</i></td>
+			          <td><i><?php echo "Php" . " " . $this->session->userdata['food_tray']['delivery_fee']; ?></i></td>
 			      </tr>
-			      <tr>
-			        <td><i>Delivery Fee</i></td>
-			        <td><i>Php 50.00</i></td>
-			      </tr>
+				  <tr>
+					  <td><i>Service Fee</i></td>
+					  <td><i><?php echo "Php" . " " . $this->session->userdata['food_tray']['service_fee']; ?></i></td>
+				  </tr>
 			      <tr>
 			        <td style="font-weight: bolder">Total Price</td>
-			        <td style="font-weight: bolder">Php 400.00</td>
+			        <td style="font-weight: bolder"><?php echo "Php" . " " . $this->session->userdata['food_tray']['total_amt']; ?></td>
 			      </tr>
 			    </tbody>
   			</table>
+
 		</div>
 	</div>
 

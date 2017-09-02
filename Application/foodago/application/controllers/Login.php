@@ -137,6 +137,7 @@
 														'order_sharing_state' => 0,
 														'order_sharing_code' => '',
 														'delivery_fee' => '',
+                                                        'service_fee' => '',
 														'total_amt' => ''),
 													'logged_in' => TRUE,
 													'user_id' => $result[0]->id,

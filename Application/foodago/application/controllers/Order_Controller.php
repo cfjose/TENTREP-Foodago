@@ -11,9 +11,7 @@
 		public function index(){
 			$this->load->model("order");
 			$data["fetch_data_order"] = $this->order->fetch_data_order();
-			$data1["fetch_data_penalty"] = $this->order->fetch_data_penalty();
 			$this->load->view("account_overview.php", $data);
-			$this->load->view("account_overview.php", $data1);
 			$this->load->view('add_order');
 		}
 
@@ -51,17 +49,14 @@
 
         public function updateOrder(){
 
-			$data = array('total_amt' => $this->input->post('total_amt'),
-			  'timestamp' => $this->input->post('timestamp'),
-			  'remarks' => $this->input->post('remarks'),
-			  'tracking_number' => $this->input->post('tracking_number'),
-			  'is_shared' => $this->input->post('is_shared'),
-			  'share_code' => $this->input->post('share_code'),
-			  'user_id' => $this->input->post('user_id'),
-			  'delivery_status_id' => $this->input->post('delivery_status_id'),
-			  'refid' => $this->input->post('refid'));
+			$data = array('remarks' => $this->input->post('remarks'),
+			  'delivery_status_id' => $this->input->post('delivery_status_id'));
+
+			$refid = $this->input->post('refid');
 				  
-			$query = $this->order->update($data);
+			$query = $this->order->update($data, $refid);
+
+			redirect(base_url() . 'index.php/admin?page_view=admin_table&tn=order&mn=orders');
         	
         }
 

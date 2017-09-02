@@ -187,15 +187,15 @@
 
 			$numOrders = $query->num_rows();
 
-			$fetch_data_penalty = $this->order->fetch_data_penalty();
+			$fetch_data_penalty = $this->penalty->fetch_data_penalty();
 
 			if($numOrders == 0){
 				echo "<h3 class='empty'>You have no pending accountabilities</h3>";
 			}elseif($fetch_data_penalty->num_rows() > 0)
 				{
 					echo "<table class='table borderless' style='margin:0'>";
-					echo "<th>" . "Tracking Number" . "</th>";
-					echo "<th>" . "Total Amount" . "</th>";
+					echo "<th>" . "Penalty ID" . "</th>";
+					echo "<th>" . "Order ID" . "</th>";
 
 					foreach ($fetch_data_penalty->result() as $row)
 					{
@@ -216,17 +216,33 @@
 	<div class="col-md-8 grid">
 		<i class="fa fa-comments"></i>
 		<p class="grid-title">Recent Feedbacks</p><br/>
-		<hr class="grid-divider"/>
 		<?php
 			$query = $this->FeedbackHasUser->getUserFeedback($this->session->userdata['id']);
 
 			$numOrders = $query->num_rows();
 
+			$fetch_data_feedback = $this->feedback->fetch_data_feedback();
+
 			if($numOrders == 0){
 				echo "<h3 class='empty'>No Recent Feedbacks</h3>";
-			}else{
-				// PRINT EACH ORDERS IN A DIV
-			}
+			}elseif($fetch_data_feedback->num_rows() > 0)
+				{
+					echo "<table class='table borderless' style='margin:0'>";
+					echo "<th>" . "Feedback ID" . "</th>";
+
+					foreach ($fetch_data_feedback->result() as $row)
+					{
+
+					echo "<tr>";
+						echo "<td>". $row->feedback_id ."</td>";
+					echo "</tr>";
+
+					}
+
+					echo "</table>";
+				}else{
+					//DO NOTHIN'
+				}
 		?>
 	</div>
 	<a href='<?php echo base_url(); ?>index.php/profile?page_view=acct_settings'>

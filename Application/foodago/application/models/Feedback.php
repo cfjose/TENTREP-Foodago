@@ -37,5 +37,15 @@
             $this->db->delete('feedback_has_user', array('feedback_id' => $data['id']));
             $this->db->delete('feedback', array('id' => $data['id']));
         }
+
+        public function  fetch_data_feedback(){
+            $this->db->select('*');
+            $this->db->from('feedback_has_user');
+            $this->db->order_by('feedback_id', 'DESC');
+
+            $query = $this->db->get();
+            return $query;
+        }
+
 	}
 ?>

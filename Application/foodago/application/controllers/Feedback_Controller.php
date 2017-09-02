@@ -9,6 +9,11 @@
     	}
 
 		public function index(){
+
+            $this->load->model("feedback");
+            $data["fetch_data_feedback"] = $this->feedback->fetch_data_feedback();
+            $this->load->view("account_overview.php", $data);
+
             if($this->session->userdata['user_type'] == 'System Admin' ||
                $this->session->userdata['user_type'] == 'Aggregator' ||
                $this->session->userdata['user_type'] == 'Restaurant')

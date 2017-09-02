@@ -80,7 +80,7 @@
 				<textarea name="remarks" value="<?php echo $query->row('remarks'); ?>" class="form-control"></textarea>
 
 				<label for="tracking_number">Order Tracking Number </label>
-				<input type="text" name="tracking_number" id="tracking_number" class="form-control" readonly="readonly" value="<?php echo $query->row('tracking_number'); ?>"/>
+				<input type="text" name="tracking_number" class="form-control" readonly="readonly" value="<?php echo $query->row('tracking_number'); ?>"/>
 
 				<label for="is_shared">Order Sharing </label>
 				<select name="is_shared" class="form-control" id="order_share" onchange="checkOrderStatus()" value="<?php echo $query->row('is_shared'); ?>" readonly="readonly">
@@ -98,18 +98,19 @@
 				<label for="share_code">Order Sharing Code </label>
 				<input type="text" name="share_code" class="form-control" value="<?php echo $query->row('share_code'); ?>" id="order_share_code" readonly="readonly"/>
 
+				<input type="hidden" name="refid" value="<?php echo $_GET['refid']; ?>"/>
+
 				<label for="delivery_status_id" >Delivery Status </label>
 				<select name="delivery_status_id" value="<?php echo $query->row('delivery_status_id'); ?>" class="form-control">
 					<?php
-						$getAllDeliveryStatus = $this->DeliveryStatus->getDeliveryStatusById($query->row('delivery_status_id'));
+						$getAllDeliveryStatus = $this->DeliveryStatus->getAllDeliveryStatus();
 						foreach($getAllDeliveryStatus->result() as $row){
-							if($getAllDeliveryStatus->row('id') == $query->row('delivery_status_id')){
+							if($row->id == $query->row('delivery_status_id')){
 								echo "<option value='".$row->id."' selected='selected'>" . $row->name . "</option>";
 							}else{
 								// DO NOTHING
+								echo "<option value='".$row->id."'>" . $row->name . "</option>";
 							}
-							
-							echo "<option value='".$row->id."'>" . $row->name . "</option>";
 						}
 					?>
 				</select>

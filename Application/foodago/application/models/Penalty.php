@@ -28,5 +28,14 @@
 			$this->db->delete('user_has_penalty', array('penalty_id' => $data['id']));
 			$this->db->delete('penalty', array('id' => $data['id']));
 		}
+
+		public function  fetch_data_penalty(){
+			$this->db->select('*');
+			$this->db->from('user_has_penalty');
+			$this->db->order_by('penalty_id', 'DESC');
+
+			$query = $this->db->get();
+			return $query;
+		}
 	}
 ?>

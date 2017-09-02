@@ -9,7 +9,11 @@
     	}
 
 		public function index(){
+            $this->load->model("penalty");
 			$this->load->view('add_penalty');
+
+            $data["fetch_data_penalty"] = $this->penalty->fetch_data_penalty();
+            $this->load->view("account_overview.php", $data);
 		}
 
         public function newPenalty(){

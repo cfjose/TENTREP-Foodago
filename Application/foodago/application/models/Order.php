@@ -71,14 +71,9 @@
 			}
         }
 
-        public function update($data){
-
-	    $this->db->update('order');
-		$this->db->where("id ='" . $data['refid'] . "'");
-		
-		$query = $this->db->get();
-		return $query;
-
+        public function update($data, $refid){
+			$this->db->where("id ='" . $refid . "'");
+			$this->db->update('order', $data);
 		}
 
 		public function delete($data){
@@ -96,14 +91,6 @@
 			$query = $this->db->get();
 			return $query;
 		}
-
-		public function  fetch_data_penalty(){
-			$this->db->select('*');
-			$this->db->from('user_has_penalty');
-			$this->db->order_by('penalty_id', 'DESC');
-
-			$query = $this->db->get();
-			return $query;
-		}		
+		
 	}
 ?>

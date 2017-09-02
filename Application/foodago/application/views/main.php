@@ -594,12 +594,12 @@
 		  	});  
 		});
 	</script>
-    <div class="col-md-3 food-tray" id="alert" style="margin-top: 7%">
+    <div class="col-md-3 food-tray" id="alert" style="margin-top: 7%; height: 78%">
         <!--FOOD TRAY-->
         <div class="panel-heading">
         	<h3 class="ft-header">Food Tray</h3>
         </div>
-        <div class="panel-body">
+        <div class="panel-body" style="height: 78%;overflow-y: scroll;">
         	<?php
         		$count_fi = count($this->session->userdata['food_tray']['item_id']);
 
@@ -610,25 +610,28 @@
         			$checkout_link = '';
         		}else{
         			$checkout_link = base_url() . 'index.php/CheckOut';
-        			echo "<table class='table borderless'>";
+        			echo "<table class='table borderless' style='margin:0'>";
             			for($i = 0; $i < $count_fi; $i++){
-            				echo "<tr>";
-            				echo "<td>" . $this->session->userdata['food_tray']['item_name'][$i] . "</td>";
-            				echo "<td>&#8369; " . $this->session->userdata['food_tray']['sub_amt'][$i] . "</td>";
-            				echo "<td><form method='post'><input type='number' name='qty' min='1' max='100' value='".$this->session->userdata['food_tray']['item_qty'][$i]."'/></form></td>";
+            				echo "<tr style='margin:0'>";
+            				echo "<td style='margin:0'>" . $this->session->userdata['food_tray']['item_name'][$i] . "</td>";
+            				echo "<td style='margin:0'>&#8369; " . $this->session->userdata['food_tray']['sub_amt'][$i] . "</td>";
+            				echo "<td style='margin:0'><form method='post'><input type='number' name='qty' min='1' max='100' value='".$this->session->userdata['food_tray']['item_qty'][$i]."'/></form></td>";
             				echo "</tr>";
             			}
         			echo "</table>";
         		}
-
-        		echo "<a href='' class='btn btn-success' data-toggle='modal' data-target='#myModal'>
-        				Add Friend</a>";
-
-    			echo "<a href='".$checkout_link."' class='btn btn-warning'>Proceed to Checkout</a>";
         	?>
 
 
         </div>
+
+        <?php 
+        echo "<div style='margin-left:7%;margin-right:7%'>";
+        echo "<a href='' class='btn btn-success' data-toggle='modal' data-target='#myModal'>Add Friend</a>";
+
+    	echo "<a href='".$checkout_link."' class='btn btn-warning'>Proceed to Checkout</a>";
+    	echo "</div>";
+        ?>
     </div>
 
    <!-- Modal -->

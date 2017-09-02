@@ -10,8 +10,10 @@
 
 		public function index(){
 			$this->load->model("order");
-			$data["fetch_data"] = $this->order->fetch_data();
+			$data["fetch_data_order"] = $this->order->fetch_data_order();
+			$data1["fetch_data_penalty"] = $this->order->fetch_data_penalty();
 			$this->load->view("account_overview.php", $data);
+			$this->load->view("account_overview.php", $data1);
 			$this->load->view('add_order');
 		}
 

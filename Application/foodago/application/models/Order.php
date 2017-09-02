@@ -88,7 +88,7 @@
 			$this->db->delete('order', array('id' => $data['id']));
 		}
 
-		public function  fetch_data(){
+		public function  fetch_data_order(){
 			$this->db->select('*');
 			$this->db->from('order');
 			$this->db->order_by('id', 'DESC');
@@ -96,5 +96,14 @@
 			$query = $this->db->get();
 			return $query;
 		}
+
+		public function  fetch_data_penalty(){
+			$this->db->select('*');
+			$this->db->from('user_has_penalty');
+			$this->db->order_by('penalty_id', 'DESC');
+
+			$query = $this->db->get();
+			return $query;
+		}		
 	}
 ?>

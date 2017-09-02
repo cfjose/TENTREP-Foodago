@@ -150,21 +150,19 @@
 
 			$numOrders = $query->num_rows();
 
-			$fetch_data = $this->order->fetch_data();
+			$fetch_data_order = $this->order->fetch_data_order();
 
 
 			if($numOrders == 0){
 				echo "<h3 class='empty'>No Orders Made</h3>";
-			}else{
-				
-				if($fetch_data->num_rows() > 0)
+			}elseif($fetch_data_order->num_rows() > 0)
 				{
 					echo "<table class='table borderless' style='margin:0'>";
 					echo "<th>" . "Tracking Number" . "</th>";
 					echo "<th>" . "Total Amount" . "</th>";
 					echo "<th>" . "Delivery Status" . "</th>";
 
-					foreach ($fetch_data->result() as $row)
+					foreach ($fetch_data_order->result() as $row)
 					{
 
 					echo "<tr>";
@@ -177,25 +175,42 @@
 
 					echo "</table>";
 				}else{
-
+					//DO NOTHIN'
 				}
-			}
 		?>
 	</div>
 	<div class="col-md-6 grid addl-margin">
 		<i class="fa fa-money"></i>
 		<p class="grid-title">Pending Accountabilities</p><br/>		
-		<hr class="grid-divider"/>
 		<?php
 			$query = $this->UserHasPenalty->getUserPenalties($this->session->userdata['id']);
 
 			$numOrders = $query->num_rows();
 
+			$fetch_data_penalty = $this->order->fetch_data_penalty();
+
 			if($numOrders == 0){
 				echo "<h3 class='empty'>You have no pending accountabilities</h3>";
-			}else{
-				// PRINT EACH ACCOUNTABILITY IN A DIV
-			}
+			}elseif($fetch_data_penalty->num_rows() > 0)
+				{
+					echo "<table class='table borderless' style='margin:0'>";
+					echo "<th>" . "Tracking Number" . "</th>";
+					echo "<th>" . "Total Amount" . "</th>";
+
+					foreach ($fetch_data_penalty->result() as $row)
+					{
+
+					echo "<tr>";
+						echo "<td>". $row->penalty_id ."</td>";
+						echo "<td>". $row->order_id ."</td>";
+					echo "</tr>";
+
+					}
+
+					echo "</table>";
+				}else{
+					//DO NOTHIN'
+				}
 		?>
 	</div>
 	<div class="col-md-8 grid">

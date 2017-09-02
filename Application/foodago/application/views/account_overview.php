@@ -143,16 +143,13 @@
 		?>
 		<h5 class="membership-date">Member Since <?php echo $mth_str . " " . $created_at['year']; ?></h5>
 	</div>
-<<<<<<< HEAD
-	<div class="col-md-5 grid food-tray">
+
+	<div class="col-md-6 grid food-tray">
 	<div class="panel-heading">
-=======
-	<div class="col-md-6 grid">
->>>>>>> 1389946080cbf74de0296f20e44810720c7125db
 		<i class="fa fa-history" aria-hidden="true"></i>
-		<p class="grid-title">Order History</p><br/>
+		<h5>Order History</h5><br/>
 		</div>
-	<div class="panel-body" style="overflow-y: scroll; width: 100%; margin: 0; padding: 0">	
+	<div class="panel-body" style="overflow-y: scroll; width: 100%; margin: 0; padding: 0;">	
 		<?php
 			$query = $this->order->getUserOrders($this->session->userdata['id']);
 
@@ -194,9 +191,12 @@
 		?>
 		</div>
 	</div>
-	<div class="col-md-5 grid addl-margin">
+	<div class="col-md-5 grid food-tray"">
+	<div class="panel-heading">
 		<i class="fa fa-money"></i>
-		<p class="grid-title">Pending Accountabilities</p><br/>		
+		<p class="grid-title">Pending Accountabilities</p><br/>
+	</div>
+	<div class="panel-body" style="overflow-y: scroll; width: 100%; margin: 0; padding: 0; height: 20%">		
 		<?php
 			$query = $this->UserHasPenalty->getUserPenalties($this->session->userdata['id']);
 
@@ -228,9 +228,14 @@
 				}
 		?>
 	</div>
-	<div class="col-md-8 grid">
+	</div>
+	<div class="col-md-8 grid food-tray">
+	<div class="panel-heading">
 		<i class="fa fa-comments"></i>
 		<p class="grid-title">Recent Feedbacks</p><br/>
+		</div>
+			<div class="panel-body" style="overflow-y: scroll; width: 100%; margin: 0; padding: 0; height: 19%">		
+
 		<?php
 			$query = $this->FeedbackHasUser->getUserFeedback($this->session->userdata['id']);
 
@@ -259,6 +264,7 @@
 					//DO NOTHIN'
 				}
 		?>
+		</div>
 	</div>
 	<a href='<?php echo base_url(); ?>index.php/profile?page_view=acct_settings'>
 		<div class="col-md-3 grid addl-margin settings">

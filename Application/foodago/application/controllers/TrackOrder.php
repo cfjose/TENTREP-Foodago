@@ -75,7 +75,11 @@
 
 				$data['date'] = $mth_str . " " . $timestamp_mth['day'] . " " . $timestamp_mth['year'];
 
-				$this->load->view('track_order', $data);
+				if(isset($this->session->userdata['logged_in'])){
+					$this->load->view('order_transcript', $data);
+				}else{
+					$this->load->view('track_order', $data);
+				}
 			}
 		}
 	}

@@ -11,7 +11,7 @@
 		public function index(){
 			$this->load->model("order");
 			$data["fetch_data"] = $this->order->fetch_data();
-			$this->load->view("account_settings.php", $data);
+			$this->load->view("account_overview.php", $data);
 			$this->load->view('add_order');
 		}
 

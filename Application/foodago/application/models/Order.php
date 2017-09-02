@@ -88,8 +88,12 @@
 			$this->db->delete('order', array('id' => $data['id']));
 		}
 
-		function  fetch_data(){
-			$query = $this->db->get("order");
+		public function  fetch_data(){
+			$this->db->select('*');
+			$this->db->from('order');
+			$this->db->order_by('id', 'DESC');
+
+			$query = $this->db->get();
 			return $query;
 		}
 	}

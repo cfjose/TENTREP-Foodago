@@ -145,16 +145,40 @@
 	<div class="col-md-5 grid">
 		<i class="fa fa-history" aria-hidden="true"></i>
 		<p class="grid-title">Order History</p><br/>
-		<hr class="grid-divider"/>
 		<?php
 			$query = $this->order->getUserOrders($this->session->userdata['id']);
 
 			$numOrders = $query->num_rows();
 
+			$fetch_data = $this->order->fetch_data();
+
+
 			if($numOrders == 0){
 				echo "<h3 class='empty'>No Orders Made</h3>";
 			}else{
-				//
+				
+				if($fetch_data->num_rows() > 0)
+				{
+					echo "<table class='table borderless' style='margin:0'>";
+					echo "<th>" . "Tracking Number" . "</th>";
+					echo "<th>" . "Total Amount" . "</th>";
+					echo "<th>" . "Delivery Status" . "</th>";
+
+					foreach ($fetch_data->result() as $row)
+					{
+
+					echo "<tr>";
+						echo "<td>". $row->tracking_number ."</td>";
+						echo "<td>". $row->total_amt ."</td>";
+						echo "<td>". $row->timestamp ."</td>";
+					echo "</tr>";
+
+					}
+
+					echo "</table>";
+				}else{
+
+				}
 			}
 		?>
 	</div>

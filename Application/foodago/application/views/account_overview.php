@@ -142,9 +142,12 @@
 		?>
 		<h5 class="membership-date">Member Since <?php echo $mth_str . " " . $created_at['year']; ?></h5>
 	</div>
-	<div class="col-md-5 grid">
+	<div class="col-md-5 grid food-tray">
+	<div class="panel-heading">
 		<i class="fa fa-history" aria-hidden="true"></i>
 		<p class="grid-title">Order History</p><br/>
+		</div>
+	<div class="panel-body" style="overflow-y: scroll; width: 100%; margin: 0; padding: 0">	
 		<?php
 			$query = $this->order->getUserOrders($this->session->userdata['id']);
 
@@ -178,6 +181,7 @@
 					//DO NOTHIN'
 				}
 		?>
+		</div>
 	</div>
 	<div class="col-md-6 grid addl-margin">
 		<i class="fa fa-money"></i>

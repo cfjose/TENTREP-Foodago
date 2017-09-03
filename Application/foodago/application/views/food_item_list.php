@@ -43,13 +43,24 @@
 	                        	echo "</div>";
 		                        echo "<div class='ratings'>";
 	                                $query = $this->FoodItemHasFeedback->getAllFoodItemFeedback($row->id);
+	                                $total_rating = 0; $count = 0;
 		                            echo "<p class='pull-right'><a href=".base_url()."index.php/Feedback_Controller?refid=".$row->id.">" . $query->num_rows() . " Reviews</p>";
 		                            echo "<p>";
-			                            echo "<span class='glyphicon glyphicon-star'></span>";
-			                            echo "<span class='glyphicon glyphicon-star'></span>";
-			                            echo "<span class='glyphicon glyphicon-star'></span>";
-			                            echo "<span class='glyphicon glyphicon-star'></span>";
-			                            echo "<span class='glyphicon glyphicon-star'></span>";
+		                            foreach($query->result() as $row){
+		                            	$query = $this->feedback->getFeedbackById($row->feedback_id);
+		                            	$total_rating += $query->row('rating');
+		                            }
+
+		                            while($count < $total_rating){
+		                            	echo "<span class='glyphicon glyphicon-star fill'></span>";
+		                            	$count++;
+		                            }
+
+		                            $count = 0;
+		                            while($count < 5-$total_rating){
+		                            	echo "<span class='glyphicon glyphicon-star empty'></span>";
+		                            	$count++;
+		                            }
 		                            echo "</p>";
 	                        	echo "</div>";
 	                    	echo "</div>";

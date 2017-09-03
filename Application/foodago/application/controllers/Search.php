@@ -19,6 +19,10 @@
 
 			if($this->form_validation->run() == FALSE){
 				$getRestaurantsOnQuery = $this->db->select
+
+				$this->load->model('view');
+
+				$this->load->model('page_view');
 			}
 		}
 	}

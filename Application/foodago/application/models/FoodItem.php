@@ -19,6 +19,12 @@
 			return $query;
 		}
 
+		public function getFoodItemsByKeyword($data){
+			$this->db->select('*');
+			$this->db->from('food_items');
+			$this->db->where("name LIKE ". $data['q']);
+		}
+
 		public function getFoodItemInfo($data){
 			$this->db->select('*');
 			$this->db->from('food_items');

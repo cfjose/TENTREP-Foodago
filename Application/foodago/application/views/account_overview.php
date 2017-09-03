@@ -144,16 +144,10 @@
 		<h5 class="membership-date">Member Since <?php echo $mth_str . " " . $created_at['year']; ?></h5>
 	</div>
 
-<<<<<<< HEAD
 	<div class="col-md-6 grid food-tray" style="margin-right: 1%">
 	<div class="panel-heading" style="margin: 0; padding: 0;">
 		<h4 style="margin: 0; padding: 0;"><i class="fa fa-history" aria-hidden="true"></i> &nbsp; Order History</h4><br/>
-=======
-	<div class="col-md-6 grid food-tray">
-	<div class="panel-heading">
-		<i class="fa fa-history" aria-hidden="true"></i>
-		<h5> Order History</h5><br/>
->>>>>>> aebe1ea5538b0bf366fc4fd03c83299880a273ad
+
 		</div>
 	<div class="panel-body" style="overflow-y: scroll; width: 100%; margin: 0; padding: 0; ">	
 		<?php

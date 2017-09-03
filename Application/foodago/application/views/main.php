@@ -120,7 +120,7 @@
 			color: black;
 		}
 
-		#q{
+		#textbox{
 			height: 50px;
 			width: 75%;
 			padding: 10px;
@@ -494,7 +494,7 @@
 		<div class="item active">
 			<img src="<?php echo base_url(); ?>assets/images/main/main-bg.jpg" alt="" class="header">
 			<div class="search">
-				<form method="get" action="<?php base_url(); ?>index.php/search/rfSearch">
+				<form method="post" action="<?php echo base_url(); ?>index.php/search/rfSearch">
 					<h1 id="greetings"></h1>
 					<script type="text/javascript">
 						window.onload = function(){
@@ -516,7 +516,7 @@
 					</script>
 					<h2>Are you Hungry?</h2>
 					<h2>Search for your favorite restaurants / fast food chains online</h2>
-					<input type="text" id="q" placeholder="Search for Restaurants and Fast food Chains"/>
+					<input type="text" id="textbox" name="q" placeholder="Search for Restaurants and Fast food Chains"/>
 					<input type="submit" name="submit" value="Search" class="btn btn-default">
 				</form>
 			</div>

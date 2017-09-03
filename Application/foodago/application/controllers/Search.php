@@ -11,19 +11,30 @@
 		}
 
 		public function index(){
-			$this->load->view('search');
+
 		}
 
 		public function rfSearch(){
-			$this->form_validation->set_rules('q', 'Search Keyword', 'required|xss_clean');
+            $this->form_validation->set_rules('q', 'Search Keyword', 'required|xss_clean');
 
-			if($this->form_validation->run() == FALSE){
-				$getRestaurantsOnQuery = $this->db->select
+            if($this->form_validation->run() == FALSE){
+                $this->db->select('*');
+                $this->db->from('restaurant');
+                $this->db->like('name', $this->input->post['q']);
 
-				$this->load->model('view');
+                $getRestaurantsOnQuery = $this->db->get();
 
-				$this->load->model('page_view');
-			}
+                $this->db->select('*');
+                $this->db->from('food_items');
+                $this->db->like('name', $this->input->post['q']);
+
+                $getFoodItemsOnQuery = $this->db->get();
+
+                $data = array('food_items' => $getFoodItemsOnQuery,
+                    'restaurants' => $getRestaurantsOnQuery);
+
+                var_dump($data);
+            }
 		}
 	}
 ?>

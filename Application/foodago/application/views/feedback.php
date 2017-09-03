@@ -263,14 +263,18 @@
 	<div>
 		<div class="container-fluid review">
 			<div>
-				<h2>Rating and Reviews for Yum Burger</h2>
+				<?php
+					$getFoodItem = $this->FoodItem->getFoodItemById($_GET['refid']);
+					$getAllFeedbacks = $this->feedback->getFeedbackById($_GET['refid']);
+				?>
+				<h2>Rating and Reviews for <?php echo $getFoodItem->row('name'); ?></h2>
 				<div style="width: 500px">
 				<button class="myButton" data-toggle="collapse" data-target="#demo">Write your review</button></div>
 			</div>
 			<div id="demo" class="collapse"> 
 				<h3>Please share your experience about this item</h3><hr/>
 				<?php
-					echo form_open('/feedback/createReview');
+					echo form_open('/Feedback_Controller/newFeedback');
 				?>
 				<div class="col-md-5">
 

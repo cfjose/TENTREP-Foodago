@@ -9,18 +9,38 @@
     	}
 
 		public function index(){
-			$this->load->view('add_feedback');
+            if($this->session->userdata['user_type'] == 'System Admin' ||
+               $this->session->userdata['user_type'] == 'Aggregator' ||
+               $this->session->userdata['user_type'] == 'Restaurant')
+            {
+                $this->load->view('add_feedback');
+            }else{
+                $this->load->view('feedback');
+            }
 		}
+
+        public function index2(){
+            $this->load->view('feedback');
+        }
 
         public function newFeedback(){
 			$this->form_validation->set_rules('remark', 'Feedback Description', 'required|xss_clean');
 			$this->form_validation->set_rules('rating', 'Feedback Rating', 'trim|required|xss_clean');
 
 			if($this->form_validation->run() == FALSE){
-				$this->load->view('add_feedback');
+				if($this->session->userdata['user_type'] == 'System Admin' ||
+                   $this->session->userdata['user_type'] == 'Aggregator' ||
+                   $this->session->userdata['user_type'] == 'Restaurant')
+                {
+                    $this->load->view('add_feedback');
+                }else{
+                    $this->load->view('feedback');
+                }
 			}else{
 				$data = array('remark' => $this->input->post('remark'),
-							  'rating' => $this->input->post('rating'));
+							  'rating' => $this->input->post('rating'),
+                              'user_id' => ($_SESSION['user_type'] == 'Customer' ? $_SESSION['id'] : ''),
+                              'food_item_id' => ($_SESSION['user_type'] == 'Customer' ? $_GET['refid'] : ''));
 
 				$result = $this->feedback->insert($data);
 

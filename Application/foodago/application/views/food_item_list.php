@@ -41,9 +41,9 @@
 	                            	echo "<h5>Calorie Count :  " . ($row->calorie_count == NULL ? "Not Available" : $row->calorie_count) . "</h5>";
 	                            	echo "<button class='btn btn-primary' style='width:100%' id='ref_item' onclick=addProductToTray(".$row->id.")>Add to Tray</button>";
 	                        	echo "</div>";
-		                        /*echo "<div class='ratings'>";
+		                        echo "<div class='ratings'>";
 	                                $query = $this->FoodItemHasFeedback->getAllFoodItemFeedback($row->id);
-		                            echo "<p class='pull-right'>" . $query->num_rows() . " Reviews</p>";
+		                            echo "<p class='pull-right'><a href=".base_url()."index.php/Feedback_Controller?refid=".$row->id.">" . $query->num_rows() . " Reviews</p>";
 		                            echo "<p>";
 			                            echo "<span class='glyphicon glyphicon-star'></span>";
 			                            echo "<span class='glyphicon glyphicon-star'></span>";
@@ -51,7 +51,7 @@
 			                            echo "<span class='glyphicon glyphicon-star'></span>";
 			                            echo "<span class='glyphicon glyphicon-star'></span>";
 		                            echo "</p>";
-	                        	echo "</div>";*/
+	                        	echo "</div>";
 	                    	echo "</div>";
 	            	  	echo "</div>";
 					}

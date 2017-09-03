@@ -17,9 +17,19 @@
 	<link rel="icon" href="<?php echo base_url(); ?>assets/images/global/favicon.ico">
 	<title>Foodago</title>
 
-	<!-- CSS -->
 	<link rel="stylesheet" href="<?php echo base_url(); ?>css/bootstrap.min.css">
-	<link rel="stylesheet" href="<?php echo base_url(); ?>css/bootstrap.css"  type='text/css' />
+	<link rel="stylesheet" href="<?php echo base_url(); ?>css/boostrap.css">
+	<link rel="stylesheet" href="<?php echo base_url(); ?>css/site.css">
+	<link rel="stylesheet" href="<?php echo base_url(); ?>css/dropdowns.css">
+
+	<script type="text/javascript" src="//code.jquery.com/jquery-2.1.0.min.js"></script>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+	<!-- CSS -->
 	<link rel="stylesheet" href="<?php echo base_url(); ?>css/style.css"  type="text/css" media="all" />
 	<link rel="stylesheet" href="<?php echo base_url(); ?>css/animate.css" type='text/css' />
 	<link href='http://fonts.googleapis.com/css?family=Lobster+Two:400,400italic,700,700italic' rel='stylesheet' type='text/css'>
@@ -32,7 +42,6 @@
 	<script src="<?php echo base_url(); ?>js/jquery.min.js"></script>
 	<script src="<?php echo base_url(); ?>js/wow.min.js"></script>
 	<script src="<?php echo base_url(); ?>js/simpleCart.min.js"> </script>
-	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 	<script type="text/javascript" src="<?php echo base_url(); ?>js/move-top.js"></script>
 	<script type="text/javascript" src="<?php echo base_url(); ?>js/easing.js"></script>
 	<script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); }
@@ -212,6 +221,8 @@
 			margin-left: 4%;
 		}
 
+		
+
 	</style>
 
 </head>
@@ -222,30 +233,51 @@
 					<a class="navbar-brand" href="#"><img src="<?php echo base_url(); ?>/assets/images/global/logos/logoName.png" alt=""></a>
 		    	</div>
 		    	<ul class="nav navbar-nav navbar-right">
-			    	<div class="dropdown">
-			    		<!--<label class="username"><?php echo $this->session->userdata('username'); ?></label>-->
-			    		<img src="<?php echo base_url('assets/images/main/icons/user.png'); ?>" height="45" width="45" data-toggle="dropdown"/>
-						<span class="caret"></span>
-						<ul class="dropdown-menu">
-							<p align="center">You are currently logged in as <b><?php echo $this->session->userdata('first_name') . " " . $this->session->userdata('last_name'); ?></b></p>
-							<li class="divider"></li>
-							<li><a href="<?php echo base_url(); ?>index.php/profile?page_view=profile">My Profile</a></li>
-							<li><a href="<?php echo base_url(); ?>index.php/profile?page_view=acct_settings">Account Settings</a></li>
-							<li><a href="<?php echo base_url(); ?>index.php/login/logout">Logout</a></li>
-						</ul>
-		  			</div>
-	    		</ul>
+		    	<div class="dropdown">
+		    		<!--<label class="username"><?php echo $this->session->userdata('username'); ?></label>-->
+		    		<img src="<?php echo base_url('assets/images/main/icons/user.png'); ?>" height="45" width="45" data-toggle="dropdown"/>
+					<span class="caret"></span>
+					<ul class="dropdown-menu">
+						<p align="center">You are currently logged in as <b><?php echo $this->session->userdata('first_name') . " " . $this->session->userdata('last_name'); ?></b></p>
+						<li class="divider"></li>
+						<li><a href="<?php echo base_url(); ?>index.php/profile?page_view=profile">My Profile</a></li>
+						<li><a href="<?php echo base_url(); ?>index.php/profile?page_view=acct_settings">Account Settings</a></li>
+						<li><a href="<?php echo base_url(); ?>index.php/login/logout">Logout</a></li>
+					</ul>
+	  			</div>
+	    	</ul>
 		  	</div>
 		</nav>
 
 
 		<div class="col-lg-2"></div>
+		!-- Modal -->
+		<div class="modal fade" id="myModal" role="dialog">
+			<div class="modal-dialog">
+				<!-- Modal content-->
+				<div class="modal-content">
+					<div class="modal-header">
+						<button type="button" class="close" data-dismiss="modal">&times;</button>
+						<h4 class="modal-title">WARNING! &nbsp;</h4>
+						<label class="switch">
+							Are you sure you want to cancel your order?
+						</label>
+					</div>
+					<div class="modal-body">
+						
+					</div>
+					<div class="modal-footer">
+						<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+					</div>
+				</div>
+			</div>
+		</div>
 
 		<div class="col-lg-8" style=" margin-top: 5%; height: 60%;">
 			<div class="panel panel-default">
 				<div class="panel-heading">
 					<button class='btn btn-warning'>< Back</button>
-					<button class='btn btn-danger'><i class='fa fa-exclamation'></i> Cancel Order</button>
+					<button class='btn btn-danger' data-toggle='modal' data-target='#myModal'><i class='fa fa-exclamation'></i> Cancel Order</button>
 				</div>
 				<div class="myDIV">
 					<div class="panel-body">

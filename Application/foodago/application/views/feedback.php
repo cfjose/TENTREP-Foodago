@@ -279,9 +279,12 @@
 				<div class="col-md-5">
 
 					<label for="remark">Remark</label><br/>
-					<input type="text" id="remark" name="remark" placeholder="..."/><br/><br/>
+					<textarea name="remark" class="form-control"></textarea><br/><br/><br/>
 					<input type="hidden" value="<?php echo $_GET['refid']; ?>" name="refid"/>
-					<div class="stars">
+
+					<label for="rating">Rating </label><br/>
+					<input type="number" name="rating" min="1" max="5" value="1" class="form-control"/>
+					<!-- <div class="stars">
 					    <form action="">
 					      <input class="star star-5" id="star-5-2" type="radio" name="star"/>
 					      <label class="star star-5" for="star-5-2"></label>
@@ -294,8 +297,9 @@
 					      <input class="star star-1" id="star-1-2" type="radio" name="star"/>
 					      <label class="star star-1" for="star-1-2"></label>
 					    </form>
-					</div>
-					<input type="submit" value="Submit Reviews" class="btn btn-warning"/><br/><br/>
+					</div> -->
+					<input type='submit' name='submit' value='Submit' class='btn btn-success'><br/><br/>
+					
 				</div>
 					
 			</div>

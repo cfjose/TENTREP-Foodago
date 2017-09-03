@@ -39,7 +39,23 @@
         }
 
         public function deleteUserHasPenalty(){
-        	
+        	$this->form_validation->set_rules('penalty_id', 'Penalty', 'trim|required|xss_clean');
+			$this->form_validation->set_rules('user_id', 'User', 'trim|required|xss_clean');
+			$this->form_validation->set_rules('order_id', 'Order', 'trim|required|xss_clean');
+
+			if($this->form_validation->run() == FALSE){
+				$this->load->view('delete_user_has_penalty');
+			}else{
+				$data = array('penalty_id' => $this->input->post('penalty_id'),
+							  'user_id' => $this->input->post('user_id'),
+							  'order_id' => $this->input->post('order_id'));
+
+				$result = $this->UserHasPenalty->delete($data);
+
+				
+				redirect(base_url() . 'index.php/admin?page_view=admin_table&tn=user_has_penalty&mn=user_penalties');
+				
+			}
         }
     }
 ?>

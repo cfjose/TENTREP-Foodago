@@ -144,12 +144,11 @@
 		<h5 class="membership-date">Member Since <?php echo $mth_str . " " . $created_at['year']; ?></h5>
 	</div>
 
-	<div class="col-md-6 grid food-tray">
-	<div class="panel-heading">
-		<i class="fa fa-history" aria-hidden="true"></i>
-		<h5>Order History</h5><br/>
+	<div class="col-md-6 grid food-tray" style="margin-right: 1%">
+	<div class="panel-heading" style="margin: 0; padding: 0;">
+		<h4 style="margin: 0; padding: 0;"><i class="fa fa-history" aria-hidden="true"></i> &nbsp; Order History</h4><br/>
 		</div>
-	<div class="panel-body" style="overflow-y: scroll; width: 100%; margin: 0; padding: 0;">	
+	<div class="panel-body" style="overflow-y: scroll; width: 100%; margin: 0; padding: 0; ">	
 		<?php
 			$query = $this->order->getUserOrders($this->session->userdata['id']);
 
@@ -192,9 +191,8 @@
 		</div>
 	</div>
 	<div class="col-md-5 grid food-tray"">
-	<div class="panel-heading">
-		<i class="fa fa-money"></i>
-		<p class="grid-title">Pending Accountabilities</p><br/>
+	<div class="panel-heading" style="margin: 0; padding: 0;">
+		<h4 style="margin: 0; padding: 0;"><i class="fa fa-money"></i>&nbsp; Pending Accountabilities</h4><br/>
 	</div>
 	<div class="panel-body" style="overflow-y: scroll; width: 100%; margin: 0; padding: 0; height: 20%">		
 		<?php
@@ -206,47 +204,39 @@
 
 			if($numOrders == 0){
 				echo "<h3 class='empty'>You have no pending accountabilities</h3>";
-			}elseif($fetch_data_penalty->num_rows() > 0)
-				{
-					echo "<table class='table borderless' style='margin:0'>";
-					echo "<th>" . "Penalty ID" . "</th>";
-					echo "<th>" . "Order ID" . "</th>";
+			}elseif($fetch_data_penalty->num_rows() > 0){
+				echo "<table class='table borderless' style='margin:0'>";
+					echo "<th>" . "Penalty Amount" . "</th>";
+					echo "<th>" . "Order Ref" . "</th>";
 
-					foreach ($fetch_data_penalty->result() as $row)
-					{
+					$query = $this->db->query("select `amount`, `tracking_number` from `penalty`, `order` where `user_id` = " . $this->session->userdata['id'] . "");
 
-					echo "<tr>";
-						echo "<td>". $row->penalty_id ."</td>";
-						echo "<td>". $row->order_id ."</td>";
-					echo "</tr>";
-
+					foreach($query->result() as $row){
+						echo "<tr>";
+							echo "<td>" . $row->amount . "</td>";
+							echo "<td>" . $row->tracking_number . "</td>";
+						echo "</tr>";
 					}
-
-					echo "</table>";
-				}else{
-					//DO NOTHIN'
-				}
+				echo "</table>";
+			}
 		?>
 	</div>
 	</div>
 	<div class="col-md-8 grid food-tray">
-	<div class="panel-heading">
-		<i class="fa fa-comments"></i>
-		<p class="grid-title">Recent Feedbacks</p><br/>
+	<div class="panel-heading" style="margin: 0; padding: 0;">
+		<h4 style="margin: 0; padding: 0;"><i class="fa fa-comments"></i> &nbsp; Recent Feedbacks</h4><br/>
 		</div>
-			<div class="panel-body" style="overflow-y: scroll; width: 100%; margin: 0; padding: 0; height: 19%">		
+			<div class="panel-body" style="overflow-y: scroll; width: 100%; margin: 0; padding: 0; height: 25%">		
+			<?php
+				$query = $this->FeedbackHasUser->getUserFeedback($this->session->userdata['id']);
 
-		<?php
-			$query = $this->FeedbackHasUser->getUserFeedback($this->session->userdata['id']);
+				$numOrders = $query->num_rows();
 
-			$numOrders = $query->num_rows();
+				$fetch_data_feedback = $this->feedback->fetch_data_feedback();
 
-			$fetch_data_feedback = $this->feedback->fetch_data_feedback();
-
-			if($numOrders == 0){
-				echo "<h3 class='empty'>No Recent Feedbacks</h3>";
-			}elseif($fetch_data_feedback->num_rows() > 0)
-				{
+				if($numOrders == 0){
+					echo "<h3 class='empty'>No Recent Feedbacks</h3>";
+				}elseif($fetch_data_feedback->num_rows() > 0){
 					echo "<table class='table borderless' style='margin:0'>";
 					echo "<th>" . "Feedback ID" . "</th>";
 
@@ -263,12 +253,12 @@
 				}else{
 					//DO NOTHIN'
 				}
-		?>
+			?>
 		</div>
 	</div>
 	<a href='<?php echo base_url(); ?>index.php/profile?page_view=acct_settings'>
 		<div class="col-md-3 grid addl-margin settings">
-			<i class="fa fa-gear"></i><br/><br/>
+			<h3><i class="fa fa-gear"></i></h3><br/><br/>
 			<h4>Settings</h4>
 		</div>
 	</a>

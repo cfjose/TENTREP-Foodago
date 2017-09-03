@@ -55,7 +55,8 @@
 		.empty{
 			color: #ccc;
 			text-align: center;
-			line-height: 100px;
+			margin-top: 50px;
+			padding-bottom: 12%;
 		}
 
 		.addl-margin{
@@ -87,13 +88,13 @@
 			text-indent: 35px;
 		}
 
-		.col-md-11{
-			width: 860px;
+		.col-md-12{
+			width: 955px;
 		}
 	</style>
 </head>
 <body>
-	<div class="col-md-11 grid">
+	<div class="col-md-12 grid">
 		<div class="profile-picture">
 			<img src='<?php echo base_url(); ?>assets/images/main/icons/user.png' alt='' width='75px' height='75px'/>
 		</div>
@@ -142,7 +143,7 @@
 		?>
 		<h5 class="membership-date">Member Since <?php echo $mth_str . " " . $created_at['year']; ?></h5>
 	</div>
-	<div class="col-md-5 grid">
+	<div class="col-md-6 grid">
 		<i class="fa fa-history" aria-hidden="true"></i>
 		<p class="grid-title">Order History</p><br/>
 		<?php
@@ -152,34 +153,40 @@
 
 			$fetch_data_order = $this->order->fetch_data_order();
 
-
 			if($numOrders == 0){
 				echo "<h3 class='empty'>No Orders Made</h3>";
-			}elseif($fetch_data_order->num_rows() > 0)
-				{
-					echo "<table class='table borderless' style='margin:0'>";
-					echo "<th>" . "Tracking Number" . "</th>";
-					echo "<th>" . "Total Amount" . "</th>";
-					echo "<th>" . "Delivery Status" . "</th>";
+			}elseif($fetch_data_order->num_rows() > 0){
+				echo "<table class='table borderless' style='margin:0'>";
+				echo "<th>" . "Tracking Number" . "</th>";
+				echo "<th>" . "Total Amount" . "</th>";
+				echo "<th>" . "Date" . "</th>";
 
-					foreach ($fetch_data_order->result() as $row)
-					{
+				foreach ($fetch_data_order->result() as $row){
+						echo "<tr>";
+							echo form_open('TrackOrder/getOrderDeliveryStatus');
+								echo "<input type='hidden' name='tracking_number' value='".$row->tracking_number."'>";
+								echo "<td>". $row->tracking_number ."</td>";
+								echo "<td>". $row->total_amt ."</td>";
 
-					echo "<tr>";
-						echo "<td>". $row->tracking_number ."</td>";
-						echo "<td>". $row->total_amt ."</td>";
-						echo "<td>". $row->timestamp ."</td>";
-					echo "</tr>";
+								$date = date_parse($row->timestamp);
+								$date = $date['month'] . "-" . $date['day'] . "-" . $date['year'];
 
-					}
-
-					echo "</table>";
-				}else{
-					//DO NOTHIN'
+								echo "<td>". $date ."</td>";
+								echo "<td><button type='submit' class='btn btn-warning'>";
+									echo "<i class='fa fa-eye'></i>";
+								echo "</button></td>";
+							echo form_close();
+						echo "</tr>";
+					
 				}
+
+				echo "</table>";
+			}else{
+				//DO NOTHIN'
+			}
 		?>
 	</div>
-	<div class="col-md-6 grid addl-margin">
+	<div class="col-md-5 grid addl-margin">
 		<i class="fa fa-money"></i>
 		<p class="grid-title">Pending Accountabilities</p><br/>		
 		<?php

@@ -24,6 +24,8 @@
             }
 		}
 
+        
+
         public function newFeedback(){
 			$this->form_validation->set_rules('remark', 'Feedback Description', 'required|xss_clean');
 			$this->form_validation->set_rules('rating', 'Feedback Rating', 'trim|required|xss_clean');

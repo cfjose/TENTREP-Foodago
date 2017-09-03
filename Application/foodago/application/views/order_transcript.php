@@ -17,8 +17,6 @@
 	<link rel="icon" href="<?php echo base_url(); ?>assets/images/global/favicon.ico">
 	<title>Foodago</title>
 
-	<link rel="stylesheet" href="<?php echo base_url(); ?>css/style.css"  type="text/css" media="all" />
-	<link rel="stylesheet" href="<?php echo base_url(); ?>css/animate.css" type='text/css' />
 	<link rel="stylesheet" href="<?php echo base_url(); ?>css/bootstrap.min.css">
 	<link rel="stylesheet" href="<?php echo base_url(); ?>css/boostrap.css">
 	<link rel="stylesheet" href="<?php echo base_url(); ?>css/site.css">
@@ -32,7 +30,8 @@
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 
 	<!-- CSS -->
-
+	<link rel="stylesheet" href="<?php echo base_url(); ?>css/style.css"  type="text/css" media="all" />
+	<link rel="stylesheet" href="<?php echo base_url(); ?>css/animate.css" type='text/css' />
 	<link href='http://fonts.googleapis.com/css?family=Lobster+Two:400,400italic,700,700italic' rel='stylesheet' type='text/css'>
 	<link href='http://fonts.googleapis.com/css?family=Source+Sans+Pro:200,300,400,600,700,900,200itali
 	c,300italic,400italic,600italic,700italic,900italic' rel='stylesheet' type='text/css'>	
@@ -41,10 +40,10 @@
 	<!-- jQuery library -->
 	<script src="<?php echo base_url() ?>js/bootstrap.min.js"></script>
 	<script src="<?php echo base_url(); ?>js/jquery.min.js"></script>
+	<script src="<?php echo base_url(); ?>js/wow.min.js"></script>
 	<script src="<?php echo base_url(); ?>js/simpleCart.min.js"> </script>
 	<script type="text/javascript" src="<?php echo base_url(); ?>js/move-top.js"></script>
 	<script type="text/javascript" src="<?php echo base_url(); ?>js/easing.js"></script>
-
 	<script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); }
 	</script>
 
@@ -252,14 +251,33 @@
 
 
 		<div class="col-lg-2"></div>
-		
-		
+		!-- Modal -->
+		<div class="modal fade" id="myModal" role="dialog">
+			<div class="modal-dialog">
+				<!-- Modal content-->
+				<div class="modal-content">
+					<div class="modal-header">
+						<button type="button" class="close" data-dismiss="modal">&times;</button>
+						<h4 class="modal-title">WARNING! &nbsp;</h4>
+						<label class="switch">
+							Are you sure you want to cancel your order?
+						</label>
+					</div>
+					<div class="modal-body">
+						
+					</div>
+					<div class="modal-footer">
+						<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+					</div>
+				</div>
+			</div>
+		</div>
 
 		<div class="col-lg-8" style=" margin-top: 5%; height: 60%;">
 			<div class="panel panel-default">
 				<div class="panel-heading">
 					<button class='btn btn-warning'>< Back</button>
-					<a class='btn btn-danger' data-toggle='modal' data-target='#myModal'><i class='fa fa-exclamation'></i> Cancel Order</a>
+					<button class='btn btn-danger' data-toggle='modal' data-target='#myModal'><i class='fa fa-exclamation'></i> Cancel Order</button>
 				</div>
 				<div class="myDIV">
 					<div class="panel-body">
@@ -350,32 +368,7 @@
 					</div>
 				</div>
 			</div>
-
-			
-		
 		</div>
-
-		<div class="modal fade" id="myModal" role="dialog">
-			<div class="modal-dialog">
-				<!-- Modal content-->
-				<div class="modal-content">
-					<div class="modal-header">
-						<button type="button" class="close" data-dismiss="modal">&times;</button>
-						<h3 class="modal-title">WARNING!!! &nbsp;</h4>
-						<label class="switch">
-							
-						</label>
-					</div>
-					<div class="modal-body">
-						<p>Are you sure you want to cancel your order?</p>
-					</div>
-					<div class="modal-footer">
-						<button type="button" class="btn btn-default" data-dismiss="modal">CONFIRM</button>
-					</div>
-				</div>
-			</div>
-		</div>
-
 
 		<div class="col-lg-2"></div>
 

@@ -239,8 +239,7 @@
 			<div class="panel panel-default">
 				<div class="panel-heading">
 					<?php
-				 		echo form_open('/TrackOrder/getOrderDeliveryStatus')
-				 		// <form method="post" action="">
+				 		echo form_open('/TrackOrder/getOrderDeliveryStatus');
 				 	?>
 					<div>
 						<label for="tracking_number" style="margin-right: 2%; margin-left: 6%; font-size: 20px;">Tracking Number</label>

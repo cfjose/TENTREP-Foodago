@@ -154,7 +154,7 @@
 			if($numOrders == 0){
 				echo "<h3 class='empty'>No Orders Made</h3>";
 			}else{
-			echo  $this->session->getUserOrders('id'); 
+				//
 			}
 		?>
 	</div>

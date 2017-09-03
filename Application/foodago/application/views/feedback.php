@@ -280,7 +280,7 @@
 
 					<label for="remark">Remark</label><br/>
 					<input type="text" id="remark" name="remark" placeholder="..."/><br/><br/>
-
+					<input type="hidden" value="<?php echo $_GET['refid']; ?>" name="refid"/>
 					<div class="stars">
 					    <form action="">
 					      <input class="star star-5" id="star-5-2" type="radio" name="star"/>

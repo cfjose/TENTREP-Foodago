@@ -288,7 +288,7 @@
 					$this->session->userdata['food_tray']['delivery_fee'] = 30;
 					$this->session->userdata['food_tray']['service_fee'] = $percent;
 					$this->session->userdata['food_tray']['total_amt'] = $final_total_amt;
-					$ref_link = 'index.php/order/newOrder';
+					$ref_link = 'Order_Controller/newOrder';
 				} else {
 					$ref_link = '';
 				}
@@ -351,8 +351,18 @@
 		</div>
 		<div class="panel-body">
 			<center>
-				<a href="" class="btn btn-success opt">< Back to Shop</a>&nbsp;
-				<a href="" class="btn btn-warning opt">Proceed to Checkout ></a>
+				<?php
+					$tz = 'Asia/Manila';
+					$timestamp = time();
+					$dt = new DateTime("now", new DateTimeZone($tz));
+					$dt->setTimeStamp($timestamp);
+
+					$data = array('timestamp' => $dt->format('Y-m-d H:i:s'));
+
+					$this->session->userdata['food_tray']['timestamp'] = $data['timestamp'];
+				?>
+				<a href="" class="btn btn-success opt">Back to Shop</a>&nbsp;
+				<a href="<?php echo $ref_link; ?>" class="btn btn-warning opt">Proceed to Checkout</a>
 			</center>
 		</div>
 	</div>	

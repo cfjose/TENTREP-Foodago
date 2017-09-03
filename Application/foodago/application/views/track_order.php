@@ -277,41 +277,46 @@
 								echo "<div class='clear'></div>";
 							echo "</div>";
 
-							if(isset($delivery_status)){
+							if(isset($delivery_status)) {
 								echo "<ul class='progressbar'>";
-									if ($delivery_status == 'Processing Order') {
-										echo "<li class='ongoing'>Processing Order</li>";
-										echo "<li class='unstarted'>Order Confirmed</li>";
-										echo "<li class='unstarted'>Packaging Order</li>";
-										echo "<li class='unstarted'>On The Way</li>";
-										echo "<li class='unstarted'>Delivered</li>";
-									}elseif ($delivery_status == 'Order Confirmed') {
-										echo "<li class='done'>Processing Order</li>";
-										echo "<li class='ongoing'>Order Confirmed</li>";
-										echo "<li class='unstarted'>Packaging Order</li>";
-										echo "<li class='unstarted'>On The Way</li>";
-										echo "<li class='unstarted'>Delivered</li>";
-									}elseif ($delivery_status == 'Packaging Order') {
-										echo "<li class='done'>Processing Order</li>";
-										echo "<li class='done'>Order Confirmed</li>";
-										echo "<li class='ongoing'>Packaging Order</li>";
-										echo "<li class='unstarted'>On The Way</li>";
-										echo "<li class='unstarted'>Delivered</li>";
-									}elseif ($delivery_status == 'On the Way') {
-										echo "<li class='done'>Processing Order</li>";
-										echo "<li class='done'>Order Confirmed</li>";
-										echo "<li class='done'>Packaging Order</li>";
-										echo "<li class='ongoing'>On The Way</li>";
-										echo "<li class='unstarted'>Delivered</li>";
-										echo "<div style='padding-bottom: 10%;margin-top:12%'> <hr></div>";
-									}elseif ($delivery_status == 'Delivered') {
-										echo "<li class='done'>Processing Order</li>";
-										echo "<li class='done'>Order Confirmed</li>";
-										echo "<li class='done'>Packaging Order</li>";
-										echo "<li class='done'>On The Way</li>";
-										echo "<li class='done'>Delivered</li>";
-
-									}
+								if ($delivery_status == 'Processing Order') {
+									echo "<li class='ongoing'>Processing Order</li>";
+									echo "<li class='unstarted'>Order Confirmed</li>";
+									echo "<li class='unstarted'>Packaging Order</li>";
+									echo "<li class='unstarted'>On The Way</li>";
+									echo "<li class='unstarted'>Delivered</li>";
+								} elseif ($delivery_status == 'Order Confirmed') {
+									echo "<li class='done'>Processing Order</li>";
+									echo "<li class='ongoing'>Order Confirmed</li>";
+									echo "<li class='unstarted'>Packaging Order</li>";
+									echo "<li class='unstarted'>On The Way</li>";
+									echo "<li class='unstarted'>Delivered</li>";
+								} elseif ($delivery_status == 'Packaging Order') {
+									echo "<li class='done'>Processing Order</li>";
+									echo "<li class='done'>Order Confirmed</li>";
+									echo "<li class='ongoing'>Packaging Order</li>";
+									echo "<li class='unstarted'>On The Way</li>";
+									echo "<li class='unstarted'>Delivered</li>";
+								} elseif ($delivery_status == 'On the Way') {
+									echo "<li class='done'>Processing Order</li>";
+									echo "<li class='done'>Order Confirmed</li>";
+									echo "<li class='done'>Packaging Order</li>";
+									echo "<li class='ongoing'>On The Way</li>";
+									echo "<li class='unstarted'>Delivered</li>";
+									echo "<div style='padding-bottom: 10%;margin-top:12%'> <hr></div>";
+								} elseif ($delivery_status == 'Delivered') {
+									echo "<li class='done'>Processing Order</li>";
+									echo "<li class='done'>Order Confirmed</li>";
+									echo "<li class='done'>Packaging Order</li>";
+									echo "<li class='done'>On The Way</li>";
+									echo "<li class='done'>Delivered</li>";
+								} else if ($delivery_status == 'Cancelled') {
+									echo "<li class='unstarted'>Processing Order</li>";
+									echo "<li class='unstarted'>Order Confirmed</li>";
+									echo "<li class='unstarted'>Packaging Order</li>";
+									echo "<li class='unstarted'>On The Way</li>";
+									echo "<li class='unstarted'>Delivered</li>";
+								}
 							}else{
 								echo "<h2 class='centered'>Welcome to our online order tracking page!</h2>";
 								echo "<h4 class='centered-body'>Please enter your order tracking number to know the status of your order. <br>If you do not know your order tracking number, kindly check your order history in your profile.</h4>";

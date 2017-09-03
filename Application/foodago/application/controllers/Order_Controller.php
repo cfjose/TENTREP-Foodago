@@ -15,37 +15,54 @@
 			$this->load->view('add_order');
 		}
 
-        public function newOrder(){
-			$this->form_validation->set_rules('total_amt', 'Total Order Amount', 'trim|required|xss_clean');
-			$this->form_validation->set_rules('timestamp', 'Order Timestamp', 'required|xss_clean');
-			$this->form_validation->set_rules('remarks', 'Order Remarks', 'xss_clean');
-			$this->form_validation->set_rules('tracking_number', 'Order Tracking Number', 'trim|required|xss_clean');
-			$this->form_validation->set_rules('is_shared', 'Order Sharing', 'trim|required|xss_clean');
-			$this->form_validation->set_rules('share_code', 'Order Sharing Code', 'trim|xss_clean');
-			$this->form_validation->set_rules('user_id', 'Order Owner', 'trim|required|xss_clean');
-			$this->form_validation->set_rules('delivery_status_id', 'Order Delivery Status', 'required|xss_clean');
+        public function newOrder()
+		{
+			if (($this->session->userdata['user_type'] == 'Aggregator') || ($this->session->userdata['user_type'] == 'System Admin')
+				|| ($this->session->userdata['user_type'] == 'Restaurant Owner')
+			) {
 
-			if($this->form_validation->run() == FALSE){
-				$this->load->view('add_order');
-			}else{
+				$this->form_validation->set_rules('total_amt', 'Total Order Amount', 'trim|required|xss_clean');
+				$this->form_validation->set_rules('timestamp', 'Order Timestamp', 'required|xss_clean');
+				$this->form_validation->set_rules('remarks', 'Order Remarks', 'xss_clean');
+				$this->form_validation->set_rules('tracking_number', 'Order Tracking Number', 'trim|required|xss_clean');
+				$this->form_validation->set_rules('is_shared', 'Order Sharing', 'trim|required|xss_clean');
+				$this->form_validation->set_rules('share_code', 'Order Sharing Code', 'trim|xss_clean');
+				$this->form_validation->set_rules('user_id', 'Order Owner', 'trim|required|xss_clean');
+				$this->form_validation->set_rules('delivery_status_id', 'Order Delivery Status', 'required|xss_clean');
+
 				$data = array('total_amt' => $this->input->post('total_amt'),
-							  'timestamp' => $this->input->post('timestamp'),
-							  'remarks' => $this->input->post('remarks'),
-							  'tracking_number' => $this->input->post('tracking_number'),
-							  'is_shared' => $this->input->post('is_shared'),
-							  'share_code' => $this->input->post('share_code'),
-							  'user_id' => $this->input->post('user_id'),
-							  'delivery_status_id' => $this->input->post('delivery_status_id'));
+					'timestamp' => $this->input->post('timestamp'),
+					'remarks' => $this->input->post('remarks'),
+					'tracking_number' => $this->input->post('tracking_number'),
+					'is_shared' => $this->input->post('is_shared'),
+					'share_code' => $this->input->post('share_code'),
+					'user_id' => $this->input->post('user_id'),
+					'delivery_status_id' => $this->input->post('delivery_status_id'));
+			} else {
+				$data = array(
+					'total_amt' => $this->session->userdata['food_tray']['total_amt'],
+					'timestamp' => $this->session->userdata['food_tray']['timestamp'],
+					'tracking_number' => $this->session->userdata['food_tray']['order_tracking_code'],
+					'is_shared' => $this->session->userdata['food_tray']['order_sharing_state'],
+					'share_code' => $this->session->userdata['food_tray']['order_sharing_code'],
+					'user_id' => $this->session->userdata['id'],
+					'delivery_status_id' => $this->session->userdata['food_tray']['delivery_status_id'],
+				);
+			}
 
-				$result = $this->order->insert($data);
-
-				if($result == TRUE){
+			$result = $this->order->insert($data);
+			if ($result == TRUE) {
+				if ($this->session->userdata['user_type'] == "System Admin" ||
+					$this->session->userdata['user_type'] == "Aggregator" ||
+					$this->session->userdata['user_type'] == "Restaurant Owner") {
 					redirect(base_url() . 'index.php/admin?page_view=admin_table&tn=order&mn=orders');
 				}else{
-					$this->load->view('add_order', $message);
+					redirect(base_url() . 'index.php/login/logout');
 				}
+			} else {
+				// DO NOTHING
 			}
-        }
+		}
 
         public function updateOrder(){
 

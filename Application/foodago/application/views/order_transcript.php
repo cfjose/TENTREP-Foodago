@@ -1,9 +1,9 @@
 <?php
 	if(isset($this->session->userdata['logged_in'])){
 		// ACTIVE SESSION DETECTED, REDIRECT TO MAIN PAGE
-		redirect(base_url() . 'index.php/main');
 	}else{
 		// CONTINUE WITH PAGE
+		redirect(base_url() . 'index.php/login/userLogin');
 	}
 ?>
 
@@ -222,13 +222,19 @@
 					<a class="navbar-brand" href="#"><img src="<?php echo base_url(); ?>/assets/images/global/logos/logoName.png" alt=""></a>
 		    	</div>
 		    	<ul class="nav navbar-nav navbar-right">
-		      		<li><a href="<?php echo base_url();?>index.php">Home</a></li>
-		      		<li><a href="<?php echo base_url(); ?>index.php/About_Us">About Us</a></li>
-		      		<li><a href="<?php echo base_url(); ?>index.php/Contact_Us">Contact Us</a></li>
-		      		<li class="active"><a href="#">Track my Order</a></li>
-		      		<li><a href="<?php echo base_url(); ?>index.php/login/userLogin">Log In</a></li>
-		      		<li><a href="<?php echo base_url(); ?>index.php/login/newUser">Sign Up</a></li>
-		    	</ul>
+			    	<div class="dropdown">
+			    		<!--<label class="username"><?php echo $this->session->userdata('username'); ?></label>-->
+			    		<img src="<?php echo base_url('assets/images/main/icons/user.png'); ?>" height="45" width="45" data-toggle="dropdown"/>
+						<span class="caret"></span>
+						<ul class="dropdown-menu">
+							<p align="center">You are currently logged in as <b><?php echo $this->session->userdata('first_name') . " " . $this->session->userdata('last_name'); ?></b></p>
+							<li class="divider"></li>
+							<li><a href="<?php echo base_url(); ?>index.php/profile?page_view=profile">My Profile</a></li>
+							<li><a href="<?php echo base_url(); ?>index.php/profile?page_view=acct_settings">Account Settings</a></li>
+							<li><a href="<?php echo base_url(); ?>index.php/login/logout">Logout</a></li>
+						</ul>
+		  			</div>
+	    		</ul>
 		  	</div>
 		</nav>
 
@@ -238,17 +244,8 @@
 		<div class="col-lg-8" style=" margin-top: 5%; height: 60%;">
 			<div class="panel panel-default">
 				<div class="panel-heading">
-					<?php
-				 		echo form_open('/TrackOrder/getOrderDeliveryStatus')
-				 		// <form method="post" action="">
-				 	?>
-					<div>
-						<label for="tracking_number" style="margin-right: 2%; margin-left: 6%; font-size: 20px;">Tracking Number</label>
-						<input type="text" id="tracking_number" name="tracking_number" required style="width: 50%">
-						<input type="submit" value="Search" style="margin-left: 2%; width: 10%">
-					</div>
-
-					<?php echo form_close(); // </form> ?> 
+					<button class='btn btn-warning'>< Back</button>
+					<button class='btn btn-danger'><i class='fa fa-exclamation'></i> Cancel Order</button>
 				</div>
 				<div class="myDIV">
 					<div class="panel-body">

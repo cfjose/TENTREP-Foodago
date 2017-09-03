@@ -147,7 +147,7 @@
 	<div class="col-md-6 grid food-tray">
 	<div class="panel-heading">
 		<i class="fa fa-history" aria-hidden="true"></i>
-		<h5>Order History</h5><br/>
+		<h5> Order History</h5><br/>
 		</div>
 	<div class="panel-body" style="overflow-y: scroll; width: 100%; margin: 0; padding: 0;">	
 		<?php
@@ -167,7 +167,7 @@
 
 				foreach ($fetch_data_order->result() as $row){
 						echo "<tr>";
-							echo form_open('TrackOrder/getOrderDeliveryStatus');
+							echo form_open('/TrackOrder/getOrderDeliveryStatus');
 								echo "<input type='hidden' name='tracking_number' value='".$row->tracking_number."'>";
 								echo "<td>". $row->tracking_number ."</td>";
 								echo "<td>". $row->total_amt ."</td>";

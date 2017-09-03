@@ -98,7 +98,7 @@
 			font-size: 16px;
 		}
 		#myDIV{
-    		display:hidden;
+    		display:none;
 		}
 		.content{
 			width:60%;
@@ -251,33 +251,33 @@
 
 
 		<div class="col-lg-2"></div>
-		!-- Modal -->
-		<div class="modal fade" id="myModal" role="dialog">
-			<div class="modal-dialog">
-				<!-- Modal content-->
-				<div class="modal-content">
-					<div class="modal-header">
-						<button type="button" class="close" data-dismiss="modal">&times;</button>
-						<h4 class="modal-title">WARNING! &nbsp;</h4>
-						<label class="switch">
-							Are you sure you want to cancel your order?
-						</label>
-					</div>
-					<div class="modal-body">
-						
-					</div>
-					<div class="modal-footer">
-						<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-					</div>
-				</div>
-			</div>
-		</div>
 
 		<div class="col-lg-8" style=" margin-top: 5%; height: 60%;">
 			<div class="panel panel-default">
 				<div class="panel-heading">
 					<button class='btn btn-warning'>< Back</button>
 					<button class='btn btn-danger' data-toggle='modal' data-target='#myModal'><i class='fa fa-exclamation'></i> Cancel Order</button>
+					<!-- Modal -->
+					<div class="modal fade" id="myModal" role="dialog">
+						<div class="modal-dialog">
+							<!-- Modal content-->
+							<div class="modal-content">
+								<div class="modal-header">
+									<button type="button" class="close" data-dismiss="modal">&times;</button>
+									<h4 class="modal-title">WARNING! </h4>
+									<label class="switch">
+										Are you sure you want to cancel your order?
+									</label>
+								</div>
+								<div class="modal-body">
+
+								</div>
+								<div class="modal-footer">
+									<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+								</div>
+							</div>
+						</div>
+					</div>
 				</div>
 				<div class="myDIV">
 					<div class="panel-body">

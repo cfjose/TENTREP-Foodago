@@ -1,87 +1,83 @@
 <?php
 	defined('BASEPATH') OR exit('No direct script access allowed');
 
-	class Login extends CI_Controller{
-		public function __construct(){
-			parent::__construct();
+	class Login extends CI_Controller
+    {
+        public function __construct()
+        {
+            parent::__construct();
 
-			$this->load->model('user');
+            $this->load->model('user');
 
-			$this->load->model('UserTypeHasModule');
+            $this->load->model('UserTypeHasModule');
 
-			$this->load->model('module');
-		}
+            $this->load->model('module');
+        }
 
-		public function index(){
-			$this->load->view('login');
-		}
+        public function index()
+        {
+            $this->load->view('login');
+        }
 
-		public function signup(){
-			$this->load->view('signup');
-		}
+        public function signup()
+        {
+            $this->load->view('signup');
+        }
 
-		public function newUser(){
-			if(isset($this->session->userdata['logged_in']) && 
-				$this->session->userdata['user_type'] == "System Admin"){
-				// CONTINUE WITH PAGE
-				$this->form_validation->set_rules('first_name', 'First Name', 'required|xss_clean');
-				$this->form_validation->set_rules('last_name', 'Last Name', 'required|xss_clean');
-				$this->form_validation->set_rules('bday', 'Birthdate', 'trim|required|xss_clean');
-				$this->form_validation->set_rules('gender', 'Gender', 'trim|required|xss_clean');
-				$this->form_validation->set_rules('home_address', 'Home Address', 'required|xss_clean');
-				$this->form_validation->set_rules('email', 'Email Address', 'trim|required|xss_clean');
-				$this->form_validation->set_rules('username', 'Username', 'trim|required|xss_clean');
-				$this->form_validation->set_rules('password', 'Password', 'trim|required|xss_clean');
-				$this->form_validation->set_rules('created_at', 'Created At', 'trim|required|xss_clean');
-				$this->form_validation->set_rules('user_type_id', 'User Type', 'trim|xss_clean');
-				$this->form_validation->set_rules('restaurant_id', 'Restaurant', 'trim|xss_clean');
+        public function newUser()
+        {
+            $this->form_validation->set_rules('first_name', 'First Name', 'required|xss_clean');
+            $this->form_validation->set_rules('last_name', 'Last Name', 'required|xss_clean');
+            $this->form_validation->set_rules('bday', 'Birthdate', 'trim|required|xss_clean');
+            $this->form_validation->set_rules('gender', 'Gender', 'trim|required|xss_clean');
+            $this->form_validation->set_rules('home_address', 'Home Address', 'required|xss_clean');
+            $this->form_validation->set_rules('email', 'Email Address', 'trim|required|xss_clean');
+            $this->form_validation->set_rules('username', 'Username', 'trim|required|xss_clean');
+            $this->form_validation->set_rules('password', 'Password', 'trim|required|xss_clean');
+            $this->form_validation->set_rules('created_at', 'Created At', 'trim|required|xss_clean');
+            $this->form_validation->set_rules('user_type_id', 'User Type', 'trim|xss_clean');
+            $this->form_validation->set_rules('restaurant_id', 'Restaurant', 'trim|xss_clean');
 
-				if($this->form_validation->run() == FALSE){
-					$this->load->view('signup');
-				}else{
-					$raw_password = $this->input->post('password');
-					$password_hash = password_hash($raw_password,PASSWORD_BCRYPT);
+            if ($this->form_validation->run() == FALSE) {
+                $this->load->view('signup');
+            } else {
+                $raw_password = $this->input->post('password');
+                $password_hash = password_hash($raw_password, PASSWORD_BCRYPT);
 
-					if(isset($this->session->userdata['logged_in']) && 
-						$this->session->userdata['user_type'] == "System Administrator"){
-							$this->db->select('id');
-							$this->db->from('user_type');
-							$this->db->where('name ="Customer"');
+                $this->db->select('id');
+                $this->db->from('user_type');
+                $this->db->where('name ="Customer"');
 
-							$query = $this->db->get();
-							$resultId = $query->row()->id;
-						}else{
-							$resultId = $this->input->post('user_type_id');
-						}
+                $query = $this->db->get();
+                $resultId = $query->row()->id;
 
-					$data = array(
-							'first_name' => $this->input->post('first_name'),
-							'last_name' => $this->input->post('last_name'),
-							'birthdate' => $this->input->post('bday'),
-							'gender' => $this->input->post('gender'),
-							'home_address' => $this->input->post('home_address'),
-							'email' => $this->input->post('email'),
-							'username' => $this->input->post('username'),
-							'password' => $password_hash,
-							'created_at' => $this->input->post('created_at'),
-							'user_type_id' => $resultId,
-							'restaurant_id' => $this->input->post('restaurant_id'));
+                $data = array(
+                    'first_name' => $this->input->post('first_name'),
+                    'last_name' => $this->input->post('last_name'),
+                    'birthdate' => $this->input->post('bday'),
+                    'gender' => $this->input->post('gender'),
+                    'home_address' => $this->input->post('home_address'),
+                    'email' => $this->input->post('email'),
+                    'username' => $this->input->post('username'),
+                    'password' => $password_hash,
+                    'created_at' => $this->input->post('created_at'),
+                    'user_type_id' => $resultId,
+                    'restaurant_id' => $this->input->post('restaurant_id'));
 
-					$result = $this->user->newUserInsert($data);
+                $result = $this->user->newUserInsert($data);
 
-					if($result == TRUE){
-						$data['message_display'] = "Registration Successful";
-						redirect(base_url() . 'index.php/login/userLogin');
-					}else{
-						$data['message_display'] = "Username already in use";
-						$this->load->view('signup', $data);
-					}
-				}
-			}else{
-				// ACTIVE SESSION DETECTED, REDIRECT TO MAIN PAGE
-				redirect(base_url() . 'index.php/main');
-			}
-		}
+                if ($result == TRUE) {
+                    $data['message_display'] = "Registration Successful";
+                    redirect(base_url() . 'index.php/login/userLogin');
+                } else {
+                    $data['message_display'] = "Username already in use";
+                    $this->load->view('signup', $data);
+                }
+            }
+
+            // ACTIVE SESSION DETECTED, REDIRECT TO MAIN PAGE
+             redirect(base_url() . 'index.php/main');
+        }
 
 		public function userlogin(){
 			if(isset($this->session->userdata['logged_in'])){

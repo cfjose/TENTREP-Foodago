@@ -29,6 +29,7 @@
 
 	<script type="text/javascript" src="//code.jquery.com/jquery-2.1.0.min.js"></script>
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 
@@ -302,6 +303,11 @@
 		    border-radius: 2px;
 		}
 
+		.track{
+			width: 300px;
+			padding: 20%;
+		}
+
 		.inputTrack{
 			display: table-cell;
     		height: 38px;
@@ -431,12 +437,16 @@
     	}
 
     	.fill{
-    		color: yellow;
+    		color: #ffc51c;
     	}
 
     	.empty{
     		color: gray;
     	}
+
+		.search-submit{
+			margin-top: 5%;
+		}
 	</style>
 </head>
 <body>
@@ -448,18 +458,18 @@
 	    	<ul class="nav navbar-nav navbar-right">
 		    	<div class="dropdown">
 		    		<button class="btn" data-toggle="dropdown"> Track Order <span class="caret"></span></button>
-					<ul class="dropdown-menu">
+					<ul class="dropdown-menu track">
 						<div class="outer-list top">
 				    		<div class="trackTitle">Track your Order</div>
 				    		<div style="margin-bottom: 10px;">
 				    			<label for="username" class="trackLabel">Your 12-Character Order Tracking Code</label>
 				    			<div class="trackInput">
-				    				<input type="text" id="username" name="username" placeholder="e.g. A1B2C3D4E5F6" class="inputTrack"/>
-				    				<span class="trackButton">
-				    					<button class="trackButton2">
-				    						<span class="glyphicon glyphicon-chevron-right"></span>
-				    					</button>
-				    				</span>
+									<?php echo form_open('TrackOrder/getOrderDeliveryStatus'); ?>
+				    				<input type="text" id="username" name="tracking_number" placeholder="e.g. A1B2C3D4E5F6" class="inputTrack"/>
+				    				<button type="submit" class="btn btn-warning search-submit">
+										<i class="fa fa-search"></i>
+									</button>
+									<?php echo form_close(); ?>
 				    			</div>
 				    		</div>
 			    		</div>
@@ -560,16 +570,14 @@
         			echo "</table>";
         		}
         	?>
-
-
         </div>
 
-        <?php 
-        echo "<div style='margin-left:7%;margin-right:7%'>";
-        echo "<a href='' class='btn btn-success' data-toggle='modal' data-target='#myModal'>Add Friend</a>";
+        <?php
+			echo "<div style='margin-left:7%;margin-right:7%'>";
+			echo "<a href='' class='btn btn-success' data-toggle='modal' data-target='#myModal'>Add Friend</a>";
 
-    	echo "<a href='".$checkout_link."' class='btn btn-warning'>Proceed to Checkout</a>";
-    	echo "</div>";
+			echo "<a href='".$checkout_link."' class='btn btn-warning'>Proceed to Checkout</a>";
+			echo "</div>";
         ?>
     </div>
 

@@ -361,7 +361,7 @@
 
 					$this->session->userdata['food_tray']['timestamp'] = $data['timestamp'];
 				?>
-				<a href="" class="btn btn-success opt">Back to Shop</a>&nbsp;
+				<a href="<?php echo base_url(); ?>index.php/main" class="btn btn-success opt">Back to Shop</a>&nbsp;
 				<a href="<?php echo $ref_link; ?>" class="btn btn-warning opt">Proceed to Checkout</a>
 			</center>
 		</div>

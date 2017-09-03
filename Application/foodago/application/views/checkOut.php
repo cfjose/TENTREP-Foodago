@@ -244,38 +244,24 @@
 		</div>
 		<div class="panel-body">
 		<br>
-		<h4>Chamber Jose</h4>
+		<h4><?php echo $this->session->userdata['first_name'] . " " . $this->session->userdata['last_name'] ?></h4>
 		<hr>
 		<div class="top-cuisine-grids">
-			<div class="top-cuisine-grid wow bounceIn" data-wow-delay="0.4s">
-			    <a href=""><img src="<?php echo base_url(); ?>assets/images/home/index/samples/cuisine1.jpg" class="img-responsive" alt="" />
-			    </a>
-				<label>Cuisine Name</label>
-		    </div>
-			<div class="top-cuisine-grid wow bounceIn" data-wow-delay="0.4s">
-			    <a href=""><img src="<?php echo base_url(); ?>assets/images/home/index/samples/cuisine2.jpg" class="img-responsive" alt="" /> </a>
-				<label>Cuisine Name</label>
-		    </div>
-			<div class="top-cuisine-grid wow bounceIn" data-wow-delay="0.4s">
-			    <a href=""><img src="<?php echo base_url(); ?>assets/images/home/index/samples/cuisine3.jpg" class="img-responsive" alt="" /> </a>
-				<label>Cuisine Name</label>
-		    </div>
-		</div>
+			<?php
+				$item_name = count($this->session->userdata['food_tray']['item_name']);
+				$count = 0;
 
-	
+				while($count < $item_name) {
+					$this->session->userdata['food_tray']['item_name'];
 
-		<h4 style="margin-top: 30%">Johanna Heramia</h4>
-		<hr>
-		<div class="top-cuisine-grids">
-			<div class="top-cuisine-grid wow bounceIn" data-wow-delay="0.4s">
-			    <a href=""><img src="<?php echo base_url(); ?>assets/images/home/index/samples/cuisine4.jpg" class="img-responsive" alt="" />
-			    </a>
-				<label>Cuisine Name</label>
-		    </div>
-			<div class="top-cuisine-grid wow bounceIn" data-wow-delay="0.4s">
-			    <a href=""><img src="<?php echo base_url(); ?>assets/images/home/index/samples/cuisine5.jpg" class="img-responsive" alt="" /> </a>
-				<label>Cuisine Name</label>
-		    </div>
+					echo "<div class='top-cuisine-grid wow bounceIn' data-wow-delay='0.4s'>";
+						echo "<a href=''><img src='".base_url()."assets/images/home/index/samples/cuisine1.jpg' class='img-responsive' alt='' /></a>";
+						echo "<label>" . $this->session->userdata['food_tray']['item_name'][$count] . "</label>";
+					echo "</div>";
+
+					$count++;
+				}
+			?>
 		</div>
 		</div>
 	</div>

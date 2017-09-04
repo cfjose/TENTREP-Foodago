@@ -1,7 +1,7 @@
 <?php
 	if(isset($this->session->userdata['logged_in'])){
 		// DO NOTHING, CONTINUE WITH MAIN PAGE
-		if(in_array('Create Orders', $this->session->userdata['user_privileges'])){
+		if(in_array('Update Orders', $this->session->userdata['user_privileges'])){
 			// CONTINUE
 		}else{
 			$this->session->userdata['current_url'] = $_SERVER['REQUEST_URI'];  

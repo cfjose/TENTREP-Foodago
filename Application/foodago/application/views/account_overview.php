@@ -152,7 +152,7 @@
 	<div class="panel-heading" style="margin: 0; padding: 0;">
 		<h4 style="margin: 0; padding: 0;"><i class="fa fa-history" aria-hidden="true"></i> &nbsp; Order History</h4><br/>
 		</div>
-	<div class="panel-body" style="overflow-y: scroll; width: 100%; margin: 0; padding: 0; ">	
+	<div class="panel-body" style="overflow-y: scroll; width: 100%; margin: 0; padding: 0; height: 20%">	
 		<?php
 			$query = $this->order->getUserOrders($this->session->userdata['id']);
 
@@ -210,15 +210,16 @@
 				echo "<h3 class='empty'>You have no pending accountabilities</h3>";
 			}elseif($fetch_data_penalty->num_rows() > 0){
 				echo "<table class='table borderless' style='margin:0'>";
-					echo "<th>" . "Penalty Amount" . "</th>";
 					echo "<th>" . "Order Ref" . "</th>";
+					echo "<th>" . "Penalty Amount" . "</th>";
 
 					$query = $this->db->query("select `amount`, `tracking_number` from `penalty`, `order` where `user_id` = " . $this->session->userdata['id'] . "");
 
 					foreach($query->result() as $row){
 						echo "<tr>";
-							echo "<td>" . $row->amount . "</td>";
+							
 							echo "<td>" . $row->tracking_number . "</td>";
+							echo "<td>" . $row->amount . "</td>";
 						echo "</tr>";
 					}
 				echo "</table>";

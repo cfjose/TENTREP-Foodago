@@ -278,7 +278,8 @@
 		}
 
 		.btn-warning{
-			float: right;
+			height: 50px;
+			width: 50px;
 		}
 
 		input[type='number']{
@@ -428,6 +429,7 @@
 		transition: 1s;
 	   padding:10px;
 	    }
+
 	    .affix#alert{
 	    position:fixed;
 	    top:0px;
@@ -446,6 +448,14 @@
 
 		.search-submit{
 			margin-top: 5%;
+		}
+
+		.grid{
+			box-shadow: 2px 2px 2px 2px rgba(0,0,0,0.5);
+			padding: 5%;
+			margin-top: 8%;
+			margin-left: 5%;
+			margin-bottom: 3%;
 		}
 	</style>
 </head>
@@ -494,7 +504,6 @@
 		<div class="item active">
 			<img src="<?php echo base_url(); ?>assets/images/main/main-bg.jpg" alt="" class="header">
 			<div class="search">
-				<form method="post" action="<?php echo base_url(); ?>index.php/search/rfSearch">
 					<h1 id="greetings"></h1>
 					<script type="text/javascript">
 						window.onload = function(){
@@ -516,9 +525,10 @@
 					</script>
 					<h2>Are you Hungry?</h2>
 					<h2>Search for your favorite restaurants / fast food chains online</h2>
-					<input type="text" id="textbox" name="q" placeholder="Search for Restaurants and Fast food Chains"/>
-					<input type="submit" name="submit" value="Search" class="btn btn-default">
-				</form>
+					<?php echo form_open('search/rfSearch'); ?>
+						<input type="text" id="textbox" name="q" placeholder="Search for Restaurants and Fast food Chains"/>
+						<button type="submit" name="submit" class="btn btn-warning"><i class="fa fa-search"></i></button>
+					<?php echo form_close(); ?>
 			</div>
 	  	</div>
 	</div>
@@ -527,7 +537,11 @@
 			if(isset($_GET['page_view'])){
 				$this->load->view($_GET['page_view']);
 			}else{
-				$this->load->view('default_view');
+				if(isset($food_items) || isset($categories) || isset($restaurants)){
+					$this->load->view('search_view');
+				}else{
+					$this->load->view('default_view');
+				}
 			}
 		?>
 	</div>

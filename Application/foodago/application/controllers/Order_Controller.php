@@ -93,6 +93,18 @@
 					$this->db->delete('user_has_penalty', array('user_id' => $this->session->userdata['id']));
 					$this->db->delete('penalty', array('id' => $row->penalty_id));
 				}
+			}else if($data['delivery_status_id'] == $getDeliveryStatusIdCancelled->row('id'))
+			{
+				$this->db->select('*');
+				$this->db->from('user_has_penalty');
+				$this->db->where("user_id =" . $this->session->userdata['id']);
+
+				$query = $this->db->get();
+
+				foreach ($query->result() as $row) {
+					$this->db->insert('user_has_penalty', array('user_id' => $this->session->userdata['id']));
+					$this->db->insert('penalty', array('id' => $row->penalty_id));
+				}
 			}
 
 			redirect(base_url() . 'index.php/admin?page_view=admin_table&tn=order&mn=orders');

@@ -38,7 +38,7 @@
 	<link rel="stylesheet" href="<?php echo base_url(); ?>/css/site.css">
 
 	<!-- jQuery library -->
-	<script src="<?php echo base_url() ?>js/bootstrap.min.js"></script>
+	<!-- <script src="<?php echo base_url() ?>js/bootstrap.min.js"></script> -->
 	<script src="<?php echo base_url(); ?>js/jquery.min.js"></script>
 	<script src="<?php echo base_url(); ?>js/wow.min.js"></script>
 	<script src="<?php echo base_url(); ?>js/simpleCart.min.js"> </script>

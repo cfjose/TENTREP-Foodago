@@ -20,6 +20,7 @@
 	<link rel="stylesheet" href="<?php echo base_url(); ?>css/boostrap.css">
 	<link rel="stylesheet" href="<?php echo base_url(); ?>css/style.css">
 	<link rel="stylesheet" href="<?php echo base_url(); ?>css/site.css">
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 
@@ -96,7 +97,7 @@
 			margin: 3px;
 			right: 25%;
 		}
-		
+
 		.hr0{
 			margin: 5px;
 			color: black;
@@ -209,6 +210,11 @@
 		.opt:visited{
 			color: white;
 		}
+
+		.item-label{
+			max-width: 100%;
+			font-size: 12px !important;
+		}
 	</style>
 </head>
 <body>
@@ -256,7 +262,7 @@
 
 					echo "<div class='top-cuisine-grid wow bounceIn' data-wow-delay='0.4s'>";
 						echo "<a href=''><img src='".base_url()."assets/images/home/index/samples/cuisine1.jpg' class='img-responsive' alt='' /></a>";
-						echo "<label>" . $this->session->userdata['food_tray']['item_name'][$count] . "</label>";
+						echo "<label class='item-label'>" . $this->session->userdata['food_tray']['item_name'][$count] . "</label>";
 					echo "</div>";
 
 					$count++;
@@ -295,16 +301,44 @@
 			?>
   			<table class="table table-hover">
 			    <thead>
-			      <tr>
-					  <th>Name</th>
-					  <th>Total Amount</th>
-			      </tr>
+					<tr>
+						<th>Name</th>
+						<th>Total Amount</th>
+						<th></th>
+			      	</tr>
 			    </thead>
 			    <tbody>
-			      <tr>
-			          <td><?php echo $this->session->userdata['first_name'] . " " . $this->session->userdata['last_name'] ?></td>
-			          <td><?php echo  "Php" . " " . $total_amt ?></td>
-			      </tr>
+					<tr>
+						<div class="panel-heading">
+							<td>
+								<h4 class="panel-title">
+									<a data-toggle="collapse" href="#collapse1"><?php echo $this->session->userdata['first_name'] . " " . $this->session->userdata['last_name'] ?></a>
+							  	</h4>
+						  	</td>
+						  	<td>
+								<h4 class="panel-title">
+									<a data-toggle="collapse" href="#collapse1"><?php echo  "Php" . " " . $total_amt ?></a>
+							  	</h4>
+						  	</td>
+					  	</div>
+			      	</tr>
+					<?php
+						$item_name = count($this->session->userdata['food_tray']['item_name']);
+						$item_qty = count($this->session->userdata['food_tray']['item_qty']);
+						$count = 0;
+
+						echo "<div id='collapse1' class='panel-collapse collapse'>";
+							while(($count < $item_name) && ($count < $item_qty)) {
+								echo "<tr><tr>";
+									echo "<td style='text-indent: 20px'>" . $this->session->userdata['food_tray']['item_name'][$count] . " x " . $this->session->userdata['food_tray']['item_qty'][$count] . "</td>";
+									echo "<td> Php " . $this->session->userdata['food_tray']['item_price'][$count] * $this->session->userdata['food_tray']['item_qty'][$count] . "</td>";
+								echo "</tr></tr>";
+
+								$count++;
+							}
+						echo "</div>";
+					?>
+
 			      <tr>
 			          <td><i>Delivery Fee</i></td>
 			          <td><i><?php echo "Php" . " " . $this->session->userdata['food_tray']['delivery_fee']; ?></i></td>
@@ -317,6 +351,7 @@
 			        <td style="font-weight: bolder">Total Price</td>
 			        <td style="font-weight: bolder"><?php echo "Php" . " " . $this->session->userdata['food_tray']['total_amt']; ?></td>
 			      </tr>
+
 			    </tbody>
   			</table>
 

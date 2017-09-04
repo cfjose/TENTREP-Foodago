@@ -73,6 +73,28 @@
 				  
 			$query = $this->order->update($data, $refid);
 
+			$name_d = 'Delivered';
+
+			$getDeliveryStatusIdDelivered = $this->DeliveryStatus->getDeliveryStatusByName($name_d);
+
+			$name_c = 'Cancelled';
+
+			$getDeliveryStatusIdCancelled = $this->DeliveryStatus->getDeliveryStatusByName($name_c);
+
+			if ($data['delivery_status_id'] == $getDeliveryStatusIdDelivered->row('id'))
+			{
+				$this->db->select('*');
+				$this->db->from('user_has_penalty');
+				$this->db->where("user_id =" . $this->session->userdata['id']);
+
+				$query = $this->db->get();
+
+				foreach ($query->result() as $row) {
+					$this->db->delete('user_has_penalty', array('user_id' => $this->session->userdata['id']));
+					$this->db->delete('penalty', array('id' => $row->penalty_id));
+				}
+			}
+
 			redirect(base_url() . 'index.php/admin?page_view=admin_table&tn=order&mn=orders');
         	
         }

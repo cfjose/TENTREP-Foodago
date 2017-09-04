@@ -22,7 +22,7 @@
 		public function getDeliveryStatusByName($data){
 			$this->db->select('*');
 			$this->db->from('delivery_status');
-			$this->db->where("name =" . $data . "'");
+			$this->db->where("name ='" . $data . "'");
 
 			$query = $this->db->get();
 			return $query;

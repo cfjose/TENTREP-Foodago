@@ -547,7 +547,7 @@
 	</div>
 
 	<script type="text/javascript">
-		$( document ).ready(function() {
+		$(document).ready(function() {
 			$('#alert').affix({
 		    	offset: {
 		      		top: 100, bottom: function () {

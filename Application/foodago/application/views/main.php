@@ -590,7 +590,7 @@
 			echo "<div style='margin-left:7%;margin-right:7%'>";
 			echo "<a href='' class='btn btn-success' data-toggle='modal' data-target='#myModal'>Add Friend</a>";
 
-			echo "<a href='".$checkout_link."' class='btn btn-warning'>Proceed to Checkout</a>";
+			echo "<a href='".$checkout_link."' class='btn btn-warning' style='width:60%; height:7.3%; margin-left: 2%'>Proceed to Checkout</a>";
 			echo "</div>";
         ?>
     </div>

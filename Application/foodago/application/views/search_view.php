@@ -1,3 +1,10 @@
+<style>
+	#items{
+		float: left;
+		text-align: center;
+		margin: 0 auto 0 auto;
+	}
+</style>
 <script>
 	function addProductToTray(data){
 		var item_id = data;
@@ -15,7 +22,7 @@
 		$('.panel-body').load(' .panel-body');
 	}
 </script>
-<div class="col-md-12 grid">
+<div class="col-md-12 grid" style="height: 60%; width: 900px; overflow-x: scroll; display: inline-block;">
 	<h4><i class="fa fa-coffee"></i> Food Items</h4>
 	<hr class="grid-divider"/>
 	<?php
@@ -26,7 +33,7 @@
 			echo "<h4 class='no-avail-list'>No Food Item Results Found</h4>";
 		}else{
 			while($counter < $count_food_items){
-				echo "<div class='col-lg-6'>";
+				echo "<div class='col-lg-6' id='items' style='height: 60%; width: 32%;>";
             		echo "<div class='thumbnail'>";
             			$file_name = strtolower(preg_replace('/[^A-Za-z0-9\-.]/', '', $food_items[$counter]->name));
 		            	/*if(file_exists(FCPATH . '/assets/images/main/food/' . $file_name . '.jpg')){

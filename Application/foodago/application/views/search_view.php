@@ -1,9 +1,4 @@
 <style>
-	#items{
-		float: left;
-		text-align: center;
-		margin: 0 auto 0 auto;
-	}
 </style>
 <script>
 	function addProductToTray(data){
@@ -22,9 +17,10 @@
 		$('.panel-body').load(' .panel-body');
 	}
 </script>
-<div class="col-md-12 grid" style="height: 60%; width: 900px; overflow-x: scroll; display: inline-block;">
+<div class="col-md-12 grid" tabindex="1" id="first" style="height: 60%; width: 900px; overflow: auto; overflow-y: hidden;">
 	<h4><i class="fa fa-coffee"></i> Food Items</h4>
 	<hr class="grid-divider"/>
+	<div class="grid-contents" style="display: inline-flex;">
 	<?php
 		$counter = 0;
 		$count_food_items = count($food_items);
@@ -33,7 +29,7 @@
 			echo "<h4 class='no-avail-list'>No Food Item Results Found</h4>";
 		}else{
 			while($counter < $count_food_items){
-				echo "<div class='col-lg-6' id='items' style='height: 60%; width: 32%;>";
+				echo "<div class='col-lg-6' style='height: 60%; margin-bottom: 10px; width: 250px;'>";
             		echo "<div class='thumbnail'>";
             			$file_name = strtolower(preg_replace('/[^A-Za-z0-9\-.]/', '', $food_items[$counter]->name));
 		            	/*if(file_exists(FCPATH . '/assets/images/main/food/' . $file_name . '.jpg')){
@@ -41,7 +37,7 @@
 		            	}else{
 							echo "<img src='http://placehold.it/320x150' alt=''>";
 		            	}*/
-		            	echo "<img src='http://placehold.it/320x150' alt=''>";
+		            	echo "<img src='".base_url()."assets/images/home/index/samples/cuisine1.jpg' class='img-responsive' alt='' />";
 		            	echo "<div class='caption'>";
 		                	echo "<h5 class='pull-right'>&#x20B1 " . $food_items[$counter]->price . "</h5>";
 		                	echo "<h5><a href='#'>" . $food_items[$counter]->name . "</a></h5>";
@@ -76,66 +72,71 @@
 			}
 		}
 	?>
+	</div>
 </div>
-<div class="col-md-12 grid">
+<div class="col-md-12 grid" style="height: 50%; width: 900px; overflow: auto; overflow-y: hidden;">
 	<h4><i class="fa fa-circle-o"></i> Categories</h4>
 	<hr class="grid-divider"/>
-	<?php
-		$counter = 0;
-		$count_categories = count($categories);
+	<div class="grid-contents" style="display: inline-flex;">
+		<?php
+			$counter = 0;
+			$count_categories = count($categories);
 
-		if($count_categories == 0){
-			echo "<h4 class='no-avail-list'>No Category Results Found</h4>";
-		}else{
-			while($counter < $count_categories){
-				echo "<div class='col-lg-6'>";
-            		echo "<div class='thumbnail'>";
-            			$file_name = strtolower(preg_replace('/[^A-Za-z0-9\-.]/', '', $categories[$counter]->name));
-		            	/*if(file_exists(FCPATH . '/assets/images/main/food/' . $file_name . '.jpg')){
-		            		echo "<img src='".base_url()."/assets/images/main/food/".$file_name.".jpg' alt='' width='320px' height='100px'>";
-		            	}else{
-							echo "<img src='http://placehold.it/320x150' alt=''>";
-		            	}*/
-		            	echo "<img src='http://placehold.it/320x150' alt=''>";
-		            	echo "<div class='caption'>";
-		                	echo "<h5>" . $categories[$counter]->name . "</h5>";
-		                	echo "<a class='btn btn-primary' style='width:100%' id='ref_item' href=".base_url()."index.php/main>Visit</a>";
+			if($count_categories == 0){
+				echo "<h4 class='no-avail-list'>No Category Results Found</h4>";
+			}else{
+				while($counter < $count_categories){
+					echo "<div class='col-lg-6' style='height: 60%; margin-bottom: 10px; width: 250px;'>";
+	            		echo "<div class='thumbnail'>";
+	            			$file_name = strtolower(preg_replace('/[^A-Za-z0-9\-.]/', '', $categories[$counter]->name));
+			            	/*if(file_exists(FCPATH . '/assets/images/main/food/' . $file_name . '.jpg')){
+			            		echo "<img src='".base_url()."/assets/images/main/food/".$file_name.".jpg' alt='' width='320px' height='100px'>";
+			            	}else{
+								echo "<img src='http://placehold.it/320x150' alt=''>";
+			            	}*/
+			            	echo "<img src='http://placehold.it/320x150' alt=''>";
+			            	echo "<div class='caption'>";
+			                	echo "<h5>" . $categories[$counter]->name . "</h5>";
+			                	echo "<a class='btn btn-primary' style='width:100%' id='ref_item' href=".base_url()."index.php/main>Visit</a>";
+			            	echo "</div>";
 		            	echo "</div>";
 	            	echo "</div>";
-            	echo "</div>";
-				$counter++;
+					$counter++;
+				}
 			}
-		}
-	?>
+		?>
+	</div>
 </div>
-<div class="col-md-12 grid">
+<div class="col-md-12 grid" style="height: 50%; width: 900px; overflow: auto; overflow-y: hidden;">
 	<h4><i class="fa fa-cutlery"></i> Restaurants</h4>
 	<hr class="grid-divider"/>
-	<?php
-		$counter = 0;
-		$count_restaurants = count($restaurants);
+	<div class="grid-contents" style="display: inline-flex;">
+		<?php
+			$counter = 0;
+			$count_restaurants = count($restaurants);
 
-		if($count_restaurants == 0){
-			echo "<h4 class='no-avail-list'>No Restaurant Results Found</h4>";
-		}else{
-			while($counter < $count_restaurants){
-				echo "<div class='col-lg-6'>";
-            		echo "<div class='thumbnail'>";
-            			$file_name = strtolower(preg_replace('/[^A-Za-z0-9\-.]/', '', $restaurants[$counter]->name));
-		            	/*if(file_exists(FCPATH . '/assets/images/main/food/' . $file_name . '.jpg')){
-		            		echo "<img src='".base_url()."/assets/images/main/food/".$file_name.".jpg' alt='' width='320px' height='100px'>";
-		            	}else{
-							echo "<img src='http://placehold.it/320x150' alt=''>";
-		            	}*/
-		            	echo "<img src='http://placehold.it/320x150' alt=''>";
-		            	echo "<div class='caption'>";
-		                	echo "<h5>" . $restaurants[$counter]->name . "</h5>";
-		                	echo "<a class='btn btn-primary' style='width:100%' id='ref_item' href='".base_url()."index.php/main?restaurant_name=".$restaurants[$counter]->name."'>Visit</a>";
+			if($count_restaurants == 0){
+				echo "<h4>No Restaurant Results Found</h4>";
+			}else{
+				while($counter < $count_restaurants){
+					echo "<div class='col-lg-6' style='height: 60%; margin-bottom: 10px; width: 250px;'>";
+	            		echo "<div class='thumbnail'>";
+	            			$file_name = strtolower(preg_replace('/[^A-Za-z0-9\-.]/', '', $restaurants[$counter]->name));
+			            	/*if(file_exists(FCPATH . '/assets/images/main/food/' . $file_name . '.jpg')){
+			            		echo "<img src='".base_url()."/assets/images/main/food/".$file_name.".jpg' alt='' width='320px' height='100px'>";
+			            	}else{
+								echo "<img src='http://placehold.it/320x150' alt=''>";
+			            	}*/
+			            	echo "<img src='http://placehold.it/320x150' alt=''>";
+			            	echo "<div class='caption'>";
+			                	echo "<h5>" . $restaurants[$counter]->name . "</h5>";
+			                	echo "<a class='btn btn-primary' style='width:100%' id='ref_item' href='".base_url()."index.php/main?restaurant_name=".$restaurants[$counter]->name."'>Visit</a>";
+			            	echo "</div>";
 		            	echo "</div>";
 	            	echo "</div>";
-            	echo "</div>";
-				$counter++;
+					$counter++;
+				}
 			}
-		}
-	?>
+		?>
+	</div>
 </div>

@@ -34,7 +34,7 @@
 		                    	}else{
 									echo "<img src='http://placehold.it/320x150' alt=''>";
 		                    	}*/
-		                    	echo "<img src='http://placehold.it/320x150' alt=''>";
+		                    	echo "<img src='".base_url()."assets/images/home/index/samples/cuisine1.jpg' class='img-responsive' alt='' style='width:120px; height: 120px;' />";
 	                        	echo "<div class='caption'>";
 	                            	echo "<h5 class='pull-right'>&#x20B1 " . $row->price . "</h5>";
 	                            	echo "<h5><a href='#'>" . $row->name . "</a></h5>";

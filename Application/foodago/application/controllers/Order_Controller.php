@@ -65,15 +65,19 @@
 		}
 
         public function updateOrder(){
+        	$this->form_validation->set_rules('delivery_status_id', 'Delivery Status', 'xss_clean');
+        	$this->form_validation->set_rules('remarks', 'Remarks', 'xss_clean');
+        	$this->form_validation->set_rules('total_amt', 'Total Amount', 'xss_clean');
 
 			$data = array('remarks' => $this->input->post('remarks'),
-			  'delivery_status_id' => $this->input->post('delivery_status_id'));
+						  'delivery_status_id' => $this->input->post('delivery_status_id'),
+						  'total_amt' => $this->input->post('total_amt'));
 
 			$refid = $this->input->post('refid');
 				  
 			$query = $this->order->update($data, $refid);
 
-			$name_d = 'Delivered';
+			/*$name_d = 'Delivered';
 
 			$getDeliveryStatusIdDelivered = $this->DeliveryStatus->getDeliveryStatusByName($name_d);
 
@@ -89,26 +93,23 @@
 
 				$query = $this->db->get();
 
-				foreach ($query->result() as $row) {
+				foreach ($query->result() as $row) 
+				{
 					$this->db->delete('user_has_penalty', array('user_id' => $this->session->userdata['id']));
 					$this->db->delete('penalty', array('id' => $row->penalty_id));
 				}
 			}else if($data['delivery_status_id'] == $getDeliveryStatusIdCancelled->row('id'))
 			{
-				$this->db->select('*');
-				$this->db->from('user_has_penalty');
-				$this->db->where("user_id =" . $this->session->userdata['id']);
-
-				$query = $this->db->get();
-
-				foreach ($query->result() as $row) {
-					$this->db->insert('user_has_penalty', array('user_id' => $this->session->userdata['id']));
-					$this->db->insert('penalty', array('id' => $row->penalty_id));
-				}
-			}
+				$penalty_amt = $data['total_amt'] / 2;
+				$data = array('amount' => $penalty_amt);
+				$this->penalty->insert($data);
+				$penalty_id = $this->db->insert_id();
+				
+				//var_dump($penalty_id);
+			}*/
 
 			redirect(base_url() . 'index.php/admin?page_view=admin_table&tn=order&mn=orders');
-        	
+        	//var_dump($this->input->post);
         }
 
         public function deleteOrder(){

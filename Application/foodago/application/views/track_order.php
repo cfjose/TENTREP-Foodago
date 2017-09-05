@@ -199,7 +199,6 @@
 			background-color: #ff6666;
 		}
 		.centered{
-
 			text-align: center;
 			vertical-align: middle;
 			margin-top: 6%;

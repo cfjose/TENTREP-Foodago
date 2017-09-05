@@ -220,11 +220,7 @@
 			width: 92%;
 			margin-left: 4%;
 		}
-
-		
-
 	</style>
-
 </head>
 	<body>
 		<nav class="navbar-inverse navbar-fixed-top">
@@ -271,8 +267,16 @@
 										<h4>Are you sure you want to cancel your order?</h4>
 								</div>
 								<div class="modal-footer">
-									<button type="button" class="btn btn-danger" data-dismiss="modal">YES</button>
-									<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+									<?php
+										$name_c = 'Cancelled';
+										$query = $this->DeliveryStatus->getDeliveryStatusByName($name_c);
+
+										echo form_open('Order_Controller/updateOrder');
+									?>
+										<input type="hidden" name="delivery_status_id" value="<?php echo $query->row('id'); ?>"/>
+										<button type="submit" class="btn btn-danger">YES</button>
+										<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+									<?php echo form_close(); ?>
 								</div>
 							</div>
 						</div>
@@ -338,7 +342,12 @@
 										echo "<li class='done'>Packaging Order</li>";
 										echo "<li class='done'>On The Way</li>";
 										echo "<li class='done'>Delivered</li>";
-
+									}else if ($delivery_status == 'Cancelled') {
+										echo "<li class='unstarted'>Processing Order</li>";
+										echo "<li class='unstarted'>Order Confirmed</li>";
+										echo "<li class='unstarted'>Packaging Order</li>";
+										echo "<li class='unstarted'>On The Way</li>";
+										echo "<li class='unstarted'>Delivered</li>";
 									}
 							}else{
 								echo "<h2 class='centered'>Welcome to our online order tracking page!</h2>";

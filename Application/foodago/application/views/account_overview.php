@@ -164,11 +164,11 @@
 				echo "<h3 class='empty'>No Orders Made</h3>";
 			}elseif($fetch_data_order->num_rows() > 0){
 				echo "<table class='table borderless' style='margin:0'>";
-				echo "<th>" . "Tracking Number" . "</th>";
-				echo "<th>" . "Total Amount" . "</th>";
-				echo "<th>" . "Date" . "</th>";
+					echo "<th>" . "Tracking Number" . "</th>";
+					echo "<th>" . "Total Amount" . "</th>";
+					echo "<th>" . "Date" . "</th>";
 
-				foreach ($fetch_data_order->result() as $row){
+					foreach ($fetch_data_order->result() as $row){
 						echo "<tr>";
 							echo form_open('/TrackOrder/getOrderDeliveryStatus');
 								echo "<input type='hidden' name='tracking_number' value='".$row->tracking_number."'>";
@@ -184,9 +184,7 @@
 								echo "</button></td>";
 							echo form_close();
 						echo "</tr>";
-					
-				}
-
+					}
 				echo "</table>";
 			}else{
 				//DO NOTHIN'
@@ -194,7 +192,7 @@
 		?>
 		</div>
 	</div>
-	<div class="col-md-5 grid food-tray"">
+	<div class="col-md-5 grid food-tray">
 	<div class="panel-heading" style="margin: 0; padding: 0;">
 		<h4 style="margin: 0; padding: 0;"><i class="fa fa-money"></i>&nbsp; Pending Accountabilities</h4><br/>
 	</div>

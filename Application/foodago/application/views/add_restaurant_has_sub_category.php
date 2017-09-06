@@ -51,7 +51,7 @@
 			</div>
 			<div class="col-md-12 grid body">
 				<?php
-					echo form_open('/Restaurant_Has_Sub_Category_Controller/newRestaurantHasSubCategory');
+					echo form_open('Restaurant_Has_Sub_Category_Controller/newRestaurantHasSubCategory');
 				?>
 				<label for="restaurant_id">Restaurant </label>
 				<select name="restaurant_id" class="form-control">

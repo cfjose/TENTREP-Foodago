@@ -73,5 +73,20 @@
 		public function updateItemQty(){
 
 		}
+
+		public function deleteItem(){
+			$this->form_validation->set_rules('item_id', 'Item', 'trim|required|xss_clean');
+
+			unset($this->session->userdata['food_tray']['item_id'][$_POST['item_id']]);
+			unset($this->session->userdata['food_tray']['item_name'][$_POST['item_id']]);
+			unset($this->session->userdata['food_tray']['item_price'][$_POST['item_id']]);
+			unset($this->session->userdata['food_tray']['item_cal'][$_POST['item_id']]);
+			unset($this->session->userdata['food_tray']['item_resid'][$_POST['item_id']]);
+			unset($this->session->userdata['food_tray']['item_subcat_id'][$_POST['item_id']]);
+			unset($this->session->userdata['food_tray']['item_qty'][$_POST['item_id']]);
+			unset($this->session->userdata['food_tray']['sub_amt'][$_POST['item_id']]);
+
+			return;
+		}
 	}
 ?>

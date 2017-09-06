@@ -5,7 +5,7 @@
 		var item_id = data;
 		$.ajax({
 			type: "POST",
-			url: 'Main/add',
+			url: '../Main/add',
 			data: {
 				item_id: item_id
 			},
@@ -94,7 +94,7 @@
 			            	}else{
 								echo "<img src='http://placehold.it/320x150' alt=''>";
 			            	}*/
-			            	echo "<img src='http://placehold.it/320x150' alt=''>";
+			            	echo "<img src='".base_url()."assets/images/home/index/samples/cuisine1.jpg' class='img-responsive' alt='' />";
 			            	echo "<div class='caption'>";
 			                	echo "<h5>" . $categories[$counter]->name . "</h5>";
 			                	echo "<a class='btn btn-primary' style='width:100%' id='ref_item' href=".base_url()."index.php/main>Visit</a>";
@@ -127,7 +127,7 @@
 			            	}else{
 								echo "<img src='http://placehold.it/320x150' alt=''>";
 			            	}*/
-			            	echo "<img src='http://placehold.it/320x150' alt=''>";
+			            	echo "<img src='".base_url()."assets/images/home/index/samples/cuisine1.jpg' class='img-responsive' alt='' />";
 			            	echo "<div class='caption'>";
 			                	echo "<h5>" . $restaurants[$counter]->name . "</h5>";
 			                	echo "<a class='btn btn-primary' style='width:100%' id='ref_item' href='".base_url()."index.php/main?restaurant_name=".$restaurants[$counter]->name."'>Visit</a>";

@@ -220,6 +220,10 @@
 			width: 92%;
 			margin-left: 4%;
 		}
+
+		.legend{
+			margin-top: 200px !important;
+		}
 	</style>
 </head>
 	<body>
@@ -361,7 +365,7 @@
 						?>
 		
 						<!-- Legend labels -->
-						<div style="padding-top: 2%">
+						<div class='legend'>
 							<br/>
 							<h3>Delivery/Status Legends</h3>
 							<button class="btn" style="background-color:#64dd17; margin-top:1%; border-color:#b3b3b3" disabled type="button"> </button>

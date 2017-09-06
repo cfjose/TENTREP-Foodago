@@ -89,8 +89,19 @@
 
 		}
 
-		function removeProductFrTray(){
-
+		function removeProductFrTray(data){
+			var id = data;
+			$.ajax({
+				type: "post",
+				url: 'Main/deleteItem',
+				data: {
+					item_id: id
+				},
+				success: function(){
+					console.log("OK");
+				}
+			});
+			$('.panel-body').load(' .panel-body');
 		}
 	</script>
 	<style>
@@ -579,6 +590,7 @@
             				echo "<td style='margin:0'>" . $this->session->userdata['food_tray']['item_name'][$i] . "</td>";
             				echo "<td style='margin:0'>&#8369; " . $this->session->userdata['food_tray']['sub_amt'][$i] . "</td>";
             				echo "<td style='margin:0'><form method='post'><input type='number' name='qty' min='1' max='100' value='".$this->session->userdata['food_tray']['item_qty'][$i]."'/></form></td>";
+            				echo "<td><a href='' onclick=removeProductFrTray(".$i.")>x</a></td>";
             				echo "</tr>";
             			}
         			echo "</table>";
@@ -590,7 +602,7 @@
 			echo "<div style='margin-left:7%;margin-right:7%'>";
 			echo "<a href='' class='btn btn-success' data-toggle='modal' data-target='#myModal'>Add Friend</a>";
 
-			echo "<a href='".$checkout_link."' class='btn btn-warning' style='width:60%; height:7.3%; margin-left: 2%'>Proceed to Checkout</a>";
+			echo "<a href='".$checkout_link."' class='btn btn-default' style='width:60%; height:10%; margin-left: 2%'>Proceed to Checkout</a>";
 			echo "</div>";
         ?>
     </div>
